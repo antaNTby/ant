@@ -17,7 +17,10 @@
 			{
 				"buffer_size": 748,
 				"line_ending": "Unix"
-			}
+			},
+			"undo_stack":
+			[
+			]
 		}
 	],
 	"build_system": "",
@@ -89,7 +92,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -140,8 +143,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								748,
+								748
 							]
 						],
 						"settings":
@@ -164,7 +167,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -218,7 +221,7 @@
 	"project": "_skeleton.my_.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -14,7 +14,7 @@ Flight::route( '/admin', function () {
     echo 'hello world admin!';
 } );
 
-Flight::route( '/site', function () {
+Flight::route( '/page', function () {
     echo 'hello site!';
 } );
 
