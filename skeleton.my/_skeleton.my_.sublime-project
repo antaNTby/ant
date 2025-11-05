@@ -4,5 +4,15 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	    "settings":
+    {
+        "default_encoding": "UTF-8",
+        // "default_encoding": "Cyrillic (Windows 1251)",
+        "fallback_encoding": "UTF-8",
+        // "fallback_encoding": "Cyrillic (Windows 1251)",
+
+
+        "color_scheme": "Bass Lagoon.sublime-color-scheme",
+    }
 }
