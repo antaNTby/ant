@@ -1,4 +1,4 @@
-__array__  ::  
+ARRAY
 [
     "C:\\git\\ant",
     "C:\\git\\ant\\ant.my",
@@ -9,5 +9,157 @@ __array__  ::
     "C:\\git\\ant\\ant.my\\app\\controllers",
     "C:\\git\\ant\\ant.my\\app\\tpl"
 ]
-__string__  ::  
+
+STRING
 "C:\\git\\ant\\ant.my"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\tpl"
+]
+
+STRING
+"C:\\git\\ant\\ant.my"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\tpl"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\tpl"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\tpl"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\tpl"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\templates"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\templates"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\templates"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\templates"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+
+ARRAY
+[
+    "C:\\git\\ant",
+    "C:\\git\\ant\\ant.my",
+    "C:\\git\\ant\\ant.my\\app",
+    "C:\\git\\ant\\ant.my\\public",
+    "C:\\git\\ant\\ant.my\\vendor",
+    "C:\\git\\ant\\ant.my\\app\\config",
+    "C:\\git\\ant\\ant.my\\app\\controllers",
+    "C:\\git\\ant\\ant.my\\app\\templates"
+]
+
+STRING
+"C:\\git\\ant\\ant.my\\public"
+

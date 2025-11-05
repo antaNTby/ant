@@ -55,8 +55,9 @@ function debugfile(
     $variable,
 ) {
     $fp = fopen( __DIR__ . DIRECTORY_SEPARATOR . 'debug.json', 'a' );
-    fwrite( $fp, '__' . gettype( $variable ) . "__  ::  \r\n" );
+    fwrite( $fp, mb_strtoupper( gettype( $variable ) ) . "\r\n" );
     fwrite( $fp, json_encode( $variable, JSON_PRETTY_PRINT | JSON_INVALID_UTF8_IGNORE | JSON_UNESCAPED_UNICODE ) );
+    fwrite( $fp, "\r\n" );
     fwrite( $fp, "\r\n" );
     fclose( $fp );
 }
@@ -100,34 +101,6 @@ Flight::start();
 
 define( '__PARENT_DIR__', dirname( __DIR__, 1 ) );
 define( '__ROOT__', __DIR__ );
-define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
 define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
-define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 
-define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
-define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
-define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
-
-debug( [
-    __PARENT_DIR__,
-    __ROOT__,
-    __APP__,
-    __PUBLIC__,
-    __VENDOR__,
-    __CONFIG__,
-    __CONTROLLERS__,
-    __TPL__,
-
-] );
-
-jlog( [
-    __PARENT_DIR__,
-    __ROOT__,
-    __APP__,
-    __PUBLIC__,
-    __VENDOR__,
-    __CONFIG__,
-    __CONTROLLERS__,
-    __TPL__,
-
-], __DIR__ );
+require_once __PUBLIC__ . DIRECTORY_SEPARATOR . 'admin.php';
