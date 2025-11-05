@@ -51,6 +51,28 @@ function _value( $variable )
     return $res;
 }
 
+function debugfile(
+    $variable,
+) {
+    $fp = fopen( __DIR__ . DIRECTORY_SEPARATOR . 'debug.json', 'a' );
+    fwrite( $fp, '__' . gettype( $variable ) . "__  ::  \r\n" );
+    fwrite( $fp, json_encode( $variable, JSON_PRETTY_PRINT | JSON_INVALID_UTF8_IGNORE | JSON_UNESCAPED_UNICODE ) );
+    fwrite( $fp, "\r\n" );
+    fclose( $fp );
+}
+
+function jlog(
+    $text,
+    $text2 = ''
+) {
+    debugfile( $text );
+    if ( $text2 !== '' ) {
+        debugfile( $text2 );
+    }
+
+    return true;
+}
+
 /*
 
 // If you're using Composer, require the autoloader.
@@ -97,3 +119,15 @@ debug( [
     __TPL__,
 
 ] );
+
+jlog( [
+    __PARENT_DIR__,
+    __ROOT__,
+    __APP__,
+    __PUBLIC__,
+    __VENDOR__,
+    __CONFIG__,
+    __CONTROLLERS__,
+    __TPL__,
+
+], __DIR__ );
