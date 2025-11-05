@@ -12,47 +12,12 @@
 	"buffers":
 	[
 		{
-			"file": "public/index.php",
+			"file": "vendor/autoload.php",
 			"settings":
 			{
-				"buffer_size": 1498,
+				"buffer_size": 748,
 				"line_ending": "Unix"
-			},
-			"undo_stack":
-			[
-			]
-		},
-		{
-			"file": "_skeleton.my_.sublime-project",
-			"settings":
-			{
-				"buffer_size": 1444,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			},
-			"undo_stack":
-			[
-				[
-					5,
-					1,
-					"toggle_comment",
-					{
-						"block": false
-					},
-					"AQAAAAwBAAAAAAAADAEAAAAAAAADAAAALy8g",
-					"AQAAAAAAAAABAAAANQEAAAAAAAA1AQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					9,
-					1,
-					"insert",
-					{
-						"characters": "Light"
-					},
-					"BQAAAB4BAAAAAAAAHwEAAAAAAAAEAAAARGFyax8BAAAAAAAAIAEAAAAAAAAAAAAAIAEAAAAAAAAhAQAAAAAAAAAAAAAhAQAAAAAAACIBAAAAAAAAAAAAACIBAAAAAAAAIwEAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAHgEAAAAAAAAiAQAAAAAAAAAAAAAAAPC/"
-				]
-			]
+			}
 		}
 	],
 	"build_system": "",
@@ -100,11 +65,6 @@
 	"expanded_folders":
 	[
 		"/C/git/ant/skeleton.my",
-		"/C/git/ant/skeleton.my/.cursor",
-		"/C/git/ant/skeleton.my/.cursor/rules",
-		"/C/git/ant/skeleton.my/.github",
-		"/C/git/ant/skeleton.my/.osp",
-		"/C/git/ant/skeleton.my/app",
 		"/C/git/ant/skeleton.my/public"
 	],
 	"file_history":
@@ -168,58 +128,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public/index.php",
+					"file": "vendor/autoload.php",
+					"selected": true,
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1498,
+						"buffer_size": 748,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								89,
-								89
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"lsp_uri": "file:///C:/git/ant/skeleton.my/public/index.php",
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/vendor/autoload.php",
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"stack_multiselect": false,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "_skeleton.my_.sublime-project",
-					"selected": true,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								291,
-								291
-							]
-						],
-						"settings":
-						{
-							"lsp_uri": "file:///C:/git/ant/skeleton.my/_skeleton.my_.sublime-project",
-							"syntax": "Packages/JSON/JSON.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},

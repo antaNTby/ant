@@ -9,6 +9,14 @@ require 'vendor/autoload.php';
 Flight::route( '/', function () {
     echo 'hello world!';
 } );
+// Then define a route and assign a function to handle the request.
+Flight::route( '/admin', function () {
+    echo 'hello world admin!';
+} );
+
+Flight::route( '/site', function () {
+    echo 'hello site!';
+} );
 
 // Finally, start the framework.
 Flight::start();

@@ -25,7 +25,7 @@
 
 // 00000
         // "font_face": "Iosevka Fixed Extended",
-        // "font_face": "Iosevka Term",
+        "font_face": "Iosevka Term",
         // "font_face": "JetBrains Mono",
         // "font_face": "Consolas",
         // "font_face": "Fira Sans",
