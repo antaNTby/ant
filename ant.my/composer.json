@@ -4,6 +4,7 @@
         "flightphp/core": "^3.17",
         "smarty/smarty": "^5.0",
         "twbs/bootstrap": "^5.3.8",
-        "twbs/bootstrap-icons": "^1.13"
+        "twbs/bootstrap-icons": "^1.13",
+        "monolog/monolog": "^3.9"
     }
 }

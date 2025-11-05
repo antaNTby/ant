@@ -102,5 +102,6 @@ Flight::start();
 define( '__PARENT_DIR__', dirname( __DIR__, 1 ) );
 define( '__ROOT__', __DIR__ );
 define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
+define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 
 require_once __PUBLIC__ . DIRECTORY_SEPARATOR . 'admin.php';

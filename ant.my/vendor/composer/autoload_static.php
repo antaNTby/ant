@@ -18,6 +18,14 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Smarty\\' => 7,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -28,6 +36,14 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'Smarty\\' => 
         array (
             0 => __DIR__ . '/..' . '/smarty/smarty/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
     );
 
