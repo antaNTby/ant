@@ -1,4 +1,55 @@
 <?php
+// ini_set( 'session.serialize_handler', 'php_serialize' );
+
+function debug( $variable )
+{
+    if ( !isset( $variable ) ) {
+        echo( 'undefined' );
+    } else {
+        echo '<div align="left">';
+        echo( _value( $variable ) . '<br>' );
+        echo '</div>';
+    }
+}
+
+function _value( $variable )
+{
+    if ( !isset( $variable ) ) {
+        return 'undefined';
+    }
+
+    $res = '';
+    if ( is_null( $variable ) ) {
+        $res .= 'NULL';
+    } elseif ( is_array( $variable ) ) {
+        $res .= '<strong style="opacity:0.5">array</strong>';
+        $res .= '<ol style="list-style-type: decimal" start=0>';
+        foreach ( $variable as $key => $value ) {
+            $res .= '<li>';
+            $res .= '[ ' . _value( $key ) . ' ]=' . _value( $value );
+            $res .= '</li>';
+        }
+        $res .= '</ol>';
+    } elseif ( is_int( $variable ) ) {
+        $res .= '<em style="opacity:0.5; color:red">int</em> ';
+        $res .= (string) $variable;
+    } elseif ( is_bool( $variable ) ) {
+        $res .= '<em style="opacity:0.5">bool</em> ';
+        if ( $variable ) {
+            $res .= '<strong>true</strong>';
+        } else {
+            $res .= '<strong>false</strong>';
+        }
+    } elseif ( is_string( $variable ) ) {
+        $res .= '<em style="opacity:0.5; color:limegreen">string</em> ';
+        $res .= "'" . (string) $variable . "'";
+    } elseif ( is_float( $variable ) ) {
+        $res .= '<em style="opacity:0.5; color:tomato">float</em> ';
+        $res .= (string) $variable;
+    }
+
+    return $res;
+}
 
 /*
 
@@ -25,4 +76,24 @@ Flight::start();
 
 */
 
-ini_set( 'session.serialize_handler', 'php_serialize' );
+define( '__PARENT_DIR__', dirname( __DIR__, 1 ) );
+define( '__ROOT__', __DIR__ );
+define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
+define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
+define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
+
+define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
+define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
+define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
+
+debug( [
+    __PARENT_DIR__,
+    __ROOT__,
+    __APP__,
+    __PUBLIC__,
+    __VENDOR__,
+    __CONFIG__,
+    __CONTROLLERS__,
+    __TPL__,
+
+] );
