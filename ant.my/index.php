@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 // If you're using Composer, require the autoloader.
 require 'vendor/autoload.php';
 // if you're not using Composer, load the framework directly
@@ -20,3 +22,7 @@ Flight::route( '/page', function () {
 
 // Finally, start the framework.
 Flight::start();
+
+*/
+
+ini_set( 'session.serialize_handler', 'php_serialize' );
