@@ -56,6 +56,12 @@ if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) 
 // This is important as it connects any static calls to the same $app object
 $app = Flight::app();
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
+$config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
+
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
+
+// Whip out the ol' router and we'll pass that to the routes file
+$router = $app->router();
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'routes.php';
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'boot.php';

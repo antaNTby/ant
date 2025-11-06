@@ -28,19 +28,15 @@ Flight::after( 'start', function () {
 
 } );
 Flight::set( 'LOG_REQUEST_TIME', false );
-Flight::start();
 
-debug( [
-    $app,
-    '__PARENT_DIR__'  => __PARENT_DIR__,
-    '__ROOT__'        => __ROOT__,
-    '__PUBLIC__'      => __PUBLIC__,
-    '__APP__'         => __APP__,
-    '__VENDOR__'      => __VENDOR__,
-    '__CONFIG__'      => __CONFIG__,
-    '__CONTROLLERS__' => __CONTROLLERS__,
-    '__TPL__'         => __TPL__,
-
-] );
+// At this point, your app should have all the instructions it needs and it'll
+// "start" processing everything. This is where the magic happens.
+$app->start();
+/*
+ .----..---.  .--.  .----.  .---.     .---. .-. .-.  .--.  .---.    .----. .-. .-..----. .----..-.  .-.
+{ {__ {_   _}/ {} \ | {}  }{_   _}   {_   _}| {_} | / {} \{_   _}   | {}  }| { } || {}  }| {}  }\ \/ /
+.-._} } | | /  /\  \| .-. \  | |       | |  | { } |/  /\  \ | |     | .--' | {_} || .--' | .--'  }  {
+`----'  `-' `-'  `-'`-' `-'  `-'       `-'  `-' `-'`-'  `-' `-'     `-'    `-----'`-'    `-'     `--'
+*/
 
 // Flight::logger()->info( 'TEST TEST TEST : ' . SERVER_NAME );
