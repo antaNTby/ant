@@ -18,6 +18,8 @@ if ( function_exists( 'setlocale' ) === true ) {
     setlocale( LC_ALL, 'en_US.UTF-8' );
 }
 
-require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
-require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
-require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_monolog.php';
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
+
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
+
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_monolog.php';

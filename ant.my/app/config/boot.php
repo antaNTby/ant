@@ -1,5 +1,4 @@
 <?php
-
 Flight::before( 'start', function () {
     Flight::set( 'start_time', microtime( true ) );
 
@@ -13,9 +12,11 @@ Flight::after( 'start', function () {
 
         Flight::logger()->info( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
 
-        // Вы также можете добавить свои заголовки запроса или ответа
-        // чтобы зафиксировать их (будьте осторожны, так как это будет
-        // много данных, если у вас много запросов)
+/*
+Вы также можете добавить свои заголовки запроса или ответа
+чтобы зафиксировать их (будьте осторожны, так как это будет
+много данных, если у вас много запросов)
+*/
         if ( Flight::has( 'request' ) ) {
             Flight::logger()->info( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
         }
@@ -26,9 +27,7 @@ Flight::after( 'start', function () {
     }
 
 } );
-
-Flight::set( 'LOG_REQUEST_TIME', true );
-
+Flight::set( 'LOG_REQUEST_TIME', false );
 Flight::start();
 
 debug( [
