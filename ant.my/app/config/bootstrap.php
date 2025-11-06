@@ -32,6 +32,7 @@ Flight::set( 'LOG_REQUEST_TIME', true );
 Flight::start();
 
 debug( [
+    $app,
     '__PARENT_DIR__'  => __PARENT_DIR__,
     '__ROOT__'        => __ROOT__,
     '__PUBLIC__'      => __PUBLIC__,
@@ -43,4 +44,4 @@ debug( [
 
 ] );
 
-Flight::logger()->info( 'TEST TEST TEST : ' . SERVER_NAME );
+// Flight::logger()->info( 'TEST TEST TEST : ' . SERVER_NAME );

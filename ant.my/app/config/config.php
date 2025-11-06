@@ -18,15 +18,6 @@ if ( function_exists( 'setlocale' ) === true ) {
     setlocale( LC_ALL, 'en_US.UTF-8' );
 }
 
-/**********************************************
- *           FlightPHP Core Settings          *
- **********************************************/
-
-// Get the $app var to use below
-if ( empty( $app ) === true ) {
-    $app = Flight::app();
-}
-
 require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
 require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
 require_once __CONFIG__ . DIRECTORY_SEPARATOR . 'config_monolog.php';

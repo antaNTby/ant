@@ -22,4 +22,13 @@ Flight::set( 'flight.content_length', true );         // if flight should send a
 
 Flight::path( __APP__ . DIRECTORY_SEPARATOR );
 
+/**********************************************
+ *           FlightPHP Core Settings          *
+ **********************************************/
+
+// Get the $app var to use below
+if ( empty( $app ) === true ) {
+    $app = Flight::app();
+}
+
 echo 'config_flight - ok!<br>';
