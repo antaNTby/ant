@@ -1,0 +1,77 @@
+<h2>Статусы заказов</h2>
+{include file="subs/navigator.tpl.html" links=$nav_links}
+<form id="main-form">
+    <div class="table-responsive-xxl">
+        {$smarty.capture.MAIN_TABLE}
+    </div>
+</form>
+<hr class="my-3">
+<form id="second-form">
+    <div class="table-responsive-xxl">
+        {$smarty.capture.SECOND_TABLE}
+    </div>
+</form>
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="TABLE_THEAD"}
+<thead class="table-light">
+    <tr class="align-self-center align-middle text-center">
+        <th style='{$th_styles.N}' class='text-end align-middle font-monospace border-end'>{$th_titles.N}</th>
+        <th style='{$th_styles.statusID}'>{$th_titles.statusID}</th>
+        <th style='{$th_styles.status_name}'>{$th_titles.status_name}</th>
+        <th style='{$th_styles.sort_order}'>{$th_titles.sort_order}</th>
+        <th style='{$th_styles.actions}' class="table-secondary fw-bolder text-center align-middle font-monospace border-start"><i class="bi bi-terminal-fill"></i>&nbsp;{$th_titles.actions}</th>
+    </tr>
+</thead>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="THEAD_FIELDNAMES"}
+<tr class="align-middle text-center text-secondary text-xs table-dark">
+    <td></td>
+    <td title="statusID">statusID</td>
+    <td title="Name">status_name</td>
+    <td title="sort_order">sort_order</td>
+    <td></td>
+</tr>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="MAIN_TABLE"}
+<table id="mainTable" class="table table-fixed-layout table-borderless table-hover table-sm caption-top text-end border border-2" style="max-width:60%">
+    <caption>Статусы заказов</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        {$smarty.capture.THEAD_FIELDNAMES}
+        {section name=cc loop = $data}
+        <tr class="align-self-center align-middle text-center" data-index="{$data[cc].statusID}">
+            <td style='{$td_styles.N}' class="table-secondary text-sm text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration|@zeroPad:2}</td>
+            <td style='{$td_styles.statusID}' name="statusID" data-dt-name="statusID">{$controls[cc][0]->getHtml()}</td>
+            <td style='{$td_styles.status_name}' name="status_name" data-dt-name="status_name">{$controls[cc][1]->getHtml()}</td>
+            <td style='{$td_styles.sort_order}' name="sort_order" data-dt-name="sort_order" class="text-end">{$controls[cc][2]->getHtml()}</td>
+            <th style='{$td_styles.actions}' class="table-white text-start align-middle font-monospace border-start">{$controls[cc].actions->getHtml()}</th>
+        </tr>
+        {/section}
+    </tbody>
+</table>
+<div class="d-flex pt-2">
+    <div class="p-2 bg-body">{$controls.mainToolbar.actions->getHtml()}</div>
+</div>
+{/capture}
+{* --{$sc->getHtml()}-- *}
+{capture name="SECOND_TABLE"}
+<table id="secondTable" class="table table-fixed-layout table-borderless table-hover table-sm caption-top text-end border border-2" style="max-width:60%">
+    <caption>Добавить новый статус</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        <tr class="align-self-center align-middle text-center" data-index="-1">
+            <td style='{$td_styles.N}' class="text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration}</td>
+            <td style='{$td_styles.statusID}' name="add_statusID" data-dt-name="statusID">{$controls.addNew.statusID->getHtml()}</td>
+            <td style='{$td_styles.status_name}' name="add_status_name" data-dt-name="status_name">{$controls.addNew.status_name->getHtml()}</td>
+            <td style='{$td_styles.sort_order}' name="add_sort_order" data-dt-name="sort_order" class="text-end">{$controls.addNew.sort_order->getHtml()}</td>
+            <th style='{$td_styles.actions}' class="table-white text-start align-middle font-monospace border-start">{$controls.addNew.actions->getHtml()}</th>
+        </tr>
+    </tbody>
+</table>
+{/capture}
+{* --{$sc->getHtml()}-- *}

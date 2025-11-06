@@ -1,0 +1,52 @@
+<!-- Липкий навбар -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    {* <div class="container-fluid" style="{$body_width}"> *}
+        <a class="navbar-brand ms-3" href="/">{$smarty.const.SERVER_NAME}</a>
+        <div class="d-flex flex-row px-2 flex-fill">
+            <ul class="navbar-nav list-group list-group-horizontal">
+                <li class="nav-item px-1"><a class="nav-link" href="/">Главная</a></li>
+                {* <li class="nav-item px-1"><a class="nav-link" href="#">О нас</a></li>
+                <li class="nav-item px-1"><a class="nav-link" href="#">Контакты</a></li> *}
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/sub/currency">
+                        Типы валют
+                    </a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/sub/statuses">
+                        Статусы заказов
+                    </a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/sub/companies">
+                        Организации
+                    </a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/sub/customers">
+                        Покупатели
+                    </a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/settings">
+                        Настройки сайта
+                    </a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" aria-current="page" href="/admin/log">
+                        log
+                    </a>
+                </li>
+{*                 <li class="nav-item px-1">
+                    <a class="nav-link text-danger" aria-current="page" href="/admin/cls">
+                        cls
+                    </a>
+                </li> *}
+            </ul>
+        </div>
+        <form class="d-flex d-inline-flex px-2 py-0" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+    {* </div> *}
+</nav>

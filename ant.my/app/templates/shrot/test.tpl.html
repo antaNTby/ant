@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" sizes=16x16 href="/lib/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>index.tpl.html</title>
+
+    <link href="/lib/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+
+<body>
+    <main>
+        <h2 class="text-center mt-5">{$smarty.const.SITE_URL}</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+<pre>
+1=={$paramparam}==    
+=={$smarty.const.paramparam}==    
+3=-={$supa[1]}=-=    
+n=-={$name}=-=    
+=={$smarty.const.ass}==    
+</pre>
+                <div class="col-md-6 my-5 bg-secondary">
+
+{include file="$admin_main_content_template"}
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const password = document.getElementById('userpw');
+        const icon = document.getElementById('toggleIcon');
+        if (password.type === 'password') {
+            password.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            password.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        }
+    });
+    </script>
+</body>
+
+</html>

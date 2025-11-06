@@ -1,0 +1,14 @@
+{foreach $params as $key => $value}
+    {assign var=$key value=$value}
+{/foreach}
+
+<input 
+type="number"
+class="cleave-number smarty-control form-control form-control-sm font-monospace border border-success border-opacity-25 {$text_align}"
+id="{$controlName}{if $index|isset}[{$index}]{/if}"
+name="{$controlName}{if $index|isset}[{$index}]{/if}"
+
+value="{$current_value}"
+
+{if $readonly|isset && $readonly}readonly disabled{/if}
+> 

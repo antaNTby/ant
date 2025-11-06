@@ -1,0 +1,53 @@
+{$type}: <b style=color:red>{$message}</b> @ {$pathinfo}
+<hr>
+<code>
+    {$trace}
+</code>
+{if $requestData}
+<h2>REQUEST</h2>
+Запрос:  {$requestData.method}  {$requestData.url}
+<pre>
+"url":    {$requestData.url}
+"method": {$requestData.method}
+"fullUrl":{$requestData.fullUrl}
+"baseUrl":{$requestData.baseUrl}
+"body":   {$requestData.body|debug_print_var}   
+</pre>
+{/if}
+<hr>
+<h1>ERROR 500 {$title}</h1>
+Тип:  {$type} Файл:  {$file} Строка:  {$line}
+<hr>
+{$file}:{$line}
+
+
+{*
+<pre>
+    {$ex}
+</pre>
+<hr>
+<h2>REQUEST</h2>
+<h3>{$request->getMethod()}:</h3>
+{$request->getBody()}
+<h3>FullUrl:</h3>
+{$request->getFullUrl()}
+<h3>BaseUrl:</h3>
+{$request->getBaseUrl()}
+<h3>headers:</h3>
+<pre>
+{foreach from=$request->headers() key=k item=v}
+<em>{$k}</em> :
+    {$v}
+{/foreach}
+</pre>
+<hr>
+<h2>RESPONSE</h2>
+<h3>{$response->getContentLength()}:</h3>
+{$response->getBody()}
+<h3>headers:</h3>
+<pre>
+{foreach from=$response->headers() key=k item=v}
+<em>{$k}</em> :
+    {$v}
+{/foreach}
+</pre> *}

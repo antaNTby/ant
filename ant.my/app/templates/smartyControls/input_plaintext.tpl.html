@@ -1,0 +1,12 @@
+{foreach $params as $key => $value}
+    {assign var=$key value=$value}
+{/foreach}
+
+<input 
+type="text"
+class="smarty-control form-control-plaintext {$font_style} {$text_align}"
+id="{$controlName}{if $index|isset}[{$index}]{/if}"
+name="{$controlName}{if $index|isset}[{$index}]{/if}"
+value="{$current_value|escape}"
+readonly
+> 

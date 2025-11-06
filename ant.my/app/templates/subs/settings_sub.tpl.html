@@ -1,0 +1,50 @@
+<form name="{$current_sub}_sub" action="submit/settings" method="post" accept-charset="utf-8">
+    <input name="formName" type="hidden" value="{$current_sub}_sub">
+    <div class="row">
+        <div class="col-4">
+            <h2>Ширина экрана</h2>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="widthIndex" id="widthIndex1" value="720p" {if $smarty.cookies.COOKIE_WIDTH_INDEX|@isset && $smarty.cookies.COOKIE_WIDTH_INDEX eq '720p' } checked{/if}> <label class="form-check-label" for="widthIndex1">
+                720p 1280x720
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="widthIndex" id="widthIndex2" value="1080p" {if $smarty.cookies.COOKIE_WIDTH_INDEX|@isset && $smarty.cookies.COOKIE_WIDTH_INDEX eq '1080p' } checked{/if}> <label class="form-check-label" for="widthIndex2">
+                1080p 1920x1080
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="widthIndex" id="widthIndex3" value="1440p" {if $smarty.cookies.COOKIE_WIDTH_INDEX|@isset && $smarty.cookies.COOKIE_WIDTH_INDEX eq '1440p' } checked{/if}> <label class="form-check-label" for="widthIndex3">
+                2k 2560x1440
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="widthIndex" id="widthIndex4" value="4k">
+                <label class="form-check-label" for="widthIndex4" {if $smarty.cookies.COOKIE_WIDTH_INDEX|@isset && $smarty.cookies.COOKIE_WIDTH_INDEX eq '4k' } checked{/if}> 4k 3840x2560 </label>
+            </div>
+        </div> 
+
+        <div class="col-4">
+            <h2>Положение бокового меню</h2>
+            <select name="setMenuPosition" class="form-select" aria-label="Menu Position">
+                {*  *}
+                <option value="left" {if $smarty.cookies.COOKIE_MENU_POSITION|@isset && $smarty.cookies.COOKIE_MENU_POSITION eq 'left' } selected{/if}>  Слева</option>
+                <option value="right" {if $smarty.cookies.COOKIE_MENU_POSITION|@isset && $smarty.cookies.COOKIE_MENU_POSITION eq 'right' } selected{/if}> Справа</option>
+                <option value="off" {if $smarty.cookies.COOKIE_MENU_POSITION|@isset && $smarty.cookies.COOKIE_MENU_POSITION eq 'off' } selected{/if}>  Отключено</option> 
+                {*  *}
+            </select>
+        </div> 
+
+        <div class="col-8">
+            <button class="btn btn-outline-success btn-lg mt-3 w-100" type="submit">OK</button>
+        </div>
+   </div>
+</form>
+
+
+<hr>
+{$smarty.cookies|@debug_print_var}
+<hr>
+<h5>
+    {$admin_main_content_template}
+</h5>

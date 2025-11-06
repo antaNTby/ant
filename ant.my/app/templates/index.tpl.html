@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{* <html lang="en-US"> *}
+<html lang="be-Cyrl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" sizes=16x16 href="/lib/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>{$title}</title>
+    {* links *}
+    {* *}
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    {* *}
+    <link rel="stylesheet" href="/lib/admin.css">
+    {* *}
+</head>
+{* *}
+{* links *}
+{* {literal}
+<style>
+</style>
+{/literal} *}
+{* CAPTURES *}
+{capture name="MY_TOP_BANNER" assign=MY_TOP_BANNER}
+{if $show_top_banner}
+<div id="top-banner" class="d-block m-1 alert alert-info">MY_TOP_BANNER</div>
+{/if}
+{/capture}
+{capture name="MY_BOTTOM_BANNER" assign=MY_BOTTOM_BANNER}
+{if $show_bottom_banner}
+<div id="bottom-banner" class="d-block m-1 alert alert-info">MY_BOTTOM_BANNER</div>
+{/if}
+{/capture}
+{capture name="MY_ASIDE" assign=MY_ASIDE}
+{if !$aside_hide}
+<aside class="sidebar d-flex bg-body-secondary{if $aside_reverse eq 0} border-end border-dark border-1{else} border-start border-dark border-1{/if}">
+    {include file="aside.tpl.html"}
+</aside>
+{/if}
+{/capture}
+{capture name="MY_MAIN" assign=MY_MAIN}
+<main class="flex-grow-1 px-3 bg-white">
+    <h1 class="fw-lighter">{$pageH1}</h1>
+    {$smarty.capture.MY_TOP_BANNER}
+    {* <p>Здесь располагается основной контент страницы.</p> *}
+    <div class="p-1 bg-light-subtle">
+        {* <code>{$template_name} template_exist: {$template_exist}</code> *}
+        {if $template_exist}
+        {include file="$admin_main_content_template"}
+        {else}
+        {include file="notFound.tpl.html"}
+        {/if}
+    </div>
+    {$smarty.capture.MY_BOTTOM_BANNER}
+</main>
+{/capture}
+{* CAPTURES *}
+
+<body>
+    {include file="svg.tpl.html"}
+
+    <input id="current_sub" type="hidden" value="{$current_sub}">
+    <input id="primary_key" type="hidden" value="{$primary_key}">
+    
+    <div class="container-fluid d-flex flex-column p-0 shadow-sm" style="{$body_height}{$body_width}">
+        <header id="header">
+            {include file="header_navbar.tpl.html"}
+        </header><!-- /header -->
+        <!-- Липкий навбар -->
+        <!-- Основное содержимое -->
+        <div class="wrapper d-flex flex-row border-bottom border-2">
+            {if $aside_hide}
+            {$MY_MAIN}
+            {else}
+            {if $aside_reverse}
+            {$MY_MAIN}
+            {$MY_ASIDE}
+            {else}
+            {$MY_ASIDE}
+            {$MY_MAIN}
+            {/if}
+            {/if}
+        </div>
+        {include file="footer.tpl.html"}
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/admin.js" type="module"></script>
+</body>
+
+</html>

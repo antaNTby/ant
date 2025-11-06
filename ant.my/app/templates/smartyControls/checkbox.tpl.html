@@ -1,0 +1,17 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+
+<div class="form-check{if $inline|isset} form-check-inline{/if}{if $reverse|isset} form-check-reverse{/if}">
+  <input class="smarty-control form-check-input{if isset($indeterminate) && $indeterminate} indeterminate-checkbox{/if}"
+  type="checkbox"
+  id="{$controlName}{if $index|isset}[{$index}]{/if}"
+  name="{$controlName}{if $index|isset}[{$index}]{/if}"
+     {if $indeterminate|isset && $indeterminate} indeterminate="indeterminate" value="-1"{else}
+     {if $current_value|isset && $current_value neq 0}checked="checked" value="1"{else}value="0"{/if}
+     {/if}
+  {if $readonly|isset && $readonly}readonly{/if} {if $disabled|isset && $disabled}disabled{/if}>
+
+
+{if $label|isset}<label class="form-check-label" for="{$controlName}{if $index|isset}[{$index}]{/if}">{$label}</label>{/if}
+</div>

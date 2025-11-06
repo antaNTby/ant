@@ -1,0 +1,26 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+<div class="vstack gap-1">
+    <div class="hstack gap-1">
+        {if $index|isset && $index > 0}
+        <button type="button" title="Top" name="button__SortTop{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="SortTop" class="smarty-control btn btn-secondary btn-bi"><i class="bi-xs bi-chevron-bar-up"></i></button>
+        {* <div class="vr"></div> *}
+        {/if}
+        {if $index|isset && $index > 0}
+        <button type="button" title="Up" name="button__SortUp{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="SortUp" class="smarty-control btn btn-secondary btn-bi"><i class="bi-xs bi-chevron-up"></i></button>
+        {/if}
+        {if $index|isset && $index > 0}
+        <button type="button" title="Down" name="button__SortDown{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="SortDown" class="smarty-control btn btn-secondary btn-bi"><i class="bi-xs bi-chevron-down"></i></button>
+        {/if}
+        {if $index|isset && $index > 0}
+        {* <div class="vr"></div> *}
+        <button type="button" title="Bottom" name="button__SortBottom{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="SortBottom" class="smarty-control btn btn-secondary btn-bi"><i class="bi-xs bi-chevron-bar-down"></i></button>
+        {/if}
+    </div>
+
+    <div class="hstack gap-1">
+        <input type="{if $show_input|isset && $show_input == 1}text{else}hidden{/if}" inputmode="numeric" class="smarty-control form-control form-control-xs font-monospace text-end" id="{$controlName}{if $index|isset}[{$index}]{/if}" name="{$controlName}{if $index|isset}[{$index}]{/if}" {if $string_format|isset} value='{$current_value|string_format:"{$string_format}"}' {else} value="{$current_value}" {/if} inputmode="numeric" lang="en-US" step="1" style="max-width:10ch; margin-left:1ch">
+    </div>
+
+</div>

@@ -1,0 +1,44 @@
+{* {$nav_links|debug_print_var} *}
+{assign var=firstItem value=($nav_links.current_page - 1) * $nav_links.items_per_page + 1}
+{assign var=lastItem value=$nav_links.current_page * $nav_links.items_per_page}
+{if $lastItem > $nav_links.total_items}
+{assign var=lastItem value=$nav_links.total_items}
+{/if}
+<div class="d-flex justify-content-start mb-0">
+    <small class="text-body-secondary">
+        {if isset($nav_links.show_all)}
+        {if $nav_links.items_per_page neq $nav_links.total_items }
+        Показано <strong>{$firstItem}–{$lastItem}</strong> из <strong>{$nav_links.total_items}</strong> элемент(-а |-ов ) —
+        всего <strong>{$nav_links.total_pages}</strong> страниц.
+        <a class="btn-link" href="{$nav_links.show_all.href}">{$nav_links.show_all.content}</a>
+        {else}
+        Показаны все <strong>{$nav_links.total_items}</strong> элемент(-а| -ов).
+        <a class="btn-link" href="{$nav_links.show_all.href}">{$nav_links.show_all.content}</a>
+        {/if}
+        {else}
+        Показано <strong>{$firstItem}–{$lastItem}</strong> из <strong>{$nav_links.total_items}</strong> элемент(-а |-ов ) —
+        всего <strong>{$nav_links.total_pages}</strong> страниц.
+        {/if}
+    </small>
+</div>
+{if $nav_links.data|@count >1}
+<nav class="pagination-wrapper" aria-label="Page navigation">
+    <ul class="pagination justify-content-start mb-0">
+        <li class="page-item{if isset($nav_links.previous.disabled) && $nav_links.previous.disabled} disabled{/if}">
+            <a class="page-link" href="{$nav_links.previous.href}">Previous</a>
+        </li>
+        {section name=cc loop=$nav_links.data}
+        <li class="page-item
+            {if isset($nav_links.data[cc].active) && $nav_links.data[cc].active} active{/if}
+            {if isset($nav_links.data[cc].disabled) && $nav_links.data[cc].disabled} disabled{/if}">
+            <a class="page-link" href="{$nav_links.data[cc].href}" title="{$smarty.section.cc.index}">
+                {$nav_links.data[cc].content}
+            </a>
+        </li>
+        {/section}
+        <li class="page-item{if isset($nav_links.next.disabled) && $nav_links.next.disabled} disabled{/if}">
+            <a class="page-link" href="{$nav_links.next.href}">Next</a>
+        </li>
+    </ul>
+</nav>
+{/if}

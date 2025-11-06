@@ -1,0 +1,21 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+
+<div class="form-check{if $inline|isset} form-check-inline{/if}{if $reverse|isset} form-check-reverse{/if}">
+  <input class="smarty-control form-check-input"
+  type="radio"
+{if $group_index|isset}
+  id="{$controlName}_{$group_index}_{counter name="{$group_index}_Counter"}"
+  name="{$controlName}_{$group_index}"
+{else}
+  id="{$controlName}{if $index|isset}[{$index}]{/if}"
+  name="{$controlName}{if $index|isset}[{$index}]{/if}"
+{/if}
+
+  {if $current_value|isset && $current_value neq 0}checked="checked" value="1"{else}value="0"{/if}
+  {if $readonly|isset && $readonly}readonly{/if} {if $disabled|isset && $disabled}disabled{/if}>
+  {if $label|isset}<label class="form-check-label" for="{$controlName}{if $index|isset}[{$index}]{/if}">{$label}</label>{/if}
+</div>
+
+

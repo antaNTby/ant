@@ -1,0 +1,29 @@
+<div class="accordion accordion-flush" id="DepartmentsAccordion" data-bs-theme="light">
+    {section name=dpt_index loop=$Departments|@count}
+    {assign var="myMenu" value=$Departments[dpt_index]}
+    <div class="accordion-item my-2">
+        <h2 class="h6 accordion-header" id="heading_{$myMenu.id}">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$myMenu.id}" aria-expanded="{if $current_dpt eq $myMenu.id}true{else}false{/if}" aria-controls="collapse_{$myMenu.id}">
+                {$myMenu.name} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$myMenu.id}</sub>
+            </button>
+        </h2>
+        <div id="collapse_{$myMenu.id}" class="accordion-collapse collapse{if $current_dpt eq $myMenu.id} show{/if}" aria-labelledby="heading_{$myMenu.id}" data-bs-parent="#DepartmentsAccordion">
+            <div class="accordion-body">
+                <div class="d-grid gap-1 col mx-auto">
+                    {assign var="mySubMenu" value=$myMenu.sub_departments}
+                    {section name=sub_index loop=$myMenu.sub_count}
+                    {if $current_sub_id eq $mySubMenu[sub_index].id}
+
+                    <a class="btn btn-danger text-wrap text-start text-xl-center" href="{$mySubMenu[sub_index].sub_href}" role="button">{$mySubMenu[sub_index].name} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$mySubMenu[sub_index].id}</sub></a>
+
+                    {else}
+
+                    <a class="btn btn-light text-wrap text-start text-xl-center" href="{$mySubMenu[sub_index].sub_href}" role="button">{$mySubMenu[sub_index].name} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$mySubMenu[sub_index].id}</sub></a>
+
+                    {/if}
+                    {/section}</div>
+            </div>
+        </div>
+    </div>
+    {/section}
+</div>

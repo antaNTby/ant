@@ -1,0 +1,38 @@
+{foreach $params as $key => $value}
+    {assign var=$key value=$value}
+{/foreach}
+
+<input 
+type="number" inputmode="numeric"
+class="smarty-control form-control form-control-sm font-monospace {$text_align}"
+id="{$controlName}{if $index|isset}[{$index}]{/if}"
+name="{$controlName}{if $index|isset}[{$index}]{/if}"
+{if $string_format|isset}
+value='{$current_value|string_format:"{$string_format}"}'
+{else}
+value="{$current_value}"
+{/if}
+inputmode="numeric" lang="en-US" step="any"
+{if $readonly|isset && $readonly}readonly disabled{/if}
+{if $positive_only|isset && $positive_only} min="0"{/if}
+> 
+
+
+{* 
+{literal}
+<script>
+document.getElementById("{/literal}{$controlName}{if $index|isset}[{$index}]{/if}{literal}").addEventListener('blur', function () {
+    this.value = parseFloat(this.value).toLocaleString('en-US', {
+    style: 'currency', // Форматирование как валюты
+    currency: 'USD', // Валюта (например, USD, EUR, RUB)
+    minimumFractionDigits: 2, // Минимальное количество знаков после запятой
+    maximumFractionDigits: 4, // Максимальное количество знаков после запятой
+    useGrouping: true // Разделение тысяч (true - включено, false - отключено)
+ }
+
+     );
+});
+</script>
+{/literal}
+
+ *}

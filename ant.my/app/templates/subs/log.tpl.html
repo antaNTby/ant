@@ -1,0 +1,16 @@
+{* log.tpl.html *}
+{* {$monolog|@jlog} *}
+    <div class="hstack gap-1">
+        <a class="btn btn-outline-secondary btn-sm p-1 m-2 pull-end" aria-current="log" href="/admin/log">reload</a>
+        <a class="btn btn-outline-danger btn-sm p-1 m-2 pull-end" aria-current="log" href="/admin/cls">cls</a>
+    </div>
+<div class="row">
+    <div class="col-12 text-wrap">
+        <label for="floatingTextarea2">monolog.log</label>
+        <pre class="form-control" contenteditable="true" placeholder="monolog.log" id="floatingTextarea2" style="min-height: 70vh;">{$monolog}</pre>
+    </div>
+</div>
+    <div class="hstack gap-1">
+        <a class="btn btn-outline-secondary btn-sm p-1 m-2 pull-end" aria-current="log" href="/admin/log">reload</a>
+        <a class="btn btn-outline-danger btn-sm p-1 m-2 pull-end" aria-current="log" href="/admin/cls">cls</a>
+    </div>

@@ -1,0 +1,22 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+<div data-type="calendar">
+    
+<input type="text" {* lang="en-US" *} min="2000-12-01T08:30" max="2099-06-30T16:30" class="smarty-control form-control text-end" id="{$controlName}{if $index|isset}[{$index}]{/if}" data-index="{if $index|isset}[{$index}]{/if}" lang="ru-RU" data-type="date-time" name="datetime-output" data-index="{if $index|isset}[{$index}]{/if}" value="{$current_value}" placeholder="2000-04-26 11:11:11" {if $readonly|isset && $readonly}readonly{/if} {if $disabled|isset && $disabled}disabled{/if}>
+<hr>
+<label>Выберите дату и время:</label><br />
+<select name="month" data-index="{if $index|isset}[{$index}]{/if}"></select>
+<select name="year" data-index="{if $index|isset}[{$index}]{/if}"></select><br />
+<div name="calendar" data-index="{if $index|isset}[{$index}]{/if}" class="calendar"></div>
+<br />
+<label>Часы:
+    <input type="number" name="hours" data-index="{if $index|isset}[{$index}]{/if}" min="0" max="23" value="00" /></label>
+<label>Минуты:
+    <input type="number" name="minutes" data-index="{if $index|isset}[{$index}]{/if}" min="0" max="59" value="00" /></label>
+<label>Секунды:
+    <input type="number" name="seconds" data-index="{if $index|isset}[{$index}]{/if}" min="0" max="59" value="00" /></label><br /><br />
+</div>
+
+
+{* <input type="text" id="datetime-output" data-index="{if $index|isset}[{$index}]{/if}" placeholder="YYYY-MM-DD HH:MM:SS" readonly /> *}

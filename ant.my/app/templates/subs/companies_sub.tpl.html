@@ -1,0 +1,122 @@
+<h2>Каталог Реквизитов Организаций</h2>
+{include file="subs/navigator.tpl.html" links=$nav_links}
+<div class="table-responsive-xxl">
+    {$smarty.capture.MAIN_TABLE}
+</div>
+
+<div class="table-responsive-xxl">
+    {$smarty.capture.SECOND_TABLE}
+</div>
+<hr class="my-3">
+
+<hr class="my-3">
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="TABLE_THEAD"}
+<thead class="table-light">
+    <tr class="align-self-center align-middle text-center">
+        <th style="{$th_styles.N}" class="text-end align-middle font-monospace border-end">{$th_titles.N}</th>
+        <th style="{$th_styles.companyID}">{$th_titles.companyID}</th>
+        <th style="{$th_styles.company_title}">{$th_titles.company_title}</th>
+        <th style="{$th_styles.company_name}">{$th_titles.company_name}</th>
+        <th style="{$th_styles.company_unp}">{$th_titles.company_unp}</th>
+        {* <th style="{$th_styles.company_okpo}">{$th_titles.company_okpo}</th> *}
+        {* <th style="{$th_styles.company_adress}">{$th_titles.company_adress}</th> *}
+        {* <th style="{$th_styles.company_bank}">{$th_titles.company_bank}</th> *}
+        {* <th style="{$th_styles.company_contacts}">{$th_titles.company_contacts}</th> *}
+        <th style="{$th_styles.company_director}">{$th_titles.company_director}</th>
+        {* <th style="{$th_styles.company_data}">{$th_titles.company_data}</th> *}
+        {* <th style="{$th_styles.company_admin}">{$th_titles.company_admin}</th> *}
+        <th style="{$th_styles.read_only}">{$th_titles.read_only}</th>
+        <th style="{$th_styles.sort_order}">{$th_titles.sort_order}</th>
+        <th style="{$th_styles.update_time}">{$th_titles.update_time}</th>
+        <th style="{$th_styles.actions}" class="table-secondary fw-bolder text-center align-middle font-monospace border-start"><i class="bi bi-terminal-fill"></i>&nbsp;{$th_titles.actions}</th>
+    </tr>
+</thead>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="THEAD_FIELDNAMES"}
+<tr class="align-middle text-center text-secondary text-xs table-dark">
+    <td></td>
+    <td title="companyID">companyID</td>
+    <td title="company_title">company_title</td>
+    <td title="company_name">company_name</td>
+    <td title="company_unp">company_unp</td>
+    {* <td title="company_okpo">company_okpo</td> *}
+    {* <td title="company_adress">company_adress</td> *}
+    {* <td title="company_bank">company_bank</td> *}
+    {* <td title="company_contacts">company_contacts</td> *}
+    <td title="company_director">company_director</td>
+    {* <td title="company_data">company_data</td> *}
+    {* <td title="company_admin">company_admin</td> *}
+    <td title="read_only">read_only</td>
+    <td title="sort_order">sort_order</td>
+    <td title="update_time">update_time</td>
+    <td></td>
+</tr>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="MAIN_TABLE"}
+<table id="mainTable" class="table table-fixed-layout table-borderless table-hover table-sm caption-top text-end border border-2" style="max-width:100%">
+    <caption>Реквизиты Организаций</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        {$smarty.capture.THEAD_FIELDNAMES}
+        {section name=cc loop = $data}
+        <tr class="align-self-center align-middle text-center" data-index="{$data[cc].companyID}">
+            <td style="{$td_styles.N}" class="table-secondary text-sm text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration|@zeroPad:2}</td>
+            <td style="{$td_styles.companyID}" name="companyID" data-dt-name="companyID">{$controls[cc][0]->getHtml()}</td>
+            <td style="{$td_styles.company_title}" name="company_title" data-dt-name="company_title">{$controls[cc][1]->getHtml()}</td>
+            <td style="{$td_styles.company_name}" name="company_name" data-dt-name="company_name">{$data[cc].company_name}{$controls[cc][2]->getHtml()}</td>
+            <td style="{$td_styles.company_unp}" name="company_unp" data-dt-name="company_unp">{$controls[cc][3]->getHtml()}</td>
+            {* <td style="{$td_styles.company_okpo}" name="company_okpo" data-dt-name="company_okpo">{$controls[cc][4]->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_adress}" name="company_adress" data-dt-name="company_adress">{$controls[cc][5]->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_bank}" name="company_bank" data-dt-name="company_bank">{$controls[cc][6]->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_contacts}" name="company_contacts" data-dt-name="company_contacts">{$controls[cc][7]->getHtml()}</td> *}
+            <td style="{$td_styles.company_director}" name="company_director" data-dt-name="company_director">{$controls[cc][8]->getHtml()}</td>
+            {* <td style="{$td_styles.company_data}" name="company_data" data-dt-name="company_data">{$controls[cc][9]->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_admin}" name="company_admin" data-dt-name="company_admin">{$controls[cc][10]->getHtml()}</td> *}
+            <td style="{$td_styles.read_only}" name="read_only" data-dt-name="read_only">{$controls[cc][11]->getHtml()}</td>
+            <td style="{$td_styles.sort_order}" name="sort_order" data-dt-name="sort_order">{$controls[cc][12]->getHtml()}</td>
+            <td style="{$td_styles.update_time}" name="update_time" data-dt-name="update_time">{$controls[cc][13]->getHtml()}</td>
+            <th style="{$td_styles.actions}" class="table-white text-start align-middle font-monospace border-start">{$controls[cc].actions->getHtml()}</th>
+        </tr>
+        {/section}
+        {$smarty.capture.THEAD_FIELDNAMES}
+    </tbody>
+</table>
+<div class="d-flex pt-2">
+    <div class="p-2 bg-body">{$controls.mainToolbar.actions->getHtml()}</div>
+</div>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="SECOND_TABLE"}
+<table id="secondTable" class="table table-fixed-layout table-borderless table-sm caption-top text-end border border-2" style="max-width:100%">
+    <caption>Добавить новую организацию</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        <tr class="align-self-center align-middle text-center" data-index="-1">
+            <td style="{$td_styles.N}" class="table-secondary text-sm text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration|@zeroPad:2}</td>
+            <td style="{$td_styles.companyID}" name="add_companyID" data-dt-name="companyID">{$controls.addNew.companyID->getHtml()}</td>
+            <td style="{$td_styles.company_title}" name="add_company_title" data-dt-name="company_title">{$controls.addNew.company_title->getHtml()}</td>
+            <td style="{$td_styles.company_name}" name="add_company_name" data-dt-name="company_name">{$controls.addNew.company_name->getHtml()}</td>
+            <td style="{$td_styles.company_unp}" name="add_company_unp" data-dt-name="company_unp">{$controls.addNew.company_unp->getHtml()}</td>
+            {* <td style="{$td_styles.company_okpo}" name="add_company_okpo" data-dt-name="company_okpo">{$controls.addNew.company_okpo->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_adress}" name="add_company_adress" data-dt-name="company_adress">{$controls.addNew.company_adress->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_bank}" name="add_company_bank" data-dt-name="company_bank">{$controls.addNew.company_bank->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_contacts}" name="add_company_contacts" data-dt-name="company_contacts">{$controls.addNew.company_contacts->getHtml()}</td> *}
+            <td style="{$td_styles.company_director}" name="add_company_director" data-dt-name="company_director">{$controls.addNew.company_director->getHtml()}</td>
+            {* <td style="{$td_styles.company_data}" name="add_company_data" data-dt-name="company_data">{$controls.addNew.company_data->getHtml()}</td> *}
+            {* <td style="{$td_styles.company_admin}" name="add_company_admin" data-dt-name="company_admin">{$controls.addNew.company_admin->getHtml()}</td> *}
+            <td style="{$td_styles.read_only}" name="add_read_only" data-dt-name="read_only">{$controls.addNew.read_only->getHtml()}</td>
+            <td style="{$td_styles.sort_order}" name="add_sort_order" data-dt-name="sort_order">{$controls.addNew.sort_order->getHtml()}</td>
+            <td style="{$td_styles.update_time}" name="add_update_time" data-dt-name="update_time">{$controls.addNew.update_time->getHtml()}</td>
+            <th style="{$td_styles.actions}" class="table-white text-start align-middle font-monospace border-start">{$controls.addNew.actions->getHtml()}</th>
+        </tr>
+        {$smarty.capture.THEAD_FIELDNAMES}
+    </tbody>
+</table>
+{/capture}
+
