@@ -1,4 +1,5 @@
 <?php
+dump( $app );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 
@@ -12,4 +13,5 @@ Flight::start();
 `----'  `-' `-'  `-'`-' `-'  `-'       `-'  `-' `-'`-'  `-' `-'     `-'    `-----'`-'    `-'     `--'
 */
 
-// $logger->info( 'TEST TEST TEST : ' . SERVER_NAME );
+dd( $app );
+// dd( $logger );
