@@ -9,8 +9,14 @@ Flight::register( 'log', Monolog\Logger::class, ['app'], function ( Monolog\Logg
     $log->pushHandler( new Monolog\Handler\StreamHandler( __ADMIN__ . DIRECTORY_SEPARATOR . 'monolog.log', Monolog\Logger::DEBUG ) );
 } );*/
 
+// Get the $app var to use below
+if ( empty( $app ) === true ) {
+    $app = Flight::app();
+}
+
 //🔹 Используем Flight::map() вместо register()
-Flight::map( 'logger', function () {
+// Flight::map( 'logger', function () {
+$app->map( 'logger', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
     $handler = new StreamHandler( __ROOT__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
@@ -27,12 +33,33 @@ Flight::map( 'logger', function () {
     return $logger;
 } );
 
+$app->map( 'jlog', function () {
+    // $logger  = new Logger( 'app' );
+    $logger  = new Logger( SERVER_NAME );
+    $handler = new StreamHandler( __ROOT__ . DIRECTORY_SEPARATOR . 'debug.json', Logger::DEBUG );
+    /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
+    $formatter = new LineFormatter(
+        "[%datetime% %level_name%] %context.file%:%context.line%\n***%message%***  %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
+
+    $formatter->includeStacktraces( true );
+    $formatter->allowInlineLineBreaks( true );
+    $formatter->ignoreEmptyContextAndExtra( true );
+    $handler->setFormatter( $formatter );
+    $logger->pushHandler( $handler );
+
+    return $logger;
+} );
+
 //🔹 Получаем логгер
 $logger = Flight::logger(); // Используем map() → теперь корректно
+//🔹 Получаем логгер
+$jlog = Flight::jlog(); // Используем map() → теперь корректно
 
 // 🔹 Проверяем и логируем
 if ( !$logger ) {
     throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
 }
 
+// $logger->info( 'Doing work' );
+// $jlog->debug( 'DO ERROR' );
 echo 'config_monolog.php - ok!<br>';
