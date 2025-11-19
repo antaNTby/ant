@@ -23,7 +23,7 @@ require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_monolog.php';
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_loggers.php';
 
 // Generate a CSP nonce for each request and store in $app
 $nonce = bin2hex( random_bytes( 16 ) );

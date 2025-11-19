@@ -19,7 +19,7 @@ if ( empty( $app ) === true ) {
 $app->map( 'logger', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
-    $handler = new StreamHandler( __ROOT__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
+    $handler = new StreamHandler( __APP__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
     /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
     $formatter = new LineFormatter(
         "[%datetime% %level_name%] %context.file%:%context.line%\n***%message%***  %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
@@ -51,9 +51,9 @@ $app->map( 'jlog', function () {
 } );
 
 //🔹 Получаем логгер
-$logger = Flight::logger(); // Используем map() → теперь корректно
+$logger = $app->logger(); // Используем map() → теперь корректно
 //🔹 Получаем логгер
-$jlog = Flight::jlog(); // Используем map() → теперь корректно
+$jlog = $app->jlog(); // Используем map() → теперь корректно
 
 // 🔹 Проверяем и логируем
 if ( !$logger ) {
@@ -61,5 +61,6 @@ if ( !$logger ) {
 }
 
 // $logger->info( 'Doing work' );
+// $jlog->error( 'Doing error' );
 // $jlog->debug( 'DO ERROR' );
 echo 'config_monolog.php - ok!<br>';

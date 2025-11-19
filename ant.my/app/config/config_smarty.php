@@ -1,11 +1,6 @@
 <?php
 use Smarty\Smarty;
 
-// Get the $app var to use below
-if ( empty( $app ) === true ) {
-    $app = Flight::app();
-}
-
 /*
 ai-1.- Создать кастомный модификатор: Если вам нужно использовать intval в шаблоне, можно зарегистрировать свой модификатор:
 */
@@ -42,6 +37,11 @@ function smarty_modifier_zeroPad(
     $symbol = '0'
 ) {
     return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
+}
+
+// Get the $app var to use below
+if ( empty( $app ) === true ) {
+    $app = Flight::app();
 }
 
 $app->register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
