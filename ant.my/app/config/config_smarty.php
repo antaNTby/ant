@@ -77,7 +77,12 @@ $app->map( 'render', function (
     if ( $app->view()->templateExists( $template ) ) {
         $app->view()->display( $template );
     } else {
-        $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
+        // $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
+        $app->view()->assign( [
+            'template' => $template,
+        ] );
+        $app->view()->display( 'tpl406.tpl.html' );
+        $logger->error( $template . '<br> Smarty template not exists.<br>' );
     }
 
 } );
@@ -90,7 +95,12 @@ $app->map( 'fetch', function (
     if ( $app->view()->templateExists( $template ) ) {
         $app->view()->fetch( $template );
     } else {
-        $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
+        // $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
+        $app->view()->assign( [
+            'template' => $template,
+        ] );
+        $app->view()->display( 'tpl406.tpl.html' );
+        $logger->error( $template . '<br> Smarty template not exists.<br>' );
     }
 } );
 

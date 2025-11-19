@@ -17,7 +17,7 @@ define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
 define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
-define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'templates' );
+define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 /*
 array
@@ -64,4 +64,4 @@ require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
 $router = $app->router();
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'routes.php';
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'boot.php';
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'run.php';
