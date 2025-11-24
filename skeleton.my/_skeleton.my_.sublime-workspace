@@ -12,10 +12,97 @@
 	"buffers":
 	[
 		{
-			"file": "vendor/autoload.php",
+			"file": "public/index.php",
 			"settings":
 			{
-				"buffer_size": 748,
+				"buffer_size": 1498,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "app/config/routes.php",
+			"settings":
+			{
+				"buffer_size": 895,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "index-simple.php",
+			"settings":
+			{
+				"buffer_size": 6433,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"contents": "<?php\n\n/*\n * This is the file called bootstrap who's job is to make sure that all the\n * required services, plugins, connections, etc. are loaded and ready to go\n * for every request made to the application.\n */\n$ds = DIRECTORY_SEPARATOR;\nrequire(__DIR__ . $ds . '..' . $ds . '..' . $ds . 'vendor' . $ds . 'autoload.php');\nif(file_exists(__DIR__. $ds . 'config.php') === false) {\n\tFlight::halt(500, 'Config file not found. Please create a config.php file in the app/config directory to get started.');\n}\n\n// It is better practice to not use static methods for everything. It makes your\n// app much more difficult to unit test easily.\n// This is important as it connects any static calls to the same $app object\n$app = Flight::app();\n\n/*\n * Load the config file\n * P.S. When you require a php file and that file returns an array, the array\n * will be returned by the require statement where you can assign it to a var.\n */\n$config = require('config.php');\n\n/*\n * Load the services file.\n * A \"service\" is basically something special that you want to use in your app.\n * For instance, need a database connection? You can set up a database service.\n * Need caching? You can setup a Redis service\n * Need to send email? You can setup a mailgun/sendgrid/whatever service to send emails.\n * Need to send SMS? You can setup a Twilio service.\n * \n * All the services and how they are configured are setup in the services file.\n * In many cases, services are all attached to something called a \"services container\"\n * or more simply, a \"container\". The container manages if you should share the same\n * service, or if you should create a new instance of the service every time you need it.\n * That's a discussion for another day. Suffice to say, that Flight has a basic concept\n * of a services container by registering classes to the Engine class.\n */ \nrequire('services.php');\n\n// Whip out the ol' router and we'll pass that to the routes file\n$router = $app->router();\n\n/*\n * Load the routes file. the $router variable above is passed into the routes.php\n * file below so that you can define routes in that file.\n * A route is really just a URL, but saying route makes you sound cooler.\n * When someone hits that URL, you point them to a function or method \n * that will handle the request.\n */\nrequire('routes.php');\n\n// At this point, your app should have all the instructions it needs and it'll\n// \"start\" processing everything. This is where the magic happens.\n$app->start();\n/*\n .----..---.  .--.  .----.  .---.     .---. .-. .-.  .--.  .---.    .----. .-. .-..----. .----..-.  .-.\n{ {__ {_   _}/ {} \\ | {}  }{_   _}   {_   _}| {_} | / {} \\{_   _}   | {}  }| { } || {}  }| {}  }\\ \\/ / \n.-._} } | | /  /\\  \\| .-. \\  | |       | |  | { } |/  /\\  \\ | |     | .--' | {_} || .--' | .--'  }  {  \n`----'  `-' `-'  `-'`-' `-'  `-'       `-'  `-' `-'`-'  `-' `-'     `-'    `-----'`-'    `-'     `--'  \n*/",
+			"file": "app/config/bootstrap.php",
+			"file_size": 2895,
+			"file_write_time": 134068960353817831,
+			"redo_stack":
+			[
+				[
+					36,
+					1,
+					"php_fmt",
+					null,
+					"HQAAAE4LAAAAAAAATgsAAAAAAAABAAAACksLAAAAAAAATQsAAAAAAAAAAAAA5QoAAAAAAADnCgAAAAAAAAAAAAB/CgAAAAAAAIAKAAAAAAAAAAAAAAoJAAAAAAAACwkAAAAAAAAAAAAA/QgAAAAAAAD9CAAAAAAAAAEAAAAg/QgAAAAAAAD+CAAAAAAAAAAAAADQCAAAAAAAANEIAAAAAAAAAAAAAFIHAAAAAAAAUwcAAAAAAAAAAAAAQwcAAAAAAABDBwAAAAAAAAEAAAAgQwcAAAAAAABEBwAAAAAAAAAAAAA7BwAAAAAAADwHAAAAAAAAAAAAAEIFAAAAAAAAQwUAAAAAAAAAAAAAwgMAAAAAAADDAwAAAAAAAAAAAAC1AwAAAAAAALUDAAAAAAAAAQAAACC1AwAAAAAAALYDAAAAAAAAAAAAAPwBAAAAAAAA/AEAAAAAAAABAAAAIJIBAAAAAAAAkgEAAAAAAAABAAAAIIEBAAAAAAAAgQEAAAAAAAAEAAAAICAgIIEBAAAAAAAAggEAAAAAAAAAAAAAfAEAAAAAAAB8AQAAAAAAAAEAAAAgcAEAAAAAAABwAQAAAAAAAAEAAAAgWwEAAAAAAABbAQAAAAAAAAEAAAAgUwEAAAAAAABTAQAAAAAAAAEAAAAgRgEAAAAAAABGAQAAAAAAAAEAAAAgRAEAAAAAAABEAQAAAAAAAAEAAAAgQAEAAAAAAABBAQAAAAAAAAAAAAD2AAAAAAAAAPYAAAAAAAAAAQAAACD2AAAAAAAAAPcAAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAMCQAAAAAAAAwJAAAAAAAAAAAAAAAA8L8"
+				]
+			],
+			"settings":
+			{
+				"buffer_size": 2895,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/ApiExampleController.php",
+			"settings":
+			{
+				"buffer_size": 1851,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"contents": "Searching 11 files for \"autoload.php\"\n\nC:\\git\\ant\\skeleton.my\\index-simple.php:\n   35  \n   36   // First autoload composer\n   37: require(__DIR__ . $ds . '..' . $ds . 'vendor' . $ds . 'autoload.php');\n   38  // additionally if you download this and the Flight lib as a zip file and not a composer project, you could\n   39  // comment the require above, and uncomment the line below and correct the path to your lib.\n   40: // require(__DIR__ . $ds . '..' . $ds . 'path/to/flight/autoload.php');\n   41  \n   42  /*\n\nC:\\git\\ant\\skeleton.my\\app\\config\\bootstrap.php:\n    7   */\n    8  $ds = DIRECTORY_SEPARATOR;\n    9: require(__DIR__ . $ds . '..' . $ds . '..' . $ds . 'vendor' . $ds . 'autoload.php');\n   10  if(file_exists(__DIR__. $ds . 'config.php') === false) {\n   11  \tFlight::halt(500, 'Config file not found. Please create a config.php file in the app/config directory to get started.');\n\n3 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 918,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/config/config.php",
+			"settings":
+			{
+				"buffer_size": 3519,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "app/config/services.php",
+			"settings":
+			{
+				"buffer_size": 4492,
 				"line_ending": "Unix"
 			},
 			"undo_stack":
@@ -67,8 +154,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/ant/skeleton.my",
-		"/C/git/ant/skeleton.my/public"
+		"/C/git/ant/skeleton.my"
 	],
 	"file_history":
 	[
@@ -92,13 +178,14 @@
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
-		"height": 98.0,
+		"height": 187.0,
 		"where_history":
 		[
+			"*.php",
 			""
 		]
 	},
@@ -107,6 +194,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"autoload.php",
 			"csp_nonce"
 		],
 		"highlight": true,
@@ -131,31 +219,353 @@
 			[
 				{
 					"buffer": 0,
-					"file": "vendor/autoload.php",
-					"selected": true,
-					"semi_transient": true,
+					"file": "public/index.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 748,
+						"buffer_size": 1498,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								748,
-								748
+								1498,
+								1498
 							]
 						],
 						"settings":
 						{
-							"lsp_uri": "file:///C:/git/ant/skeleton.my/vendor/autoload.php",
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/public/index.php",
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 608.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/config/routes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								389,
+								389
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/app/config/routes.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "index-simple.php",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 6433,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2936,
+								2936
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/index-simple.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 980.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "app/config/bootstrap.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								733,
+								733
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/app/config/bootstrap.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/controllers/ApiExampleController.php",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								885,
+								885
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/app/controllers/ApiExampleController.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 918,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										185,
+										197
+									],
+									[
+										479,
+										491
+									],
+									[
+										683,
+										695
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"default_dir": "C:\\git\\ant\\skeleton.my\\app\\config",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"lsp_uri": "buffer:286",
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "app/config/config.php",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3204,
+								3204
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/app/config/config.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 840.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "app/config/services.php",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1452,
+								1452
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"lsp_uri": "file:///C:/git/ant/skeleton.my/app/config/services.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 812.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -167,11 +577,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 43.0
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 65.0
 	},
 	"layout":
 	{
@@ -182,11 +592,32 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				2,
+				0,
+				3,
+				1
+			],
+			[
+				3,
+				0,
+				4,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.334654947874,
+			0.632524849198,
+			0.733747506666,
 			1.0
 		],
 		"rows":
@@ -221,7 +652,7 @@
 	"project": "_skeleton.my_.sublime-project",
 	"replace":
 	{
-		"height": 40.0
+		"height": 82.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -230,6 +661,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"apiex",
+				"app\\controllers\\ApiExampleController.php"
+			],
+			[
+				"routes",
+				"app\\config\\routes.php"
+			],
+			[
+				"services",
+				"app\\config\\services.php"
+			],
+			[
+				"config",
+				"app\\config\\config.php"
+			],
+			[
+				"boo",
+				"app\\config\\bootstrap.php"
+			]
 		],
 		"width": 0.0
 	},
@@ -260,7 +711,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 184.0,
+	"side_bar_width": 601.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
