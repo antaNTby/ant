@@ -16,7 +16,7 @@ if ( empty( $app ) === true ) {
 
 //🔹 Используем Flight::map() вместо register()
 // Flight::map( 'logger', function () {
-$app->map( 'logger', function () {
+Flight::map( 'logger', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
     $handler = new StreamHandler( __APP__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
@@ -33,7 +33,7 @@ $app->map( 'logger', function () {
     return $logger;
 } );
 
-$app->map( 'jlog', function () {
+Flight::map( 'jlog', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
     $handler = new StreamHandler( __ROOT__ . DIRECTORY_SEPARATOR . 'debug.json', Logger::DEBUG );
@@ -49,16 +49,6 @@ $app->map( 'jlog', function () {
 
     return $logger;
 } );
-
-//🔹 Получаем логгер
-$logger = $app->logger(); // Используем map() → теперь корректно
-//🔹 Получаем логгер
-$jlog = $app->jlog(); // Используем map() → теперь корректно
-
-// 🔹 Проверяем и логируем
-if ( !$logger ) {
-    throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
-}
 
 // $logger->info( 'Doing work' );
 // $jlog->error( 'Doing error' );
@@ -92,5 +82,3 @@ Flight::after( 'start', function () {
     }
 
 } );
-
-echo 'config_monolog.php - ok!<br>';

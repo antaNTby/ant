@@ -39,12 +39,11 @@ function smarty_modifier_zeroPad(
     return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
 }
 
-// Get the $app var to use below
-if ( empty( $app ) === true ) {
-    $app = Flight::app();
-}
+// если влом писать Флайт
+$smarty = Flight::view();
+// $smarty->assign( 'blablabla', 'BLABLABLA' );
 
-$app->register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
+Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->setTemplateDir( __TPL__ );                                                                        // здесь лежат шаблоны tpl.html
     $smarty->setCompileDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'compile_dir' );  // здесь компилируюся *.php
     $smarty->setConfigDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'smarty_config' ); // незнаю
@@ -67,45 +66,40 @@ ai-2.- Затем подключить его в Smarty:
     $smarty->testInstall();
 } );
 
-$app->map( 'render', function (
+Flight::map( 'tplError', function (
+    string $template = 'index.tpl.html',
+): void {
+    Flight::view()->assign( [
+        'template' => $template,
+    ] );
+    Flight::view()->display( 'tpl406.tpl.html' );
+    // $logger->error( $template . '<br> Smarty template not exists.<br>' );
+
+} );
+
+Flight::map( 'render', function (
     string $template = 'index.tpl.html',
     array  $data = []
 ): void {
     // dd( $data );
-    $app->view()->assign( $data );
+    Flight::view()->assign( $data );
 
-    if ( $app->view()->templateExists( $template ) ) {
-        $app->view()->display( $template );
+    if ( Flight::view()->templateExists( $template ) ) {
+        Flight::view()->display( $template );
     } else {
-        // $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
-        $app->view()->assign( [
-            'template' => $template,
-        ] );
-        $app->view()->display( 'tpl406.tpl.html' );
-        $logger->error( $template . '<br> Smarty template not exists.<br>' );
+        Flight::tplError( $template );
     }
 
 } );
 
-$app->map( 'fetch', function (
+Flight::map( 'fetch', function (
     string $template = 'index.tpl.html',
     array  $data = []
 ): void {
-    $app->view()->assign( $data );
-    if ( $app->view()->templateExists( $template ) ) {
-        $app->view()->fetch( $template );
+    Flight::view()->assign( $data );
+    if ( Flight::view()->templateExists( $template ) ) {
+        Flight::view()->fetch( $template );
     } else {
-        // $app->halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
-        $app->view()->assign( [
-            'template' => $template,
-        ] );
-        $app->view()->display( 'tpl406.tpl.html' );
-        $logger->error( $template . '<br> Smarty template not exists.<br>' );
+        Flight::tplError( $template );
     }
 } );
-
-// если влом писать Флайт
-$smarty = $app->view();
-// $smarty->assign( 'blablabla', 'BLABLABLA' );
-
-echo 'config_smarty.php - ok!<br>';

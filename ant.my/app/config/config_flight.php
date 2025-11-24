@@ -4,28 +4,19 @@
  *           FlightPHP Core Settings          *
  **********************************************/
 
-// Get the $app var to use below
-if ( empty( $app ) === true ) {
-    $app = Flight::app();
-}
-
 // This autoloads your code in the app directory so you don't have to require_once everything
 // You'll need to namespace your classes with "app\folder\" to include them properly
-$app->path( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' );
+Flight::path( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' );
 
-$app->set( 'flight.base_url', DIRECTORY_SEPARATOR ); // if this is in a subdirectory, you'll need to change this
-$app->set( 'flight.case_sensitive', false );         // if you want case sensitive routes, set this to true
-$app->set( 'flight.log_errors', true );              // Log errors to file. Recommended: true in production
-$app->set( 'flight.handle_errors', true );           // Let Tracy handle errors if false. Set true to use Flight's error handler
-$app->set( 'flight.views.path', __TPL__ );           // set the path to your view/template/ui files
-$app->set( 'flight.views.extension', '.tpl.html' );  // set the file extension for your view/template/ui files
-$app->set( 'flight.content_length', false );         // if flight should send a content length header
+Flight::set( 'flight.base_url', null );               // if this is in a subdirectory, you'll need to change this
+Flight::set( 'flight.case_sensitive', false );        // if you want case sensitive routes, set this to true
+Flight::set( 'flight.log_errors', true );             // Log errors to file. Recommended: true in production
+Flight::set( 'flight.handle_errors', true );          // Let Tracy handle errors if false. Set true to use Flight's error handler
+Flight::set( 'flight.views.path', __TPL__ );          // set the path to your view/template/ui files
+Flight::set( 'flight.views.extension', '.tpl.html' ); // set the file extension for your view/template/ui files
+Flight::set( 'flight.content_length', false );        // if flight should send a content length header
 
-$app->path( __APP__ . DIRECTORY_SEPARATOR );
-
-debug( $app->get( 'flight.base_url' ) );
-
-echo 'config_flight - ok!<br>';
+Flight::path( __APP__ . DIRECTORY_SEPARATOR );
 
 // This is where you can set some flight config variables.
 /*
@@ -39,3 +30,36 @@ flight.content_length bool - Установить заголовок Content-Len
 flight.v2.output_buffering bool - Использовать устаревшее буферизацию вывода. См. переход к v3. (по умолчанию: false)
 https://docs.flightphp.com/learn/api#-
 */
+
+// Flight::map( 'notFound', function () {
+//     echo 'map notFound';
+//     dump( Flight::app() );
+// } );
+
+// Flight::map( 'notFound', function () {
+//     $data = [
+//         'body_height' => Flight::get( 'body_height' ),
+//         'body_width'  => Flight::get( 'body_width' ),
+//         'pageH1'      => 'Страница не найдена ',
+//         'title'       => '404 Страница не найдена ',
+//     ];
+//     Flight::response()->setHeader( 'Content-Type', 'text/html' );
+//     Flight::render( 'notFound.tpl.html', $data );
+//     // Flight::halt( 404, '404 Страница не найдена 404' );
+// } );
+
+// Flight::map( 'notFound', function () {
+//     $url = Flight::request()->url;
+
+//     // You could also use Flight::render() with a custom template.
+//     $output = <<<HTML
+//         <h1>404 Not Found</h1>
+//         <h3>The page you have requested {$url} could not be found.</h3>
+//         HTML;
+
+//     Flight::response()
+//         ->clearBody()
+//         ->status( 404 )
+//         ->write( $output )
+//         ->send();
+// } );

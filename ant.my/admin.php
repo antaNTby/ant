@@ -19,44 +19,27 @@ define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
-/*
-array
-[ '__PARENT_DIR__' ]='C:\git\ant'
-[ '__ROOT__' ]='C:\git\ant\ant.my'
-[ '__PUBLIC__' ]='C:\git\ant\ant.my\public'
-[ '__APP__' ]='C:\git\ant\ant.my\app'
-[ '__VENDOR__' ]='C:\git\ant\ant.my\vendor'
-[ '__CONFIG__' ]='C:\git\ant\ant.my\app\config'
-[ '__CONTROLLERS__' ]='C:\git\ant\ant.my\app\controllers'
-[ '__TPL__' ]='C:\git\ant\ant.my\app\templates'
-[ 'SERVER_NAME' ]='ant.my'
-*/
-
-// $PATHES = [
-//     '__PARENT_DIR__'  => __PARENT_DIR__,
-//     '__ROOT__'        => __ROOT__,
-//     '__PUBLIC__'      => __PUBLIC__,
-//     '__APP__'         => __APP__,
-//     '__VENDOR__'      => __VENDOR__,
-//     '__CONFIG__'      => __CONFIG__,
-//     '__CONTROLLERS__' => __CONTROLLERS__,
-//     '__TPL__'         => __TPL__,
-//     'SERVER_NAME'     => SERVER_NAME,
-
-// ];
-// debug( $PATHES );
 
 require __VENDOR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
 if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) {
     Flight::halt( 500, 'Config file not found. Please create a config.php file in the app/config directory to get started.' );
 }
+$config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 // It is better practice to not use static methods for everything. It makes your
 // app much more difficult to unit test easily.
 // This is important as it connects any static calls to the same $app object
 $app = Flight::app();
 
-$config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
+//🔹 Получаем логгер
+$logger = $app->logger(); // Используем map() → теперь корректно
+//🔹 Получаем логгер
+$jlog = $app->jlog(); // Используем map() → теперь корректно
+
+// 🔹 Проверяем и логируем
+if ( !$logger or !$jlog ) {
+    throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
+}
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
 
