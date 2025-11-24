@@ -39,7 +39,6 @@ function smarty_modifier_zeroPad(
     return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
 }
 
-
 // если влом писать Флайт
 $smarty = Flight::view();
 // $smarty->assign( 'blablabla', 'BLABLABLA' );
@@ -67,14 +66,13 @@ ai-2.- Затем подключить его в Smarty:
     $smarty->testInstall();
 } );
 
-
 Flight::map( 'tplError', function (
     string $template = 'index.tpl.html',
 ): void {
     Flight::view()->assign( [
         'template' => $template,
     ] );
-    Flight::view()->display( 'tpl406.tpl.html' );
+    Flight::view()->display( 'tplError.tpl.html' );
     // $logger->error( $template . '<br> Smarty template not exists.<br>' );
 
 } );
@@ -89,9 +87,7 @@ Flight::map( 'render', function (
     if ( Flight::view()->templateExists( $template ) ) {
         Flight::view()->display( $template );
     } else {
-
         Flight::tplError( $template );
-
     }
 
 } );
@@ -104,7 +100,7 @@ Flight::map( 'fetch', function (
     if ( Flight::view()->templateExists( $template ) ) {
         Flight::view()->fetch( $template );
     } else {
- Flight::tplError( $template );
+        Flight::tplError( $template );
         // Flight::halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
     }
 } );

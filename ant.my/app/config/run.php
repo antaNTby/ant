@@ -33,5 +33,5 @@ if ( !$logger ) {
     throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
 }
 
-$app->render( 'sss.tpl.html', ['app' => $app] );
+// $app->render( 'sss.tpl.html', ['app' => $app] );
 $app->render( 'index.tpl.html', ['app' => $app] );
