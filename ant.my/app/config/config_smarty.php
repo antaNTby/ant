@@ -1,11 +1,6 @@
 <?php
 use Smarty\Smarty;
 
-// Get the $app var to use below
-if ( empty( $app ) === true ) {
-    $app = Flight::app();
-}
-
 /*
 ai-1.- Создать кастомный модификатор: Если вам нужно использовать intval в шаблоне, можно зарегистрировать свой модификатор:
 */
@@ -44,6 +39,13 @@ function smarty_modifier_zeroPad(
     return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
 }
 
+<<<<<<< HEAD
+=======
+// если влом писать Флайт
+$smarty = Flight::view();
+// $smarty->assign( 'blablabla', 'BLABLABLA' );
+
+>>>>>>> origin/backToPast
 Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->setTemplateDir( __TPL__ );                                                                        // здесь лежат шаблоны tpl.html
     $smarty->setCompileDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'compile_dir' );  // здесь компилируюся *.php
@@ -67,6 +69,20 @@ ai-2.- Затем подключить его в Smarty:
     $smarty->testInstall();
 } );
 
+<<<<<<< HEAD
+=======
+Flight::map( 'tplError', function (
+    string $template = 'index.tpl.html',
+): void {
+    Flight::view()->assign( [
+        'template' => $template,
+    ] );
+    Flight::view()->display( 'tpl406.tpl.html' );
+    // $logger->error( $template . '<br> Smarty template not exists.<br>' );
+
+} );
+
+>>>>>>> origin/backToPast
 Flight::map( 'render', function (
     string $template = 'index.tpl.html',
     array  $data = []
@@ -77,7 +93,11 @@ Flight::map( 'render', function (
     if ( Flight::view()->templateExists( $template ) ) {
         Flight::view()->display( $template );
     } else {
+<<<<<<< HEAD
         Flight::halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
+=======
+        Flight::tplError( $template );
+>>>>>>> origin/backToPast
     }
 
 } );
@@ -90,6 +110,7 @@ Flight::map( 'fetch', function (
     if ( Flight::view()->templateExists( $template ) ) {
         Flight::view()->fetch( $template );
     } else {
+<<<<<<< HEAD
         Flight::halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
     }
 } );
@@ -99,3 +120,8 @@ $smarty = Flight::view();
 // $smarty->assign( 'blablabla', 'BLABLABLA' );
 
 echo 'config_smarty.php - ok!<br>';
+=======
+        Flight::tplError( $template );
+    }
+} );
+>>>>>>> origin/backToPast
