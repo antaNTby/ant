@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 Flight::route( 'GET /', function () {
 
     $contentTemplate = __TPL__ . DIRECTORY_SEPARATOR . 'home.tpl.html';
@@ -20,7 +18,6 @@ Flight::route( 'GET /', function () {
     ] );
 } );
 
->>>>>>> origin/backToPast
 Flight::route( 'OPTIONS *', function () {
     // https: //docs.flightphp.com/learn/security#cors
     header( 'Access-Control-Allow-Origin: *' );
@@ -31,10 +28,6 @@ Flight::route( 'OPTIONS *', function () {
     Flight::halt( 200 );
 } );
 
-<<<<<<< HEAD
 require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'ui_routes.php';
 require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'api_routes.php';
 require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'sub_routes.php';
-=======
-// $app->render( 'index.tpl.html', ['app' => $app] );
->>>>>>> origin/backToPast
