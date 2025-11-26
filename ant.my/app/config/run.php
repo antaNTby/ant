@@ -32,6 +32,3 @@ $jlog = Flight::jlog(); // Используем map() → теперь корр�
 if ( !$logger ) {
     throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
 }
-
-// $app->render( 'sss.tpl.html', ['app' => $app] );
-$app->render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => $app] );
