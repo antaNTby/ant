@@ -34,4 +34,4 @@ if ( !$logger ) {
 }
 
 // $app->render( 'sss.tpl.html', ['app' => $app] );
-$app->render( 'index.tpl.html', ['app' => $app] );
+$app->render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => $app] );

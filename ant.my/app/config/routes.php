@@ -2,20 +2,8 @@
 
 Flight::route( 'GET /', function () {
 
-    $contentTemplate = __TPL__ . DIRECTORY_SEPARATOR . 'home.tpl.html';
-    $smartyData      = [];
-    Flight::fetch( $contentTemplate, $smartyData );
-    Flight::render( 'index.tpl.html', [
-        'admin_main_content_template' => $contentTemplate,
-        'body_height'                 => Flight::get( 'body_height' ),
-        'body_width'                  => Flight::get( 'body_width' ),
-        'template_exist'              => Flight::view()->templateExists( $contentTemplate ),
-        'pageH1'                      => 'Стартовая страница ',
-        'title'                       => 'Стартовая страница ',
-        'title_ru'                    => 'Просмотр Стартовая страница',
-        'aside_reverse'               => Flight::get( 'aside_reverse' ),
-        'aside_hide'                  => Flight::get( 'aside_hide' ),
-    ] );
+    echo 'route GET /';
+
 } );
 
 Flight::route( 'OPTIONS *', function () {
@@ -28,6 +16,6 @@ Flight::route( 'OPTIONS *', function () {
     Flight::halt( 200 );
 } );
 
-require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'ui_routes.php';
+// require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'ui_routes.php';
 // require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'api_routes.php';
 // require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'sub_routes.php';
