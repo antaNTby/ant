@@ -1,5 +1,9 @@
 {
-    "require": {
+    "name": "antantby/ant.my",
+    "description": "ant.my на FlightPHP (core) + Smarty 5 + Bootstrap",
+    "type": "project",
+    "require":
+    {
         "php": "^8.4",
         "flightphp/core": "^3.17",
         "smarty/smarty": "^5.0",
@@ -7,7 +11,30 @@
         "twbs/bootstrap-icons": "^1.13",
         "monolog/monolog": "^3.9"
     },
-    "require-dev": {
+    "require-dev":
+    {
         "symfony/var-dumper": "^7.3"
-    }
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "App\\": "app/"
+        }
+    },
+"scripts": {
+  "post-install-cmd": [
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
+  ],
+  "post-update-cmd": [
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
+    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
+  ]
+}
+
+
+
 }

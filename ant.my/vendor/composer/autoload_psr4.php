@@ -11,4 +11,5 @@ return array(
     'Smarty\\' => array($vendorDir . '/smarty/smarty/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'App\\' => array($baseDir . '/app'),
 );
