@@ -10,6 +10,14 @@ Flight::route( 'OPTIONS *', function () {
     Flight::halt( 200 );
 } );
 
+Flight::route( '*', function () {
+
+    dump( Flight::router() );
+
+    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => Flight::app()] );
+
+} );
+
 Flight::route( 'GET /', function () {
 
     echo 'route GET /';
@@ -23,14 +31,6 @@ Flight::route( 'GET /admin', function () {
     echo 'route GET /admin';
 
     Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'admin.tpl.html', ['app' => Flight::app()] );
-
-} );
-
-Flight::route( '*', function () {
-
-    dump( Flight::router() );
-
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => Flight::app()] );
 
 } );
 
