@@ -33,6 +33,33 @@ $app->set( 'csp_nonce', $nonce );
  *           User Configuration               *
  **********************************************/
 
+/*############################################
+
+-- создаём пользователя
+CREATE USER 'antaNT64'@'%' IDENTIFIED BY 'StrongPass!';
+
+-- выдаём полный доступ ко всем базам
+GRANT ALL PRIVILEGES ON *.* TO 'antaNT64'@'%' WITH GRANT OPTION;
+
+-- применяем изменения
+FLUSH PRIVILEGES;
+
+-- ОПЦИОНАЛЬНО
+
+-- создаём роль DBA
+CREATE ROLE 'DBA';
+
+-- назначаем ей все права
+GRANT ALL PRIVILEGES ON *.* TO 'DBA' WITH GRANT OPTION;
+
+-- выдаём роль пользователю
+GRANT 'DBA' TO 'antaNT64'@'%';
+
+-- делаем её ролью по умолчанию
+SET DEFAULT ROLE 'DBA' TO 'antaNT64'@'%';
+
+############################################*/
+
 $myConfig = [
     /**************************************
      *         Database Settings          *
@@ -42,8 +69,9 @@ $myConfig = [
         'host'             => 'MySql-8.4', // Database host (e.g., 'localhost', 'db.example.com')
         'dbname'           => 'newDB',     // Database name (e.g., 'flightphp')
         'dbnameOld'        => 'oldDB',     // Database name (e.g., 'flightphp')
-        'user'             => 'root',      // Database user (e.g., 'root')
-        'password'         => '',          // Database password (never commit real passwords)
+                                           // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'             => 'antaNT64',  // Database user (e.g., 'root')
+        'password'         => 'root',      // Database password (never commit real passwords)
 
                                                                                  // SQLite Example:
         'sqlite_file_path' => __APP__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
