@@ -63,7 +63,7 @@ ai-2.- Затем подключить его в Smarty:
     $smarty->registerPlugin( 'modifier', 'formatUnp', 'smarty_modifier_formatUnp' );
     $smarty->registerPlugin( 'modifier', 'zeroPad', 'smarty_modifier_zeroPad' );
 
-    $smarty->testInstall();
+    // $smarty->testInstall();
 } );
 
 Flight::map( 'tplError', function (

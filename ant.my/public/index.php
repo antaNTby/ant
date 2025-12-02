@@ -74,4 +74,4 @@ function jlog(
 }
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'admin.php';
-die( 'index.php' );
+// die( 'index.php' );

@@ -12,25 +12,20 @@ Flight::route( 'OPTIONS *', function () {
 
 Flight::route( '*', function () {
 
-    dump( Flight::router() );
+    // dump( Flight::router() );
 
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => Flight::app()] );
+    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html',
 
-} );
+        [
 
-Flight::route( 'GET /', function () {
+            'app'      => Flight::app(),
+            'title'    => SERVER_NAME . ' ' . ANTANT64,
+            'year'     => date( 'Y' ),
+            'antaNT64' => ANTANT64,
 
-    echo 'route GET /';
+        ]
 
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'index.tpl.html', ['app' => Flight::app()] );
-
-} );
-
-Flight::route( 'GET /admin', function () {
-
-    echo 'route GET /admin';
-
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . 'admin.tpl.html', ['app' => Flight::app()] );
+    );
 
 } );
 
