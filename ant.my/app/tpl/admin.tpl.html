@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>index.html</title>
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
-    <h1> admin Стартовая страница</h1>
-    admin.tpl.html
-    {$smarty.server.SERVER_NAME}
-    {$app|debug_print_var}
-</body>
-
-</html>
+{extends file="layout.tpl.html"}
+{block name="styles"}
+{$smarty.block.parent}
+    <link rel="stylesheet" href="/lib/admin.css">
+{/block}
+{block name="content"}
+    <h1><i class="bi bi-grid"></i> Добро пожаловать, Админ!</h1>
+    <p>Это стартовая страница на FlightPHP + Smarty + Bootstrap.</p>
+    <div class="row">
+        <div class="col-md-4"><i class="bi bi-laptop"></i> admin Колонка 1</div>
+        <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 2</div>
+        <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
+        <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 3</div>
+        <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
+    </div>
+{/block}

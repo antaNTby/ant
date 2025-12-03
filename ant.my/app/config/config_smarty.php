@@ -67,7 +67,7 @@ ai-2.- Затем подключить его в Smarty:
 } );
 
 Flight::map( 'tplError', function (
-    string $template = 'index.tpl.html',
+    string $template = INDEX_TPL_HTML,
 ): void {
     Flight::view()->assign( [
         'template' => $template,
@@ -78,7 +78,7 @@ Flight::map( 'tplError', function (
 } );
 
 Flight::map( 'render', function (
-    string $template = 'index.tpl.html',
+    string $template = INDEX_TPL_HTML,
     array  $data = []
 ): void {
     // dd( $data );
@@ -93,7 +93,7 @@ Flight::map( 'render', function (
 } );
 
 Flight::map( 'fetch', function (
-    string $template = 'index.tpl.html',
+    string $template = INDEX_TPL_HTML,
     array  $data = []
 ): void {
     Flight::view()->assign( $data );

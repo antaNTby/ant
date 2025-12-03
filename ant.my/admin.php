@@ -20,6 +20,7 @@ define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'ANTANT64', 'antaNT64©' . date( 'Y' ) );
+define( 'INDEX_TPL_HTML', 'index.tpl.html' );
 
 require __VENDOR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
