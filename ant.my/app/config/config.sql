@@ -21,3 +21,4 @@ GRANT 'DBA' TO 'antaNT64'@'%';
 -- делаем её ролью по умолчанию
 SET DEFAULT ROLE 'DBA' TO 'antaNT64'@'%';
 
+SET PASSWORD FOR 'antaNT64'@'localhost' = PASSWORD('root');
