@@ -1,7 +1,8 @@
 <?php
 use Smarty\Smarty;
 
-define( 'INDEX_TPL_HTML', 'index.tpl.html' );
+define( 'INDEX_TPL_HTML', 'layout.tpl.html' );
+// define( 'INDEX_TPL_HTML', 'index.tpl.html' );
 // define( 'INDEX_TPL_HTML', 'admin.tpl.html' );
 
 /*
