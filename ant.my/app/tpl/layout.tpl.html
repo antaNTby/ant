@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$title|escape}</title>
     <link rel="icon" href="/lib/favicon.ico">
+    {block name="styles"}
     {* Bootstrap CSS *}
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
     {* Bootstrap Icons CSS *}
     <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
     {* Дополнительные стили *}
-    {block name="styles"}{/block}
+    {/block}
 </head>
 
 <body>
