@@ -4,7 +4,7 @@ set MYSQL_USER=root
 set MYSQL_PASSWORD=
 set MYSQL_HOST=mysql-8.4
 set MYSQL_PORT=3306
-set BASE_BACKUP_DIR=c:\dev\.local_databases
+set BASE_BACKUP_DIR=c:\git\.local_databases
 
 if "%~1"=="" (
     echo Error:   Backup folder name parameter is required

@@ -1,6 +1,6 @@
 @echo off
 
-set BASE_BACKUP_DIR=c:\dev\.local_databases
+set BASE_BACKUP_DIR=c:\git\.local_databases
 set MYSQL_USER=root
 set MYSQL_PASSWORD=
 set MYSQL_HOST=mysql-8.4
