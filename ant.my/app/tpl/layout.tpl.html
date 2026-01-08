@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$title|escape}</title>
     <link rel="icon" href="/lib/favicon.ico">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=Source+Code+Pro&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <!-- Liberation Mono через CDNFonts -->
+    <link href="https://fonts.cdnfonts.com/css/liberation-mono" rel="stylesheet">
     {block name="styles"}
     {* Bootstrap CSS *}
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -15,6 +19,30 @@
     <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
     {* Дополнительные стили *}
     {/block}
+    <style>
+        .brandname-nix {
+        font-family:
+          /*'Fira Code',*/
+          /*'JetBrains Mono',*/
+          /*'Source Code Pro',*/
+          /*'Ubuntu Mono',*/
+          /*'Liberation Mono',*/
+          Consolas,
+          /*'Courier New',*/
+          monospace;
+      }
+      .brandname-by {
+        font-family:
+          /*'Fira Code',*/
+          /*'JetBrains Mono',*/
+          /*'Source Code Pro',*/
+          'Ubuntu Mono',
+          /*'Liberation Mono',*/
+          /*Consolas,*/
+          /*'Courier New',*/
+          monospace;
+      }
+    </style>
 </head>
 
 <body>
@@ -22,7 +50,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-               {$BRANDNAME}
+                {$BRANDNAME}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

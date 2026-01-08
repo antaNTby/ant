@@ -20,7 +20,7 @@ define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'COPYRIGHT', 'antaNT64 ' . '<i class="bi bi-c-circle"></i> ' . date( 'Y' ) . ' Все права защищены.' );
-define( 'BRANDNAME', '<span style="font-family:Consolas;">nix&nbsp;<i class="bi bi-app-indicator" style="color:#cc0000;transform: rotate(90deg);"></i>by</span>' );
+define( 'BRANDNAME', '<span class="brandname-nix">nix </span><i class="bi bi-app-indicator" style="color:#cc0000;transform: rotate(90deg);"></i><span class="brandname-by">by</span>' );
 
 require __VENDOR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
