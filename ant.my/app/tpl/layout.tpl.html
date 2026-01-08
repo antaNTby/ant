@@ -22,13 +22,18 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <i class="bi bi-lightning-charge-fill"></i> Мой проект
+               {$BRANDNAME}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin">
+                            <i class="bi bi-gear"></i> admin
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/">
                             <i class="bi bi-house-door"></i> Главная
@@ -55,7 +60,7 @@
     {* Footer *}
     <footer class="bg-light text-center py-3 mt-4 border-top">
         <p class="mb-0">
-            <i class="bi bi-c-circle"></i> {$year} antaNT64. Все права защищены.
+            {$COPYRIGHT}
         </p>
     </footer>
     {* Bootstrap JS *}

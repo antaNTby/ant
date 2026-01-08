@@ -10,21 +10,42 @@ Flight::route( 'OPTIONS *', function () {
     Flight::halt( 200 );
 } );
 
+Flight::route( 'GET /hello', function () {
+    echo '<h1>Welcome to the Flight Simple Example!</h1><h2>You are gonna do great things!</h2>';
+} );
+
 Flight::route( '*', function () {
 
     // dump( Flight::router() );
 
     Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
-
         [
 
-            'app'      => Flight::app(),
-            'title'    => SERVER_NAME . ' ' . ANTANT64,
-            'year'     => date( 'Y' ),
-            'antaNT64' => ANTANT64,
+            'app'       => Flight::app(),
+            'title'     => SERVER_NAME . ' ' . COPYRIGHT,
+            'year'      => date( 'Y' ),
+            'COPYRIGHT' => COPYRIGHT,
+            'BRANDNAME' => BRANDNAME,
 
         ]
+    );
 
+} );
+
+Flight::route( 'GET /admin', function () {
+
+    // dump( Flight::router() );
+
+    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
+        [
+
+            'app'       => Flight::app(),
+            'title'     => SERVER_NAME . ' ' . COPYRIGHT,
+            'year'      => date( 'Y' ),
+            'COPYRIGHT' => 'ADMIN',
+            'BRANDNAME' => 'ADMIN ' . BRANDNAME,
+
+        ]
     );
 
 } );
