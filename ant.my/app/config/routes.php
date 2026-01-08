@@ -14,7 +14,7 @@ Flight::route( '*', function () {
 
     // dump( Flight::router() );
 
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . INDEX_TPL_HTML,
+    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
 
         [
 

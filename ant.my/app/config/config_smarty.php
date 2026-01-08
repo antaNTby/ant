@@ -1,9 +1,9 @@
 <?php
 use Smarty\Smarty;
 
-// define( 'INDEX_TPL_HTML', 'layout.tpl.html' );
-// define( 'INDEX_TPL_HTML', 'index.tpl.html' );
-define( 'INDEX_TPL_HTML', 'admin.tpl.html' );
+// define( 'DEFAULT_TPL_HTML', 'layout.tpl.html' );
+// define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
+define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 
 /*
 ai-1.- Создать кастомный модификатор: Если вам нужно использовать intval в шаблоне, можно зарегистрировать свой модификатор:
@@ -71,7 +71,7 @@ ai-2.- Затем подключить его в Smarty:
 } );
 
 Flight::map( 'tplError', function (
-    string $template = INDEX_TPL_HTML,
+    string $template = DEFAULT_TPL_HTML,
 ): void {
     Flight::view()->assign( [
         'template' => $template,
@@ -82,7 +82,7 @@ Flight::map( 'tplError', function (
 } );
 
 Flight::map( 'render', function (
-    string $template = INDEX_TPL_HTML,
+    string $template = DEFAULT_TPL_HTML,
     array  $data = []
 ): void {
     // dd( $data );
@@ -97,7 +97,7 @@ Flight::map( 'render', function (
 } );
 
 Flight::map( 'fetch', function (
-    string $template = INDEX_TPL_HTML,
+    string $template = DEFAULT_TPL_HTML,
     array  $data = []
 ): void {
     Flight::view()->assign( $data );

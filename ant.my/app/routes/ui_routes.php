@@ -10,7 +10,7 @@ Flight::group( '/admin', function () {
         $contentTemplate = __TPL__ . DIRECTORY_SEPARATOR . 'subs' . DIRECTORY_SEPARATOR . 'log.tpl.html';
         $smartyData      = [];
         Flight::fetch( $contentTemplate, $smartyData );
-        Flight::render( INDEX_TPL_HTML, [
+        Flight::render( DEFAULT_TPL_HTML, [
             'admin_main_content_template' => $contentTemplate,
             'body_height'                 => Flight::get( 'body_height' ),
             'body_width'                  => Flight::get( 'body_width' ),
@@ -78,7 +78,7 @@ Flight::route( 'GET /', function () {
     $contentTemplate = __TPL__ . DIRECTORY_SEPARATOR . 'home.tpl.html';
     $smartyData      = [];
     Flight::fetch( $contentTemplate, $smartyData );
-    Flight::render( INDEX_TPL_HTML, [
+    Flight::render( DEFAULT_TPL_HTML, [
         'admin_main_content_template' => $contentTemplate,
         'body_height'                 => Flight::get( 'body_height' ),
         'body_width'                  => Flight::get( 'body_width' ),
