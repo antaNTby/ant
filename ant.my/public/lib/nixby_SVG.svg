@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg width="64" height="64" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-nixby" version="1.1" transform="matrix(6.123233995736766e-17,1,-1,6.123233995736766e-17,0,0)">
-  <path fill="red" d="M 5.5 1 C 3.567 1 2 2.567 2 4.5 L 2 9.5 C 2 11.433 3.567 13 5.5 13 L 10.5 13 C 12.433 13 14 11.433 14 9.5 L 14 7 C 14 6.615 14.417 6.375 14.75 6.567 C 14.905 6.656 15 6.821 15 7 L 15 9.5 C 15 11.985 12.985 14 10.5 14 L 5.5 14 C 3.015 14 1 11.985 1 9.5 L 1 4.5 C 1 2.015 3.015 0 5.5 0 L 8 0 C 8.385 0 8.625 0.417 8.433 0.75 C 8.344 0.905 8.179 1 8 1 L 5.5 1 Z" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0, 1, -1, 0, 0, 0)"/>
-  <path fill="#c00" d="M 16 12 C 16 14.309 13.5 15.753 11.5 14.598 C 10.572 14.062 10 13.072 10 12 C 10 9.691 12.5 8.247 14.5 9.402 C 15.428 9.938 16 10.928 16 12" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0, 1, -1, 0, 0, 0)"/>
-</svg>
