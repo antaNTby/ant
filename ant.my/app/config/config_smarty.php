@@ -1,9 +1,9 @@
 <?php
 use Smarty\Smarty;
 
-// define( 'DEFAULT_TPL_HTML', 'layout.tpl.html' );
+define( 'DEFAULT_TPL_HTML', 'layout.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
-define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
+// define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 
 /*
 ai-1.- Создать кастомный модификатор: Если вам нужно использовать intval в шаблоне, можно зарегистрировать свой модификатор:
