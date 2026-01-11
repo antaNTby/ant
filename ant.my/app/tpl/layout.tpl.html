@@ -1,61 +1,21 @@
 <!DOCTYPE html>
+<html lang="ru--BY">
 {* layout.tpl — базовый шаблон *}
 {* <html lang="ru"> *}
-<html lang="ru--BY">
 
+{block name="layout_head"}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$title|escape}</title>
-    {*
-    <link rel="icon" href="/lib/favicon.ico"> *}
-    <link rel="apple-touch-icon" sizes="180x180" href="/lib/ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/lib/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/lib/ico/favicon-16x16.png">
-    <link rel="manifest" href="/lib/ico/site.webmanifest">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=Source+Code+Pro&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <!-- Liberation Mono через CDNFonts -->
-    <link href="https://fonts.cdnfonts.com/css/liberation-mono" rel="stylesheet">
-    {block name="styles"}
-    {* Bootstrap CSS *}
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
-    {* Bootstrap Icons CSS *}
-    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
-    {* Дополнительные стили *}
-    {/block}
-    <style>
-        .brandname-nix {
-        font-family:
-          /*'Fira Code',*/
-          /*'JetBrains Mono',*/
-          /*'Source Code Pro',*/
-          /*'Ubuntu Mono',*/
-          /*'Liberation Mono',*/
-          Consolas,
-          /*'Courier New',*/
-          monospace;
-      }
-      .brandname-by {
-        font-family:
-          /*'Fira Code',*/
-          /*'JetBrains Mono',*/
-          /*'Source Code Pro',*/
-          'Ubuntu Mono',
-          /*'Liberation Mono',*/
-          /*Consolas,*/
-          /*'Courier New',*/
-          monospace;
-      }
-    </style>
+{include file="layout_head.tpl.html"}
 </head>
-{block name="body"}
+{/block}
+
+{block name="layout_body"}
 <body>
     {* Навигация *}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                {$BRANDNAME}
+            <a class="navbar-brand" href="/" title="nix.by">
+                {include file="brandname.tpl.html"}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -88,21 +48,15 @@
     </nav>
     {* Основной контейнер *}
     <main class="container mt-4">
-        {block name="content"}
-
-    <h1><i class="bi bi-grid"></i> Добро пожаловать, Админ!</h1>
-    <p>Это стартовая страница на FlightPHP + Smarty + Bootstrap.</p>
-    <div class="row">
-        <div class="col-md-4"><i class="bi bi-laptop"></i> admin Колонка 1</div>
-        <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 2</div>
-        <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
-        <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 3</div>
-        <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
-    </div>
-
-
-
-        {/block}
+        <h1><i class="bi bi-grid"></i> Добро пожаловать, Админ!</h1>
+        <p>Это стартовая страница на FlightPHP + Smarty + Bootstrap.</p>
+        <div class="row">
+            <div class="col-md-4"><i class="bi bi-laptop"></i> admin Колонка 1</div>
+            <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 2</div>
+            <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
+            <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 3</div>
+            <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
+        </div>
     </main>
     {* Footer *}
     <footer class="bg-light text-center py-3 mt-4 border-top  fixed-bottom">
@@ -110,15 +64,16 @@
             {$COPYRIGHT}
         </p>
     </footer>
-        <div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
-        <div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
-        <div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
-        <div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
-        <div class="sticky-xxl-bottom">Stick to the bottom on viewports sized XXL (extra-extra-large) or wider</div>
+    <div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
+    <div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
+    <div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
+    <div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
+    <div class="sticky-xxl-bottom">Stick to the bottom on viewports sized XXL (extra-extra-large) or wider</div>
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
-    {block name="scripts"}{/block}
-</body>{/block}
+
+</body>
+{/block}
 
 </html>

@@ -25,7 +25,7 @@ Flight::route( '*', function () {
             'title'     => SERVER_NAME . ' ' . COPYRIGHT,
             'year'      => date( 'Y' ),
             'COPYRIGHT' => COPYRIGHT,
-            'BRANDNAME' => BRANDNAME,
+            // 'BRANDNAME' => BRANDNAME,
 
         ]
     );
@@ -43,7 +43,7 @@ Flight::route( 'GET /admin', function () {
             'title'     => SERVER_NAME . ' ' . COPYRIGHT,
             'year'      => date( 'Y' ),
             'COPYRIGHT' => 'ADMIN',
-            'BRANDNAME' => 'ADMIN ' . BRANDNAME,
+            // 'BRANDNAME' => 'ADMIN ' . BRANDNAME,
 
         ]
     );
