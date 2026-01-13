@@ -13,31 +13,32 @@
         {include file="layout_header.tpl.html"}
     </header><!-- /header -->
     {* Основной контейнер *}
-    <main class="container mt-4">
-        <h1><i class="bi bi-grid"></i> Добро пожаловать, Админ!</h1>
-        <p>Это стартовая страница на FlightPHP + Smarty + Bootstrap.</p>
-        <div class="row">
-            <div class="col-md-4"><i class="bi bi-laptop"></i> admin Колонка 1</div>
-            <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 2</div>
-            <div class="col-md-4"><i class="bi bi-phone"></i> admin Колонка 3</div>
-            <div class="col-md-4"><i class="bi bi-tv"></i> addsdsdmin Колонка 3</div>
-            <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
+    {* <div class="container-fluid"> *}
+        <div class="container-fluid d-flex flex-column p-0 shadow-sm">
+            <div class="wrapper d-flex flex-row">
+                <aside class="sidebar d-flex bg-body-secondary">
+                    {* {include file="layout_aside.tpl.html"} *}
+
+<div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
+    <div class="h1 w-100 fw-bolder mx-auto text-bg-danger px-3 py-1 my-3 rounded-start-4">{$smarty.const.SERVER_NAME}</div>
+    {include file="layout_aside.tpl.html"}
+</div>
+
+                </aside>
+                <main class="flex-grow-1 px-3 bg-white">
+                    {include file="layout_main.tpl.html"}
+                </main>
+            </div>
         </div>
-    </main>
-    {* Footer *}
-    <div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
-    <div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
-    <div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
-    <div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
-    <div class="sticky-xxl-bottom">Stick to the bottom on viewports sized XXL (extra-extra-large) or wider</div>
-    {* Bootstrap JS *}
-    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    {* Дополнительные скрипты *}
-    <footer class="bg-light text-center py-3 mt-4 border-top  fixed-bottom">
-        <p class="mb-0">
-            {$COPYRIGHT}
-        </p>
-    </footer>
+        {* Footer *}
+        {* Дополнительные скрипты *}
+        <footer class="bg-light text-center py-3 mt-4 border-top  fixed-bottom">
+            <p class="mb-0">
+                {$COPYRIGHT}
+            </p>
+        </footer>
+        {* Bootstrap JS *}
+        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
