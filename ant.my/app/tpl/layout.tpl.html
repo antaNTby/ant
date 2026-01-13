@@ -2,16 +2,16 @@
 <html lang="ru--BY">
 {* layout.tpl — базовый шаблон *}
 {* <html lang="ru"> *}
+
 <head>
     {include file="head.tpl.html"}
 </head>
 
 <body>
     {* Навигация *}
-    <header class="bg-danger p-3">
-    {include file="layout_header.tpl.html"}
+    <header class="pb-1" style="background-color: #cc0000;">
+        {include file="layout_header.tpl.html"}
     </header><!-- /header -->
-
     {* Основной контейнер *}
     <main class="container mt-4">
         <h1><i class="bi bi-grid"></i> Добро пожаловать, Админ!</h1>
@@ -24,8 +24,6 @@
             <div class="col-md-4"><i class="bi bi-tv"></i> admin Колонка 3</div>
         </div>
     </main>
-
-
     {* Footer *}
     <div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
     <div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
