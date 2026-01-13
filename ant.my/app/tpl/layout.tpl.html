@@ -14,16 +14,16 @@
     </header><!-- /header -->
     {* Основной контейнер *}
     {* <div class="container-fluid"> *}
-        <div class="container-fluid d-flex flex-column p-0 shadow-sm">
-            <div class="wrapper d-flex flex-row">
-                <aside class="sidebar d-flex bg-body-secondary">
-                    {* {include file="layout_aside.tpl.html"} *}
-                    <div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
+        <div class="container-fluid">
+            <div class="row">
+                <aside class="sidebar border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                    {include file="layout_aside.tpl.html"}
+{*                     <div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
                         <div class="h1 w-100 fw-bolder mx-auto text-bg-danger px-3 py-1 my-3 rounded-start-4">{$smarty.const.SERVER_NAME}</div>
                         {include file="layout_aside.tpl.html"}
-                    </div>
+                    </div> *}
                 </aside>
-                <main class="flex-grow-1 px-3 bg-white">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     {include file="layout_main.tpl.html"}
                 </main>
             </div>

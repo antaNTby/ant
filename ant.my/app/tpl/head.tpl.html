@@ -30,15 +30,40 @@
         monospace;
 }
 
-.wrapper {
-    flex: 1;
+
+/*
+ * Sidebar
+ */
+
+@media (min-width: 768px) {
+  .sidebar .offcanvas-lg {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+  }
+  .navbar-search {
+    display: block;
+  }
+}
+
+.sidebar .nav-link {
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.sidebar .nav-link.active {
+  color: #2470dc;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
 }
 
 /* * Sidebar */
-.sidebar {
+/*.sidebar {
     width: 40ex;
     min-width: 40ex;
     max-width: 40ex;
 
-}
+}*/
 </style>
