@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Bahnschrift', system-ui, sans-serif;
-    /*background: url('../lib/orn.gif');*/
+    background: url('../lib/orn.gif');
 }
 
 input.form-control-xs {

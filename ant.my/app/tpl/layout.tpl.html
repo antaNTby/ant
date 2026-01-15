@@ -9,32 +9,47 @@
 
 <body>
     {* Навигация *}
+    {include file="layout_offcanvas.tpl.html"}
     <header class="">
         {include file="layout_header.tpl.html"}
     </header><!-- /header -->
     {* Основной контейнер *}
-    <div class="container-fluid">
-            <div class="min-vh-100">
+    <div class="container-fluid" style="max-width: 1800px;">
         <div class="row">
-                <aside class="sidebar border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-                    {include file="layout_aside.tpl.html"}
-                    {* <div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
-                        <div class="h1 w-100 fw-bolder mx-auto text-bg-danger px-3 py-1 my-3 rounded-start-4">{$smarty.const.SERVER_NAME}</div>
-                        {include file="layout_aside.tpl.html"}
-                    </div> *}
-                </aside>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    {include file="layout_main.tpl.html"}
-                </main>
-            </div>
+            <aside class="d-none d-md-block col-md-3 col-lg-2 p-0 bg-body-tertiary border-right sidebar">
+                {include file="layout_aside.tpl.html"}
+            </aside>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-body">
+                {include file="layout_main.tpl.html"}
+            </main>
         </div>
     </div>
     {* Footer *}
     {* Дополнительные скрипты *}
-    <footer class="bg-light text-center py-3 mt-4 border-top fixed-bottom">
-        <p class="mb-0">
-            {$COPYRIGHT}
-        </p>
+    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
+        <div class="container-fluid" style="max-width: 1800px;">
+            <div class="row">
+                <div class="col-1">
+                    <div class="dropup-center dropup">
+                        <a href="#" class="dropdown-toggle d-flex align-items-center mb-0 px-2 text-danger" data-bs-toggle="dropdown" aria-expanded="false" aria-label="menu"><img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px"></a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                            <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
+                            <li><a class="dropdown-item" href="#">Inventory</a></li>
+                            <li><a class="dropdown-item" href="#">Customers</a></li>
+                            <li><a class="dropdown-item" href="#">Products</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Reports</a></li>
+                            <li><a class="dropdown-item" href="#">Analytics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-11">
+                    {$COPYRIGHT}
+                </div>
+            </div>
+        </div>
     </footer>
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
