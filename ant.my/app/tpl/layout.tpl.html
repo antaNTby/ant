@@ -13,12 +13,12 @@
         {include file="layout_header.tpl.html"}
     </header><!-- /header -->
     {* Основной контейнер *}
-    {* <div class="container-fluid"> *}
-        <div class="container-fluid">
-            <div class="row">
+    <div class="container-fluid">
+            <div class="min-vh-100">
+        <div class="row">
                 <aside class="sidebar border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
                     {include file="layout_aside.tpl.html"}
-{*                     <div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
+                    {* <div class="d-flex flex-column mx-auto px-0 overflow-y-auto">
                         <div class="h1 w-100 fw-bolder mx-auto text-bg-danger px-3 py-1 my-3 rounded-start-4">{$smarty.const.SERVER_NAME}</div>
                         {include file="layout_aside.tpl.html"}
                     </div> *}
@@ -28,15 +28,16 @@
                 </main>
             </div>
         </div>
-        {* Footer *}
-        {* Дополнительные скрипты *}
-        <footer class="bg-light text-center py-3 mt-4 border-top  fixed-bottom">
-            <p class="mb-0">
-                {$COPYRIGHT}
-            </p>
-        </footer>
-        {* Bootstrap JS *}
-        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+    {* Footer *}
+    {* Дополнительные скрипты *}
+    <footer class="bg-light text-center py-3 mt-4 border-top fixed-bottom">
+        <p class="mb-0">
+            {$COPYRIGHT}
+        </p>
+    </footer>
+    {* Bootstrap JS *}
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
