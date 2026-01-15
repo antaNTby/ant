@@ -14,20 +14,20 @@
         {include file="layout_header.tpl.html"}
     </header><!-- /header -->
     {* Основной контейнер *}
-    <div class="container-fluid" style="max-width: 1800px;">
-        <div class="row">
-            <aside class="d-none d-md-block col-md-3 col-lg-2 p-0 bg-body-tertiary border-right sidebar">
+    <div class="container-fluid" style="max-width: 1900px;">
+        <div class="row shadow-lg">
+            <aside class="d-none d-xl-block col-xl-3 col-xxl-2 p-0 bg-body-tertiary border-right  user-select-none">
                 {include file="layout_aside.tpl.html"}
             </aside>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-body">
+            <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-body">
                 {include file="layout_main.tpl.html"}
             </main>
         </div>
     </div>
     {* Footer *}
     {* Дополнительные скрипты *}
-    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
-        <div class="container-fluid" style="max-width: 1800px;">
+    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary user-select-none">
+        <div class="container-fluid" style="max-width: 1900px;">
             <div class="row">
                 <div class="col-1">
                     <div class="dropup-center dropup">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-11">
-                    {$COPYRIGHT}
+                    ={$COPYRIGHT}=
                 </div>
             </div>
         </div>
