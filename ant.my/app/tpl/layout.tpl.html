@@ -10,13 +10,14 @@
 <body>
     {* Навигация *}
     {include file="layout_offcanvas.tpl.html"}
-    <header class="">
+    <header class="border-bottom" data-bs-theme="dark">
         {include file="layout_header.tpl.html"}
     </header><!-- /header -->
+    {* *}
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
-        <div class="row shadow-lg">
-            <aside class="d-none d-xl-block col-xl-3 col-xxl-2 p-0 bg-body-tertiary border-right  user-select-none">
+        <div class="row">
+            <aside class="d-none d-xl-block col-xl-3 col-xxl-2 p-0 bg-body-tertiary border-right user-select-none">
                 {include file="layout_aside.tpl.html"}
             </aside>
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-body">
@@ -24,8 +25,8 @@
             </main>
         </div>
     </div>
+    {* *}
     {* Footer *}
-    {* Дополнительные скрипты *}
     <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary user-select-none">
         <div class="container-fluid" style="max-width: 1900px;">
             <div class="row">
@@ -46,18 +47,20 @@
                     </div>
                 </div>
                 <div class="col-10">
-                    {$COPYRIGHT}
+                    {$COPYRIGHT} Права принадлежат, тем кто за них борется.
                 </div>
                 <div class="col-1">
-                    <button class="btn btn-dark btn-sm m-0 p-0 float-end" title="Show Menu" data-bs-toggle="offcanvas" href="#offcanvasSideMenu" role="button" aria-controls="offcanvasSideMenu">
+                    <button class="btn btn-outline-secondary btn-sm m-0 p-0 float-end" title="Show Menu" data-bs-toggle="offcanvas" href="#offcanvasSideMenu" role="button" aria-controls="offcanvasSideMenu">
                         <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="16px">
                     </button>
                 </div>
             </div>
         </div>
     </footer>
+    {* *}
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    {* Дополнительные скрипты *}
 </body>
 
 </html>

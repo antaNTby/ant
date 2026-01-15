@@ -19,7 +19,7 @@ define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
-define( 'COPYRIGHT', 'antaNT64 ' . '© ' . date( 'Y' ) . ' Все права защищены.' );
+define( 'COPYRIGHT', 'antaNT64' . '©' . date( 'Y' ) . '. ' );
 
 // define( 'BRANDNAME', '<span class="brandname-nix">nix </span><i class="bi bi-app-indicator" style="color:#cc00ff;transform:rotate(20deg);"></i><span class="brandname-by">by</span>' );
 
