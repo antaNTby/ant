@@ -18,16 +18,16 @@ define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
-define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
-define( 'COPYRIGHT', 'antaNT64' . '©' . date( 'Y' ) . '. ' );
-
-// define( 'BRANDNAME', '<span class="brandname-nix">nix </span><i class="bi bi-app-indicator" style="color:#cc00ff;transform:rotate(20deg);"></i><span class="brandname-by">by</span>' );
 
 require __VENDOR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
 if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) {
     Flight::halt( 500, 'Config file not found. Please create a config.php file in the app/config directory to get started.' );
 }
+
+// CONFIG ALL
+define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
+define( 'COPYRIGHT', 'antaNT64' . '©' . date( 'Y' ) . '. ' );
 $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 // It is better practice to not use static methods for everything. It makes your
 // app much more difficult to unit test easily.
