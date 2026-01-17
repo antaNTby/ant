@@ -27,7 +27,11 @@ if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) 
 
 // CONFIG ALL
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
-define( 'COPYRIGHT', 'antaNT64' . '©' . date( 'Y' ) . '. ' );
+define( 'COPYRIGHT', 'Copyright ' . date( 'Y' ) . ' © ' . 'antaNT64.' );
+define( 'DEFAULT_TPL_HTML', 'layout.tpl.html' );
+// define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
+// define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
+
 $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 // It is better practice to not use static methods for everything. It makes your
 // app much more difficult to unit test easily.

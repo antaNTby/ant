@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru--BY">
+<html lang="ru-BY">
 {* layout.tpl — базовый шаблон *}
-{* <html lang="ru"> *}
-
 <head>
     {include file="head.tpl.html"}
 </head>
-
+{*  *}
 <body>
     {* Навигация *}
     {include file="layout_offcanvas.tpl.html"}
@@ -17,50 +15,23 @@
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
         <div class="row">
-            <aside class="d-none d-xl-block col-xl-3 col-xxl-2 p-0 bg-body-tertiary border-right user-select-none">
+            <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="layout_aside.tpl.html"}
             </aside>
-            <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-body">
+            <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
                 {include file="layout_main.tpl.html"}
             </main>
         </div>
     </div>
     {* *}
     {* Footer *}
-    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary user-select-none">
-        <div class="container-fluid" style="max-width: 1900px;">
-            <div class="row">
-                <div class="col-1">
-                    <div class="dropup-center dropup">
-                        <a href="#" class="dropdown-toggle d-flex align-items-center mb-0 px-2 text-danger" data-bs-toggle="dropdown" aria-expanded="false" aria-label="menu"><i class="bi bi-bookmark-star"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-                            <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-                            <li><a class="dropdown-item" href="#">Inventory</a></li>
-                            <li><a class="dropdown-item" href="#">Customers</a></li>
-                            <li><a class="dropdown-item" href="#">Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Reports</a></li>
-                            <li><a class="dropdown-item" href="#">Analytics</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-10">
-                    {$COPYRIGHT} Права принадлежат, тем кто за них борется.
-                </div>
-                <div class="col-1">
-                    <button class="btn btn-outline-secondary btn-sm m-0 p-0 float-end" title="Show Menu" data-bs-toggle="offcanvas" href="#offcanvasSideMenu" role="button" aria-controls="offcanvasSideMenu">
-                        <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="16px">
-                    </button>
-                </div>
-            </div>
-        </div>
+    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
+        {include file="layout_footer.tpl.html"}
     </footer>
     {* *}
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
 </body>
-
+{*  *}
 </html>

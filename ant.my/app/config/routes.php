@@ -22,8 +22,8 @@ Flight::route( '*', function () {
         [
 
             'app'       => Flight::app(),
-            'title'     => SERVER_NAME . ' ' . COPYRIGHT,
             'year'      => date( 'Y' ),
+            'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
             'COPYRIGHT' => COPYRIGHT,
             // 'BRANDNAME' => BRANDNAME,
 
@@ -40,8 +40,8 @@ Flight::route( 'GET /admin', function () {
         [
 
             'app'       => Flight::app(),
-            'title'     => SERVER_NAME . ' ' . COPYRIGHT,
             'year'      => date( 'Y' ),
+            'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
             'COPYRIGHT' => 'ADMIN',
             // 'BRANDNAME' => 'ADMIN ' . BRANDNAME,
 
