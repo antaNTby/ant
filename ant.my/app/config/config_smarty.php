@@ -1,38 +1,6 @@
 <?php
 use Smarty\Smarty;
 
-function smarty_modifier_intval( $value )
-{
-    return intval( $value ); // альтернатива использовать формат_строки {$value|string_format:"%d"}
-}
-function smarty_modifier_dump( $value )
-{
-    return dump( $value );
-}
-function smarty_modifier_jlog( $value )
-{
-    return jlog( $value );
-}
-function smarty_modifier_formatUsd( $value )
-{
-    return formatUsd( $value );
-}
-function smarty_modifier_formatUnp( $string )
-{
-    // Удалим всё, кроме цифр
-    $digits = preg_replace( '/\D/', '', $string );
-    // Преобразуем в формат 123 456 789
-
-    return preg_replace( '/(\d{3})(\d{3})(\d{3})/', '$1 $2 $3', $digits );
-}
-function smarty_modifier_zeroPad(
-    $number,
-    $length = 2,
-    $symbol = '0'
-) {
-    return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
-}
-
 Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->setTemplateDir( __TPL__ );                                                                        // здесь лежат шаблоны tpl.html
     $smarty->setCompileDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'compile_dir' );  // здесь компилируюся *.php
@@ -70,6 +38,38 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     compile_check → проверяет дату изменения .tpl и перекомпилирует только если файл изменился.
     force_compile → перекомпилирует всегда, независимо от изменений.
 ###############*/
+
+    function smarty_modifier_intval( $value )
+    {
+        return intval( $value ); // альтернатива использовать формат_строки {$value|string_format:"%d"}
+    }
+    function smarty_modifier_dump( $value )
+    {
+        return dump( $value );
+    }
+    function smarty_modifier_jlog( $value )
+    {
+        return jlog( $value );
+    }
+    function smarty_modifier_formatUsd( $value )
+    {
+        return formatUsd( $value );
+    }
+    function smarty_modifier_formatUnp( $string )
+    {
+        // Удалим всё, кроме цифр
+        $digits = preg_replace( '/\D/', '', $string );
+        // Преобразуем в формат 123 456 789
+
+        return preg_replace( '/(\d{3})(\d{3})(\d{3})/', '$1 $2 $3', $digits );
+    }
+    function smarty_modifier_zeroPad(
+        $number,
+        $length = 2,
+        $symbol = '0'
+    ) {
+        return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
+    }
 
     $smarty->registerPlugin( 'modifier', 'intval', 'smarty_modifier_intval' );
     $smarty->registerPlugin( 'modifier', 'dump', 'smarty_modifier_dump' );
