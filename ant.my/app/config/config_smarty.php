@@ -1,15 +1,9 @@
 <?php
-
 use Smarty\Smarty;
-
-/*
-ai-1.- Создать кастомный модификатор: Если вам нужно использовать intval в шаблоне, можно зарегистрировать свой модификатор:
-*/
 
 function smarty_modifier_intval( $value )
 {
-    // альтернатива использовать формат_строки {$value|string_format:"%d"}
-    return intval( $value );
+    return intval( $value ); // альтернатива использовать формат_строки {$value|string_format:"%d"}
 }
 function smarty_modifier_dump( $value )
 {
@@ -23,7 +17,6 @@ function smarty_modifier_formatUsd( $value )
 {
     return formatUsd( $value );
 }
-
 function smarty_modifier_formatUnp( $string )
 {
     // Удалим всё, кроме цифр
@@ -40,23 +33,44 @@ function smarty_modifier_zeroPad(
     return str_pad( $number, $length, $symbol, STR_PAD_LEFT );
 }
 
-// если влом писать Флайт
-$smarty = Flight::view();
-// $smarty->assign( 'blablabla', 'BLABLABLA' );
-
 Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->setTemplateDir( __TPL__ );                                                                        // здесь лежат шаблоны tpl.html
     $smarty->setCompileDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'compile_dir' );  // здесь компилируюся *.php
     $smarty->setConfigDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'smarty_config' ); // незнаю
     $smarty->setCacheDir( __APP__ . DIRECTORY_SEPARATOR . 'smarty' . DIRECTORY_SEPARATOR . 'smarty_cache' );
-    $smarty->compile_id    = 'admin_';
+
+// Sensible defaults
+// $smarty->setCompileCheck( \Smarty\Smarty::COMPILECHECK_OFF ); // ОТКЛЮЧИТЬ проверку компиляции в производстве для максимальной производительности.
+// $smarty->compile_check = true; // disable on prod ai:старый булевый флаг (Smarty 3.x).
+
+/*##############
+    Режимы кэширования;
+    В Smarty4/5 доступны несколько констант:
+    Smarty::CACHING_OFF —кэшированиеотключено.
+    Smarty::CACHING_LIFETIME_CURRENT —стандартныйрежим: кэш живёт столько, сколько заданов $smarty->cache_lifetime.
+    Если lifetime истёк, шаблон пересобирается и кэш обновляется.
+    Smarty::CACHING_LIFETIME_SAVED —кэш живёт столько, сколько было сохранено пр исоздании( можно задавать разное время для разных вызовов ).
+###############*/
+
+    $smarty->compile_id = 'admin_';
+
+    $smarty->cache_lifetime = 3600 * 24 * 365; // кэш живёт 1 час * 1 день * 1 год
+    $smarty->caching        = Smarty::CACHING_LIFETIME_CURRENT;
+
+    $smarty->setCompileCheck( \Smarty\Smarty::COMPILECHECK_ON ); // ВКЛЮЧИТЬ проверку компиляции в производстве для максимальной производительности.
     $smarty->force_compile = true;
 
-    // Обязательно отключите проверку компиляции в производстве для максимальной производительности.
-    $smarty->setCompileCheck( \Smarty\Smarty::COMPILECHECK_OFF );
-/*
-ai-2.- Затем подключить его в Smarty:
-*/
+    // $smarty->escape_html = true;
+
+/*##############
+    $smarty->force_compile = true;
+    Smarty игнорирует кэш компиляции и каждый раз заново компилирует .tpl в PHP‑код.
+    Это сильно замедляет работу, но гарантирует, что любые изменения в шаблонах сразу применяются, даже если compile_check выключен.
+    ⚖️ Отличие от compile_check
+    compile_check → проверяет дату изменения .tpl и перекомпилирует только если файл изменился.
+    force_compile → перекомпилирует всегда, независимо от изменений.
+###############*/
+
     $smarty->registerPlugin( 'modifier', 'intval', 'smarty_modifier_intval' );
     $smarty->registerPlugin( 'modifier', 'dump', 'smarty_modifier_dump' );
     $smarty->registerPlugin( 'modifier', 'jlog', 'smarty_modifier_jlog' );
@@ -65,45 +79,24 @@ ai-2.- Затем подключить его в Smarty:
     $smarty->registerPlugin( 'modifier', 'zeroPad', 'smarty_modifier_zeroPad' );
 
     // $smarty->testInstall();
-} );
-
-Flight::map( 'tplError', function (
-    string $template = DEFAULT_TPL_HTML,
-): void {
-    Flight::view()->assign( [
-        'template' => $template,
-    ] );
-    Flight::view()->display( 'tplError.tpl.html' );
-    // $logger->error( $template . '<br> Smarty template not exists.<br>' );
 
 } );
 
 Flight::map( 'render', function (
-    string $template = DEFAULT_TPL_HTML,
+    string $template,
     array  $data = []
 ): void {
-    // dd( $data );
     Flight::view()->assign( $data );
-
-    if ( Flight::view()->templateExists( $template ) ) {
-        Flight::view()->display( $template );
-    } else {
-        Flight::tplError( $template );
-    }
-
+    Flight::view()->display( $template );
 } );
 
 Flight::map( 'fetch', function (
-    string $template = DEFAULT_TPL_HTML,
+    string $template,
     array  $data = []
 ): void {
     Flight::view()->assign( $data );
-    if ( Flight::view()->templateExists( $template ) ) {
-        Flight::view()->fetch( $template );
-    } else {
-        Flight::tplError( $template );
-        // Flight::halt( 406, '<em>' . $template . '</em>' . '<br><br> Smarty template not exists.<br> 406 Not Acceptable' );
-    }
+    Flight::view()->fetch( $template );
 } );
 
-//
+// если влом писать Флайт
+$smarty = Flight::view();
