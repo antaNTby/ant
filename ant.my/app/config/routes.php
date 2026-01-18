@@ -1,5 +1,7 @@
 <?php
-
+// Whip out the ol' router and we'll pass that to the routes file
+$router = $app->router();
+/**/
 Flight::route( 'OPTIONS *', function () {
     // https: //docs.flightphp.com/learn/security#cors
     header( 'Access-Control-Allow-Origin: *' );

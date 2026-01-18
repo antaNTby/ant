@@ -22,7 +22,7 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
 
     $smarty->compile_id = 'admin_';
 
-    $smarty->cache_lifetime = 3600 * 24 * 365; // кэш живёт 1 час * 1 день * 1 год
+    $smarty->cache_lifetime = 3600 * 24 * 30; // кэш живёт 1 час * 1 день * 1 год
     $smarty->caching        = Smarty::CACHING_LIFETIME_CURRENT;
 
     $smarty->setCompileCheck( \Smarty\Smarty::COMPILECHECK_ON ); // ВКЛЮЧИТЬ проверку компиляции в производстве для максимальной производительности.

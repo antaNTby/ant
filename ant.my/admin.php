@@ -39,9 +39,9 @@ $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 $app = Flight::app();
 
 //🔹 Получаем логгер
-$logger = $app->logger(); // Используем map() → теперь корректно
+$logger = $app->logger();
 //🔹 Получаем логгер
-$jlog = $app->jlog(); // Используем map() → теперь корректно
+$jlog = $app->jlog();
 
 // 🔹 Проверяем и логируем
 if ( !$logger or !$jlog ) {
@@ -50,8 +50,37 @@ if ( !$logger or !$jlog ) {
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
 
-// Whip out the ol' router and we'll pass that to the routes file
-$router = $app->router();
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'routes.php';
+
+Flight::before( 'start', function () {
+    Flight::set( 'start_time', microtime( true ) );
+
+} );
+
+Flight::after( 'start', function () {
+    if ( Flight::get( 'LOG_REQUEST_TIME' ) ) {
+
+        $end   = microtime( true );
+        $start = Flight::get( 'start_time' );
+
+        Flight::jlog()->info( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
+
+/*
+Вы также можете добавить свои заголовки запроса или ответа
+чтобы зафиксировать их (будьте осторожны, так как это будет
+много данных, если у вас много запросов)
+*/
+        if ( Flight::has( 'request' ) ) {
+            Flight::jlog()->info( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
+        }
+
+        if ( Flight::has( 'response' ) ) {
+            Flight::jlog()->info( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
+        }
+    }
+
+} );
+
+Flight::set( 'LOG_REQUEST_TIME', true );
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'run.php';
