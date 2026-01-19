@@ -8,11 +8,11 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '4cdafd4a5191caf078235e7dd119fdaf' => __DIR__ . '/..' . '/flightphp/core/flight/autoload.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        'd507e002f7fce7f0c6dbf1f22edcb902' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/functions.php',
         'c15d4a1253e33e055d05e547c61dcb71' => __DIR__ . '/..' . '/smarty/smarty/src/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        'd507e002f7fce7f0c6dbf1f22edcb902' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -99,6 +99,15 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'Tracy\\OutputDebugger' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/OutputDebugger/OutputDebugger.php',
         'Tracy\\ProductionStrategy' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Debugger/ProductionStrategy.php',
         'Tracy\\SessionStorage' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Session/SessionStorage.php',
+        'flight\\debug\\database\\PdoQueryCapture' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCapture.php',
+        'flight\\debug\\database\\PdoQueryCaptureStatement' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCaptureStatement.php',
+        'flight\\debug\\tracy\\DatabaseExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/DatabaseExtension.php',
+        'flight\\debug\\tracy\\ExtensionBase' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/ExtensionBase.php',
+        'flight\\debug\\tracy\\FlightPanelExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/FlightPanelExtension.php',
+        'flight\\debug\\tracy\\RequestExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/RequestExtension.php',
+        'flight\\debug\\tracy\\ResponseExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/ResponseExtension.php',
+        'flight\\debug\\tracy\\SessionExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/SessionExtension.php',
+        'flight\\debug\\tracy\\TracyExtensionLoader' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/TracyExtensionLoader.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "588e7d43da3c65897824b7b1f3ccc9fe",
+    "content-hash": "455a109c74696d9babee436b16f5d85d",
     "packages": [
         {
             "name": "flightphp/core",
@@ -80,6 +80,51 @@
                 "source": "https://github.com/flightphp/core/tree/v3.18.0"
             },
             "time": "2026-01-15T01:44:32+00:00"
+        },
+        {
+            "name": "flightphp/tracy-extensions",
+            "version": "v0.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flightphp/tracy-extensions.git",
+                "reference": "4150ea7dc9bbb56fa089e7a4662f68011a771256"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flightphp/tracy-extensions/zipball/4150ea7dc9bbb56fa089e7a4662f68011a771256",
+                "reference": "4150ea7dc9bbb56fa089e7a4662f68011a771256",
+                "shasum": ""
+            },
+            "require": {
+                "flightphp/core": "^3.0",
+                "php": ">=8.0",
+                "tracy/tracy": "^2.10"
+            },
+            "require-dev": {
+                "ghostff/session": "^2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "n0nag0n",
+                    "email": "n0nag0n@sky-9.com"
+                }
+            ],
+            "description": "A few Flight specific extensions for Tracy Debugger to help debug your code quickly.",
+            "support": {
+                "issues": "https://github.com/flightphp/tracy-extensions/issues",
+                "source": "https://github.com/flightphp/tracy-extensions/tree/v0.2.7"
+            },
+            "time": "2025-09-03T13:47:57+00:00"
         },
         {
             "name": "monolog/monolog",

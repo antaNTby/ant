@@ -79,6 +79,54 @@
             "install-path": "../flightphp/core"
         },
         {
+            "name": "flightphp/tracy-extensions",
+            "version": "v0.2.7",
+            "version_normalized": "0.2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flightphp/tracy-extensions.git",
+                "reference": "4150ea7dc9bbb56fa089e7a4662f68011a771256"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flightphp/tracy-extensions/zipball/4150ea7dc9bbb56fa089e7a4662f68011a771256",
+                "reference": "4150ea7dc9bbb56fa089e7a4662f68011a771256",
+                "shasum": ""
+            },
+            "require": {
+                "flightphp/core": "^3.0",
+                "php": ">=8.0",
+                "tracy/tracy": "^2.10"
+            },
+            "require-dev": {
+                "ghostff/session": "^2.1"
+            },
+            "time": "2025-09-03T13:47:57+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "n0nag0n",
+                    "email": "n0nag0n@sky-9.com"
+                }
+            ],
+            "description": "A few Flight specific extensions for Tracy Debugger to help debug your code quickly.",
+            "support": {
+                "issues": "https://github.com/flightphp/tracy-extensions/issues",
+                "source": "https://github.com/flightphp/tracy-extensions/tree/v0.2.7"
+            },
+            "install-path": "../flightphp/tracy-extensions"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.10.0",
             "version_normalized": "3.10.0.0",

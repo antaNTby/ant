@@ -10,7 +10,8 @@
         "twbs/bootstrap": "^5.3.8",
         "twbs/bootstrap-icons": "^1.13",
         "monolog/monolog": "^3.9",
-        "tracy/tracy": "^2.11"
+        "tracy/tracy": "^2.11",
+        "flightphp/tracy-extensions": "^0.2.7"
     },
     "require-dev":
     {

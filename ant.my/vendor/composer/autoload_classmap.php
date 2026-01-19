@@ -33,4 +33,13 @@ return array(
     'Tracy\\OutputDebugger' => $vendorDir . '/tracy/tracy/src/Tracy/OutputDebugger/OutputDebugger.php',
     'Tracy\\ProductionStrategy' => $vendorDir . '/tracy/tracy/src/Tracy/Debugger/ProductionStrategy.php',
     'Tracy\\SessionStorage' => $vendorDir . '/tracy/tracy/src/Tracy/Session/SessionStorage.php',
+    'flight\\debug\\database\\PdoQueryCapture' => $vendorDir . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCapture.php',
+    'flight\\debug\\database\\PdoQueryCaptureStatement' => $vendorDir . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCaptureStatement.php',
+    'flight\\debug\\tracy\\DatabaseExtension' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/DatabaseExtension.php',
+    'flight\\debug\\tracy\\ExtensionBase' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/ExtensionBase.php',
+    'flight\\debug\\tracy\\FlightPanelExtension' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/FlightPanelExtension.php',
+    'flight\\debug\\tracy\\RequestExtension' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/RequestExtension.php',
+    'flight\\debug\\tracy\\ResponseExtension' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/ResponseExtension.php',
+    'flight\\debug\\tracy\\SessionExtension' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/SessionExtension.php',
+    'flight\\debug\\tracy\\TracyExtensionLoader' => $vendorDir . '/flightphp/tracy-extensions/src/debug/tracy/TracyExtensionLoader.php',
 );
