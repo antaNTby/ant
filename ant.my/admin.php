@@ -9,6 +9,9 @@
 ################################################################################
 ################################################################################
 
+/*
+C:\Users\a>subl --project c:\git\ant\ant.my\_ant.my_.sunlime-project
+*/
 define( '__PARENT_DIR__', dirname( __DIR__, 1 ) );
 define( '__ROOT__', __DIR__ );
 define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
