@@ -19,7 +19,7 @@ if ( empty( $app ) === true ) {
 Flight::map( 'logger', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
-    $handler = new StreamHandler( __APP__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
+    $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
     /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
     $formatter = new LineFormatter(
         "[%datetime% %level_name%] %context.file%:%context.line%\n %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
@@ -36,7 +36,7 @@ Flight::map( 'logger', function () {
 Flight::map( 'jlog', function () {
     // $logger  = new Logger( 'app' );
     $logger  = new Logger( SERVER_NAME );
-    $handler = new StreamHandler( __ROOT__ . DIRECTORY_SEPARATOR . 'debug.log', Logger::DEBUG );
+    $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'jlog.log', Logger::DEBUG );
     /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
     $formatter = new LineFormatter(
         "[%datetime% %level_name%] %context.file%:%context.line%\n %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/

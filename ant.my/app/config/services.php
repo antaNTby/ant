@@ -70,68 +70,39 @@ $app->register( 'session', \flight\Session::class, [
 Debugger::enable(); // Auto-detects environment
 // Debugger::enable(Debugger::Development); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
-// Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-Debugger::$logDirectory = __APP__ . DIRECTORY_SEPARATOR . 'TracyLog'; // Log directory
-Debugger::$strictMode   = true;                                       // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen       = 1000;                                       // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 5;                                          // Max depth of dumped structures (default: 3)
-// Debugger::$editor       = 'vscode';                                   // Enable clickable file links in debug bar
+Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
+// Debugger::$logDirectory = __LOGS__; // Log directory
+Debugger::$strictMode = true; // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen     = 1000; // Max length of dumped variables (default: 150)
+Debugger::$maxDepth   = 5;    // Max depth of dumped structures (default: 3)
 
-// Debugger::$editor = 'sublimetext://open?url=file://%file:%line';
-
-// Debugger::$editorMapping = [
-//     '%3A%5C' => '-',
-//     'git'    => 'GITTTT',
-
-// ];
-
-// Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line';
-// Debugger::$editor = 'sublimeTracy://%file:%line';
-######
-######
-######
-######  "C:\Users\a\AppData\Local\Programs\Microsoft VS Code\Code.exe" "--open-url" "--" "%1"
-######
-######
-######
-
-Debugger::$editor = 'vscode://file/%file:%line';
+#### Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line'; // sublime не воспринимает urlecode, поэтому работать не будет
+Debugger::$editor = 'vscode://file/%file:%line'; // будет формировать сылку для vscode
+Debugger::$editor = null;                        // не будет формировать сылку оставляет текст
 
 // Debugger::$email = 'your@email.com'; // Send error notifications
+Debugger::$email = 'antrip@email.com'; // Send error notifications
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {
     ( new TracyExtensionLoader( $app ) ); // Load FlightPHP Tracy extensions
 }
-###################
-/*
-Регистрация протокола sublimetext://
-Tracy генерирует ссылки вида sublimetext://C:/git/ant/ant.my/admin.php:61. Чтобы они открывались:
-
-Windows:
-Создай в реестре ключ для URL:sublimetext и пропиши команду запуска Sublime.
-*/
-
+$jlog->info( Debugger::$logDirectory );
+$logger->info( Debugger::$maxLen );
+// создать файл sublimeTracy Protocol.reg -добавления в реестр протокола:
 /*
 Windows Registry Editor Version 5.00
 
-[HKEY_CLASSES_ROOT\sublimetext]
-@="URL:sublimetext Protocol"
+[HKEY_CLASSES_ROOT\sublimeTracy]
+@="URL:sublimeTracy Protocol"
 "URL Protocol"=""
 
-[HKEY_CLASSES_ROOT\sublimetext\shell]
+[HKEY_CLASSES_ROOT\sublimeTracy\shell]
 
-[HKEY_CLASSES_ROOT\sublimetext\shell\open]
+[HKEY_CLASSES_ROOT\sublimeTracy\shell\open]
 
-[HKEY_CLASSES_ROOT\sublimetext\shell\open\command]
+[HKEY_CLASSES_ROOT\sublimeTracy\shell\open\command]
 @="\"C:\\Program Files\\Sublime Text\\sublime_text.exe\" \"%1\""
 */
-###################
-###################
-###################
-###################
-###################
-###################
-###################
-###################
+
 ###################
 
 /**********************************************

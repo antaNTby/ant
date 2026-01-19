@@ -8,10 +8,12 @@
 // You'll need to namespace your classes with "app\folder\" to include them properly
 Flight::path( __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' );
 
-Flight::set( 'flight.base_url', null );               // if this is in a subdirectory, you'll need to change this
-Flight::set( 'flight.case_sensitive', false );        // if you want case sensitive routes, set this to true
-Flight::set( 'flight.log_errors', true );             // Log errors to file. Recommended: true in production
-Flight::set( 'flight.handle_errors', true );          // Let Tracy handle errors if false. Set true to use Flight's error handler
+Flight::set( 'flight.base_url', null );        // if this is in a subdirectory, you'll need to change this
+Flight::set( 'flight.case_sensitive', false ); // if you want case sensitive routes, set this to true
+Flight::set( 'flight.log_errors', true );      // Log errors to file. Recommended: true in production
+// Flight::set( 'flight.log_errors', false ); // Log errors to file. Recommended: true in production
+// Flight::set( 'flight.handle_errors', true );          // Let Tracy handle errors if false. Set true to use Flight's error handler
+Flight::set( 'flight.handle_errors', false );         // Let Tracy handle errors if false. Set true to use Flight's error handler
 Flight::set( 'flight.views.path', __TPL__ );          // set the path to your view/template/ui files
 Flight::set( 'flight.views.extension', '.tpl.html' ); // set the file extension for your view/template/ui files
 Flight::set( 'flight.content_length', false );        // if flight should send a content length header

@@ -14,6 +14,7 @@ define( '__ROOT__', __DIR__ );
 define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
 
 define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
+define( '__LOGS__', __APP__ . DIRECTORY_SEPARATOR . 'logs' );
 define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
