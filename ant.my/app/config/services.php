@@ -71,16 +71,50 @@ Debugger::enable(); // Auto-detects environment
 // Debugger::enable(Debugger::Development); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
 // Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-Debugger::$logDirectory = __APP__; // Log directory
-Debugger::$strictMode   = true;    // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen       = 1000;    // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 5;       // Max depth of dumped structures (default: 3)
-// Debugger::$editor = 'vscode'; // Enable clickable file links in debug bar
-Debugger::$editor = 'sublimetext'; // Enable clickable file links in debug bar
+Debugger::$logDirectory = __APP__ . DIRECTORY_SEPARATOR . 'TracyLog'; // Log directory
+Debugger::$strictMode   = true;                                       // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen       = 1000;                                       // Max length of dumped variables (default: 150)
+Debugger::$maxDepth     = 5;                                          // Max depth of dumped structures (default: 3)
+Debugger::$editor       = 'vscode';                                   // Enable clickable file links in debug bar
+
+// Debugger::$editor = 'sublimetext://open?url=file://%file:%line';
+
 // Debugger::$email = 'your@email.com'; // Send error notifications
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {
     ( new TracyExtensionLoader( $app ) ); // Load FlightPHP Tracy extensions
 }
+###################
+/*
+Регистрация протокола sublimetext://
+Tracy генерирует ссылки вида sublimetext://C:/git/ant/ant.my/admin.php:61. Чтобы они открывались:
+
+Windows:
+Создай в реестре ключ для URL:sublimetext и пропиши команду запуска Sublime.
+*/
+
+/*
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\sublimetext]
+@="URL:sublimetext Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\sublimetext\shell]
+
+[HKEY_CLASSES_ROOT\sublimetext\shell\open]
+
+[HKEY_CLASSES_ROOT\sublimetext\shell\open\command]
+@="\"C:\\Program Files\\Sublime Text\\sublime_text.exe\" \"%1\""
+*/
+###################
+###################
+###################
+###################
+###################
+###################
+###################
+###################
+###################
 
 /**********************************************
  *           Database Service Setup           *

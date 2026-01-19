@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\sublimetext]
+@="URL:sublimetext Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\sublimetext\shell]
+
+[HKEY_CLASSES_ROOT\sublimetext\shell\open]
+
+[HKEY_CLASSES_ROOT\sublimetext\shell\open\command]
+@="\"C:\\Program Files\\Sublime Text\\sublime_text.exe\" \"%1\""
