@@ -17,6 +17,7 @@ define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
 define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
+define( '__ROUTES__', __APP__ . DIRECTORY_SEPARATOR . 'routes' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
 
 require __VENDOR__ . DIRECTORY_SEPARATOR . 'autoload.php';
@@ -50,7 +51,7 @@ if ( !$logger or !$jlog ) {
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'routes.php';
+require __ROUTES__ . DIRECTORY_SEPARATOR . 'routes.php';
 
 Flight::before( 'start', function () {
     Flight::set( 'start_time', microtime( true ) );
