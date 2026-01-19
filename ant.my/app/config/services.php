@@ -70,23 +70,49 @@ $app->register( 'session', \flight\Session::class, [
 Debugger::enable(); // Auto-detects environment
 // Debugger::enable(Debugger::Development); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
-Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-// Debugger::$logDirectory = __LOGS__; // Log directory
-Debugger::$strictMode = true; // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen     = 1000; // Max length of dumped variables (default: 150)
-Debugger::$maxDepth   = 5;    // Max depth of dumped structures (default: 3)
+// Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
+Debugger::$logDirectory = __LOGS__; // Log directory
+Debugger::$strictMode   = true;     // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen       = 1000;     // Max length of dumped variables (default: 150)
+Debugger::$maxDepth     = 5;        // Max depth of dumped structures (default: 3)
+// Debugger::$dumpTheme    = 'dark';
 
 #### Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line'; // sublime не воспринимает urlecode, поэтому работать не будет
-Debugger::$editor = 'vscode://file/%file:%line'; // будет формировать сылку для vscode
-Debugger::$editor = null;                        // не будет формировать сылку оставляет текст
+# Debugger::$editor = 'vscode://file/%file:%line'; // будет формировать сылку для vscode
+Debugger::$editor = null; // не будет формировать сылку оставляет текст
+### Debugger::$editor = 'sublimeTracy'; // sublime не воспринимает urlecode, поэтому работать не будет
+// Debugger::$showLocation = true;
+Debugger::$showLocation = Tracy\Dumper::LOCATION_SOURCE; // Sets only the display of the call location
 
 // Debugger::$email = 'your@email.com'; // Send error notifications
 Debugger::$email = 'antrip@email.com'; // Send error notifications
+######
+######
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {
     ( new TracyExtensionLoader( $app ) ); // Load FlightPHP Tracy extensions
 }
-$jlog->info( Debugger::$logDirectory );
-$logger->info( Debugger::$maxLen );
+
+/*
+If you do not want to show the Tracy Bar, set:
+Debugger::$showBar = false;
+*/
+#### ПРИМЕРЫ
+
+/*
+$arr = [10, 20.2, true, null, 'hello'];
+dump($arr);
+// or Debugger::dump($arr);
+*/
+
+// $jlog->info( Debugger::$logDirectory );
+// $logger->info( Debugger::class );
+// $logger->info( Debugger::$dumpTheme );
+// dump( $app );
+// bdump( [2, 4, 6, 8], 'even numbers up to ten' );
+// dump( [1, 3, 5, 7, 9, 'odd numbers up to ten'] );
+// Debugger::log( 'Unexpected error' ); // text message
+// Debugger::log( 'Critical error', Debugger::ERROR ); // also sends an email notification https://tracy.nette.org/en/guide
+
 // создать файл sublimeTracy Protocol.reg -добавления в реестр протокола:
 /*
 Windows Registry Editor Version 5.00

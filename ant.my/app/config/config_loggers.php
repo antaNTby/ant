@@ -22,7 +22,7 @@ Flight::map( 'logger', function () {
     $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'monolog.log', Logger::DEBUG );
     /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
     $formatter = new LineFormatter(
-        "[%datetime% %level_name%] %context.file%:%context.line%\n %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
+        "[%datetime% %level_name%] %context.file%:%context.line%  %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
 
     $formatter->includeStacktraces( true );
     $formatter->allowInlineLineBreaks( true );
@@ -39,7 +39,7 @@ Flight::map( 'jlog', function () {
     $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'jlog.log', Logger::DEBUG );
     /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
     $formatter = new LineFormatter(
-        "[%datetime% %level_name%] %context.file%:%context.line%\n %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
+        "[%datetime% %level_name%] %context.file%:%context.line%  %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
 
     $formatter->includeStacktraces( true );
     $formatter->allowInlineLineBreaks( true );
@@ -49,6 +49,17 @@ Flight::map( 'jlog', function () {
 
     return $logger;
 } );
+
+### Уровни
+### log
+### debug
+### info
+### notice
+### warning
+### error
+### critical
+### alert
+### emergency
 
 // $logger->info( 'Doing work' );
 // $jlog->error( 'Doing error' );

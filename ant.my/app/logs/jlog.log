@@ -1,4 +1,45 @@
-[20:37:51.405248 INFO] :
- C:\git\ant\ant.my\app\config..log   
+[21:09:06.755603 INFO] :  C:\git\ant\ant.my\app\logs   
+ 
+
+[21:09:07.048834 INFO] :  Запрос /admin/settings занял 291.5 ms   
+ 
+
+[21:11:43.025758 INFO] :  Запрос /admin/settings занял 312.8 ms   
+ 
+
+[21:11:45.682808 INFO] :  Запрос /admin/settings занял 332.81 ms   
+ 
+
+[21:11:53.883114 INFO] :  Запрос /admin/settings занял 306.41 ms   
+ 
+
+[21:12:02.201523 INFO] :  Запрос /admin/settings занял 316.03 ms   
+ 
+
+[21:12:03.506171 INFO] :  Запрос /admin/settings занял 273.81 ms   
+ 
+
+[21:12:04.607107 INFO] :  Запрос /admin/settings занял 284.91 ms   
+ 
+
+[21:14:01.312356 INFO] :  Запрос /admin/settings занял 338.97 ms   
+ 
+
+[21:14:30.161172 INFO] :  Запрос /admin/settings занял 295.88 ms   
+ 
+
+[21:14:48.768818 INFO] :  Запрос /admin/settings занял 308.25 ms   
+ 
+
+[21:18:07.570651 INFO] :  Запрос /admin/settings занял 323.07 ms   
+ 
+
+[21:18:17.169127 INFO] :  Запрос /admin/settings занял 287.89 ms   
+ 
+
+[21:18:32.079372 INFO] :  Запрос /admin/sub/statuses занял 305.95 ms   
+ 
+
+[21:18:36.960318 INFO] :  Запрос /admin/sub/currency занял 306.43 ms   
  
 

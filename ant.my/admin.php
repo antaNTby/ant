@@ -65,7 +65,7 @@ Flight::after( 'start', function () {
         $end   = microtime( true );
         $start = Flight::get( 'start_time' );
 
-        Flight::jlog()->info( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
+        Flight::logger()->notice( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
 
 /*
 Вы также можете добавить свои заголовки запроса или ответа
@@ -73,11 +73,11 @@ Flight::after( 'start', function () {
 много данных, если у вас много запросов)
 */
         if ( Flight::has( 'request' ) ) {
-            Flight::jlog()->info( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
+            Flight::logger()->notice( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
         }
 
         if ( Flight::has( 'response' ) ) {
-            Flight::jlog()->info( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
+            Flight::logger()->notice( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
         }
     }
 
@@ -85,6 +85,6 @@ Flight::after( 'start', function () {
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 
-ERROR;
+// ERROR;
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'run.php';
