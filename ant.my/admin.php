@@ -84,4 +84,6 @@ Flight::after( 'start', function () {
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 
+ERROR;
+
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'run.php';

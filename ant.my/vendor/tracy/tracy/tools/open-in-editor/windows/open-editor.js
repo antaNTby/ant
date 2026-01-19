@@ -23,10 +23,10 @@ var settings = {
 	// editor: '"C:\\Program Files\\Vim\\vim73\\gvim.exe" "%file%" +%line%',
 
 	// Sublime Text 2
-	// editor: '"C:\\Program Files\\Sublime Text 2\\sublime_text.exe" "%file%:%line%"',
+	editor: '"C:\\Program Files\\Sublime Text\\sublime_text.exe" "%file%:%line%"',
 
 	// Visual Studio Code / VSCodium
-	// editor: '"C:\\Program Files\\Microsoft VS Code\\Code.exe" --goto "%file%:%line%"',
+	editor: '"C:\\Program Files\\Microsoft VS Code\\Code.exe" --goto "%file%:%line%"',
 
 	mappings: {
 		// '/remotepath': '/localpath'
