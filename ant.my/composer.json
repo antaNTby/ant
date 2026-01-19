@@ -9,7 +9,8 @@
         "smarty/smarty": "^5.0",
         "twbs/bootstrap": "^5.3.8",
         "twbs/bootstrap-icons": "^1.13",
-        "monolog/monolog": "^3.9"
+        "monolog/monolog": "^3.9",
+        "tracy/tracy": "^2.11"
     },
     "require-dev":
     {

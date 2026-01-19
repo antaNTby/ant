@@ -3,7 +3,7 @@
         'name' => 'antantby/ant.my',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '66a7672e8e5f3e641e6d38b2d23cf669b94cfa0a',
+        'reference' => 'd9f5e3f3005e5c852eecad227079192526bd0f81',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'antantby/ant.my' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '66a7672e8e5f3e641e6d38b2d23cf669b94cfa0a',
+            'reference' => 'd9f5e3f3005e5c852eecad227079192526bd0f81',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -93,6 +93,15 @@
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'tracy/tracy' => array(
+            'pretty_version' => 'v2.11.0',
+            'version' => '2.11.0.0',
+            'reference' => 'eec57bcf2ff11d79f519a19da9d7ae1e2c63c42e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tracy/tracy',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'twbs/bootstrap' => array(
             'pretty_version' => 'v5.3.8',
