@@ -75,9 +75,27 @@ Debugger::$logDirectory = __APP__ . DIRECTORY_SEPARATOR . 'TracyLog'; // Log dir
 Debugger::$strictMode   = true;                                       // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
 Debugger::$maxLen       = 1000;                                       // Max length of dumped variables (default: 150)
 Debugger::$maxDepth     = 5;                                          // Max depth of dumped structures (default: 3)
-Debugger::$editor       = 'vscode';                                   // Enable clickable file links in debug bar
+// Debugger::$editor       = 'vscode';                                   // Enable clickable file links in debug bar
 
 // Debugger::$editor = 'sublimetext://open?url=file://%file:%line';
+
+// Debugger::$editorMapping = [
+//     '%3A%5C' => '-',
+//     'git'    => 'GITTTT',
+
+// ];
+
+// Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line';
+// Debugger::$editor = 'sublimeTracy://%file:%line';
+######
+######
+######
+######  "C:\Users\a\AppData\Local\Programs\Microsoft VS Code\Code.exe" "--open-url" "--" "%1"
+######
+######
+######
+
+Debugger::$editor = 'vscode://file/%file:%line';
 
 // Debugger::$email = 'your@email.com'; // Send error notifications
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {
