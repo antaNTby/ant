@@ -70,10 +70,11 @@ $app->register( 'session', \flight\Session::class, [
 Debugger::enable(); // Auto-detects environment
 // Debugger::enable(Debugger::Development); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
-Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-Debugger::$strictMode   = true;                               // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen       = 1000;                               // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 5;                                  // Max depth of dumped structures (default: 3)
+// Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
+Debugger::$logDirectory = __APP__; // Log directory
+Debugger::$strictMode   = true;    // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen       = 1000;    // Max length of dumped variables (default: 150)
+Debugger::$maxDepth     = 5;       // Max depth of dumped structures (default: 3)
 // Debugger::$editor = 'vscode'; // Enable clickable file links in debug bar
 Debugger::$editor = 'sublimetext'; // Enable clickable file links in debug bar
 // Debugger::$email = 'your@email.com'; // Send error notifications

@@ -42,3 +42,47 @@
  Запрос /admin/settings занял 298.16 ms   
  
 
+[11:13:20.391335 INFO] :
+ Запрос /sublimetext занял 376.5 ms   
+ 
+
+[11:13:23.062769 INFO] :
+ Запрос /admin занял 305.39 ms   
+ 
+
+[11:13:24.559283 INFO] :
+ Запрос /admin/log занял 361.58 ms   
+ 
+
+[11:13:25.898821 INFO] :
+ Запрос /admin/settings занял 373.19 ms   
+ 
+
+[11:13:32.569390 INFO] :
+ Запрос /admin/sublimetext занял 324.18 ms   
+ 
+
+[11:13:33.971868 INFO] :
+ Запрос /admin/sublimetext занял 346.89 ms   
+ 
+
+[11:13:34.337931 INFO] :
+ Запрос /admin/sublimetext занял 357.61 ms   
+ 
+
+[11:14:55.067234 INFO] :
+ Запрос /admin/sublimetext занял 354.09 ms   
+ 
+
+[11:14:56.323865 INFO] :
+ Запрос /admin/settings занял 324.87 ms   
+ 
+
+[11:14:59.385412 INFO] :
+ Запрос /admin/sub/currency занял 334.93 ms   
+ 
+
+[11:15:00.689938 INFO] :
+ Запрос /admin/sub/statuses занял 374.02 ms   
+ 
+
