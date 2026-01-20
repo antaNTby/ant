@@ -112,6 +112,8 @@ dump($arr);
 // dump( [1, 3, 5, 7, 9, 'odd numbers up to ten'] );
 // Debugger::log( 'Unexpected error' ); // text message
 // Debugger::log( 'Critical error', Debugger::ERROR ); // also sends an email notification https://tracy.nette.org/en/guide
+// bdump($var) - Это выведет переменную на панель Трейси в отдельной панели.
+// dumpe($var) - Это выведет переменную, а затем немедленно завершит работу.
 
 // создать файл sublimeTracy Protocol.reg -добавления в реестр протокола:
 /*

@@ -16,6 +16,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixLengthsPsr4 = array (
+        'f' => 
+        array (
+            'flight\\' => 7,
+        ),
         'T' => 
         array (
             'Tracy\\' => 6,
@@ -41,6 +45,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixDirsPsr4 = array (
+        'flight\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flightphp/session/src',
+        ),
         'Tracy\\' => 
         array (
             0 => __DIR__ . '/..' . '/tracy/tracy/src',
