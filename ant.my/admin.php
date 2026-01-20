@@ -13,12 +13,13 @@
 C:\Users\a>subl --project c:\git\ant\ant.my\_ant.my_.sunlime-project
 */
 define( '__PARENT_DIR__', dirname( __DIR__, 1 ) );
+
 define( '__ROOT__', __DIR__ );
 define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
-
 define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
-define( '__LOGS__', __APP__ . DIRECTORY_SEPARATOR . 'logs' );
 define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
+
+define( '__LOGS__', __APP__ . DIRECTORY_SEPARATOR . 'logs' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__ROUTES__', __APP__ . DIRECTORY_SEPARATOR . 'routes' );
@@ -89,5 +90,13 @@ Flight::after( 'start', function () {
 Flight::set( 'LOG_REQUEST_TIME', true );
 
 // ERROR;
+// At this point, your app should have all the instructions it needs and it'll
+// "start" processing everything. This is where the magic happens.
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'run.php';
+/*
+ .----..---.  .--.  .----.  .---.     .---. .-. .-.  .--.  .---.    .----. .-. .-..----. .----..-.  .-.
+{ {__ {_   _}/ {} \ | {}  }{_   _}   {_   _}| {_} | / {} \{_   _}   | {}  }| { } || {}  }| {}  }\ \/ /
+.-._} } | | /  /\  \| .-. \  | |       | |  | { } |/  /\  \ | |     | .--' | {_} || .--' | .--'  }  {
+`----'  `-' `-'  `-'`-' `-'  `-'       `-'  `-' `-'`-'  `-' `-'     `-'    `-----'`-'    `-'     `--'
+*/
+Flight::start();
