@@ -141,6 +141,7 @@ Windows Registry Editor Version 5.00
 
 // SQLite Example:
 // $dsn = 'sqlite:' . $config['database']['file_path'];
+$dsn = 'sqlite:' . $config['database']['sqlite_file_path'];
 
 // Register Flight::db() service
 // In development, use PdoQueryCapture to log queries; in production, use PdoWrapper for performance.
