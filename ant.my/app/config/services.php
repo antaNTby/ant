@@ -4,6 +4,7 @@ use flight\database\PdoWrapper;
 use flight\debug\database\PdoQueryCapture;
 use flight\debug\tracy\TracyExtensionLoader;
 use flight\Engine;
+use flight\Session;
 use Tracy\Debugger;
 
 /*********************************************
@@ -36,11 +37,22 @@ use Tracy\Debugger;
 
 $app->register( 'session', \flight\Session::class, [
     [
-        'prefix'    => 'flight_session_',                          // Prefix for the session cookie
-        'save_path' => __APP__ . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
-                                                                   // ...other options...
+        'prefix'         => 'ant_flight_session_',                      // Prefix for the session cookie
+        'save_path'      => __APP__ . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
+                                                                        // ...other options...
+        'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',     // Enable encryption with a secure key
+        'auto_commit'    => true,                                       // Automatically commit session changes on shutdown
+        'start_session'  => true,                                       // Start the session automatically
+        'test_mode'      => false,                                      // Enable for testing without affecting PHP's session state
     ],
 ] );
+
+$session = Flight::session();
+
+// $session->set( 'credit_card6', '4111-2222-1111-1111' );
+// $session->set( 'credit_card', '4111-1111-1111-1111' );
+// dump( Flight::session() );
+// dumpe( $session );
 
 /*********************************************
  *           Tracy Debugger Setup            *
