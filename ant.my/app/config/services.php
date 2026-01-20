@@ -151,16 +151,32 @@ Windows Registry Editor Version 5.00
 // Uncomment and configure the following for your database:
 
 // MySQL Example:
-// $dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['database']['dbname'] . ';charset=utf8mb4';
+$dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['database']['dbname'] . ';charset=utf8mb4';
 
 // SQLite Example:
 // $dsn = 'sqlite:' . $config['database']['file_path'];
-$dsn = 'sqlite:' . $config['database']['sqlite_file_path'];
+// $dsn = 'sqlite:' . $config['database']['sqlite_file_path'];
 
 // Register Flight::db() service
 // In development, use PdoQueryCapture to log queries; in production, use PdoWrapper for performance.
 // $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
 // $app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null ]);
+
+Flight::register( 'db', \flight\database\SimplePdo::class, [
+
+    "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}", $myConfig['database']['user'] ?? null, $myConfig['database']['password'] ?? null,
+/**/
+    [
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8mb4\'',
+        PDO::ATTR_EMULATE_PREPARES   => false,
+        PDO::ATTR_STRINGIFY_FETCHES  => false,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ],
+/**/
+
+] );
+
+dd( Flight::db() );
 
 /**********************************************
  *         Third-Party Integrations           *
