@@ -1,9 +1,0 @@
-[21:09:06.755853 INFO] :  Tracy\Debugger   
- 
-
-[21:20:35.532082 INFO] :  Запрос /admin/settings занял 310.61 ms   
- 
-
-[21:22:38.933427 NOTICE] :  Запрос /admin/settings занял 296.88 ms   
- 
-

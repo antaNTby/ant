@@ -85,7 +85,7 @@ Debugger::$editor = null; // не будет формировать сылку �
 Debugger::$showLocation = Tracy\Dumper::LOCATION_SOURCE; // Sets only the display of the call location
 
 // Debugger::$email = 'your@email.com'; // Send error notifications
-Debugger::$email = 'antrip@email.com'; // Send error notifications
+// Debugger::$email = 'zzzzz@gmail.com'; // Send error notifications
 ######
 ######
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {

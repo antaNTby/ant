@@ -33,22 +33,20 @@ Flight::map( 'logger', function () {
     return $logger;
 } );
 
-Flight::map( 'jlog', function () {
-    // $logger  = new Logger( 'app' );
-    $logger  = new Logger( SERVER_NAME );
-    $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'jlog.log', Logger::DEBUG );
-    /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d H:i:s.u' );*/
-    $formatter = new LineFormatter(
-        "[%datetime% %level_name%] %context.file%:%context.line%  %message%   %context.pathinfo%\n%context% %extra%\n%context.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
-
-    $formatter->includeStacktraces( true );
-    $formatter->allowInlineLineBreaks( true );
-    $formatter->ignoreEmptyContextAndExtra( true );
-    $handler->setFormatter( $formatter );
-    $logger->pushHandler( $handler );
-
-    return $logger;
-} );
+##  Flight::map( 'jlog', function () {
+##  // $logger  = new Logger( 'app' );
+##  $logger  = new Logger( SERVER_NAME );
+##  $handler = new StreamHandler( __LOGS__ . DIRECTORY_SEPARATOR . 'jlog.log', Logger::DEBUG );
+##  /*$formatter = new LineFormatter( "[%datetime%] %channel%.%level_name% %message% %context.file%:%context.line%\n", 'M,d ##  H:i:s.u' );*/
+##  $formatter = new LineFormatter(
+##    "[%datetime% %level_name%] %context.file%:%context.line%  %message%   %context.pathinfo%\n%context% %extra%\n%c##  ontext.trace%\n", 'H:i:s.u' ); /*Y-m-d*/
+##  $formatter->includeStacktraces( true );
+##  $formatter->allowInlineLineBreaks( true );
+##  $formatter->ignoreEmptyContextAndExtra( true );
+##  $handler->setFormatter( $formatter );
+##  $logger->pushHandler( $handler );
+##  return $logger;
+##  } );
 
 ### Уровни
 ### log
