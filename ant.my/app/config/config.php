@@ -49,15 +49,12 @@ $myConfig = [
         'sqlite_file_path' => __APP__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
     ],
     'database2' => [
-                                                     // MySQL Example:
-        'host'             => '93.125.99.69',        // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'           => 'nixby_UTF8',          // Database name (e.g., 'flightphp')
-                                                     // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'             => 'nixby_dbadmin',       // Database user (e.g., 'root')
-        'password'         => 'nixby_dbadmin658!!!', // Database password (never commit real passwords)
-
-                                                                                 // SQLite Example:
-        'sqlite_file_path' => __APP__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
+                                             // MySQL Example:
+        'host'     => '93.125.99.69',        // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => 'nixby_UTF8',          // Database name (e.g., 'flightphp')
+                                             // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => 'nixby_dbadmin',       // Database user (e.g., 'root')
+        'password' => 'nixby_dbadmin658!!!', // Database password (never commit real passwords)
     ],
 
     // Google OAuth Credentials
