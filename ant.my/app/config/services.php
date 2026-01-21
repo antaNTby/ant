@@ -176,7 +176,7 @@ Flight::register( 'db', \flight\database\SimplePdo::class, [
 
 ] );
 
-dd( Flight::db() );
+// dd( Flight::db() );
 
 /**********************************************
  *         Third-Party Integrations           *
