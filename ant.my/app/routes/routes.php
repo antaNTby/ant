@@ -3,6 +3,7 @@ use app\controllers\ApiExampleController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
+use flight\Session;
 
 // Whip out the ol' router and we'll pass that to the routes file
 $router = $app->router();
@@ -40,6 +41,16 @@ Flight::route( 'OPTIONS *', function () {
 Flight::route( 'GET /hello', function () {
     echo '<h1>Welcome to the Flight Simple Example!</h1><h2>You are gonna do great things!</h2>';
     Flight::halt( 403, 'Access denied' );
+} );
+
+Flight::route( 'GET /logout', function () {
+    $session = Flight::session();
+// Remove a session value
+    $session->delete( 'log' );
+    $session->delete( 'is_admin' );
+    $session->delete( 'paswordhash' );
+    Flight::halt( 403, 'Access denied' );
+
 } );
 
 Flight::route( '*', function () {
