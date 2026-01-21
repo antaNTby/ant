@@ -49,6 +49,14 @@ $myConfig = [
         'sqlite_file_path' => __APP__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
     ],
     'database2' => [
+                                    // MySQL Example:
+        'host'     => 'MySql-8.4',  // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => 'nixby_UTF8', // Database name (e.g., 'flightphp')
+                                    // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => 'antaNT64',   // Database user (e.g., 'root')
+        'password' => 'root',       // Database password (never commit real passwords)
+    ],
+    'database3' => [
                                              // MySQL Example:
         'host'     => '93.125.99.69',        // Database host (e.g., 'localhost', 'db.example.com')
         'dbname'   => 'nixby_UTF8',          // Database name (e.g., 'flightphp')
