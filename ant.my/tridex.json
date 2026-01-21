@@ -1,0 +1,1079 @@
+{
+    "event_id": "c3512ee00de34fecb7486c784e6929e1",
+    "sent_at": "2026-01-21T11:24:09.593Z",
+    "sdk":
+    {
+        "name": "sentry.javascript.react",
+        "version": "10.33.0"
+    },
+    "trace":
+    {
+        "environment": "production",
+        "public_key": "1169b570e23a4a0618625ac573230162",
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "sampled": "true",
+        "sample_rand": "0.21335009400134097",
+        "sample_rate": "1"
+    }
+}
+{
+    "type": "transaction"
+}
+{
+    "contexts":
+    {
+        "trace":
+        {
+            "span_id": "9879d9f0c985c1aa",
+            "trace_id": "02474f6fd605491fb98e83b7af64076a",
+            "data":
+            {
+                "sentry.origin": "auto.pageload.browser",
+                "sentry.op": "pageload",
+                "sentry.source": "url",
+                "sentry.sample_rate": 1,
+                "effectiveConnectionType": "4g",
+                "deviceMemory": "8 GB",
+                "hardwareConcurrency": "32",
+                "performance.timeOrigin": 1768994646.8498,
+                "performance.activationStart": 0,
+                "lcp.element": "div#root > main > div.tdx-auth-wrapper > form.auth-form > h1",
+                "lcp.loadTime": 0,
+                "lcp.renderTime": 100,
+                "lcp.size": 13804,
+                "cls.source.1": "body > div#root > main > div.tdx-auth-wrapper > a.logo.",
+                "sentry.idle_span_finish_reason": "idleTimeout"
+            },
+            "op": "pageload",
+            "status": "ok",
+            "origin": "auto.pageload.browser"
+        },
+        "react":
+        {
+            "version": "19.2.3"
+        }
+    },
+    "spans": [
+    {
+        "data":
+        {
+            "sentry.origin": "auto.http.browser",
+            "sentry.op": "http.client",
+            "url": "https://api.b2bit.by/api/v1/settings/list",
+            "type": "xhr",
+            "http.method": "GET",
+            "http.url": "https://api.b2bit.by/api/v1/settings/list",
+            "server.address": "api.b2bit.by",
+            "http.response.status_code": 200,
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.944,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.3425,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "GET https://api.b2bit.by/api/v1/settings/list",
+        "op": "http.client",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bc7a88bb7e7efac8",
+        "start_timestamp": 1768994646.9439,
+        "status": "ok",
+        "timestamp": 1768994648.343,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.http.browser"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.http.browser",
+            "sentry.op": "http.client",
+            "url": "https://mc.yandex.ru/watch/100104273?wmode=7&page-url=https%3A%2F%2Fb2bit.by%2Fsign-in&charset=utf-8&uah=chu%0A%22Google%20Chrome%22%3Bv%3D%22143%22%2C%22Chromium%22%3Bv%3D%22143%22%2C%22Not%20A(Brand%22%3Bv%3D%2224%22%0Acha%0Ax86%0Achb%0A64%0Achf%0A143.0.7499.194%0Achl%0A%22Google%20Chrome%22%3Bv%3D%22143.0.7499.194%22%2C%22Chromium%22%3Bv%3D%22143.0.7499.194%22%2C%22Not%20A(Brand%22%3Bv%3D%2224.0.0.0%22%0Achm%0A%3F0%0Achp%0AWindows%0Achv%0A19.0.0&browser-info=pv%3A1%3Avf%3Acw41qwg7gq0rldhnwjw10bjkcw5pb%3Afu%3A0%3Aen%3Autf-8%3Ala%3Aen-US%3Av%3A2341%3Acn%3A1%3Adp%3A0%3Als%3A480946128162%3Ahid%3A895030660%3Az%3A180%3Ai%3A20260121142408%3Aet%3A1768994648%3Ac%3A1%3Arn%3A155030076%3Arqn%3A599%3Au%3A1758097646470142371%3Aw%3A2560x1305%3As%3A2560x1440x24%3Ask%3A1%3Afp%3A100%3Awv%3A2%3Ads%3A0%2C0%2C54%2C1%2C0%2C0%2C%2C7%2C0%2C86%2C86%2C0%2C77%3Aco%3A0%3Acpf%3A1%3Ans%3A1768994646849%3Aadb%3A2%3Arqnl%3A1%3Ast%3A1768994648%3At%3AB2BIT.BY&t=gdpr(14)clc(0-0-0)rqnt(1)aw(1)rcm(0)cdl(na)eco(83952132)ti(1)",
+            "type": "fetch",
+            "http.method": "GET",
+            "http.url": "https://mc.yandex.ru/watch/100104273?wmode=7&page-url=https%3A%2F%2Fb2bit.by%2Fsign-in&charset=utf-8&uah=chu%0A%22Google%20Chrome%22%3Bv%3D%22143%22%2C%22Chromium%22%3Bv%3D%22143%22%2C%22Not%20A(Brand%22%3Bv%3D%2224%22%0Acha%0Ax86%0Achb%0A64%0Achf%0A143.0.7499.194%0Achl%0A%22Google%20Chrome%22%3Bv%3D%22143.0.7499.194%22%2C%22Chromium%22%3Bv%3D%22143.0.7499.194%22%2C%22Not%20A(Brand%22%3Bv%3D%2224.0.0.0%22%0Achm%0A%3F0%0Achp%0AWindows%0Achv%0A19.0.0&browser-info=pv%3A1%3Avf%3Acw41qwg7gq0rldhnwjw10bjkcw5pb%3Afu%3A0%3Aen%3Autf-8%3Ala%3Aen-US%3Av%3A2341%3Acn%3A1%3Adp%3A0%3Als%3A480946128162%3Ahid%3A895030660%3Az%3A180%3Ai%3A20260121142408%3Aet%3A1768994648%3Ac%3A1%3Arn%3A155030076%3Arqn%3A599%3Au%3A1758097646470142371%3Aw%3A2560x1305%3As%3A2560x1440x24%3Ask%3A1%3Afp%3A100%3Awv%3A2%3Ads%3A0%2C0%2C54%2C1%2C0%2C0%2C%2C7%2C0%2C86%2C86%2C0%2C77%3Aco%3A0%3Acpf%3A1%3Ans%3A1768994646849%3Aadb%3A2%3Arqnl%3A1%3Ast%3A1768994648%3At%3AB2BIT.BY&t=gdpr(14)clc(0-0-0)rqnt(1)aw(1)rcm(0)cdl(na)eco(83952132)ti(1)",
+            "server.address": "mc.yandex.ru",
+            "http.query": "?wmode=7&page-url=https%3A%2F%2Fb2bit.by%2Fsign-in&charset=utf-8&uah=chu%0A%22Google%20Chrome%22%3Bv%3D%22143%22%2C%22Chromium%22%3Bv%3D%22143%22%2C%22Not%20A(Brand%22%3Bv%3D%2224%22%0Acha%0Ax86%0Achb%0A64%0Achf%0A143.0.7499.194%0Achl%0A%22Google%20Chrome%22%3Bv%3D%22143.0.7499.194%22%2C%22Chromium%22%3Bv%3D%22143.0.7499.194%22%2C%22Not%20A(Brand%22%3Bv%3D%2224.0.0.0%22%0Achm%0A%3F0%0Achp%0AWindows%0Achv%0A19.0.0&browser-info=pv%3A1%3Avf%3Acw41qwg7gq0rldhnwjw10bjkcw5pb%3Afu%3A0%3Aen%3Autf-8%3Ala%3Aen-US%3Av%3A2341%3Acn%3A1%3Adp%3A0%3Als%3A480946128162%3Ahid%3A895030660%3Az%3A180%3Ai%3A20260121142408%3Aet%3A1768994648%3Ac%3A1%3Arn%3A155030076%3Arqn%3A599%3Au%3A1758097646470142371%3Aw%3A2560x1305%3As%3A2560x1440x24%3Ask%3A1%3Afp%3A100%3Awv%3A2%3Ads%3A0%2C0%2C54%2C1%2C0%2C0%2C%2C7%2C0%2C86%2C86%2C0%2C77%3Aco%3A0%3Acpf%3A1%3Ans%3A1768994646849%3Aadb%3A2%3Arqnl%3A1%3Ast%3A1768994648%3At%3AB2BIT.BY&t=gdpr(14)clc(0-0-0)rqnt(1)aw(1)rcm(0)cdl(na)eco(83952132)ti(1)",
+            "http.response.status_code": 200,
+            "http.response_content_length": 640,
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.3496,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.3903,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "GET https://mc.yandex.ru/watch/100104273",
+        "op": "http.client",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "b2e9fad0c756866e",
+        "start_timestamp": 1768994648.3494,
+        "status": "ok",
+        "timestamp": 1768994648.3909001,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.http.browser"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.unloadEvent"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.unloadEvent",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a60734deac3e8fdf",
+        "start_timestamp": 1768994646.9095001,
+        "timestamp": 1768994646.9095001,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.domContentLoadedEvent"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.domContentLoadedEvent",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "b3ea324d9636ccb6",
+        "start_timestamp": 1768994646.927,
+        "timestamp": 1768994646.927,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.loadEvent"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.loadEvent",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a8dcf27e719a9026",
+        "start_timestamp": 1768994646.936,
+        "timestamp": 1768994646.9361,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.connect"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.connect",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "8ded5f356ca691a0",
+        "start_timestamp": 1768994646.8502002,
+        "timestamp": 1768994646.8502002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.TLS/SSL"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.TLS/SSL",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a6748c551cb3aeec",
+        "start_timestamp": 1768994646.8502002,
+        "timestamp": 1768994646.8502002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.cache"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.cache",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "8cafc97aa258ba85",
+        "start_timestamp": 1768994646.8502002,
+        "timestamp": 1768994646.8502002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.DNS"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.DNS",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "92d0a9c28c37d448",
+        "start_timestamp": 1768994646.8502002,
+        "timestamp": 1768994646.8502002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.request"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.request",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "8cf143dbb47f195a",
+        "start_timestamp": 1768994646.8508,
+        "timestamp": 1768994646.9058,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.ui.browser.metrics",
+            "sentry.op": "browser.response"
+        },
+        "description": "https://b2bit.by/sign-in",
+        "op": "browser.response",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "8328a18ff8509a18",
+        "start_timestamp": 1768994646.9052,
+        "timestamp": 1768994646.9058,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.ui.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.link",
+            "url.scheme": "https",
+            "server.address": "fonts.googleapis.com",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 1683,
+            "http.decoded_response_content_length": 16755,
+            "resource.render_blocking_status": "blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "3",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9106998,
+            "http.request.domain_lookup_start": 1768994646.9106998,
+            "http.request.domain_lookup_end": 1768994646.9106998,
+            "http.request.connect_start": 1768994646.9106998,
+            "http.request.secure_connection_start": 1768994646.9106998,
+            "http.request.connection_end": 1768994646.9106998,
+            "http.request.request_start": 1768994646.9106998,
+            "http.request.response_start": 1768994646.9106998,
+            "http.request.response_end": 1768994646.9106998,
+            "http.request.time_to_first_byte": 0.06090000000037253
+        },
+        "description": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
+        "op": "resource.link",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "86f0e3071de49915",
+        "start_timestamp": 1768994646.9107,
+        "timestamp": 1768994646.9107,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "b2bit.by",
+            "url.same_origin": true,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 237,
+            "http.decoded_response_content_length": 237,
+            "resource.render_blocking_status": "blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9106998,
+            "http.request.domain_lookup_start": 1768994646.9106998,
+            "http.request.domain_lookup_end": 1768994646.9106998,
+            "http.request.connect_start": 1768994646.9106998,
+            "http.request.secure_connection_start": 1768994646.9106998,
+            "http.request.connection_end": 1768994646.9106998,
+            "http.request.request_start": 1768994646.9106998,
+            "http.request.response_start": 1768994646.9106998,
+            "http.request.response_end": 1768994646.9106998,
+            "http.request.time_to_first_byte": 0.06090000000037253
+        },
+        "description": "/runtime-env-1e244095d4215c5c1c58196f0c6e1a5e67ee9dbaa075faf2a3e7f8bc2ac0a22b.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a9ac1301ce784358",
+        "start_timestamp": 1768994646.9107,
+        "timestamp": 1768994646.9107,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "b2bit.by",
+            "url.same_origin": true,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 661,
+            "http.decoded_response_content_length": 1651,
+            "resource.render_blocking_status": "blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9108,
+            "http.request.domain_lookup_start": 1768994646.9108,
+            "http.request.domain_lookup_end": 1768994646.9108,
+            "http.request.connect_start": 1768994646.9108,
+            "http.request.secure_connection_start": 1768994646.9108,
+            "http.request.connection_end": 1768994646.9108,
+            "http.request.request_start": 1768994646.9108,
+            "http.request.response_start": 1768994646.9108,
+            "http.request.response_end": 1768994646.9108,
+            "http.request.time_to_first_byte": 0.061
+        },
+        "description": "/config.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "9ee16b655ebdd386",
+        "start_timestamp": 1768994646.9108002,
+        "timestamp": 1768994646.9108002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "b2bit.by",
+            "url.same_origin": true,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 476288,
+            "http.decoded_response_content_length": 1509918,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9108,
+            "http.request.domain_lookup_start": 1768994646.9108,
+            "http.request.domain_lookup_end": 1768994646.9108,
+            "http.request.connect_start": 1768994646.9108,
+            "http.request.secure_connection_start": 1768994646.9108,
+            "http.request.connection_end": 1768994646.9108,
+            "http.request.request_start": 1768994646.9108,
+            "http.request.response_start": 1768994646.9108,
+            "http.request.response_end": 1768994646.9108,
+            "http.request.time_to_first_byte": 0.061
+        },
+        "description": "/static/js/main.6241002b1fb05c69771e.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "8ec55082f4f9b600",
+        "start_timestamp": 1768994646.9108002,
+        "timestamp": 1768994646.9108002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.link",
+            "url.scheme": "https",
+            "server.address": "b2bit.by",
+            "url.same_origin": true,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 46119,
+            "http.decoded_response_content_length": 247531,
+            "resource.render_blocking_status": "blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9109,
+            "http.request.domain_lookup_start": 1768994646.9109,
+            "http.request.domain_lookup_end": 1768994646.9109,
+            "http.request.connect_start": 1768994646.9109,
+            "http.request.secure_connection_start": 1768994646.9109,
+            "http.request.connection_end": 1768994646.9109,
+            "http.request.request_start": 1768994646.9109,
+            "http.request.response_start": 1768994646.9109,
+            "http.request.response_end": 1768994646.9109,
+            "http.request.time_to_first_byte": 0.06109999999962747
+        },
+        "description": "/static/css/main.ab7efc3dba7f908e46d3.css",
+        "op": "resource.link",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bd42f4160f471c02",
+        "start_timestamp": 1768994646.9109,
+        "timestamp": 1768994646.9109,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "mark"
+        },
+        "description": "sentry-tracing-init",
+        "op": "mark",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a678c4d077fd797c",
+        "start_timestamp": 1768994646.9259002,
+        "timestamp": 1768994646.9259002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.css",
+            "url.scheme": "https",
+            "server.address": "fonts.gstatic.com",
+            "url.same_origin": false,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 22796,
+            "http.decoded_response_content_length": 22796,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "3",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9271002,
+            "http.request.domain_lookup_start": 1768994646.9271002,
+            "http.request.domain_lookup_end": 1768994646.9271002,
+            "http.request.connect_start": 1768994646.9271002,
+            "http.request.secure_connection_start": 1768994646.9271002,
+            "http.request.connection_end": 1768994646.9271002,
+            "http.request.request_start": 1768994646.9271002,
+            "http.request.response_start": 1768994646.9271002,
+            "http.request.response_end": 1768994646.9271002,
+            "http.request.time_to_first_byte": 0.07729999999981374
+        },
+        "description": "https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2",
+        "op": "resource.css",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "ac4e40b2131f598c",
+        "start_timestamp": 1768994646.9271002,
+        "timestamp": 1768994646.9271002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.css",
+            "url.scheme": "https",
+            "server.address": "fonts.gstatic.com",
+            "url.same_origin": false,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 40128,
+            "http.decoded_response_content_length": 40128,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "3",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9271998,
+            "http.request.domain_lookup_start": 1768994646.9271998,
+            "http.request.domain_lookup_end": 1768994646.9271998,
+            "http.request.connect_start": 1768994646.9271998,
+            "http.request.secure_connection_start": 1768994646.9271998,
+            "http.request.connection_end": 1768994646.9271998,
+            "http.request.request_start": 1768994646.9271998,
+            "http.request.response_start": 1768994646.9271998,
+            "http.request.response_end": 1768994646.9271998,
+            "http.request.time_to_first_byte": 0.07740000000037253
+        },
+        "description": "https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2",
+        "op": "resource.css",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bd31a8dc5c8bbb69",
+        "start_timestamp": 1768994646.9272,
+        "timestamp": 1768994646.9272,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "b2bit.by",
+            "url.same_origin": true,
+            "http.response.status_code": 200,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 2038,
+            "http.decoded_response_content_length": 5603,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9284,
+            "http.request.domain_lookup_start": 1768994646.9284,
+            "http.request.domain_lookup_end": 1768994646.9284,
+            "http.request.connect_start": 1768994646.9284,
+            "http.request.secure_connection_start": 1768994646.9284,
+            "http.request.connection_end": 1768994646.9284,
+            "http.request.request_start": 1768994646.9284,
+            "http.request.response_start": 1768994646.9284,
+            "http.request.response_end": 1768994646.9284,
+            "http.request.time_to_first_byte": 0.07859999999962747
+        },
+        "description": "/static/js/186.e075f35c5d05a7886809.chunk.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bea00eb4b0529ec7",
+        "start_timestamp": 1768994646.9284,
+        "timestamp": 1768994646.9284,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.other",
+            "url.scheme": "https",
+            "server.address": "media.b2bit.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994646.9468,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994646.9482,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://media.b2bit.by/news/0000.png",
+        "op": "resource.other",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "b45a6b9701b050d6",
+        "start_timestamp": 1768994646.9468,
+        "timestamp": 1768994646.9482,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "paint"
+        },
+        "description": "first-paint",
+        "op": "paint",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "affd4d6146ae36ed",
+        "start_timestamp": 1768994646.9498,
+        "timestamp": 1768994646.9498,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "paint"
+        },
+        "description": "first-contentful-paint",
+        "op": "paint",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "b2c795478ea6dde9",
+        "start_timestamp": 1768994646.9498,
+        "timestamp": 1768994646.9498,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "mc.yandex.ru",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 88244,
+            "http.decoded_response_content_length": 266238,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.3437,
+            "http.request.domain_lookup_start": 1768994648.3437,
+            "http.request.domain_lookup_end": 1768994648.3437,
+            "http.request.connect_start": 1768994648.3437,
+            "http.request.secure_connection_start": 1768994648.3437,
+            "http.request.connection_end": 1768994648.3437,
+            "http.request.request_start": 1768994648.3437,
+            "http.request.response_start": 1768994648.3437,
+            "http.request.response_end": 1768994648.3437,
+            "http.request.time_to_first_byte": 1.4939000000003726
+        },
+        "description": "https://mc.yandex.ru/metrika/tag.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "9b23ab6e98458800",
+        "start_timestamp": 1768994648.3437002,
+        "timestamp": 1768994648.3437002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "crm.tdx.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.3437,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.5272,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://crm.tdx.by/upload/crm/site_button/loader_4_r9l1pt.js?29483244",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "84b3ca8505584899",
+        "start_timestamp": 1768994648.3437002,
+        "timestamp": 1768994648.5272002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.img",
+            "url.scheme": "https",
+            "server.address": "media.b2bit.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.3438,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.3445,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://media.b2bit.by/settings/Frame_6Ytdn1Q.png",
+        "op": "resource.img",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "89acef4e01f6df93",
+        "start_timestamp": 1768994648.3438,
+        "timestamp": 1768994648.3445,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "mc.yandex.ru",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 13551,
+            "http.decoded_response_content_length": 57608,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "cache",
+            "network.protocol.version": "2",
+            "network.protocol.name": "http",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.4517,
+            "http.request.domain_lookup_start": 1768994648.4517,
+            "http.request.domain_lookup_end": 1768994648.4517,
+            "http.request.connect_start": 1768994648.4517,
+            "http.request.secure_connection_start": 1768994648.4517,
+            "http.request.connection_end": 1768994648.4517,
+            "http.request.request_start": 1768994648.4517,
+            "http.request.response_start": 1768994648.4517,
+            "http.request.response_end": 1768994648.4517,
+            "http.request.time_to_first_byte": 1.6019000000003725
+        },
+        "description": "https://mc.yandex.ru/metrika/tag_phono.js",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bf5cd805864e0eb0",
+        "start_timestamp": 1768994648.4517002,
+        "timestamp": 1768994648.4517002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "crm.tdx.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.5281,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.5898001,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://crm.tdx.by/upload/crm/tag/call.tracker.js?29483244",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "bc5516d4ccae0ad7",
+        "start_timestamp": 1768994648.5281,
+        "timestamp": 1768994648.5898001,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.link",
+            "url.scheme": "https",
+            "server.address": "crm.tdx.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.5305,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.5305,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://crm.tdx.by/bitrix/js/imopenlines/widget/styles.min.css?r=1768914845-4",
+        "op": "resource.link",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "b8152ff7f3de9a1f",
+        "start_timestamp": 1768994648.5305002,
+        "timestamp": 1768994648.5305002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.script",
+            "url.scheme": "https",
+            "server.address": "crm.tdx.by",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994648.5305,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994648.5305,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://crm.tdx.by/bitrix/js/imopenlines/widget/script.min.js?r=1768914845-4",
+        "op": "resource.script",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "855998662a8edf2c",
+        "start_timestamp": 1768994648.5305002,
+        "timestamp": 1768994648.5305002,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    },
+    {
+        "data":
+        {
+            "sentry.origin": "auto.resource.browser.metrics",
+            "sentry.op": "resource.beacon",
+            "url.scheme": "https",
+            "server.address": "mc.yandex.ru",
+            "url.same_origin": false,
+            "http.response.status_code": 0,
+            "http.response_transfer_size": 0,
+            "http.response_content_length": 0,
+            "http.decoded_response_content_length": 0,
+            "resource.render_blocking_status": "non-blocking",
+            "http.response_delivery_type": "",
+            "network.protocol.version": "unknown",
+            "network.protocol.name": "",
+            "http.request.redirect_start": 0,
+            "http.request.redirect_end": 0,
+            "http.request.worker_start": 0,
+            "http.request.fetch_start": 1768994649.2575,
+            "http.request.domain_lookup_start": 0,
+            "http.request.domain_lookup_end": 0,
+            "http.request.connect_start": 0,
+            "http.request.secure_connection_start": 0,
+            "http.request.connection_end": 0,
+            "http.request.request_start": 0,
+            "http.request.response_start": 0,
+            "http.request.response_end": 1768994649.3082,
+            "http.request.time_to_first_byte": 0
+        },
+        "description": "https://mc.yandex.ru/watch/100104273/1?page-url=https%3A%2F%2Fb2bit.by%2Fsign-in&charset=utf-8&uah=chu%0A%22Google%20Chrome%22%3Bv%3D%22143%22%2C%22Chromium%22%3Bv%3D%22143%22%2C%22Not%20A(Brand%22%3Bv%3D%2224%22%0Acha%0Ax86%0Achb%0A64%0Achf%0A143.0.7499.194%0Achl%0A%22Google%20Chrome%22%3Bv%3D%22143.0.7499.194%22%2C%22Chromium%22%3Bv%3D%22143.0.7499.194%22%2C%22Not%20A(Brand%22%3Bv%3D%2224.0.0.0%22%0Achm%0A%3F0%0Achp%0AWindows%0Achv%0A19.0.0&hidv2=33413349938561357&hittoken=1768994661_502f1d60ea928a8ccd9f6877f4171c7144843c1d40b39af4628a4474be8b6174&browser-info=pa%3A1%3Aar%3A1%3Avf%3Acw41qwg7gq0rldhnwjw10bjkcw5pb%3Afu%3A0%3Aen%3Autf-8%3Ala%3Aen-US%3Av%3A2341%3Acn%3A1%3Adp%3A1%3Als%3A480946128162%3Ahid%3A895030660%3Az%3A180%3Ai%3A20260121142409%3Aet%3A1768994649%3Ac%3A1%3Arn%3A29110434%3Arqn%3A600%3Au%3A1758097646470142371%3Aw%3A2560x1305%3As%3A2560x1440x24%3Ask%3A1%3Awv%3A2%3Aco%3A0%3Acpf%3A1%3Aeu%3A0%3Ans%3A1768994646849%3Aadb%3A2%3Arqnl%3A1%3Ast%3A1768994649&t=gdpr(14)clc(0-0-0)rqnt(2)aw(1)rcm(0)cdl(na)eco(83952132)oms(0)prs(2)w2s(15)ti(0)&force-urlencoded=1&site-info=%7B%22__ym%22%3A%7B%22fi%22%3A%22a(1)b(PAAAFA%C2%89A2)c(sjs4IhPsch6u5%2BdZ2c0XGNG0cLn9VPgQmLCg1UByyKo%3D)%22%2C%22fit%22%3A1%7D%7D",
+        "op": "resource.beacon",
+        "parent_span_id": "9879d9f0c985c1aa",
+        "span_id": "a604e8a058ba7364",
+        "start_timestamp": 1768994649.2575002,
+        "timestamp": 1768994649.3082001,
+        "trace_id": "02474f6fd605491fb98e83b7af64076a",
+        "origin": "auto.resource.browser.metrics"
+    }],
+    "start_timestamp": 1768994646.8498,
+    "timestamp": 1768994649.3082001,
+    "transaction": "/sign-in",
+    "type": "transaction",
+    "request":
+    {
+        "url": "https://b2bit.by/sign-in",
+        "headers":
+        {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+        }
+    },
+    "transaction_info":
+    {
+        "source": "url"
+    },
+    "measurements":
+    {
+        "ttfb":
+        {
+            "value": 55.40000000037253,
+            "unit": "millisecond"
+        },
+        "lcp":
+        {
+            "value": 100,
+            "unit": "millisecond"
+        },
+        "cls":
+        {
+            "value": 0.000006796299726113506,
+            "unit": ""
+        },
+        "fp":
+        {
+            "value": 100,
+            "unit": "millisecond"
+        },
+        "fcp":
+        {
+            "value": 100,
+            "unit": "millisecond"
+        },
+        "connection.rtt":
+        {
+            "value": 50,
+            "unit": "millisecond"
+        },
+        "ttfb.requestTime":
+        {
+            "value": 54.40000000037253,
+            "unit": "millisecond"
+        }
+    },
+    "platform": "javascript",
+    "event_id": "c3512ee00de34fecb7486c784e6929e1",
+    "environment": "production",
+    "sdk":
+    {
+        "integrations": ["InboundFilters", "FunctionToString", "BrowserApiErrors", "Breadcrumbs", "GlobalHandlers", "LinkedErrors", "Dedupe", "HttpContext", "BrowserSession", "BrowserTracing"],
+        "name": "sentry.javascript.react",
+        "version": "10.33.0",
+        "packages": [
+        {
+            "name": "npm:@sentry/react",
+            "version": "10.33.0"
+        }],
+        "settings":
+        {
+            "infer_ip": "never"
+        }
+    },
+    "breadcrumbs": [
+    {
+        "timestamp": 1768994646.936,
+        "category": "sentry.event",
+        "event_id": "b916a5b60a12465a84ed678b997337df",
+        "level": "info",
+        "message": "/sign-in"
+    },
+    {
+        "timestamp": 1768994648.342,
+        "category": "xhr",
+        "data":
+        {
+            "method": "GET",
+            "url": "https://api.b2bit.by/api/v1/settings/list",
+            "status_code": 200
+        },
+        "type": "http"
+    },
+    {
+        "timestamp": 1768994648.39,
+        "category": "fetch",
+        "data":
+        {
+            "method": "GET",
+            "url": "https://mc.yandex.ru/watch/100104273?wmode=7&page-url=https%3A%2F%2Fb2bit.by%2Fsign-in&charset=utf-8&uah=chu%0A%22Google%20Chrome%22%3Bv%3D%22143%22%2C%22Chromium%22%3Bv%3D%22143%22%2C%22Not%20A(Brand%22%3Bv%3D%2224%22%0Acha%0Ax86%0Achb%0A64%0Achf%0A143.0.7499.194%0Achl%0A%22Google%20Chrome%22%3Bv%3D%22143.0.7499.194%22%2C%22Chromium%22%3Bv%3D%22143.0.7499.194%22%2C%22Not%20A(Brand%22%3Bv%3D%2224.0.0.0%22%0Achm%0A%3F0%0Achp%0AWindows%0Achv%0A19.0.0&browser-info=pv%3A1%3Avf%3Acw41qwg7gq0rldhnwjw10bjkcw5pb%3Afu%3A0%3Aen%3Autf-8%3Ala%3Aen-US%3Av%3A2341%3Acn%3A1%3Adp%3A0%3Als%3A480946128162%3Ahid%3A895030660%3Az%3A180%3Ai%3A20260121142408%3Aet%3A1768994648%3Ac%3A1%3Arn%3A155030076%3Arqn%3A599%3Au%3A1758097646470142371%3Aw%3A2560x1305%3As%3A2560x1440x24%3Ask%3A1%3Afp%3A100%3Awv%3A2%3Ads%3A0%2C0%2C54%2C1%2C0%2C0%2C%2C7%2C0%2C86%2C86%2C0%2C77%3Aco%3A0%3Acpf%3A1%3Ans%3A1768994646849%3Aadb%3A2%3Arqnl%3A1%3Ast%3A1768994648%3At%3AB2BIT.BY&t=gdpr(14)clc(0-0-0)rqnt(1)aw(1)rcm(0)cdl(na)eco(83952132)ti(1)",
+            "__span": "b2e9fad0c756866e",
+            "status_code": 200
+        },
+        "type": "http"
+    }]
+}
