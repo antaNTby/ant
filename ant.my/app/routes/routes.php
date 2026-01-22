@@ -61,20 +61,33 @@ Flight::route( 'GET /logout', function () {
 } );
 
 Flight::route( '*', function () {
+    $session = Flight::session();
 
     // dump( Flight::router() );
+    $rednderData = [
 
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
-        [
+        'app'       => Flight::app(),
+        'year'      => date( 'Y' ),
+        'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
+        'COPYRIGHT' => COPYRIGHT,
+        // 'BRANDNAME' => BRANDNAME,
 
-            'app'       => Flight::app(),
-            'year'      => date( 'Y' ),
-            'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
-            'COPYRIGHT' => COPYRIGHT,
-            // 'BRANDNAME' => BRANDNAME,
+    ];
 
-        ]
-    );
+    if ( $session->get( 'log' ) ) {
+
+        Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
+            $rednderData
+        );
+    } else {
+        Flight::render( 'home.tpl.html', [
+            'session' => [
+                $session->get( 'log' ),
+                $session->get( 'is_admin' ),
+                $session->get( 'paswordhash' ),
+            ],
+        ] );
+    }
 
 } );
 
