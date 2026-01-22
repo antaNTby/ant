@@ -51,7 +51,13 @@ Flight::route( 'GET /logout', function () {
     $session->delete( 'paswordhash' );
     // Flight::halt( 403, 'Access denied' );
 
-    Flight::render( 'home.tpl.html', [] );
+    Flight::render( 'home.tpl.html', [
+        'session' => [
+            $session->get( 'log' ),
+            $session->get( 'is_admin' ),
+            $session->get( 'paswordhash' ),
+        ],
+    ] );
 } );
 
 Flight::route( '*', function () {
@@ -73,6 +79,11 @@ Flight::route( '*', function () {
 } );
 
 Flight::route( 'GET /admin', function () {
+    $session = Flight::session();
+
+    $session->set( 'log', 'admin' );
+    $session->set( 'is_admin', true );
+    $session->set( 'paswordhash', password_hash( 'string', PASSWORD_DEFAULT ) );
 
     // dump( Flight::router() );
 
@@ -84,9 +95,14 @@ Flight::route( 'GET /admin', function () {
             'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
             'COPYRIGHT' => 'ADMIN',
             // 'BRANDNAME' => 'ADMIN ' . BRANDNAME,
+            'session'   => [
 
-        ]
-    );
+                $session->get( 'log' ),
+                $session->get( 'is_admin' ),
+                $session->get( 'paswordhash' ),
+            ],
+
+        ] );
 
 } );
 
