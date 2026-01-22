@@ -49,8 +49,9 @@ Flight::route( 'GET /logout', function () {
     $session->delete( 'log' );
     $session->delete( 'is_admin' );
     $session->delete( 'paswordhash' );
-    Flight::halt( 403, 'Access denied' );
+    // Flight::halt( 403, 'Access denied' );
 
+    Flight::render( 'home.tpl.html', [] );
 } );
 
 Flight::route( '*', function () {
