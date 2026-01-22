@@ -46,14 +46,14 @@ Flight::route( 'GET /hello', function () {
 Flight::route( 'GET /logout', function () {
     $session = Flight::session();
 // Remove a session value
-    $session->delete( 'log' );
+    $session->delete( 'login' );
     $session->delete( 'is_admin' );
     $session->delete( 'paswordhash' );
     // Flight::halt( 403, 'Access denied' );
 
     Flight::render( 'home.tpl.html', [
         'session' => [
-            $session->get( 'log' ),
+            $session->get( 'login' ),
             $session->get( 'is_admin' ),
             $session->get( 'paswordhash' ),
         ],
@@ -74,7 +74,7 @@ Flight::route( '*', function () {
 
     ];
 
-    if ( $session->get( 'log' ) ) {
+    if ( $session->get( 'login' ) ) {
 
         Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
             $rednderData
@@ -82,7 +82,7 @@ Flight::route( '*', function () {
     } else {
         Flight::render( 'home.tpl.html', [
             'session' => [
-                $session->get( 'log' ),
+                $session->get( 'login' ),
                 $session->get( 'is_admin' ),
                 $session->get( 'paswordhash' ),
             ],
@@ -94,7 +94,7 @@ Flight::route( '*', function () {
 Flight::route( 'GET /admin', function () {
     $session = Flight::session();
 
-    $session->set( 'log', 'admin' );
+    $session->set( 'login', 'admin' );
     $session->set( 'is_admin', true );
     $session->set( 'paswordhash', password_hash( 'string', PASSWORD_DEFAULT ) );
 
@@ -110,7 +110,7 @@ Flight::route( 'GET /admin', function () {
             // 'BRANDNAME' => 'ADMIN ' . BRANDNAME,
             'session'   => [
 
-                $session->get( 'log' ),
+                $session->get( 'login' ),
                 $session->get( 'is_admin' ),
                 $session->get( 'paswordhash' ),
             ],
