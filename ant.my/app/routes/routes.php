@@ -1,13 +1,27 @@
 <?php
 use app\controllers\ApiExampleController;
+use app\middlewares\MyMiddleware;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
 use flight\Session;
 
 // Whip out the ol' router and we'll pass that to the routes file
-$router = $app->router();
+$router       = $app->router();
+$MyMiddleware = new MyMiddleware();
 /**/
+
+Flight::route( 'OPTIONS *', function () {
+    // https: //docs.flightphp.com/learn/security#cors
+    header( 'Access-Control-Allow-Origin: *' );
+    // header('Access-Control-Allow-Origin: https://your-domain.com');
+    header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
+    header( 'Access-Control-Allow-Headers: Content-Type, Authorization' );
+    header( 'Access-Control-Max-Age: 86400' ); // Кеширование
+    Flight::halt( 200 );
+} );
+
+Flight::route( '/path', function () {echo ' Here I am! ';} )->addMiddleware( $MyMiddleware );
 
 // This wraps all routes in the group with the SecurityHeadersMiddleware
 $router->group( '', function ( Router $router ) use ( $app ) {
@@ -27,16 +41,6 @@ $router->group( '', function ( Router $router ) use ( $app ) {
     } );
 
 }, [SecurityHeadersMiddleware::class] );
-
-Flight::route( 'OPTIONS *', function () {
-    // https: //docs.flightphp.com/learn/security#cors
-    header( 'Access-Control-Allow-Origin: *' );
-    // header('Access-Control-Allow-Origin: https://your-domain.com');
-    header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
-    header( 'Access-Control-Allow-Headers: Content-Type, Authorization' );
-    header( 'Access-Control-Max-Age: 86400' ); // Кеширование
-    Flight::halt( 200 );
-} );
 
 Flight::route( 'GET /hello', function () {
     echo '<h1>Welcome to the Flight Simple Example!</h1><h2>You are gonna do great things!</h2>';
