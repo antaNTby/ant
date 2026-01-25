@@ -1,69 +1,13 @@
 <?php
 use app\controllers\ApiExampleController;
-use app\middlewares\MyMiddleware;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
 use flight\Session;
 
 // Whip out the ol' router and we'll pass that to the routes file
-$router       = $app->router();
-$MyMiddleware = new MyMiddleware();
+$router = $app->router();
 /**/
-
-Flight::route( 'OPTIONS *', function () {
-    // https: //docs.flightphp.com/learn/security#cors
-    header( 'Access-Control-Allow-Origin: *' );
-    // header('Access-Control-Allow-Origin: https://your-domain.com');
-    header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
-    header( 'Access-Control-Allow-Headers: Content-Type, Authorization' );
-    header( 'Access-Control-Max-Age: 86400' ); // Кеширование
-    Flight::halt( 200 );
-} );
-
-Flight::route( '/path', function () {echo ' Here I am! ';} )->addMiddleware( $MyMiddleware );
-
-// This wraps all routes in the group with the SecurityHeadersMiddleware
-$router->group( '', function ( Router $router ) use ( $app ) {
-
-    $router->get( '/', function () use ( $app ) {
-        $app->render( 'welcome', ['message' => 'You are gonna do great things!'] );
-    } );
-
-    $router->get( '/hello-world/@name', function ( $name ) {
-        echo '<h1>Hello world! Oh hey ' . $name . '!</h1>';
-    } );
-
-    $router->group( '/api', function () use ( $router ) {
-        $router->get( '/users', [ApiExampleController::class, 'getUsers'] );
-        $router->get( '/users/@id:[0-9]', [ApiExampleController::class, 'getUser'] );
-        $router->post( '/users/@id:[0-9]', [ApiExampleController::class, 'updateUser'] );
-    } );
-
-}, [SecurityHeadersMiddleware::class] );
-
-Flight::route( 'GET /hello', function () {
-    echo '<h1>Welcome to the Flight Simple Example!</h1><h2>You are gonna do great things!</h2>';
-    Flight::halt( 403, 'Access denied' );
-} );
-
-Flight::route( 'GET /logout', function () {
-    $session = Flight::session();
-// Remove a session value
-    $session->delete( 'login' );
-    $session->delete( 'is_admin' );
-    $session->delete( 'paswordhash' );
-    // Flight::halt( 403, 'Access denied' );
-
-    Flight::render( 'home.tpl.html', [
-        'session' => [
-            $session->get( 'login' ),
-            $session->get( 'is_admin' ),
-            $session->get( 'paswordhash' ),
-        ],
-    ] );
-} );
-
 Flight::route( '*', function () {
     $session = Flight::session();
 
@@ -80,7 +24,7 @@ Flight::route( '*', function () {
 
     if ( $session->get( 'login' ) ) {
 
-        Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
+        Flight::render( 'layout.tpl.html',
             $rednderData
         );
     } else {
@@ -95,34 +39,38 @@ Flight::route( '*', function () {
 
 } );
 
-Flight::route( 'GET /admin', function () {
+Flight::route( 'GET /login', function () {
     $session = Flight::session();
-
     $session->set( 'login', 'admin' );
     $session->set( 'is_admin', true );
-    $session->set( 'paswordhash', password_hash( 'string', PASSWORD_DEFAULT ) );
+    $session->set( 'paswordhash', password_hash( 'paSS$$word', PASSWORD_DEFAULT ) );
+    $rednderData = [
 
-    // dump( Flight::router() );
+        'app'       => Flight::app(),
+        'year'      => date( 'Y' ),
+        'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
+        'COPYRIGHT' => COPYRIGHT,
+        // 'BRANDNAME' => BRANDNAME,
 
-    Flight::render( __TPL__ . DIRECTORY_SEPARATOR . DEFAULT_TPL_HTML,
-        [
-
-            'app'       => Flight::app(),
-            'year'      => date( 'Y' ),
-            'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
-            'COPYRIGHT' => 'ADMIN',
-            // 'BRANDNAME' => 'ADMIN ' . BRANDNAME,
-            'session'   => [
-
-                $session->get( 'login' ),
-                $session->get( 'is_admin' ),
-                $session->get( 'paswordhash' ),
-            ],
-
-        ] );
-
+    ];
+    Flight::render( 'layout.tpl.html',
+        $rednderData
+    );
 } );
 
-// require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'ui_routes.php';
-// require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'api_routes.php';
-// require __APP__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'sub_routes.php';
+Flight::route( 'GET /logout', function () {
+    $session = Flight::session();
+    $session->clear();
+    $rednderData = [
+
+        'app'       => Flight::app(),
+        'year'      => date( 'Y' ),
+        'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
+        'COPYRIGHT' => COPYRIGHT,
+        // 'BRANDNAME' => BRANDNAME,
+
+    ];
+    Flight::render( 'home.tpl.html',
+        $rednderData
+    );
+} );
