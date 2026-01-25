@@ -70,6 +70,7 @@ Flight::route( 'GET /logout', function () {
         // 'BRANDNAME' => BRANDNAME,
 
     ];
+
     Flight::render( 'home.tpl.html',
         $rednderData
     );
