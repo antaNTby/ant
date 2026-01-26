@@ -22,3 +22,6 @@ GRANT 'DBA' TO 'antaNT64'@'%';
 SET DEFAULT ROLE 'DBA' TO 'antaNT64'@'%';
 
 SET PASSWORD FOR 'antaNT64'@'localhost' = PASSWORD('root');
+
+
+-- https://adminer.db/adminer-5.4.1.php?server=MySQL-8.4&username=antaNT64&db=nixby_UTF8
