@@ -42,8 +42,12 @@ $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 // It is better practice to not use static methods for everything. It makes your
 // app much more difficult to unit test easily.
 // This is important as it connects any static calls to the same $app object
-$app = Flight::app();
+;
 
+$app = Flight::app();
+define( 'myConfig', $config );
+$smarty = Flight::view();
+$smarty->assign( 'myConfig', $myConfig );
 //🔹 Получаем логгер
 $logger = $app->logger();
 //🔹 Получаем логгер
