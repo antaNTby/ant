@@ -12,7 +12,8 @@
         "monolog/monolog": "^3.9",
         "tracy/tracy": "^2.11",
         "flightphp/tracy-extensions": "^0.2.7",
-        "flightphp/session": "^0.3.0"
+        "flightphp/session": "^0.3.0",
+        "vrana/adminer": "^5.4"
     },
     "require-dev":
     {

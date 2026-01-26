@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'antantby/ant.my',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '43ba6794360364addb364e5353ca0acc6001ecf4',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'antantby/ant.my' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '43ba6794360364addb364e5353ca0acc6001ecf4',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -144,6 +144,15 @@
             'replaced' => array(
                 0 => 'v5.3.8',
             ),
+        ),
+        'vrana/adminer' => array(
+            'pretty_version' => 'v5.4.1',
+            'version' => '5.4.1.0',
+            'reference' => 'eaad45a781a3e0d9fa04e3431c1826e81c061699',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../vrana/adminer',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
     ),
 );
