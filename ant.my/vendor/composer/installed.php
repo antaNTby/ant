@@ -145,14 +145,5 @@
                 0 => 'v5.3.8',
             ),
         ),
-        'vrana/adminer' => array(
-            'pretty_version' => 'v5.4.1',
-            'version' => '5.4.1.0',
-            'reference' => 'eaad45a781a3e0d9fa04e3431c1826e81c061699',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../vrana/adminer',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
     ),
 );
