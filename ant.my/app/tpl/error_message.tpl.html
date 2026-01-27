@@ -1,0 +1,27 @@
+{extends file="layout.tpl.html"}
+{block name="error_message"}
+<div class="bg-danger-subtle">
+    Вы не аторизированы<<hr>
+        Вы не аторизированы<<hr>
+            Вы не аторизированы<<hr>
+</div>
+{/block}
+{block name="HEADER"}
+{include file="layout_offcanvas.tpl.html"}
+<header class="border-bottom" data-bs-theme="dark">
+    {include file="layout_header.tpl.html"}
+</header><!-- /header -->
+{/block}
+{block name="ASIDE"}
+<aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
+</aside>
+{/block}
+{block name="MAIN"}
+<main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
+</main>
+{/block}
+{block name="FOOTER"}
+<footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
+    {include file="layout_footer.tpl.html"}
+</footer>
+{/block}

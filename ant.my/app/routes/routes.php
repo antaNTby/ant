@@ -28,7 +28,7 @@ Flight::route( '*', function () {
             $rednderData
         );
     } else {
-        Flight::render( 'home.tpl.html', [
+        Flight::render( 'error_message.tpl.html', [
             'session' => [
                 $session->get( 'login' ),
                 $session->get( 'is_admin' ),
@@ -71,7 +71,7 @@ Flight::route( 'GET /logout', function () {
 
     ];
 
-    Flight::render( 'home.tpl.html',
+    Flight::render( 'error_message.tpl.html',
         $rednderData
     );
 } );
