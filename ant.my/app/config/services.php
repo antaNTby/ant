@@ -48,6 +48,22 @@ $app->register( 'session', \flight\Session::class, [
 ] );
 
 $session = Flight::session();
+Flight::set( 'session', $session );
+
+// then you probably have something that tells you who the current role is of the person
+// likely you have something where you pull the current role
+// from a session variable which defines this
+// after someone logs in, otherwise they will have a 'guest' or 'public' role.
+$current_role = 'admin';
+
+// setup permissions
+$permission = new \flight\Permission( $current_role );
+$permission->defineRule( 'loggedIn', function ( $current_role ) {
+    return $current_role !== 'guest';
+} );
+
+// You'll probably want to persist this object in Flight somewhere
+Flight::set( 'permission', $permission );
 
 // $session->set( 'credit_card6', '4111-2222-1111-1111' );
 // $session->set( 'credit_card', '4111-1111-1111-1111' );

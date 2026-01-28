@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22d54ce954073facd3ab1b5c09e07ba4",
+    "content-hash": "8563a02588daedca19cdd4fc8eef35ce",
     "packages": [
         {
             "name": "flightphp/core",
@@ -80,6 +80,64 @@
                 "source": "https://github.com/flightphp/core/tree/v3.18.0"
             },
             "time": "2026-01-15T01:44:32+00:00"
+        },
+        {
+            "name": "flightphp/permissions",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flightphp/permissions.git",
+                "reference": "692aa45078e2850225a9a42087178d581fe06241"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flightphp/permissions/zipball/692aa45078e2850225a9a42087178d581fe06241",
+                "reference": "692aa45078e2850225a9a42087178d581fe06241",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "flightphp/cache": "^1.1",
+                "flightphp/core": "^3.10",
+                "phpunit/phpunit": "^9.0",
+                "rregeer/phpunit-coverage-check": "^0.3.1",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "suggest": {
+                "flightphp/cache": "Required for caching permissions"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "flight\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "n0nag0n",
+                    "email": "n0nag0n@sky-9.com",
+                    "role": "Owner"
+                }
+            ],
+            "description": "Library for managing permissions in Flight Applications",
+            "homepage": "https://docs.flightphp.com",
+            "keywords": [
+                "Authentication",
+                "Simple",
+                "lite",
+                "permissions"
+            ],
+            "support": {
+                "issues": "https://github.com/flightphp/permissions/issues",
+                "source": "https://github.com/flightphp/permissions/tree/v0.2.0"
+            },
+            "time": "2025-12-29T14:52:33+00:00"
         },
         {
             "name": "flightphp/session",

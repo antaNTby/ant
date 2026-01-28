@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'antantby/ant.my',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '41afc5a31bd57badd58aa6efa195c1d32b28b256',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'antantby/ant.my' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '41afc5a31bd57badd58aa6efa195c1d32b28b256',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -25,6 +25,15 @@
             'reference' => '88d7032928c09b98e65ccd87b7f8a341a40cc3d2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../flightphp/core',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'flightphp/permissions' => array(
+            'pretty_version' => 'v0.2.0',
+            'version' => '0.2.0.0',
+            'reference' => '692aa45078e2850225a9a42087178d581fe06241',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../flightphp/permissions',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

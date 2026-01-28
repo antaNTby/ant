@@ -48,6 +48,7 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'flight\\' => 
         array (
             0 => __DIR__ . '/..' . '/flightphp/session/src',
+            1 => __DIR__ . '/..' . '/flightphp/permissions/src',
         ),
         'Tracy\\' => 
         array (
