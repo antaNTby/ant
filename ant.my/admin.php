@@ -92,9 +92,6 @@ Flight::after( 'start', function () {
 } );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
-$session = Flight::get( 'session' );
-$session->set( 'login', 'admin' );
-$session->set( 'is_admin', 'true' );
 
 // ERROR;
 // At this point, your app should have all the instructions it needs and it'll
