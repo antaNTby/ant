@@ -37,7 +37,7 @@ use Tracy\Debugger;
 
 $app->register( 'session', \flight\Session::class, [
     [
-        'prefix'         => 'ant_flight_session_',                      // Prefix for the session cookie
+        'prefix'         => 'flight_',                                  // Prefix for the session cookie
         'save_path'      => __APP__ . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
                                                                         // ...other options...
         'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',     // Enable encryption with a secure key
@@ -95,8 +95,8 @@ Flight::set( 'permission', $permission );
  *
  * For more options, see https://tracy.nette.org/en/configuration
  **********************************************/
-Debugger::enable(); // Auto-detects environment
-// Debugger::enable(Debugger::Development); // Explicitly set environment
+// Debugger::enable(); // Auto-detects environment
+Debugger::enable( Debugger::Development ); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
 // Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
 Debugger::$logDirectory = __LOGS__; // Log directory
@@ -117,7 +117,12 @@ Debugger::$showLocation = Tracy\Dumper::LOCATION_SOURCE; // Sets only the displa
 ######
 ######
 if ( Debugger::$showBar === true && php_sapi_name() !== 'cli' ) {
-    ( new TracyExtensionLoader( $app ) ); // Load FlightPHP Tracy extensions
+
+    Flight::set( 'flight.content_length', false );
+    new TracyExtensionLoader( Flight::app(), ['session_data' => Flight::session()->getAll()] );
+
+    // ( new TracyExtensionLoader( $app ) ); // Load FlightPHP Tracy extensions
+
 }
 
 /*

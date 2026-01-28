@@ -40,9 +40,10 @@ Flight::route( '*', function () {
 } );
 
 Flight::route( 'GET /login', function () {
-    $session = Flight::session();
+    // $session = Flight::session();
+    $session = Flight::get( 'session' );
     $session->set( 'login', 'admin' );
-    $session->set( 'is_admin', true );
+    $session->set( 'is_admin', 'true' );
     $session->set( 'paswordhash', password_hash( 'paSS$$word', PASSWORD_DEFAULT ) );
     $rednderData = [
 
