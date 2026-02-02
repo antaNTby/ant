@@ -5,6 +5,7 @@ use flight\debug\database\PdoQueryCapture;
 use flight\debug\tracy\TracyExtensionLoader;
 use flight\Engine;
 use flight\Session;
+use Pdo\Mysql;
 use Tracy\Debugger;
 
 /*********************************************
@@ -183,17 +184,34 @@ $dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['datab
 // $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
 // $app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null ]);
 
+## php 8.4
+// Flight::register( 'db', \flight\database\SimplePdo::class, [
+
+//     "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}", $myConfig['database']['user'] ?? null, $myConfig['database']['password'] ?? null,
+// /**/
+//     [
+//         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8mb4\'',
+//         PDO::ATTR_EMULATE_PREPARES   => false,
+//         PDO::ATTR_STRINGIFY_FETCHES  => false,
+//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//     ],
+// /**/
+
+// ] );
+
+## php 8.5
 Flight::register( 'db', \flight\database\SimplePdo::class, [
 
-    "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}", $myConfig['database']['user'] ?? null, $myConfig['database']['password'] ?? null,
-/**/
+    "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}",
+    $myConfig['database']['user'] ?? null,
+    $myConfig['database']['password'] ?? null,
+
     [
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8mb4\'',
+        Mysql::ATTR_INIT_COMMAND     => "SET NAMES 'utf8mb4'",
         PDO::ATTR_EMULATE_PREPARES   => false,
         PDO::ATTR_STRINGIFY_FETCHES  => false,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ],
-/**/
 
 ] );
 
