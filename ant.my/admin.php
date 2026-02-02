@@ -98,23 +98,23 @@ Flight::set( 'LOG_REQUEST_TIME', true );
 
 // index.php или bootstrap-файл
 
-Flight::before( 'start', function () {
-    $session = Flight::session();
-    // $session->start();
+// Flight::before( 'start', function () {
+//     $session = Flight::session();
+//     // $session->start();
 
-    // Проверяем время создания
-    $flag   = $session->get( 'created' );
-    $sessid = $session->id();
-    bdump( $flag, $sessid );
+//     // Проверяем время создания
+//     $flag   = $session->get( 'created' );
+//     $sessid = $session->id();
+//     bdump( $flag, $sessid );
 
-    // dd( $session );
-    if ( ( !$flag ) || ( time() - $session->get( 'created' ) > 9 ) ) {
-        // Сессия старше 2 часов → удаляем
-        // $session->destroy( $sessid );
-        // $session->clear();
-        Flight::redirect( '/logout' );
-    }
-} );
+//     // dd( $session );
+//     if ( ( !$flag ) || ( time() - $session->get( 'created' ) > 9 ) ) {
+//         // Сессия старше 2 часов → удаляем
+//         // $session->destroy( $sessid );
+//         // $session->clear();
+//         Flight::redirect( '/logout' );
+//     }
+// } );
 
 // ERROR;
 // At this point, your app should have all the instructions it needs and it'll
