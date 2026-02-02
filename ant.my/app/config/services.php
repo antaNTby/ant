@@ -184,7 +184,7 @@ $dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['datab
 // $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
 // $app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null ]);
 
-## php 8.4
+## PHP 8.4
 // Flight::register( 'db', \flight\database\SimplePdo::class, [
 
 //     "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}", $myConfig['database']['user'] ?? null, $myConfig['database']['password'] ?? null,
@@ -199,18 +199,32 @@ $dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['datab
 
 // ] );
 
-## php 8.5
+## PHP 8.5
+##  ✅ Используется use Pdo\Mysql; для доступа к новым константам.
+##  ✅ Mysql::ATTR_INIT_COMMAND заменяет устаревший PDO::MYSQL_ATTR_INIT_COMMAND.
+##  ✅ В DSN сразу указан charset=utf8mb4, что делает установку кодировки надёжной.
+##  ✅ Добавлены полезные настройки (ERRMODE_EXCEPTION, FETCH_ASSOC, отключение эмуляции).
+##  ✅ Конфигурация полностью избавлена от deprecated‑предупреждений.
+##  Такой шаблон можно использовать как основу для всех будущих подключений в Flight.
+
 Flight::register( 'db', \flight\database\SimplePdo::class, [
 
-    "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']}",
+    // DSN с явным указанием charset
+    "mysql:host={$myConfig['database']['host']};dbname={$myConfig['database']['dbname']};charset=utf8mb4",
     $myConfig['database']['user'] ?? null,
     $myConfig['database']['password'] ?? null,
 
     [
-        Mysql::ATTR_INIT_COMMAND     => "SET NAMES 'utf8mb4'",
-        PDO::ATTR_EMULATE_PREPARES   => false,
-        PDO::ATTR_STRINGIFY_FETCHES  => false,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // Новые константы из Pdo\Mysql
+        Mysql::ATTR_INIT_COMMAND       => "SET NAMES 'utf8mb4'",
+        Mysql::ATTR_USE_BUFFERED_QUERY => true,
+        Mysql::ATTR_LOCAL_INFILE       => false,
+
+        // Общие PDO‑атрибуты
+        PDO::ATTR_ERRMODE              => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_EMULATE_PREPARES     => false,
+        PDO::ATTR_STRINGIFY_FETCHES    => false,
+        PDO::ATTR_DEFAULT_FETCH_MODE   => PDO::FETCH_ASSOC,
     ],
 
 ] );
