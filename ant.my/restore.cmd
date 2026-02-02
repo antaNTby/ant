@@ -1,19 +1,23 @@
 @echo off
-rem PS C:\git\ant\ant.my> .\restore_db.cmd 2026-02-02_103750  -- запускать с именем папки!!!
+setlocal enabledelayedexpansion
 
+:: === ЗАПУСК ===
+:: PowerShell:  cd "C:\git\ant\ant.my" ; .\restore_db.cmd 2026-02-02_103750
+:: CMD:        cd C:\git\ant\ant.my && restore_db.cmd 2026-02-02_103750
+
+:: === НАСТРОЙКИ ===
 set MYSQL_BIN=C:\OSPanel\modules\MySQL-8.4\bin
 set MYSQL_USER=antaNT64
 set MYSQL_PASSWORD=root
 set MYSQL_HOST=mysql-8.4
 set MYSQL_PORT=3306
-set BASE_BACKUP_DIR=c:\git\.local_databases
+set BASE_BACKUP_DIR=C:\git\.local_databases
 
-
-
+:: === ПРОВЕРКА ПАРАМЕТРА ===
 if "%~1"=="" (
     echo Error:   Backup folder name parameter is required
     echo Usage:   %0 [backup_folder_name]
-    echo Example: %0 20250622_1729
+    echo Example: %0 2026-02-02_103750
     goto end
 )
 
@@ -27,28 +31,34 @@ if not exist "%FULL_BACKUP_PATH%" (
 
 echo Restoring from %FULL_BACKUP_PATH%
 
+:: === АВТОРИЗАЦИЯ ===
 if "%MYSQL_PASSWORD%"=="" (
     set AUTH_OPTIONS=-u%MYSQL_USER%
 ) else (
     set AUTH_OPTIONS=-u%MYSQL_USER% -p%MYSQL_PASSWORD%
 )
 
+:: === ЦИКЛ ПО ФАЙЛАМ ===
 for %%f in ("%FULL_BACKUP_PATH%\*.sql") do (
     for /f "tokens=2* delims=_" %%a in ("%%~nf") do (
         set DB_NAME=%%b
         echo Restoring database: %%b
-        
-        mysql %AUTH_OPTIONS% -h%MYSQL_HOST% -P%MYSQL_PORT% -e "CREATE DATABASE IF NOT EXISTS %%b"
-        
-        mysql %AUTH_OPTIONS% -h%MYSQL_HOST% -P%MYSQL_PORT% %%b < "%%f"
-        
+
+        :: Создать базу, если её нет
+        call "%MYSQL_BIN%\mysql.exe" %AUTH_OPTIONS% -h%MYSQL_HOST% -P%MYSQL_PORT% -e "CREATE DATABASE IF NOT EXISTS %%b"
+
+        :: Залить дамп
+        call "%MYSQL_BIN%\mysql.exe" %AUTH_OPTIONS% -h%MYSQL_HOST% -P%MYSQL_PORT% %%b < "%%f"
+
         if errorlevel 1 (
-            echo [ERROR]             Failed to restore %%b
+            echo [ERROR]   Failed to restore %%b
         ) else (
-            echo [SUCCESS]           Restored %%b
+            echo [SUCCESS] Restored %%b
         )
     )
 )
 
 echo Restoration complete from %FULL_BACKUP_PATH%
 :end
+
+endlocal
