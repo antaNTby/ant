@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru-BY">
 {* layout.tpl — базовый шаблон *}
-
+{block name="HEAD"}
 <head>
     {include file="head.tpl.html"}
 </head>
+{/block}
 {* *}
 
+{block name="BODY"}
 <body>
     {* Навигация *}
     {block name="HEADER"}
@@ -16,8 +18,7 @@
     </header><!-- /header -->
     {/block}
     {* *}
-{block name="error_message"}
-{/block}
+
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
         <div class="row">
@@ -33,8 +34,17 @@
             {/block}
         </div>
     </div>
+
+
     {* *}
     {* Footer *}
+{block name="error_message"}
+<div class="bg-danger-subtle">
+
+</div>
+{/block}
+
+
     {block name="FOOTER"}
     <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
         {include file="layout_footer.tpl.html"}
@@ -46,6 +56,7 @@
     {* Дополнительные скрипты *}
 
 </body>
+{/block}
 {* *}
 
 </html>
