@@ -1,0 +1,66 @@
+{extends file="layout.tpl.html"}
+{* *}
+{* *}
+{block name="HEAD"}
+<head>
+    {include file="head.tpl.html"}
+</head>
+{/block}
+{*  *}
+{*  *}
+{block name="BODY"}
+<body>
+{block name="HEADER"}
+{include file="layout_offcanvas.tpl.html"}
+<header class="border-bottom" data-bs-theme="dark">
+    {include file="layout_header.tpl.html"}
+</header><!-- /header -->
+{/block}
+{*  *}
+{*  *}
+
+    {* Навигация *}
+    {block name="HEADER"}
+    {include file="layout_offcanvas.tpl.html"}
+    <header class="border-bottom" data-bs-theme="dark">
+        {include file="layout_header.tpl.html"}
+    </header><!-- /header -->
+    {/block}
+    {* *}
+
+    {* Основной контейнер *}
+    <div class="container-fluid" style="max-width: 1900px;">
+        <div class="row">
+            {block name="ASIDE"}
+            <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
+                {include file="layout_aside.tpl.html"}
+            </aside>
+            {/block}
+            {block name="MAIN"}
+            <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
+                {include file="layout_main.tpl.html"}
+            </main>
+            {/block}
+        </div>
+    </div>
+
+
+    {* *}
+    {* Footer *}
+{block name="error_message"}
+<div class="bg-danger-subtle">
+    Вы не аторизированы
+</div>
+{/block}
+
+
+    {block name="FOOTER"}
+    <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
+        {include file="layout_footer.tpl.html"}
+    </footer>
+    {/block}
+    {* *}
+
+
+</body>
+{/block}
