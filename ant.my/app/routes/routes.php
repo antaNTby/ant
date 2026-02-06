@@ -4,6 +4,7 @@ use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
 use flight\Session;
+use flight\util\Json;
 
 // Whip out the ol' router and we'll pass that to the routes file
 $router = $app->router();
