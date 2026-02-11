@@ -35,3 +35,21 @@ Flight::route( '*', function () {
     );
 
 } );
+
+// Страница логина
+Flight::route( 'GET /login', function () {
+    $session = Flight::session();
+    Flight::render( 'layout.tpl.html', [
+        'title'        => 'Авторизация',
+        'info_message' => 'error', // Получаем flash-сообщение
+    ] );
+} );
+
+// Страница логаута (если нужен шаблон)
+Flight::route( 'GET /logout', function () {
+    $session = Flight::session();
+    $session->clear();
+    Flight::render( 'layout.tpl.html', [
+        'title' => 'Выход из системы',
+    ] );
+} );

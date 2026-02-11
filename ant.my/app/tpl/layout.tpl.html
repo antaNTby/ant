@@ -7,12 +7,48 @@
 {* *}
 
 <body>
-{block name="BODY"}
         {block name="HEADER"}{/block}
+
+{block name="BODY"}
+    <h1>Вход в систему</h1>
+
+    {* Вывод Flash-сообщения об истечении сессии или ошибке *}
+    {if $info_message}
+        <div class="alert error">{$info_message}</div>
+    {/if}
+
+    <form method="POST" action="/login">
+        <div>
+            <label>Логин:</label><br>
+            <input type="text" name="username" required>
+        </div>
+        <br>
+        <div>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Войти</button>
+    </form>
+
+
+
         {block name="CONTAINER"}{/block}
         {block name="FOOTER"}{/block}
         {block name="JS"}{/block}
 {/block}
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 {* *}
 
