@@ -26,3 +26,16 @@ SET PASSWORD FOR 'antaNT64'@'%' = 'root';
 
 
 -- https://adminer.db/adminer-5.4.1.php?server=MySQL-8.4&username=antaNT64&db=nixby_UTF8
+
+-- для MySql-5.7
+-- создаём пользователя
+CREATE USER 'antaNT64'@'%' IDENTIFIED BY 'root';
+
+-- выдаём полный доступ ко всем базам
+GRANT ALL PRIVILEGES ON *.* TO 'antaNT64'@'%' WITH GRANT OPTION;
+
+-- применяем изменения
+FLUSH PRIVILEGES;
+
+-- изменить пароль (вариант для MySQL 5.7)
+SET PASSWORD FOR 'antaNT64'@'%' = PASSWORD('root');
