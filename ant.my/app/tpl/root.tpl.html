@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light" id="html-root">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,, viewport-fit=cover">
+    <title>{$title|escape}</title>
+    {*
+    <link rel="icon" href="/lib/favicon.ico"> *}
+    <link rel="apple-touch-icon" sizes="180x180" href="/lib/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/lib/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/lib/ico/favicon-16x16.png">
+    <link rel="manifest" href="/lib/ico/site.webmanifest">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=Source+Code+Pro&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <!-- Liberation Mono через CDNFonts -->
+    <link href="https://fonts.cdnfonts.com/css/liberation-mono" rel="stylesheet">
+    {* Bootstrap CSS *}
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    {* Bootstrap Icons CSS *}
+    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    {* Дополнительные стили *}
+    <link rel="stylesheet" href="/lib/admin.css">
+
+        <style>
+        .brandname-nix {
+            font-family:
+                Consolas,
+                monospace;
+            cursor: default;
+        }
+
+        .brandname-by {
+            font-family:
+                'Ubuntu Mono',
+                monospace;
+            cursor: default;
+        }
+
+        /*
+                * Sidebar
+                */
+        @media (min-width: 768px) {
+            .sidebar .offcanvas-lg {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 48px;
+            }
+
+            .navbar-search {
+                display: block;
+            }
+        }
+
+        .sidebar .nav-link {
+            font-size: .875rem;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link.active {
+            color: #2470dc;
+        }
+
+        .sidebar-heading {
+            font-size: .75rem;
+        }
+
+        /* * Sidebar */
+        /*.sidebar {
+                width: 40ex;
+                min-width: 40ex;
+                max-width: 40ex;
+                }*/
+        /* Стили для липкого сайдбара */
+        @media (min-width: 992px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: 80px;
+                /* Отступ с учетом высоты навигации */
+                align-self: start;
+            }
+        }
+
+        body {
+            transition: background-color 0.3s ease;
+        }
+        </style>
+</head>
+
+<body>
+    <!-- НАВИГАЦИЯ (NAVBAR) -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">MyBrand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
+                    <!-- Выпадающее меню -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Сервисы</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Дизайн</a></li>
+                            <li><a class="dropdown-item" href="#">Разработка</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Консалтинг</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Переключатель темной темы -->
+                <button class="btn btn-outline-secondary btn-sm" id="themeToggle">
+                    🌓 Сменить тему
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- MAIN CONTENT -->
+            <main class="col-lg-9">
+                <article class="card p-4 mb-4 shadow-sm">
+                    <header>
+                        <h1 class="display-5 fw-bold">Семантическая верстка в 2026</h1>
+                        <p class="text-secondary">Тут находится контент внутри тега <code>&lt;article&gt;</code></p>
+                    </header>
+                    <section class="mt-4">
+                        <h3>Зачем это нужно?</h3>
+                        <p>Использование Bootstrap вместе с семантическими тегами делает ваш код чистым, доступным для SEO и легким в поддержке.</p>
+                        <div style="height: 1000px; background: rgba(var(--bs-tertiary-bg-rgb), 1); border: 2px dashed #ccc; border-radius: 10px;" class="d-flex align-items-center justify-content-center mt-4">
+                            Здесь очень много текста для проверки скролла...
+                        </div>
+                    </section>
+                </article>
+            </main>
+            <!-- ASIDE (STICKY) -->
+            <aside class="col-lg-3">
+                <div class="sticky-sidebar card p-3 shadow-sm border-primary">
+                    <h5>Сайдбар</h5>
+                    <p class="small text-muted">Он зафиксирован при прокрутке.</p>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action">🔥 Тренды</a>
+                        <a href="#" class="list-group-item list-group-item-action">📁 Категории</a>
+                        <a href="#" class="list-group-item list-group-item-action">💬 Обсуждения</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="bg-body-tertiary py-5 mt-5 border-top">
+        <div class="container text-center">
+            <p class="text-secondary">&copy; 2026 Профессиональный макет на Bootstrap 5.3</p>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <!-- Скрипт переключения темы -->
+    <script>
+    const htmlElement = document.getElementById('html-root');
+    const themeButton = document.getElementById('themeToggle');
+
+    themeButton.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru-BY">
+{* root.tpl — базовый шаблон *}
+
+<head>
+    {block name="HEAD"}{/block}
+</head>
+{* *}
+{block name="BODY"}
+
+<body>
+    <header>
+        {block name="HEADER"}
+        {block name="HEADER_MENU"}{/block}
+        {block name="OFFCANVAS"}{/block}
+        {/block}
+    </header>
+    {block name="CONTAINER"}
+    {block name="ASIDE"}{/block}
+    {block name="MAIN"}{/block}
+    {/block}
+    <footer>
+        {block name="FOOTER"}{/block}
+    </footer>
+    {block name="SCRIPTS"}{/block}
+</body>
+{/block}
+{* *}
+
+</html>
