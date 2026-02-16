@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
     {* Дополнительные стили *}
     <link rel="stylesheet" href="/lib/admin.css">
-
-        <style>
+    <style>
         .brandname-nix {
             font-family:
                 Consolas,
@@ -120,6 +119,18 @@
     </nav>
     <div class="container mt-4">
         <div class="row">
+            <!-- ASIDE (STICKY) -->
+            <aside class="col-lg-3">
+                <div class="sticky-sidebar card p-3 shadow-sm border-primary">
+                    <h5>Сайдбар</h5>
+                    <p class="small text-muted">Он зафиксирован при прокрутке.</p>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action">🔥 Тренды</a>
+                        <a href="#" class="list-group-item list-group-item-action">📁 Категории</a>
+                        <a href="#" class="list-group-item list-group-item-action">💬 Обсуждения</a>
+                    </div>
+                </div>
+            </aside>
             <!-- MAIN CONTENT -->
             <main class="col-lg-9">
                 <article class="card p-4 mb-4 shadow-sm">
@@ -136,18 +147,6 @@
                     </section>
                 </article>
             </main>
-            <!-- ASIDE (STICKY) -->
-            <aside class="col-lg-3">
-                <div class="sticky-sidebar card p-3 shadow-sm border-primary">
-                    <h5>Сайдбар</h5>
-                    <p class="small text-muted">Он зафиксирован при прокрутке.</p>
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action">🔥 Тренды</a>
-                        <a href="#" class="list-group-item list-group-item-action">📁 Категории</a>
-                        <a href="#" class="list-group-item list-group-item-action">💬 Обсуждения</a>
-                    </div>
-                </div>
-            </aside>
         </div>
     </div>
     <!-- FOOTER -->

@@ -3,26 +3,34 @@
 {* root.tpl — базовый шаблон *}
 
 <head>
-    {block name="HEAD"}{/block}
+    {block name="LINKS"}{/block}
+    {block name="STYLES"}{/block}
 </head>
 {* *}
 {block name="BODY"}
-
 <body>
-    <header>
-        {block name="HEADER"}
-        {block name="HEADER_MENU"}{/block}
-        {block name="OFFCANVAS"}{/block}
-        {/block}
-    </header>
+    {block name="NAVBAR"}{/block}
+    {block name="OFFCANVAS"}{/block}
     {block name="CONTAINER"}
-    {block name="ASIDE"}{/block}
-    {block name="MAIN"}{/block}
-    {/block}
-    <footer>
-        {block name="FOOTER"}{/block}
-    </footer>
-    {block name="SCRIPTS"}{/block}
+		    <!-- ASIDE (STICKY) -->
+		    <aside class="col-lg-3">
+		        {block name="ASIDE"}{/block}
+		   </aside>
+               <!-- MAIN CONTENT -->
+            <main class="col-lg-9">
+        {block name="MAIN"}
+        <header>
+            {block name="HEADER"}
+            {/block}
+        </header>
+        MAIN
+
+        {/block}
+        {/block}
+        <footer>
+            {block name="FOOTER"}{/block}
+        </footer>
+        {block name="SCRIPTS"}{/block}
 </body>
 {/block}
 {* *}
