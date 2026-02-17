@@ -408,17 +408,17 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v5.7.0",
-            "version_normalized": "5.7.0.0",
+            "version": "v5.8.0",
+            "version_normalized": "5.8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "73da7e90f302175a570662fcb0ba41f57b7a92ab"
+                "reference": "78d259d3b971c59a0cd719c270cc5cbb740c36a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/73da7e90f302175a570662fcb0ba41f57b7a92ab",
-                "reference": "73da7e90f302175a570662fcb0ba41f57b7a92ab",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/78d259d3b971c59a0cd719c270cc5cbb740c36a7",
+                "reference": "78d259d3b971c59a0cd719c270cc5cbb740c36a7",
                 "shasum": ""
             },
             "require": {
@@ -429,7 +429,7 @@
                 "phpunit/phpunit": "^8.5 || ^7.5",
                 "smarty/smarty-lexer": "^4.0.2"
             },
-            "time": "2025-11-19T21:36:38+00:00",
+            "time": "2026-02-15T14:27:15+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -475,7 +475,7 @@
             "support": {
                 "forum": "https://github.com/smarty-php/smarty/discussions",
                 "issues": "https://github.com/smarty-php/smarty/issues",
-                "source": "https://github.com/smarty-php/smarty/tree/v5.7.0"
+                "source": "https://github.com/smarty-php/smarty/tree/v5.8.0"
             },
             "funding": [
                 {
@@ -735,17 +735,17 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.11.0",
-            "version_normalized": "2.11.0.0",
+            "version": "v2.11.1",
+            "version_normalized": "2.11.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "eec57bcf2ff11d79f519a19da9d7ae1e2c63c42e"
+                "reference": "c4a03c921af532b74c63edd8bf3f68a99dec7e77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/eec57bcf2ff11d79f519a19da9d7ae1e2c63c42e",
-                "reference": "eec57bcf2ff11d79f519a19da9d7ae1e2c63c42e",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/c4a03c921af532b74c63edd8bf3f68a99dec7e77",
+                "reference": "c4a03c921af532b74c63edd8bf3f68a99dec7e77",
                 "shasum": ""
             },
             "require": {
@@ -761,12 +761,12 @@
                 "nette/di": "^3.0",
                 "nette/http": "^3.0",
                 "nette/mail": "^3.0 || ^4.0",
-                "nette/tester": "^2.2",
+                "nette/tester": "^2.6",
                 "nette/utils": "^3.0 || ^4.0",
-                "phpstan/phpstan-nette": "^2.0@stable",
+                "phpstan/phpstan": "^2.0@stable",
                 "psr/log": "^1.0 || ^2.0 || ^3.0"
             },
-            "time": "2025-10-31T00:12:50+00:00",
+            "time": "2026-02-08T02:51:45+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -810,7 +810,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/tracy/issues",
-                "source": "https://github.com/nette/tracy/tree/v2.11.0"
+                "source": "https://github.com/nette/tracy/tree/v2.11.1"
             },
             "install-path": "../tracy/tracy"
         },

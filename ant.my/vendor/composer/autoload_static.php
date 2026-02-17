@@ -16,65 +16,65 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixLengthsPsr4 = array (
-        'f' => 
+        'f' =>
         array (
             'flight\\' => 7,
         ),
-        'T' => 
+        'T' =>
         array (
             'Tracy\\' => 6,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Smarty\\' => 7,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
         ),
-        'M' => 
+        'M' =>
         array (
             'Monolog\\' => 8,
         ),
-        'A' => 
+        'A' =>
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'flight\\' => 
+        'flight\\' =>
         array (
             0 => __DIR__ . '/..' . '/flightphp/session/src',
             1 => __DIR__ . '/..' . '/flightphp/permissions/src',
         ),
-        'Tracy\\' => 
+        'Tracy\\' =>
         array (
             0 => __DIR__ . '/..' . '/tracy/tracy/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
+        'Symfony\\Component\\VarDumper\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Smarty\\' => 
+        'Smarty\\' =>
         array (
             0 => __DIR__ . '/..' . '/smarty/smarty/src',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Monolog\\' => 
+        'Monolog\\' =>
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'App\\' => 
+        'App\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
