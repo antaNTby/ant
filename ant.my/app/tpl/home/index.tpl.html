@@ -99,10 +99,10 @@
 <body>
     <!-- НАВИГАЦИЯ (NAVBAR) -->
     {block HEADNAV_BLOCK}
-    <nav class="sticky-top-1 user-select-none navbar navbar-expand-lg bg-body-tertiary border-bottom ">
+    <nav class="sticky-top-1 user-select-none navbar navbar-expand-lg bg-body-tertiary border-bottom">
         <div class="container-fluid" style="max-width: 1900px;">
             {* <a class="navbar-brand fw-bold" href="#">MyBrand</a> *}
-            <span class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-white">
+            <span class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-white" id="spanNavbarBrand">
                 {include file="home/atoms/navbar-brand.tpl.html"}
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -194,11 +194,21 @@
     <script>
     const htmlElement = document.getElementById('html-root');
     const themeButton = document.getElementById('themeToggle');
+    const spanNavbarBrand = document.getElementById('spanNavbarBrand');
+    const buttonsNavbarBrand = document.querySelectorAll('[data-id="buttonNavbarBrand"]');
+
 
     themeButton.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             htmlElement.setAttribute('data-bs-theme', newTheme);
+            spanNavbarBrand.classList.toggle('text-white');
+            spanNavbarBrand.classList.toggle('text-primarytoggle');
+            // Переключаем каждую кнопку в цикле
+            buttonsNavbarBrand.forEach(btn => {
+                    btn.classList.toggle('btn-outline-dark-light');
+                    btn.classList.toggle('btn-outline-dark');
+            });
     });
     </script>
     {/block}

@@ -2,8 +2,12 @@
 	"folders":
 	[
 		{
-			"path": "."
-		}
+			"path": ".",
+            "folder_exclude_patterns":["trash"]
+		},
+        {
+            "path": "./trash"
+        }
 	],
 	    "settings":
     {
