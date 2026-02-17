@@ -10,6 +10,26 @@ use flight\util\Json;
 $router = $app->router();
 /**/
 
+Flight::route( '/admin/*', function () {
+    $session = Flight::session();
+
+    // dump( Flight::router() );
+    $rednderData = [
+
+        'app'       => Flight::app(),
+        'year'      => date( 'Y' ),
+        'title'     => SERVER_NAME . ' ' . date( 'Y' ) . '-' . date( 'M' ) . '-' . date( 'd' ) . ' ' . date( 'H' ) . ':' . date( 'm' ) . ':' . date( 'i' ),
+        'COPYRIGHT' => COPYRIGHT,
+        // 'BRANDNAME' => BRANDNAME,
+
+    ];
+
+    Flight::render( 'admin/index.tpl.html',
+        $rednderData
+    );
+
+} );
+
 Flight::route( '*', function () {
     $session = Flight::session();
 
