@@ -49,6 +49,7 @@ $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 
 $app = Flight::app();
 define( 'myConfig', $config );
+/*  */
 $smarty = Flight::view();
 $smarty->assign( 'myConfig', $myConfig );
 //🔹 Получаем логгер
@@ -61,7 +62,9 @@ if ( !$logger ) {
     throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
 }
 
+// Инициализация сессии Flight до любых роутов и вывода
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
+$session = Flight::session();
 
 require __ROUTES__ . DIRECTORY_SEPARATOR . 'routes.php';
 
