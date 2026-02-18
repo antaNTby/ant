@@ -11,7 +11,62 @@ import * as ui from '../js/userInterface.js';
 
 let sessionInterval = null; // Переменная внутри модуля, скрыта от global scope
 
+
+/**
+ * Функция пинга сервера для продления сессии
+ */
+async function pingServer() {
+        try {
+                const response = await fetch('/admin/ping');
+                const data = await response.json();
+                console.log('Сессия продлена на сервере:', data.time);
+                return true;
+        } catch (e) {
+                console.error('Ошибка пинга:', e);
+                return false;
+        }
+}
+
 export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
+        // Очищаем предыдущий таймер, если он был запущен
+        if(sessionInterval) clearInterval(sessionInterval);
+
+        const minutesLeft = +secondsLeft / 60;
+        console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
+
+        const initialSeconds = secondsLeft; // Запоминаем исходный таймаут
+
+        const tick = () => {
+                secondsLeft--;
+                if(secondsLeft <= 0) {
+                        clearInterval(sessionInterval);
+                        window.location.href = redirectUrl;
+                }
+        };
+
+        sessionInterval = setInterval(tick, 1000);
+
+        // Продление сессии при активности (throttle 30 сек)
+        let lastPing = Date.now();
+        const handleActivity = async () => {
+                const now = Date.now();
+                // Пингуем не чаще чем раз в 30 секунд, чтобы не спамить
+                if(now - lastPing > 30000) {
+                        const success = await pingServer();
+                        if(success) {
+                                secondsLeft = initialSeconds; // Сбрасываем локальный таймер
+                                lastPing = now;
+                        }
+                }
+        };
+
+        // Слушаем движения мыши и нажатия клавиш
+        window.addEventListener('mousemove', handleActivity);
+        window.addEventListener('keydown', handleActivity);
+}
+
+
+export function initSessionTimerOLD(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
         // Очищаем предыдущий таймер, если он был запущен
         if(sessionInterval) clearInterval(sessionInterval);
 
@@ -22,7 +77,7 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
                 window.location.href = redirectUrl;
                 return;
         }
-        let minutesLeft = +secondsLeft/60;
+        const minutesLeft = +secondsLeft / 60;
         console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
 
         sessionInterval = setInterval(() => {
