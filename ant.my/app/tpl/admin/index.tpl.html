@@ -10,6 +10,10 @@
 {* *}
 
 <body>
+
+<input type="hidden" id="current_sub">
+<input type="hidden" id="primary_key">
+
     <!-- /header -->
     {* Навигация *}
     {include file="admin/offcanvas.tpl.html"}
@@ -38,10 +42,29 @@
     {* Footer *}
     <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
         {include file="admin/footer.tpl.html"}
+        =={$session_timeout_seconds}==
     </footer>
     {* *}
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
-    {block name="scripts"}{/block}
+    {block name="scripts"}
+{* Подключаем основной файл как модуль (если он нужен для побочных эффектов) *}
+    <script type="module" src="/lib/admin.js"></script>
+    {/block}
+    {* Шаблон Smarty 5 *}
+
+
+
+{if isset($session_timeout_seconds)}
+    <script type="module">
+        // Импортируем именно нашу функцию из файла
+     {literal}import { initSessionTimer } from '/lib/admin.js';{/literal}
+        // Вызываем её
+        initSessionTimer({$session_timeout_seconds|default:1800});
+    </script>
+{/if}
+
+
+
 </body>

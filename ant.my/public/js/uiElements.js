@@ -39,9 +39,6 @@ export const ButtonsSaveRow = document.querySelectorAll(
 	'.smarty-control[data-action="SaveRow"]',
 );
 
-export const currentSub = document.querySelector('input#current_sub').value;
-export const primaryKey = document.querySelector('input#primary_key').value;
-
 export const ButtonsSaveAll = document.querySelectorAll(
 	`[data-action="SaveAll"]`,
 );

@@ -4,7 +4,8 @@
  **********************************************/
 
 // Set your timezone (e.g., 'America/New_York', 'UTC')
-date_default_timezone_set( 'UTC' );
+// date_default_timezone_set( 'UTC' );
+date_default_timezone_set( 'Europe/Minsk' );
 
 // Error reporting level (E_ALL recommended for development)
 error_reporting( E_ALL );
@@ -32,6 +33,9 @@ Flight::set( 'csp_nonce', $nonce );
 /**********************************************
  *           User Configuration               *
  **********************************************/
+
+Flight::set( 'LOG_REQUEST_TIME', true );
+Flight::set( 'SESSION_EXPIRE_TIMEOUT', 59 ); // seconds to expire session
 
 $myConfig = [
     /**************************************

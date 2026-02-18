@@ -1,6 +1,7 @@
 import { fetchData } from '../js/functions.js';
 import * as uiFunctions from '../js/uiFunctions.js';
-import { currentSub, primaryKey, ButtonsSaveAll } from '../js/uiElements.js';
+// import { currentSub, primaryKey, ButtonsSaveAll } from '../js/uiElements.js';
+import { ButtonsSaveAll } from '../js/uiElements.js';
 
 export const ActionButtonClick = (event) => {
     event.preventDefault();
