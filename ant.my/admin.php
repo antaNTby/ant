@@ -67,7 +67,6 @@ require __ROUTES__ . DIRECTORY_SEPARATOR . 'routes.php';
 
 Flight::before( 'start', function () {
     Flight::set( 'start_time', microtime( true ) );
-
 } );
 
 Flight::after( 'start', function () {
@@ -95,30 +94,6 @@ Flight::after( 'start', function () {
 } );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
-
-// index.php или bootstrap-файл
-
-// Flight::before( 'start', function () {
-//     $session = Flight::session();
-//     // $session->start();
-
-//     // Проверяем время создания
-//     $flag   = $session->get( 'created' );
-//     $sessid = $session->id();
-//     bdump( $flag, $sessid );
-
-//     // dd( $session );
-//     if ( ( !$flag ) || ( time() - $session->get( 'created' ) > 9 ) ) {
-//         // Сессия старше 2 часов → удаляем
-//         // $session->destroy( $sessid );
-//         // $session->clear();
-//         Flight::redirect( '/logout' );
-//     }
-// } );
-
-// ERROR;
-// At this point, your app should have all the instructions it needs and it'll
-// "start" processing everything. This is where the magic happens.
 
 /*
  .----..---.  .--.  .----.  .---.     .---. .-. .-.  .--.  .---.    .----. .-. .-..----. .----..-.  .-.

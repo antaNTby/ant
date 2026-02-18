@@ -2,54 +2,46 @@
 <html lang="ru" data-bs-theme="light" id="html-root">
 {* *}
 {* *}
+
 <head>
     {include file="admin/head.tpl.html"}
 </head>
+{* *}
+{* *}
 
-{*  *}
-{*  *}
 <body>
-
-<!-- /header -->
+    <!-- /header -->
     {* Навигация *}
     {include file="admin/offcanvas.tpl.html"}
     <header class="border-bottom" data-bs-theme="dark">
         {include file="admin/header.tpl.html"}
     </header><!-- /header -->
-
     {* *}
-
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
         <div class="row">
             <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="admin/aside.tpl.html"}
             </aside>
-
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
                 {include file="admin/main.tpl.html"}
+                {block ERROR_MESSAGE}
+                <div class="p-5 m-5 bg-danger-subtle">
+                    Вы не аторизированы
+                </div>
+                {$app|debug_print_var}
+                {/block}
             </main>
-
         </div>
     </div>
-
-
     {* *}
     {* Footer *}
-<div class="bg-danger-subtle">
-    Вы не аторизированы
-</div>
-
-
-
     <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
         {include file="admin/footer.tpl.html"}
     </footer>
-
     {* *}
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
     {block name="scripts"}{/block}
-
 </body>
