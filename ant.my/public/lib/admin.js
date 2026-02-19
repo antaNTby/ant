@@ -11,58 +11,63 @@ import * as ui from '../js/userInterface.js';
 
 let sessionInterval = null;
 
+// Функция для реального пинга сервера
+async function pingServer() {
+    try {
+        const response = await fetch('/api/admin/ping');
+        const data = await response.json();
+        console.log('Сервер подтвердил продление:', data.time);
+        return true;
+    } catch (e) {
+        console.error('Ошибка пинга:', e);
+        return false;
+    }
+}
+
 export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
     if(sessionInterval) clearInterval(sessionInterval);
-
-    if(!secondsLeft || secondsLeft <= 0) {
-        window.location.href = redirectUrl;
-        return;
-    }
+    if(!secondsLeft || secondsLeft <= 0) { window.location.href = redirectUrl; return; }
 
     const initialSeconds = +secondsLeft;
     let currentSeconds = initialSeconds;
     const events = ['keydown', 'mousemove', 'touchstart', 'scroll'];
-    let isListenersActive = false; // Флаг, чтобы не вешать слушатели многократно
+    let isListenersActive = false;
 
-    console.log('Таймер запущен на ' + initialSeconds + ' сек.');
+    const resetTimer = async () => {
+        // Сначала пробуем продлить сессию на сервере
+        const success = await pingServer();
 
-    const resetTimer = () => {
-        console.log('Активность зафиксирована! Таймер продлен.');
-        currentSeconds = initialSeconds;
+        if (success) {
+            console.log('Активность! Сессия продлена на сервере и в браузере.');
+            currentSeconds = initialSeconds;
 
-        // После сброса удаляем слушатели, пока время снова не упадет до 60 сек
-        events.forEach(event => window.removeEventListener(event, resetTimer));
-        isListenersActive = false;
+            // Снимаем слушатели, пока время снова не упадет до 60 сек
+            events.forEach(event => window.removeEventListener(event, resetTimer));
+            isListenersActive = false;
+        }
     };
 
     sessionInterval = setInterval(() => {
         currentSeconds--;
 
-        // 1. Если осталось 60 сек и слушатели еще не включены — включаем их
+        // Включаем слежку только в последнюю минуту
         if (currentSeconds <= 60 && !isListenersActive) {
-            console.log('Внимание: осталась 1 минута. Начните активность для продления.');
+            console.log('Осталась 1 минута. Нажмите любую клавишу для продления.');
             events.forEach(event => {
                 window.addEventListener(event, resetTimer, { passive: true });
             });
             isListenersActive = true;
         }
 
-        // Логирование (каждые 10 сек в последнюю минуту)
-        if (currentSeconds <= 60 && currentSeconds % 10 === 0) {
-            console.log(`До выхода: ${currentSeconds} сек.`);
-        }
-
-        // 2. Время вышло
         if (currentSeconds <= 0) {
             clearInterval(sessionInterval);
-            if (isListenersActive) {
-                events.forEach(event => window.removeEventListener(event, resetTimer));
-            }
+            events.forEach(event => window.removeEventListener(event, resetTimer));
             alert('Время вашей сессии истекло.');
             window.location.href = redirectUrl;
         }
     }, 1000);
 }
+
 
 
 
