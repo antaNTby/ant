@@ -17,34 +17,34 @@ let sessionInterval = null; // Переменная внутри модуля, �
  */
 
 async function pingServer() {
-    try {
-        const response = await fetch('api/admin/ping');
+        try {
+                const response = await fetch('api/admin/ping');
 
-        // Если сервер ответил редиректом или ошибкой
-        if (!response.ok || response.redirected) {
-             window.location.href = '/login?error=Session+Expired';
-             return false;
+                // Если сервер ответил редиректом или ошибкой
+                if(!response.ok || response.redirected) {
+                        window.location.href = '/login?error=Session+Expired';
+                        return false;
+                }
+
+                const contentType = response.headers.get("content-type");
+                if(!contentType || !contentType.includes("application/json")) {
+                        // Пришел HTML (страница логина) вместо JSON
+                        window.location.href = '/login?error=Session+Expired';
+                        return false;
+                }
+
+                const data = await response.json();
+                console.log('Сессия продлена:', data.time);
+                return true;
+        } catch (e) {
+                console.error('Критическая ошибка пинга:', e);
+                // Не делаем редирект сразу, может просто инет моргнул
+                return false;
         }
-
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-            // Пришел HTML (страница логина) вместо JSON
-            window.location.href = '/login?error=Session+Expired';
-            return false;
-        }
-
-        const data = await response.json();
-        console.log('Сессия продлена:', data.time);
-        return true;
-    } catch (e) {
-        console.error('Критическая ошибка пинга:', e);
-        // Не делаем редирект сразу, может просто инет моргнул
-        return false;
-    }
 }
 
 
-export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
+export function initSessionTimerWithPing(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
         // Очищаем предыдущий таймер, если он был запущен
         if(sessionInterval) clearInterval(sessionInterval);
 
@@ -68,7 +68,7 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
         const handleActivity = async () => {
                 const now = Date.now();
                 // Пингуем не чаще чем раз в 600 секунд, чтобы не спамить
-                if(now - lastPing > 60) {
+                if(now - lastPing > 2 * 24 * 60 * 60) {
                         const success = await pingServer();
                         if(success) {
                                 secondsLeft = initialSeconds; // Сбрасываем локальный таймер
@@ -83,7 +83,7 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
 }
 
 
-export function initSessionTimerOLD(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
+export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
         // Очищаем предыдущий таймер, если он был запущен
         if(sessionInterval) clearInterval(sessionInterval);
 
@@ -95,7 +95,8 @@ export function initSessionTimerOLD(secondsLeft, redirectUrl = '/login?error=Ses
                 return;
         }
         const minutesLeft = +secondsLeft / 60;
-        console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
+        // console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
+        console.log('Таймер запущен на ' + secondsLeft + ' сек. Редирект на: ' + redirectUrl);
 
         sessionInterval = setInterval(() => {
                 secondsLeft--;
@@ -110,6 +111,8 @@ export function initSessionTimerOLD(secondsLeft, redirectUrl = '/login?error=Ses
                         window.location.href = redirectUrl;
                 }
         }, 1000);
+
+
 }
 
 
