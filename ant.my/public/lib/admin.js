@@ -47,22 +47,29 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
         const events = ['keydown', 'mousemove', 'touchstart', 'scroll'];
         let isListenersActive = false;
 
+        let isPinging = false; // Флаг для предотвращения множественных запросов
+
         // Функция, которая сбросит таймер при активности
         const resetTimer = async () => {
+                // Если запрос уже идет, ничего не делаем
+                if (isPinging) return;
+
+                isPinging = true; // Ставим замок
                 const success = await pingServer();
 
                 if(success) {
                         console.log('Сессия продлена успешно.');
                         currentSeconds = initialSeconds;
 
-                        // Прячем уведомление
                         if(bsToast) bsToast.hide();
 
-                        // Удаляем слушатели до тех пор, пока время снова не упадет до 60 сек
                         events.forEach(event => window.removeEventListener(event, resetTimer));
                         isListenersActive = false;
                 }
+
+                isPinging = false; // Снимаем замок
         };
+
 
         sessionInterval = setInterval(() => {
                 currentSeconds--;
