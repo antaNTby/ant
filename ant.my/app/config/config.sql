@@ -45,6 +45,7 @@ SET PASSWORD FOR 'antaNT64'@'%' = PASSWORD('root');
 -- Вот SQL-запрос для создания таблицы users. Я добавил поле role с типом ENUM (перечисление) и значением по умолчанию user, чтобы логика в PHP работала корректно.
 -- 1. Создание таблицы
 -- sql
+CREATE DATABASE newdb;
 CREATE TABLE `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `username` VARCHAR(50) NOT NULL UNIQUE,
