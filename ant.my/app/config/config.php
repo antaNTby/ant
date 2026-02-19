@@ -36,7 +36,7 @@ Flight::set( 'csp_nonce', $nonce );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 // Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
-Flight::set( 'SESSION_EXPIRE_TIMEOUT', 10 ); // seconds to expire session
+Flight::set( 'SESSION_EXPIRE_TIMEOUT', 2 * 60 * 60 / 360 * 3 + 8 ); // seconds to expire session  - 2 часа
 
 $myConfig = [
     /**************************************

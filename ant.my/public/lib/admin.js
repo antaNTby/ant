@@ -9,110 +9,59 @@ import * as ui from '../js/userInterface.js';
  * @param {string} redirectUrl - куда отправить пользователя
  */
 
-let sessionInterval = null; // Переменная внутри модуля, скрыта от global scope
-
-
-/**
- * Функция пинга сервера для продления сессии
- */
-
-async function pingServer() {
-        try {
-                const response = await fetch('api/admin/ping');
-
-                // Если сервер ответил редиректом или ошибкой
-                if(!response.ok || response.redirected) {
-                        window.location.href = '/login?error=Session+Expired';
-                        return false;
-                }
-
-                const contentType = response.headers.get("content-type");
-                if(!contentType || !contentType.includes("application/json")) {
-                        // Пришел HTML (страница логина) вместо JSON
-                        window.location.href = '/login?error=Session+Expired';
-                        return false;
-                }
-
-                const data = await response.json();
-                console.log('Сессия продлена:', data.time);
-                return true;
-        } catch (e) {
-                console.error('Критическая ошибка пинга:', e);
-                // Не делаем редирект сразу, может просто инет моргнул
-                return false;
-        }
-}
-
-
-export function initSessionTimerWithPing(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
-        // Очищаем предыдущий таймер, если он был запущен
-        if(sessionInterval) clearInterval(sessionInterval);
-
-        const minutesLeft = +secondsLeft / 60;
-        console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
-
-        const initialSeconds = secondsLeft; // Запоминаем исходный таймаут
-
-        const tick = () => {
-                secondsLeft--;
-                if(secondsLeft <= 0) {
-                        clearInterval(sessionInterval);
-                        window.location.href = redirectUrl;
-                }
-        };
-
-        sessionInterval = setInterval(tick, 1000);
-
-        // Продление сессии при активности (throttle 30 сек)
-        let lastPing = Date.now();
-        const handleActivity = async () => {
-                const now = Date.now();
-                // Пингуем не чаще чем раз в 600 секунд, чтобы не спамить
-                if(now - lastPing > 2 * 24 * 60 * 60) {
-                        const success = await pingServer();
-                        if(success) {
-                                secondsLeft = initialSeconds; // Сбрасываем локальный таймер
-                                lastPing = now;
-                        }
-                }
-        };
-
-        // Слушаем движения мыши и нажатия клавиш
-        window.addEventListener('mousemove', handleActivity);
-        window.addEventListener('keydown', handleActivity);
-}
-
+let sessionInterval = null;
 
 export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
-        // Очищаем предыдущий таймер, если он был запущен
-        if(sessionInterval) clearInterval(sessionInterval);
+    if(sessionInterval) clearInterval(sessionInterval);
 
-        // Если по какой-то причине пришел 0 или пустая строка, не запускаем
-        if(!secondsLeft || secondsLeft <= 0) {
-                console.warn('Таймер не запущен: некорректное время');
-                // Опционально: сразу редирект, если сессия уже мертва
-                window.location.href = redirectUrl;
-                return;
+    if(!secondsLeft || secondsLeft <= 0) {
+        window.location.href = redirectUrl;
+        return;
+    }
+
+    const initialSeconds = +secondsLeft;
+    let currentSeconds = initialSeconds;
+    const events = ['keydown', 'mousemove', 'touchstart', 'scroll'];
+    let isListenersActive = false; // Флаг, чтобы не вешать слушатели многократно
+
+    console.log('Таймер запущен на ' + initialSeconds + ' сек.');
+
+    const resetTimer = () => {
+        console.log('Активность зафиксирована! Таймер продлен.');
+        currentSeconds = initialSeconds;
+
+        // После сброса удаляем слушатели, пока время снова не упадет до 60 сек
+        events.forEach(event => window.removeEventListener(event, resetTimer));
+        isListenersActive = false;
+    };
+
+    sessionInterval = setInterval(() => {
+        currentSeconds--;
+
+        // 1. Если осталось 60 сек и слушатели еще не включены — включаем их
+        if (currentSeconds <= 60 && !isListenersActive) {
+            console.log('Внимание: осталась 1 минута. Начните активность для продления.');
+            events.forEach(event => {
+                window.addEventListener(event, resetTimer, { passive: true });
+            });
+            isListenersActive = true;
         }
-        const minutesLeft = +secondsLeft / 60;
-        // console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
-        console.log('Таймер запущен на ' + secondsLeft + ' сек. Редирект на: ' + redirectUrl);
 
-        sessionInterval = setInterval(() => {
-                secondsLeft--;
+        // Логирование (каждые 10 сек в последнюю минуту)
+        if (currentSeconds <= 60 && currentSeconds % 10 === 0) {
+            console.log(`До выхода: ${currentSeconds} сек.`);
+        }
 
-                if(secondsLeft % 60 === 0 || secondsLeft <= 60) {
-                        console.log(`До выхода: ${secondsLeft} сек.`);
-                }
-
-                if(secondsLeft <= 0) {
-                        clearInterval(sessionInterval);
-                        alert('Время вашей сессии истекло.');
-                        window.location.href = redirectUrl;
-                }
-        }, 1000);
-
-
+        // 2. Время вышло
+        if (currentSeconds <= 0) {
+            clearInterval(sessionInterval);
+            if (isListenersActive) {
+                events.forEach(event => window.removeEventListener(event, resetTimer));
+            }
+            alert('Время вашей сессии истекло.');
+            window.location.href = redirectUrl;
+        }
+    }, 1000);
 }
 
 
