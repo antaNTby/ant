@@ -6,6 +6,8 @@ use flight\net\Router;
 use flight\Session;
 use flight\util\Json;
 
+// echo password_hash( '12345', PASSWORD_DEFAULT );
+
 // Whip out the ol' router and we'll pass that to the routes file
 $router = $app->router();
 
@@ -38,21 +40,30 @@ Flight::route( 'GET /login', function () {
     ] );
 } );
 
-// Обработка отправки формы
 Flight::route( 'POST /login', function () {
     $session  = Flight::session();
     $username = Flight::request()->data->username;
     $password = Flight::request()->data->password;
+    $db       = Flight::db();
 
-    // ВАЖНО: Замените на реальную проверку БД или конфига
-    if ( $username === 'admin' && $password === '12345' ) {
-        $session->set( 'is_admin', true );
-        $session->set( 'user_name', 'Administrator' );
+    // 1. Поиск пользователя
+    $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
+
+    if ( $user && password_verify( $password, $user['password_hash'] ) ) {
+
+        // 2. ОБНОВЛЯЕМ ВРЕМЯ ВХОДА В БД
+        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+
+        // 3. Устанавливаем сессию
+        $session->regenerate( true );
+        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+        $session->set( 'user_id', $user['id'] );
+        $session->set( 'user_name', $user['username'] );
+        $session->set( 'last_activity', time() );
 
         Flight::redirect( '/admin' );
     } else {
-        // Если данные неверны, возвращаем на логин с ошибкой
-        $session->set( 'flash_message', 'Неверный аккаунт :: POST /login' );
+        $session->set( 'flash_message', 'Неверные данные' );
         Flight::redirect( '/login?error=Access+Denied' );
     }
 } );
