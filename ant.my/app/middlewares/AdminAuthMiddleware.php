@@ -9,12 +9,12 @@ class AdminAuthMiddleware
     public function before()
     {
         $session = Flight::session();
-        $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 1800; // Тайм-аут в секундах (например, 60 минут)
+        $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 1800; // Тайм-аут в секундах (например, 30 минут)
         $now     = time();
 
         // 1. Проверка авторизации
         if ( $session->get( 'is_admin' ) !== true ) {
-            $session->set( 'flash_message', 'Неверный аккаунт :: middlewares' );
+            $session->set( 'flash_message', 'Неверный аккаунт' );
             Flight::redirect( '/login?error=Account+Missed' );
             exit;
         }
@@ -30,12 +30,23 @@ class AdminAuthMiddleware
             exit;
         }
 
+        /**
+         * АВТОМАТИЧЕСКАЯ РЕГЕНЕРАЦИЯ
+         * true — удаляет старый файл сессии на сервере
+         */
+        $session->regenerate( true );
+
         // 3. Обновляем метку времени текущей активностью
         $session->set( 'last_activity', $now );
         $session->set( 'time', date( 'Y-m-d H:i:s' ) );
-
+/*
         // ... внутри метода before() после обновления last_activity
         $timeLeft = $timeout - ( $now - $session->get( 'last_activity' ) );
         Flight::view()->assign( 'session_timeout_seconds', $timeLeft );
+*/
+        // Передаем остаток времени в Smarty для JS-таймера
+        $timeLeft = $timeout;
+        Flight::view()->assign( 'session_timeout_seconds', $timeLeft );
+
     }
 }

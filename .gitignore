@@ -6,3 +6,8 @@ ant.my/app/smarty
 ant.my/app/logs
 ant.my/app/sessions
 
+# .gitignore
+app/smarty/compile_dir/*
+app/smarty/cache_dir/*
+!app/smarty/compile_dir/.gitkeep
+!app/smarty/cache_dir/.gitkeep
