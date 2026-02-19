@@ -38,7 +38,7 @@ use Tracy\Debugger;
 
 $app->register( 'session', \flight\Session::class, [
     [
-        'prefix'         => 'flight_',                                  // Prefix for the session cookie
+        'prefix'         => 'admin_',                                   // Prefix for the session cookie
         'save_path'      => __APP__ . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
                                                                         // ...other options...
         'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',     // Enable encryption with a secure key

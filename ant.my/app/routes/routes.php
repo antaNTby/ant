@@ -15,22 +15,18 @@ $session = new \flight\Session();
 // Регистрируем middleware
 $authCheck = new \app\middlewares\AdminAuthMiddleware();
 
-/*// index.php или routes.php
-Flight::route( 'GET /admin/ping', function () {
-    $session = Flight::session();
-    $session->regenerate( true );
-    // Middleware 'AdminAuthMiddleware' уже сработал и обновил время
-    Flight::json( ['status' => 'success', 'time' => time()] );
-} )->addMiddleware( new \app\middlewares\AdminAuthMiddleware() );*/
+Flight::group( '/api', function () {
+    // Вариант v3 с использованием метода addMiddleware
+    Flight::route( 'GET /admin/ping', function () {
 
-// Вариант v3 с использованием метода addMiddleware
-Flight::route( 'GET /admin/ping', function () {
-    Flight::json( [
-        'status' => 'success',
-        'msg'    => 'Session regenerated and extended',
-        'time'   => date( 'H:i:s' ),
-    ] );
-} )->addMiddleware( new \app\middlewares\AdminAuthMiddleware() );
+        Flight::json( [
+            'status' => 'success',
+            'msg'    => 'Session regenerated and extended',
+            'time'   => date( 'H:i:s' ),
+        ] );
+    } )->addMiddleware( new \app\middlewares\AdminAuthMiddleware() );
+    // Другие API роуты
+}, [new \app\middlewares\ApiMiddleware()] );
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {

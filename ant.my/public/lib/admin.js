@@ -15,17 +15,34 @@ let sessionInterval = null; // Переменная внутри модуля, �
 /**
  * Функция пинга сервера для продления сессии
  */
+
 async function pingServer() {
-        try {
-                const response = await fetch('/admin/ping');
-                const data = await response.json();
-                console.log('Сессия продлена на сервере:', data.time);
-                return true;
-        } catch (e) {
-                console.error('Ошибка пинга:', e);
-                return false;
+    try {
+        const response = await fetch('api/admin/ping');
+
+        // Если сервер ответил редиректом или ошибкой
+        if (!response.ok || response.redirected) {
+             window.location.href = '/login?error=Session+Expired';
+             return false;
         }
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            // Пришел HTML (страница логина) вместо JSON
+            window.location.href = '/login?error=Session+Expired';
+            return false;
+        }
+
+        const data = await response.json();
+        console.log('Сессия продлена:', data.time);
+        return true;
+    } catch (e) {
+        console.error('Критическая ошибка пинга:', e);
+        // Не делаем редирект сразу, может просто инет моргнул
+        return false;
+    }
 }
+
 
 export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Session+Expired') {
         // Очищаем предыдущий таймер, если он был запущен
@@ -50,8 +67,8 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
         let lastPing = Date.now();
         const handleActivity = async () => {
                 const now = Date.now();
-                // Пингуем не чаще чем раз в 30 секунд, чтобы не спамить
-                if(now - lastPing > 30000) {
+                // Пингуем не чаще чем раз в 600 секунд, чтобы не спамить
+                if(now - lastPing > 60) {
                         const success = await pingServer();
                         if(success) {
                                 secondsLeft = initialSeconds; // Сбрасываем локальный таймер

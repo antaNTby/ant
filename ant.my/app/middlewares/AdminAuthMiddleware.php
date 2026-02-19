@@ -9,7 +9,7 @@ class AdminAuthMiddleware
     public function before()
     {
         $session = Flight::session();
-        $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 1800; // Тайм-аут в секундах (например, 30 минут)
+        $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 2 * 60 * 60; // Тайм-аут в секундах (например, 30 минут)
         $now     = time();
 
         // 1. Проверка авторизации
@@ -34,7 +34,10 @@ class AdminAuthMiddleware
          * АВТОМАТИЧЕСКАЯ РЕГЕНЕРАЦИЯ
          * true — удаляет старый файл сессии на сервере
          */
-        $session->regenerate( true );
+// Регенерируем только если это НЕ AJAX запрос
+        if ( !Flight::request()->ajax ) {
+            $session->regenerate( true );
+        }
 
         // 3. Обновляем метку времени текущей активностью
         $session->set( 'last_activity', $now );
