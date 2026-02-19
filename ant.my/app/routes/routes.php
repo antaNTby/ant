@@ -13,17 +13,12 @@ $router = $app->router();
 $session = new \flight\Session();
 
 Flight::route( 'GET /api/admin/ping', function () {
-    // Отключаем Tracy только для этого запроса
-    if ( class_exists( '\Tracy\Debugger' ) ) {
-        \Tracy\Debugger::$showBar = false;
-    }
-
-    // Логика продления сессии (например, session_start и обновление времени)
+// Вся магия (продление сессии и отключение Tracy) уже произошла в Middleware
     Flight::json( [
         'status' => 'success',
         'time'   => date( 'H:i:s' ),
     ] );
-} );
+} )->addMiddleware( new \app\middlewares\AdminAuthMiddleware() );
 
 // Регистрируем middleware
 $authCheck = new \app\middlewares\AdminAuthMiddleware();

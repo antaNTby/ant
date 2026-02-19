@@ -3,11 +3,17 @@
 namespace app\middlewares;
 
 use Flight;
+use Tracy\Debugger;
 
 class AdminAuthMiddleware
 {
     public function before()
     {
+        // 0. Отключаем Tracy Debug Bar для API-запросов (пинга), чтобы не портить JSON В Middleware лучше проверять так (чтобы поймать любой вариант пути):
+        if ( strpos( Flight::request()->url, '/api/admin/ping' ) !== false && class_exists( '\Tracy\Debugger' ) ) {
+            \Tracy\Debugger::$showBar = false;
+        }
+
         $session = Flight::session();
         $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 2 * 60 * 60; // Тайм-аут в секундах (например, 30 минут)
         $now     = time();
@@ -34,7 +40,7 @@ class AdminAuthMiddleware
          * АВТОМАТИЧЕСКАЯ РЕГЕНЕРАЦИЯ
          * true — удаляет старый файл сессии на сервере
          */
-// Регенерируем только если это НЕ AJAX запрос
+        // Регенерируем только если это НЕ AJAX запрос
         if ( !Flight::request()->ajax ) {
             $session->regenerate( true );
         }
