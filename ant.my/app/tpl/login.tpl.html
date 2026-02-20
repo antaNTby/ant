@@ -11,7 +11,7 @@
     <!-- Liberation Mono через CDNFonts -->
     <link href="https://fonts.cdnfonts.com/css/liberation-mono" rel="stylesheet">
     <style>
-    body {
+        body {
         height: 100vh;
         display: flex;
         align-items: center;
@@ -44,14 +44,9 @@
 </head>
 
 <body>
-    <main class="form-signin text-center shadow-sm p-4 bg-body rounded border">
+    <main class="form-signin text-center shadow-lg p-4 bg-body rounded border">
         <form action="/login" method="POST">
-            <h1 class="h3 mb-3 fw-bold">Вход</h1>
-            <div class="mb-3">
-                <span class="brandname-nix">nix</span>
-                <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px">
-                <span class="brandname-by">by</span>
-            </div>
+            {* <h1 class="h3 mb-3 fw-bold">Вход</h1> *}
             {* Ошибка валидации *}
             {if !empty($error)}
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -62,12 +57,18 @@
             {* Flash-сообщение (например, "Сессия истекла") *}
             {assign var="flash" value=Flight::session()->get('flash_message')}
             {if $flash}
-            <div class="alert alert-info alert-dismissible fade show small" role="alert">
+            <span id="flash" class="form-text">
                 {$flash}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
-            </div>
+            </span>
             {assign var="tmp" value=Flight::session()->delete('flash_message')}
             {/if}
+            <hr>
+            <div class="my-3">
+                <span class="brandname-nix">nix</span>
+                <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px">
+                <span class="brandname-by">by</span>
+            </div>
+            <hr>
             <div class="form-floating mb-2">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Логин" required autocomplete="username">
                 <label for="floatingInput">Логин</label>
@@ -77,7 +78,9 @@
                 <label for="floatingPassword">Пароль</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти</button>
+            <hr>
             <p class="text-secondary small">antaNT64 &copy; {$year}</p>
+            <hr>
         </form>
     </main>
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
