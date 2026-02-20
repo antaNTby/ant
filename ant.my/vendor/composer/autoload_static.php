@@ -10,6 +10,8 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '4cdafd4a5191caf078235e7dd119fdaf' => __DIR__ . '/..' . '/flightphp/core/flight/autoload.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'd507e002f7fce7f0c6dbf1f22edcb902' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/functions.php',
         'c15d4a1253e33e055d05e547c61dcb71' => __DIR__ . '/..' . '/smarty/smarty/src/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
@@ -26,17 +28,28 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         ),
         'S' =>
         array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Smarty\\' => 7,
         ),
         'P' =>
         array (
             'Psr\\Log\\' => 8,
+            'PhpOption\\' => 10,
         ),
         'M' =>
         array (
             'Monolog\\' => 8,
+        ),
+        'G' =>
+        array (
+            'GrahamCampbell\\ResultType\\' => 26,
+        ),
+        'D' =>
+        array (
+            'Dotenv\\' => 7,
         ),
         'A' =>
         array (
@@ -54,9 +67,17 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/tracy/tracy/src',
         ),
+        'Symfony\\Polyfill\\Php80\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
         'Symfony\\Component\\VarDumper\\' =>
         array (
@@ -70,9 +91,21 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
+        'PhpOption\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
         'Monolog\\' =>
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'GrahamCampbell\\ResultType\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Dotenv\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'App\\' =>
         array (
@@ -81,7 +114,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $classMap = array (
+        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Tracy\\Bar' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Bar/Bar.php',
         'Tracy\\BlueScreen' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/BlueScreen/BlueScreen.php',
         'Tracy\\Bridges\\Nette\\Bridge' => __DIR__ . '/..' . '/tracy/tracy/src/Bridges/Nette/Bridge.php',
@@ -108,6 +144,8 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'Tracy\\OutputDebugger' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/OutputDebugger/OutputDebugger.php',
         'Tracy\\ProductionStrategy' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Debugger/ProductionStrategy.php',
         'Tracy\\SessionStorage' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/Session/SessionStorage.php',
+        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'flight\\debug\\database\\PdoQueryCapture' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCapture.php',
         'flight\\debug\\database\\PdoQueryCaptureStatement' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/database/PdoQueryCaptureStatement.php',
         'flight\\debug\\tracy\\DatabaseExtension' => __DIR__ . '/..' . '/flightphp/tracy-extensions/src/debug/tracy/DatabaseExtension.php',
