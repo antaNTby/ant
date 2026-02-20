@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'antantby/ant.my',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '6f73ec3fbba6b54bb6ccd4edf128e4f28ccfe6f6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'antantby/ant.my' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '6f73ec3fbba6b54bb6ccd4edf128e4f28ccfe6f6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -122,9 +122,9 @@
             'dev_requirement' => true,
         ),
         'tracy/tracy' => array(
-            'pretty_version' => 'v2.11.1',
-            'version' => '2.11.1.0',
-            'reference' => 'c4a03c921af532b74c63edd8bf3f68a99dec7e77',
+            'pretty_version' => 'v2.11.2',
+            'version' => '2.11.2.0',
+            'reference' => '9b265515240a6768347525d463ef04207b4e7d98',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tracy/tracy',
             'aliases' => array(),
