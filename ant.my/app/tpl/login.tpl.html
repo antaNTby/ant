@@ -63,7 +63,7 @@
             {assign var="tmp" value=Flight::session()->delete('flash_message')}
             {/if}
             <hr>
-            <div class="my-3">
+            <div class="my-3 user-select-none">
                 <span class="brandname-nix">nix</span>
                 <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px">
                 <span class="brandname-by">by</span>
@@ -79,7 +79,7 @@
             </div>
             <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти</button>
             <hr>
-            <p class="text-secondary small">antaNT64 &copy; {$year}</p>
+            <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
             <hr>
         </form>
     </main>
