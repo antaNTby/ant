@@ -48,11 +48,7 @@ class AdminAuthMiddleware
         // 3. Обновляем метку времени текущей активностью
         $session->set( 'last_activity', $now );
         $session->set( 'time', date( 'Y-m-d H:i:s' ) );
-/*
-        // ... внутри метода before() после обновления last_activity
-        $timeLeft = $timeout - ( $now - $session->get( 'last_activity' ) );
-        Flight::view()->assign( 'session_timeout_seconds', $timeLeft );
-*/
+
         // Передаем остаток времени в Smarty для JS-таймера
         $timeLeft = $timeout;
         Flight::view()->assign( 'session_timeout_seconds', $timeLeft );
