@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lib/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/lib/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/lib/ico/favicon-16x16.png">
+    <link rel="manifest" href="/lib/ico/site.webmanifest">
     <title>Вход в систему</title>
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
     <!-- Google Fonts -->
@@ -44,31 +48,29 @@
 </head>
 
 <body>
-    <main class="form-signin text-center shadow-lg p-4 bg-body rounded border">
-        <form action="/login" method="POST">
+    <main class="form-signin text-center shadow-lg p-3 pb-0 bg-body rounded border">
             {* <h1 class="h3 mb-3 fw-bold">Вход</h1> *}
             {* Ошибка валидации *}
             {if !empty($error)}
-            <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="flash" class="py-1 mb-3 rounded text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace">
                 {$error}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             {/if}
             {* Flash-сообщение (например, "Сессия истекла") *}
             {assign var="flash" value=Flight::session()->get('flash_message')}
             {if $flash}
-            <span id="flash" class="form-text">
+            <div class="alert alert-light alert-dismissible fw-lighter" role="alert">
                 {$flash}
-            </span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <hr class="text-danger mb-3">
             {assign var="tmp" value=Flight::session()->delete('flash_message')}
             {/if}
-            <hr>
             <div class="my-3 user-select-none">
-                <span class="brandname-nix">nix</span>
-                <img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px">
-                <span class="brandname-by">by</span>
+                <span class="brandname-nix">nix</span><img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px"><span class="brandname-by">by</span>
             </div>
-            <hr>
+            {* <hr> *}
+        <form action="/login" method="POST" class="p-3 m-1 bg-body-tertiary rounded border">
             <div class="form-floating mb-2">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Логин" required autocomplete="username">
                 <label for="floatingInput">Логин</label>
@@ -77,11 +79,11 @@
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Пароль" required autocomplete="current-password">
                 <label for="floatingPassword">Пароль</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти</button>
-            <hr>
-            <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
-            <hr>
+            <button class="w-100 btn btn-outline-danger mb-0" type="submit">Войти</button>
         </form>
+            <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
+            {* <hr> *}
+            {* <hr> *}
     </main>
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
