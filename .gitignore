@@ -1,5 +1,5 @@
 # Specify filepatterns you want git to ignore.
-.env
+ant.my/.env
 _ant.my_.sublime-workspace
 _skeleton.my_.sublime-workspace
 ant.my/app/smarty
