@@ -43,7 +43,7 @@ $dotenv->load();
 // CONFIG ALL
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'COPYRIGHT', 'Copyright ' . date( 'Y' ) . ' © ' . 'antaNT64.' );
-define( 'DEFAULT_TPL_HTML', 'layout.tpl.html' );
+define( 'DEFAULT_TPL_HTML', 'home/index.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 
@@ -51,13 +51,11 @@ $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 // It is better practice to not use static methods for everything. It makes your
 // app much more difficult to unit test easily.
 // This is important as it connects any static calls to the same $app object
-;
 
 $app = Flight::app();
-define( 'myConfig', $config );
 /*  */
 $smarty = Flight::view();
-$smarty->assign( 'myConfig', $myConfig );
+$smarty->assign( 'myConfig', $config );
 //🔹 Получаем логгер
 $logger = $app->logger();
 //🔹 Получаем логгер
