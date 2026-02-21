@@ -35,6 +35,11 @@ if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) 
     Flight::halt( 500, 'Config file not found. Please create a config.php file in the app/config directory to get started.' );
 }
 
+// Инициализируем Dotenv
+// __DIR__ указывает, что файл .env лежит в той же папке, что и index.php
+$dotenv = Dotenv\Dotenv::createImmutable( __DIR__ );
+$dotenv->load();
+
 // CONFIG ALL
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'COPYRIGHT', 'Copyright ' . date( 'Y' ) . ' © ' . 'antaNT64.' );
