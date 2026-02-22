@@ -41,14 +41,19 @@ Flight::route( 'GET /login', function () {
 } );
 
 Flight::route( 'POST /login', function () {
-    $session  = Flight::session();
-    $username = Flight::request()->data->username;
-    $password = Flight::request()->data->password;
-    $db       = Flight::db();
+    $session    = Flight::session();
+    $username   = Flight::request()->data->username;
+    $email      = Flight::request()->data->email;
+    $password   = Flight::request()->data->password;
+    $rememberMe = isset( Flight::request()->data->remember_me );
+    $db         = Flight::db();
 
     // 1. Поиск пользователя
     $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
-
+    // $user = verifyUser( $email, $password );
+    if ( !$user ) {
+        Flight::halt( 401, 'Неверные данные' );
+    }
     if ( $user && password_verify( $password, $user['password_hash'] ) ) {
 
         // 2. ОБНОВЛЯЕМ ВРЕМЯ ВХОДА В БД

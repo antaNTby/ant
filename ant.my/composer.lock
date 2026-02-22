@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c60416ec4f3843bf767633019f4add4f",
+    "content-hash": "56eae2da22a80a64e82a58538d578ab9",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -468,6 +468,46 @@
                 }
             ],
             "time": "2026-01-02T08:56:05+00:00"
+        },
+        {
+            "name": "overclokk/cookie",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overclokk/cookie.git",
+                "reference": "d546068cb4042d35ca121ae50996d536c641f8e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overclokk/cookie/zipball/d546068cb4042d35ca121ae50996d536c641f8e3",
+                "reference": "d546068cb4042d35ca121ae50996d536c641f8e3",
+                "shasum": ""
+            },
+            "require-dev": {
+                "lucatume/wp-browser": "^1.19"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overclokk\\Cookie\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "overclokk",
+                    "email": "info@overclokk.net"
+                }
+            ],
+            "description": "A simple and light cookie manager class",
+            "support": {
+                "issues": "https://github.com/overclokk/cookie/issues",
+                "source": "https://github.com/overclokk/cookie/tree/master"
+            },
+            "time": "2018-02-17T15:45:52+00:00"
         },
         {
             "name": "phpoption/phpoption",

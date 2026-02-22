@@ -485,6 +485,49 @@
             "install-path": "../monolog/monolog"
         },
         {
+            "name": "overclokk/cookie",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overclokk/cookie.git",
+                "reference": "d546068cb4042d35ca121ae50996d536c641f8e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overclokk/cookie/zipball/d546068cb4042d35ca121ae50996d536c641f8e3",
+                "reference": "d546068cb4042d35ca121ae50996d536c641f8e3",
+                "shasum": ""
+            },
+            "require-dev": {
+                "lucatume/wp-browser": "^1.19"
+            },
+            "time": "2018-02-17T15:45:52+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Overclokk\\Cookie\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "overclokk",
+                    "email": "info@overclokk.net"
+                }
+            ],
+            "description": "A simple and light cookie manager class",
+            "support": {
+                "issues": "https://github.com/overclokk/cookie/issues",
+                "source": "https://github.com/overclokk/cookie/tree/master"
+            },
+            "install-path": "../overclokk/cookie"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.9.5",
             "version_normalized": "1.9.5.0",

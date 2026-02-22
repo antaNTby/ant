@@ -1,6 +1,7 @@
 <?php
 /*use app\controllers\ApiExampleController;*/
 /*use app\middlewares\SecurityHeadersMiddleware;*/
+use Firebase\JWT\JWT;
 use flight\Engine;
 use flight\net\Router;
 use flight\Session;

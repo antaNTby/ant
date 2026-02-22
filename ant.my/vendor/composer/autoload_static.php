@@ -39,6 +39,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Psr\\Log\\' => 8,
             'PhpOption\\' => 10,
         ),
+        'O' =>
+        array (
+            'Overclokk\\Cookie\\' => 17,
+        ),
         'M' =>
         array (
             'Monolog\\' => 8,
@@ -98,6 +102,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'PhpOption\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'Overclokk\\Cookie\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/overclokk/cookie/src',
         ),
         'Monolog\\' =>
         array (
