@@ -30,7 +30,7 @@ Flight::route( 'GET /login', function () {
     $session = Flight::session();
     // Если уже залогинен — кидаем в админку
     if ( $session->get( 'is_admin' ) ) {
-        $session->set( 'flash_message', 'Неверный аккаунт :: GET /login' );
+        $session->set( 'flash_message', 'Полный доступ' );
         Flight::redirect( '/admin' );
     }
 
@@ -41,12 +41,14 @@ Flight::route( 'GET /login', function () {
 } );
 
 Flight::route( 'POST /login', function () {
-    $session    = Flight::session();
+    $db      = Flight::db();
+    $session = Flight::session();
+
+    /* request data*/
     $username   = Flight::request()->data->username;
     $email      = Flight::request()->data->email;
     $password   = Flight::request()->data->password;
     $rememberMe = isset( Flight::request()->data->remember_me );
-    $db         = Flight::db();
 
     // 1. Поиск пользователя
     $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
