@@ -91,6 +91,21 @@ Flight::route( 'POST /login', function () {
 Flight::route( '/logout', function () {
     $session = Flight::session();
 
+    $db       = Flight::db();
+    $rawToken = Flight::cookie()->get( 'remember_token' );
+
+    if ( $rawToken ) {
+        // Хэшируем, чтобы найти и удалить запись в БД
+        $tokenHash = hash( 'sha256', $rawToken );
+        $db->runQuery( 'DELETE FROM user_tokens WHERE token_hash = ?', [$tokenHash] );
+
+        // Удаляем саму куку через overclokk/cookie
+        Flight::cookie()->set( 'remember_token', '', [
+            'expires' => time() - 3600,
+            'path'    => '/',
+        ] );
+    }
+
     // Устанавливаем flash-сообщение перед выходом
     // Важно: если используете destroy(), flash может не сохраниться.
     // Лучше использовать clear(), чтобы сессия осталась жива для сообщения.

@@ -5,8 +5,27 @@ use flight\debug\database\PdoQueryCapture;
 use flight\debug\tracy\TracyExtensionLoader;
 use flight\Engine;
 use flight\Session;
+use Overclokk\Cookie\Cookie;
 use Pdo\Mysql;
 use Tracy\Debugger;
+
+// Регистрируем метод cookie()
+Flight::map( 'cookie', function () {
+    static $cookie = null;
+    if ( $cookie === null ) {
+        // Настройки по умолчанию для всех куки
+        $cookie = new Cookie( [
+            'expires'  => 0,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => true, // true, если используете HTTPS
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ] );
+    }
+
+    return $cookie;
+} );
 
 /*********************************************
  *         FlightPHP Service Setup           *
