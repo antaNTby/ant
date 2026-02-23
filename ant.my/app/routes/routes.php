@@ -13,6 +13,8 @@ $router = $app->router();
 
 // Инициализируем сессию ПЕРЕД роутами
 $session = new \flight\Session();
+// Регистрируем middleware
+$authCheck = new \app\middlewares\AdminAuthMiddleware();
 
 Flight::route( 'GET /api/admin/ping', function () {
 // Вся магия (продление сессии и отключение Tracy) уже произошла в Middleware
@@ -20,19 +22,17 @@ Flight::route( 'GET /api/admin/ping', function () {
         'status' => 'success',
         'time'   => date( 'H:i:s' ),
     ] );
-} )->addMiddleware( new \app\middlewares\AdminAuthMiddleware() );
-
-// Регистрируем middleware
-$authCheck = new \app\middlewares\AdminAuthMiddleware();
+} )->addMiddleware( new $authCheck );
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {
     // dd( Flight::request() );
     $session = Flight::session();
     // Если уже залогинен — кидаем в админку
-    if ( $session->get( 'is_admin' ) ) {
+    if ( $session->get( 'user_role' ) === 'admin' ) {
         $session->set( 'flash_message', 'Полный доступ' );
-        Flight::redirect( '/home/orders' );
+        Flight::redirect( '/admin/dashboard' );
+        // Flight::redirect( '/admin/login' );
     }
 
     Flight::render( 'login.tpl.html', [
@@ -67,12 +67,19 @@ Flight::route( 'POST /login', function () {
         $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
         $session->set( 'user_id', $user['id'] );
         $session->set( 'user_name', $user['username'] );
+        $session->set( 'user_role', $user['role'] );
         $session->set( 'last_activity', time() );
 
         // dd( Flight::request()->data );
 
         $session->set( 'flash_message', 'Успешная авторизация по паролю' );
-        Flight::redirect( '/admin/settings' );
+
+        if ( $session->get( 'user_role' ) === 'admin' ) {
+            Flight::redirect( '/admin/settings' );
+        } else {
+            Flight::redirect( '/home/wellcome' );
+        }
+
     } else {
 
         $session->set( 'flash_message', 'Неверные данные' );

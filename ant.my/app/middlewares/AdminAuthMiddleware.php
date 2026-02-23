@@ -19,9 +19,15 @@ class AdminAuthMiddleware
         $now     = time();
 
         // 1. Проверка авторизации
-        if ( $session->get( 'is_admin' ) !== true ) {
-            $session->set( 'flash_message', 'Неверный аккаунт' );
-            Flight::redirect( '/login?error=Account+Missed' );
+
+        if ( !$session->get( 'user_id' ) ) {
+            $session->set( 'flash_message', 'Неверные данные' );
+            Flight::redirect( '/login?error=Access+Denied' );
+            exit;
+        }
+        if ( $session->get( 'user_role' ) !== 'admin' ) {
+            $session->set( 'flash_message', 'No Permission' );
+            Flight::redirect( '/login?error=No+Permission' );
             exit;
         }
 

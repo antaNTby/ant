@@ -110,17 +110,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
                     <!-- Выпадающее меню -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Сервисы</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Дизайн</a></li>
-                            <li><a class="dropdown-item" href="#">Разработка</a></li>
+                            <li><a class="dropdown-item" href="design">Дизайн</a></li>
+                            <li><a class="dropdown-item" href="development">Разработка</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Консалтинг</a></li>
+                            <li><a class="dropdown-item" href="consult">Консалтинг</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -145,7 +145,7 @@
                     <section class="mt-4">
                         <h3>Зачем это нужно?</h3>
                         <p>Использование Bootstrap вместе с семантическими тегами делает ваш код чистым, доступным для SEO и легким в поддержке.</p>
-                        <div style="height: 1000px; background: rgba(var(--bs-tertiary-bg-rgb), 1); border: 2px dashed #ccc; border-radius: 10px;" class="d-flex align-items-center justify-content-center mt-4">
+                        <div style="height: 1000px; background: rgba(var (--bs-tertiary-bg-rgb ) , 1); border: 2px dashed #ccc; border-radius: 10px;" class="d-flex align-items-center justify-content-center mt-4">
                             Здесь очень много текста для проверки скролла...
                         </div>
                     </section>
@@ -154,24 +154,28 @@
             {/block}
             <!-- ASIDE (STICKY) -->
             {block ASIDE_BLOCK}
+            {assign var="user_role" value=Flight::session()->get('user_role')}
+            {assign var="user_id" value=Flight::session()->get('user_id')}
+            {assign var="user_name" value=Flight::session()->get('user_name')}
             <aside class="col-lg-3">
                 <div class="sticky-sidebar-1 card p-3 shadow-sm border-primary">
                     <h5>Сайдбар</h5>
                     <p class="small text-muted">Он зафиксирован при прокрутке.</p>
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action">🔥 Тренды</a>
-                        <a href="#" class="list-group-item list-group-item-action">📁 Категории</a>
-                        <a href="#" class="list-group-item list-group-item-action">💬 Обсуждения</a>
+                        <a href="/trends" class="list-group-item list-group-item-action">🔥 Тренды</a>
+                        <a href="/categories" class="list-group-item list-group-item-action">📁 Категории</a>
+                        <a href="/discussion" class="list-group-item list-group-item-action">💬 Обсуждения</a>
                     </div>
                 </div>
                 <div class="sticky-sidebar-2 card p-3 shadow-sm border-secondary my-3">
                     <h5>Menu</h5>
-                    <p class="small text-muted">Он зафиксирован при прокрутке.</p>
+                    <p class="small text-muted ">Он зафиксирован при прокрутке.</p>
                     <div class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action text-nowrap" href="/admin"><i class="bi bi-gear"></i> admin</a>
                         <a class="list-group-item list-group-item-action text-nowrap" href="/"><i class="bi bi-house-door"></i> Home</a>
-                        <a class="list-group-item list-group-item-action text-nowrap" href="/login"><i class="bi bi-box-arrow-in-left"></i> Login</a>
-                        <a class="list-group-item list-group-item-action text-nowrap" href="/logout"><i class="bi bi-box-arrow-in-right"></i> Logout</a>
+                        {if !isset($user_id)}<a class="list-group-item list-group-item-action text-nowrap" href="/login"><i class="bi bi-box-arrow-in-left"></i> Login</a>{else}
+                        <a class="list-group-item list-group-item-action text-nowrap" href="/logout"><i class="bi bi-box-arrow-in-right"></i> Logout</a>{/if}
+                        {if isset($user_id)}<li class="list-group-item">{if $user_role eq 'admin'}<i class="bi bi-person-gear"></i>{else}<i class="bi bi-person"></i>{/if} {$user_name}</li>{/if}
                     </div>
                 </div>
             </aside>
