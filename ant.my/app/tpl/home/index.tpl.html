@@ -142,6 +142,17 @@
                         <h1 class="display-5 fw-bold">Семантическая верстка в 2026</h1>
                         <p class="text-secondary">Тут находится контент внутри тега <code>&lt;article&gt;</code></p>
                     </header>
+                    {* Flash-сообщение (например, "Сессия истекла") *}
+                    {assign var="flash" value=Flight::session()->get('flash_message')}
+                    {if $flash}
+                    <section class="mt-4">
+                        <div class="alert alert-success alert-dismissible fw-lighter m-3" role="alert">
+                            {$flash}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {assign var="tmp" value=Flight::session()->delete('flash_message')}
+                    </section>
+                    {/if}
                     <section class="mt-4">
                         <h3>Зачем это нужно?</h3>
                         <p>Использование Bootstrap вместе с семантическими тегами делает ваш код чистым, доступным для SEO и легким в поддержке.</p>
