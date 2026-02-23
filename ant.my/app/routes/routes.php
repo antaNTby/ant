@@ -27,11 +27,12 @@ $authCheck = new \app\middlewares\AdminAuthMiddleware();
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {
+    // dd( Flight::request() );
     $session = Flight::session();
     // Если уже залогинен — кидаем в админку
     if ( $session->get( 'is_admin' ) ) {
         $session->set( 'flash_message', 'Полный доступ' );
-        Flight::redirect( '/admin' );
+        Flight::redirect( '/home/orders' );
     }
 
     Flight::render( 'login.tpl.html', [
@@ -53,9 +54,9 @@ Flight::route( 'POST /login', function () {
     // 1. Поиск пользователя
     $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
     // $user = verifyUser( $email, $password );
-    if ( !$user ) {
-        Flight::halt( 401, 'Неверные данные' );
-    }
+    // if ( !$user ) {
+    //     Flight::halt( 401, '401 - Неверные данные' );
+    // }
     if ( $user && password_verify( $password, $user['password_hash'] ) ) {
 
         // 2. ОБНОВЛЯЕМ ВРЕМЯ ВХОДА В БД
@@ -68,8 +69,12 @@ Flight::route( 'POST /login', function () {
         $session->set( 'user_name', $user['username'] );
         $session->set( 'last_activity', time() );
 
-        Flight::redirect( '/admin' );
+        // dd( Flight::request()->data );
+
+        $session->set( 'flash_message', 'Успешная авторизация по паролю' );
+        Flight::redirect( '/admin/settings' );
     } else {
+
         $session->set( 'flash_message', 'Неверные данные' );
         Flight::redirect( '/login?error=Access+Denied' );
     }

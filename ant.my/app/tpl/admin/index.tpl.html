@@ -10,10 +10,8 @@
 {* *}
 
 <body>
-
-<input type="hidden" id="current_sub">
-<input type="hidden" id="primary_key">
-
+    <input type="hidden" id="current_sub">
+    <input type="hidden" id="primary_key">
     <!-- /header -->
     {* Навигация *}
     {include file="admin/offcanvas.tpl.html"}
@@ -23,6 +21,15 @@
     {* *}
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
+        {* Flash-сообщение (например, "Сессия истекла") *}
+        {assign var="flash" value=Flight::session()->get('flash_message')}
+        {if $flash}
+                <div class="alert alert-success alert-dismissible fw-lighter m-3" role="alert">
+                    {$flash}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        {assign var="tmp" value=Flight::session()->delete('flash_message')}
+        {/if}
         <div class="row">
             <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="admin/aside.tpl.html"}
@@ -44,50 +51,31 @@
         {include file="admin/footer.tpl.html"}
     </footer>
     {* *}
-
-<!-- Контейнер для тостов -->
-<div class="toast-container position-fixed bottom-0 start-0 p-3">
-  <div id="sessionToast" class="toast align-items-center text-white bg-info border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        <strong>Внимание!</strong> Сессия скоро истечет. Нажмите любую клавишу, чтобы остаться.
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    <!-- Контейнер для тостов -->
+    <div class="toast-container position-fixed bottom-0 start-0 p-3">
+        <div id="sessionToast" class="toast align-items-center text-white bg-info border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <strong>Внимание!</strong> Сессия скоро истечет. Нажмите любую клавишу, чтобы остаться.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
     {block name="scripts"}
-{* Подключаем основной файл как модуль (если он нужен для побочных эффектов) *}
+    {* Подключаем основной файл как модуль (если он нужен для побочных эффектов) *}
     <script type="module" src="/lib/admin.js"></script>
     {/block}
     {* Шаблон Smarty 5 *}
-
-
-
-{if isset($session_timeout_seconds)}
+    {if isset($session_timeout_seconds)}
     <script type="module">
         // Импортируем именно нашу функцию из файла
      {literal}import { initSessionTimer } from '/lib/admin.js';{/literal}
         // Вызываем её
         initSessionTimer({$session_timeout_seconds|default:1800});
     </script>
-{/if}
-
-
-
+    {/if}
 </body>

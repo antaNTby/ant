@@ -36,7 +36,7 @@ export function initSessionTimer(secondsLeft, redirectUrl = '/login?error=Sessio
     const initialSeconds = +secondsLeft;
     const minutesLeft = +secondsLeft / 60;
     console.log('Таймер запущен на ' + minutesLeft + ' мин. Редирект на: ' + redirectUrl);
-    console.log('Таймер запущен на ' + formatters.formatSessionTime(initialSeconds));
+    // console.log('Таймер запущен на ' + formatters.formatSessionTime(initialSeconds));
 
     const toastEl = document.getElementById('sessionToast');
     if (toastEl && typeof bootstrap !== 'undefined') {
