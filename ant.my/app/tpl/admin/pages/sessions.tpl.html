@@ -1,0 +1,31 @@
+{* sessions.tpl.html *}
+{extends file="admin/pages.tpl.html"}
+{block name="PAGE"}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Устройство</th>
+            <th>IP адрес</th>
+            <th>Последняя активность</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $sessions as $s}
+        <tr>
+            <td><small class="text-muted">{$s.user_agent|truncate:50}</small></td>
+            <td>{$s.created_ip}</td>
+            <td>{$s.last_used_at|date_format:"%d.%m.%Y %H:%M"}</td>
+            <td>
+                <form action="/admin/sessions/revoke" method="POST" onsubmit="return confirm('Вы уверены, что хотите закрыть доступ этому устройству?');">
+                    <input type="hidden" name="token_id" value="{$s.id}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                        <i class="bi bi-x-circle"></i> Отозвать доступ
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+{/block}

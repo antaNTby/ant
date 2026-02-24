@@ -80,3 +80,9 @@ ALTER TABLE `users` ADD INDEX `idx_username` (`username`);
 -- Если таблица уже создана, добавьте поле last_login с типом DATETIME:
 -- sql
 ALTER TABLE `users` ADD COLUMN `last_login` DATETIME DEFAULT NULL;
+
+
+-- Для реализации мониторинга активных сессий добавим колонку last_used_at. Это позволит вам выводить в админке список устройств (браузер + IP)
+-- и давать пользователю возможность «выбить» подозрительные входы.
+ALTER TABLE `user_tokens`
+ADD COLUMN `last_used_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;

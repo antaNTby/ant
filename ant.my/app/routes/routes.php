@@ -146,6 +146,57 @@ Flight::route( '/logout', function () {
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
+    Flight::route( '/sessions', function () {
+        $db     = Flight::db();
+        $userId = Flight::session()->get( 'user_id' );
+
+        $sessions = $db->fetchAll(
+            'SELECT id, user_agent, created_ip, last_used_at
+         FROM user_tokens
+         WHERE user_id = ? AND expires_at > NOW()
+         ORDER BY last_used_at DESC',
+            [$userId]
+        );
+
+        Flight::render( 'admin/pages/sessions.tpl.html', ['sessions' => $sessions] );
+    } );
+
+    Flight::route( 'POST /sessions/revoke', function () {
+        $db      = Flight::db();
+        $session = Flight::session();
+
+        // Получаем ID токена из скрытого поля формы
+        $tokenId = Flight::request()->data->token_id;
+        $userId  = $session->get( 'user_id' );
+
+        if ( $tokenId && $userId ) {
+            // Удаляем токен, проверяя, что он принадлежит именно этому пользователю (безопасность!)
+            $db->runQuery(
+                'DELETE FROM user_tokens WHERE id = ? AND user_id = ?',
+                [$tokenId, $userId]
+            );
+
+            // Если пользователь удалил текущую сессию (токен которой в куке)
+            $currentRawToken = Flight::cookie()->get( 'remember_token' );
+            if ( $currentRawToken ) {
+                $currentTokenHash = hash( 'sha256', $currentRawToken );
+                $isCurrent        = $db->fetchRow(
+                    'SELECT id FROM user_tokens WHERE id = ? AND token_hash = ?',
+                    [$tokenId, $currentTokenHash]
+                );
+
+                // Если удаляемый ID совпадает с текущим токеном в куке — чистим куку
+                if ( $isCurrent ) {
+                    Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
+                }
+            }
+
+            $session->set( 'flash_message', 'Доступ для устройства отозван' );
+        }
+
+        Flight::redirect( '/admin/sessions' );
+    } );
+
     // Этот маршрут сработает для любого пути, начинающегося на /admin/...
     Flight::route( '/*', function () {
 
