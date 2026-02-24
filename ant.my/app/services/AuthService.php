@@ -48,18 +48,88 @@ class AuthService
         return true;
     }
 
-    public function logout()
-    {
-        $session  = Flight::session();
-        $rawToken = Flight::cookie()->get( 'remember_token' );
+    public function attemptLogin(
+        $username,
+        $password,
+        $rememberMe = false
+    ) {
+        $db      = Flight::db();
+        $session = Flight::session();
+        $request = Flight::request();
 
-        if ( $rawToken ) {
-            $tokenHash = hash( 'sha256', $rawToken );
-            Flight::db()->runQuery( 'DELETE FROM user_tokens WHERE token_hash = ?', [$tokenHash] );
-            Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
+        // 1. Поиск пользователя
+        $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
+
+        // 2. Валидация
+        if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
+            return ['success' => false, 'message' => 'Неверный логин или пароль'];
         }
 
+        if ( !$user['is_active'] ) {
+            return ['success' => false, 'message' => 'Ваш аккаунт заблокирован', 'error' => 'Banned'];
+        }
+
+        // 3. Создание сессии
+        $session->regenerate( true );
+        $session->set( 'user_id', $user['id'] );
+        $session->set( 'user_name', $user['username'] );
+        $session->set( 'user_role', $user['role'] );
+        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+        $session->set( 'last_activity', time() );
+
+        // 4. Логика Remember Me
+        if ( $rememberMe ) {
+            $expireSeconds = 2592000;
+            $rawToken      = bin2hex( random_bytes( 32 ) );
+            $tokenHash     = hash( 'sha256', $rawToken );
+
+            $db->runQuery(
+                'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at)
+                 VALUES (?, ?, ?, ?, ?)',
+                [$user['id'], $tokenHash, $request->user_agent, $request->ip, date( 'Y-m-d H:i:s', time() + $expireSeconds )]
+            );
+
+            $session->set( 'current_token_id', $db->lastInsertId() );
+            Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
+        }
+
+        // 5. Финализация
+        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+
+        return ['success' => true, 'role' => $user['role'], 'username' => $user['username']];
+    }
+
+    /**
+     * Универсальный выход из системы
+     */
+    public function logout()
+    {
+        $db      = Flight::db();
+        $session = Flight::session();
+
+        // 1. Работа с Remember Me токеном
+        $rawToken = Flight::cookie()->get( 'remember_token' );
+        if ( $rawToken ) {
+            $tokenHash = hash( 'sha256', $rawToken );
+            $db->runQuery( 'DELETE FROM user_tokens WHERE token_hash = ?', [$tokenHash] );
+
+            // Удаляем куку (используем те же параметры, что при создании)
+            Flight::cookie()->set(
+                'remember_token',
+                '',
+                -3600,
+                '/',
+                '',
+                false, // поставьте true, если используете HTTPS
+                true
+            );
+        }
+
+        // 2. Очистка данных сессии
+        // Используем clear(), чтобы сохранить объект сессии для flash_message
         $session->clear();
+
+        return true;
     }
 
     public function parseUserAgent( $ua )

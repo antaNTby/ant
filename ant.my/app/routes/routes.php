@@ -14,8 +14,9 @@ $router = $app->router();
 // Инициализируем сессию ПЕРЕД роутами
 $session = new \flight\Session();
 // Регистрируем middleware
-$authCheck  = new \app\middlewares\AdminAuthMiddleware();
-$rememberMe = new \app\middlewares\RememberMeMiddleware();
+$authCheckAdmin = new \app\middlewares\AdminAuthMiddleware();
+$authCheckUser  = new \app\middlewares\UserAuthMiddleware();
+$rememberMe     = new \app\middlewares\RememberMeMiddleware();
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {
@@ -35,106 +36,36 @@ Flight::route( 'GET /login', function () {
 } );
 
 Flight::route( 'POST /login', function () {
-    $db      = Flight::db();
-    $session = Flight::session();
     $request = Flight::request();
+    $session = Flight::session();
 
-    $username   = $request->data->username;
-    $password   = $request->data->password;
-    $rememberMe = isset( $request->data->remember_me );
+    // Вызываем сервис
+    $result = Flight::auth()->attemptLogin(
+        $request->data->username,
+        $request->data->password,
+        isset( $request->data->remember_me )
+    );
 
-    // 1. Поиск пользователя
-    $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
-
-    // 2. Проверка пароля и статуса бана
-    if ( $user && password_verify( $password, $user['password_hash'] ) ) {
-
-        if ( !$user['is_active'] ) {
-            $session->set( 'flash_message', 'Ваш аккаунт заблокирован' );
-            Flight::redirect( '/login?error=Banned' );
-
-            return;
-        }
-
-        // 3. Базовая авторизация в сессию
-        $session->regenerate( true );
-        $session->set( 'user_id', $user['id'] );
-        $session->set( 'user_name', $user['username'] );
-        $session->set( 'user_role', $user['role'] );
-        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-        $session->set( 'last_activity', time() );
-
-        // 4. Логика "Запомнить меня"
-        if ( $rememberMe ) {
-            $expireSeconds = 2592000;
-            $rawToken      = bin2hex( random_bytes( 32 ) );
-            $tokenHash     = hash( 'sha256', $rawToken );
-
-            // Вставляем запись
-            $db->runQuery(
-                'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at) VALUES (?, ?, ?, ?, ?)',
-                [$user['id'], $tokenHash, $request->user_agent, $request->ip, date( 'Y-m-d H:i:s', time() + $expireSeconds )]
-            );
-
-                                                 // ПОЛУЧАЕМ ID напрямую из $db
-            $lastInsertId = $db->lastInsertId(); // <--- Исправлено здесь
-            $session->set( 'current_token_id', $lastInsertId );
-
-            // Устанавливаем куку
-            Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
-        }
-
-        // Обновляем время входа в таблице users
-        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
-
-        $session->set( 'flash_message', 'Добро пожаловать, ' . $user['username'] );
+    if ( $result['success'] ) {
+        $session->set( 'flash_message', 'Добро пожаловать, ' . $result['username'] );
 
         // Редирект по роли
-        if ( $user['role'] === 'admin' ) {
-            Flight::redirect( '/admin/settings' );
-        } else {
-            Flight::redirect( '/home/wellcome' );
-        }
-
+        $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/home/wellcome';
+        Flight::redirect( $url );
     } else {
-        $session->set( 'flash_message', 'Неверный логин или пароль' );
-        Flight::redirect( '/login?error=Access+Denied' );
+        $session->set( 'flash_message', $result['message'] );
+        $errorParam = isset( $result['error'] ) ? $result['error'] : 'Access+Denied';
+        Flight::redirect( '/login?error=' . $errorParam );
     }
 } );
 
 // Выход
 Flight::route( '/logout', function () {
-    $session = Flight::session();
-    $db      = Flight::db();
+    // Вызываем централизованный метод выхода
+    Flight::auth()->logout();
 
-    // 1. Получаем токен из куки
-    $rawToken = Flight::cookie()->get( 'remember_token' );
-
-    // dd( $rawToken );
-    if ( $rawToken ) {
-        // 2. Удаляем хэш из базы
-        $tokenHash = hash( 'sha256', $rawToken );
-        $db->runQuery( 'DELETE FROM user_tokens WHERE token_hash = ?', [$tokenHash] );
-
-        // 3. Удаляем куку (Используем ПРАВИЛЬНЫЙ порядок аргументов)
-        // Аргументы: имя, значение, время, путь, домен, secure, httponly
-        Flight::cookie()->set(
-            'remember_token',
-            '',
-            -3600,
-            '/',
-            '',
-            true,
-            true
-        );
-    }
-
-    // 4. Очистка сессии
-    // Если вы хотите, чтобы flash_message дожил до страницы логина,
-    // используйте clear() вместо destroy().
-    $session->clear();
-    $session->set( 'flash_message', 'Вы успешно вышли из системы' );
-
+    // Устанавливаем сообщение и уходим на логин
+    Flight::session()->set( 'flash_message', 'Вы успешно вышли из системы' );
     Flight::redirect( '/login' );
 } );
 
@@ -206,7 +137,22 @@ Flight::group( '/admin', function () {
 
         Flight::render( 'admin/index.tpl.html', $renderData );
     } );
-}, [$rememberMe, $authCheck] ); // Передаем объект middleware третьим аргументом
+}, [$rememberMe, $authCheckAdmin] );
+
+Flight::group( '/home', function () {
+
+    // Этот маршрут сработает для любого пути, начинающегося на /admin/...
+    Flight::route( '/*', function () {
+
+        $renderData = [
+            'app'   => Flight::app(),
+            'title' => 'b2b: ' . date( 'H:i:s' ),
+            // другие данные...
+        ];
+
+        Flight::render( 'home/index.tpl.html', $renderData );
+    } );
+}, [$rememberMe, $authCheckUser] );
 
 // 2. Маршрут для главной страницы (точный путь '/')
 Flight::route( '/', function () {

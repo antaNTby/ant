@@ -3,7 +3,7 @@ namespace app\middlewares;
 
 use Flight;
 
-class AdminAuthMiddleware
+class UserAuthMiddleware
 {
     public function before()
     {
@@ -13,11 +13,11 @@ class AdminAuthMiddleware
             exit;
         }
 
-        // Проверка роли (админ или нет)
-        if ( Flight::session()->get( 'user_role' ) !== 'admin' ) {
-            Flight::redirect( '/login?error=No+Permission' );
-            exit;
-        }
+        // // Проверка роли (админ или нет)
+        // if ( Flight::session()->get( 'user_role' ) !== 'admin' ) {
+        //     Flight::redirect( '/login?error=No+Permission' );
+        //     exit;
+        // }
     }
 }
 
