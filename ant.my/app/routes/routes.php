@@ -71,7 +71,7 @@ Flight::route( 'POST /login', function () {
 
         // --- ЛОГИКА "ЗАПОМНИТЬ МЕНЯ" ---
         if ( $rememberMe ) {
-            $expireSeconds = 2592000; // 30 дней
+            $expireSeconds = 30 * 24 * 60 * 60; // 30 дней
             $rawToken      = bin2hex( random_bytes( 32 ) );
             $tokenHash     = hash( 'sha256', $rawToken );
 
@@ -117,13 +117,6 @@ Flight::route( 'POST /login', function () {
 
 // Выход
 Flight::route( '/logout', function () {
-    // echo '<pre>';
-    // print_r( $_COOKIE ); // Проверка сырых данных PHP
-    // echo '</pre>';
-    // $rawToken = Flight::cookie()->get( 'remember_token' );
-    // var_dump( $rawToken ); // Проверка через библиотеку
-    // die();
-
     $session = Flight::session();
     $db      = Flight::db();
 
@@ -163,8 +156,6 @@ Flight::group( '/admin', function () {
 
     // Этот маршрут сработает для любого пути, начинающегося на /admin/...
     Flight::route( '/*', function () {
-        // Здесь можно добавить проверку сессии
-        // if (!$session->get('is_admin')) { Flight::redirect('/login'); }
 
         $renderData = [
             'app'   => Flight::app(),
