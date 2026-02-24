@@ -52,14 +52,14 @@
         {* <h1 class="h3 mb-3 fw-bold">Вход</h1> *}
 
         {if !empty($error)}
-        <div id="flash" class="py-1 mb-3 rounded text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace">
+        <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace user-select-none">
             {$error}
         </div>
         {/if}
         {* Flash-сообщение (например, "Сессия истекла") *}
         {assign var="flash" value=Flight::session()->get('flash_message')}
         {if $flash}
-        <div class="alert alert-light alert-dismissible fw-lighter" role="alert">
+        <div class="alert alert-light alert-dismissible fw-lighter user-select-none" role="alert">
             {$flash}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

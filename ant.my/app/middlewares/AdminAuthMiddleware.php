@@ -15,7 +15,7 @@ class AdminAuthMiddleware
 
         // Проверка роли (админ или нет)
         if ( Flight::session()->get( 'user_role' ) !== 'admin' ) {
-            Flight::redirect( '/login?error=No+Permission' );
+            Flight::redirect( '/login?error=Access+Denied' );
             exit;
         }
     }

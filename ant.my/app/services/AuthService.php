@@ -66,7 +66,7 @@ class AuthService
         }
 
         if ( !$user['is_active'] ) {
-            return ['success' => false, 'message' => 'Ваш аккаунт заблокирован', 'error' => 'Banned'];
+            return ['success' => false, 'message' => 'Ваш аккаунт заблокирован', 'error' => 'Account is Banned'];
         }
 
         // 3. Создание сессии
