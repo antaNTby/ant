@@ -79,7 +79,7 @@ class AuthService
 
         // 4. Логика Remember Me
         if ( $rememberMe ) {
-            $expireSeconds = 2592000;
+            $expireSeconds = Flight::get( 'TOKEN_EXPIRE_TIMEOUT' );
             $rawToken      = bin2hex( random_bytes( 32 ) );
             $tokenHash     = hash( 'sha256', $rawToken );
 

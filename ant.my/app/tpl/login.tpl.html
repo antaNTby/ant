@@ -50,7 +50,7 @@
 <body>
     <main class="form-signin text-center shadow-lg p-3 pb-0 bg-body rounded border">
         {* <h1 class="h3 mb-3 fw-bold">Вход</h1> *}
-        {* Ошибка валидации *}
+
         {if !empty($error)}
         <div id="flash" class="py-1 mb-3 rounded text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace">
             {$error}
@@ -63,7 +63,6 @@
             {$flash}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <hr class="text-danger mb-3">
         {assign var="tmp" value=Flight::session()->delete('flash_message')}
         {/if}
         <div class="my-3 user-select-none">

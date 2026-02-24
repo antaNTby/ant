@@ -35,7 +35,7 @@ class RememberMeMiddleware
 
                     $newRawToken   = bin2hex( random_bytes( 32 ) );
                     $newTokenHash  = hash( 'sha256', $newRawToken );
-                    $expireSeconds = 2592000;
+                    $expireSeconds = Flight::get( 'TOKEN_EXPIRE_TIMEOUT' );
 
                     $db->runQuery(
                         'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at, last_used_at)

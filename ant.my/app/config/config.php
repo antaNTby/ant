@@ -36,8 +36,9 @@ Flight::set( 'csp_nonce', $nonce );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 // Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
-Flight::set( 'SESSION_EXPIRE_TIMEOUT', 2 * 60 * 60 ); // seconds to expire session  - 2 часа
-Flight::set( 'SESSION_EXPIRE_TIMEOUT', 20 );          // seconds to expire session  - 2 часа
+Flight::set( 'SESSION_EXPIRE_TIMEOUT', 1 * 60 * 60 );    // seconds to expire session  -1 час
+Flight::set( 'TOKEN_EXPIRE_TIMEOUT', 2 * 24 * 60 * 60 ); // seconds to expire session  -2 суток
+// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 20 );          // seconds to expire session  - 2 часа
 
 Flight::set( 'jwt_key', $_ENV['JWT_SECRET'] );
 // var_dump( $_ENV['JWT_SECRET'] );

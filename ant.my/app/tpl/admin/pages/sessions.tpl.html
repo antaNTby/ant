@@ -14,8 +14,8 @@
     <tbody>
         {foreach $sessions as $s}
         <tr>
-            {* <td><small class="text-muted">{$s.user_agent|truncate:500}</small></td> *}
-            <td><small class="text-muted">{$s.device_info|truncate:500}</small></td>
+            <td><small class="text-secondary">{$s.user_agent|truncate:500}</small></td>
+            {* <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td> *}
             <td>{$s.created_ip}</td>
             <td>{$s.last_used_at}</td>
             <td>
