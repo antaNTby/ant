@@ -4,6 +4,12 @@
             <div class="dropup-center dropup">
                 <a href="#" class="dropdown-toggle d-flex align-items-center mb-0 px-2 text-danger" data-bs-toggle="dropdown" aria-expanded="false" aria-label="menu"><i class="bi bi-bookmark-star"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                    <li>
+                        {* <a class="nav-link text-nowrap" aria-current="page" href="/adminer.php?server=MySQL-8.4&username=antaNT64"> *}
+                            <a class="dropdown-item text-nowrap" aria-current="page" href="/dev/adminer.php?server=MySQL-8.4&username={$myConfig.database.user}&db={$myConfig.database.dbname}" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-database-fill-exclamation"></i> adminer
+                            </a>
+                    </li>
                     <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
                     <li><a class="dropdown-item" href="#">Inventory</a></li>
                     <li><a class="dropdown-item" href="#">Customers</a></li>

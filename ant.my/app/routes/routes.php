@@ -17,14 +17,6 @@ $session = new \flight\Session();
 $authCheck  = new \app\middlewares\AdminAuthMiddleware();
 $rememberMe = new \app\middlewares\RememberMeMiddleware();
 
-Flight::route( 'GET /api/admin/ping', function () {
-// Вся магия (продление сессии и отключение Tracy) уже произошла в Middleware
-    Flight::json( [
-        'status' => 'success',
-        'time'   => date( 'H:i:s' ),
-    ] );
-} )->addMiddleware( new $authCheck );
-
 // Страница показа формы
 Flight::route( 'GET /login', function () {
     // dd( Flight::request() );
