@@ -10,21 +10,9 @@ use Pdo\Mysql;
 use Tracy\Debugger;
 
 // Регистрируем метод cookie()
-Flight::map( 'cookie', function () {
-    static $cookie = null;
-    if ( $cookie === null ) {
-        // Настройки по умолчанию для всех куки
-        $cookie = new Cookie( [
-            'expires'  => 0,
-            'path'     => '/',
-            'domain'   => '',
-            'secure'   => true, // true, если используете HTTPS
-            'httponly' => true,
-            'samesite' => 'Lax',
-        ] );
-    }
 
-    return $cookie;
+Flight::map( 'cookie', function () {
+    return new \Overclokk\Cookie\Cookie(); // Без аргументов в конструкторе
 } );
 
 /*********************************************
