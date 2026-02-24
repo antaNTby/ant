@@ -43,7 +43,7 @@ $dotenv->load();
 // CONFIG ALL
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'COPYRIGHT', 'Copyright ' . date( 'Y' ) . ' © ' . 'antaNT64.' );
-define( 'DEFAULT_TPL_HTML', 'home/index.tpl.html' );
+define( 'DEFAULT_TPL_HTML', 'b2b/index.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 

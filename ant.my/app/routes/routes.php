@@ -50,7 +50,7 @@ Flight::route( 'POST /login', function () {
         $session->set( 'flash_message', 'Добро пожаловать, ' . $result['username'] );
 
         // Редирект по роли
-        $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/home/wellcome';
+        $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/b2b/wellcome';
         Flight::redirect( $url );
     } else {
         $session->set( 'flash_message', $result['message'] );
@@ -139,7 +139,7 @@ Flight::group( '/admin', function () {
     } );
 }, [$rememberMe, $authCheckAdmin] );
 
-Flight::group( '/home', function () {
+Flight::group( '/b2b', function () {
 
     // Этот маршрут сработает для любого пути, начинающегося на /admin/...
     Flight::route( '/*', function () {
@@ -150,7 +150,7 @@ Flight::group( '/home', function () {
             // другие данные...
         ];
 
-        Flight::render( 'home/index.tpl.html', $renderData );
+        Flight::render( 'b2b/index.tpl.html', $renderData );
     } );
 }, [$rememberMe, $authCheckUser] );
 
@@ -160,7 +160,7 @@ Flight::route( '/', function () {
         'app'   => Flight::app(),
         'title' => 'Главная страница',
     ];
-    Flight::render( 'home/index.tpl.html', $renderData );
+    Flight::render( 'b2b/index.tpl.html', $renderData );
 } );
 
 // 3. Глобальный "запасной" маршрут (только в самом КОНЦЕ)
@@ -170,5 +170,5 @@ Flight::route( '*', function () {
         'app'   => Flight::app(),
         'title' => '404 Страница не найдена или Home',
     ];
-    Flight::render( 'home/index.tpl.html', $renderData );
+    Flight::render( 'b2b/index.tpl.html', $renderData );
 } );
