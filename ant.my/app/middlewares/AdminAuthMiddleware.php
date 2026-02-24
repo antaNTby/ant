@@ -7,6 +7,24 @@ class AdminAuthMiddleware
 {
     public function before()
     {
+        // Вызываем объединенный метод
+        if ( !Flight::auth()->checkAccess() ) {
+            Flight::redirect( '/login?error=Session+Expired' );
+            exit;
+        }
+
+        // Проверка роли (админ или нет)
+        if ( Flight::session()->get( 'user_role' ) !== 'admin' ) {
+            Flight::redirect( '/login?error=No+Permission' );
+            exit;
+        }
+    }
+}
+
+class AdminAuthMiddlewareOLD
+{
+    public function before()
+    {
 
         $session = Flight::session();
         $timeout = Flight::get( 'SESSION_EXPIRE_TIMEOUT' ) ?? 2 * 60 * 60;

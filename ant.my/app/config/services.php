@@ -15,6 +15,9 @@ Flight::map( 'cookie', function () {
     return new \Overclokk\Cookie\Cookie(); // Без аргументов в конструкторе
 } );
 
+// Регистрация сервиса
+Flight::register( 'auth', 'app\services\AuthService' );
+
 /*********************************************
  *         FlightPHP Service Setup           *
  *********************************************

@@ -11,13 +11,13 @@ class RememberMeMiddleware
         $db      = Flight::db();
         $request = Flight::request();
 
-        // 1. Если сессии нет, но есть кука
+        // 1. Пытаемся восстановить сессию, только если она пуста
         if ( !$session->get( 'user_id' ) && $rawToken = Flight::cookie()->get( 'remember_token' ) ) {
 
             $tokenHash        = hash( 'sha256', $rawToken );
             $currentUserAgent = $request->user_agent;
 
-            // 2. Ищем токен с ПРОВЕРКОЙ браузера (User-Agent)
+            // 2. Ищем токен с проверкой User-Agent
             $tokenData = $db->fetchRow(
                 'SELECT id, user_id FROM user_tokens
                  WHERE token_hash = ? AND user_agent = ? AND expires_at > NOW()',
@@ -25,21 +25,18 @@ class RememberMeMiddleware
             );
 
             if ( $tokenData ) {
-                // 3. Токен валиден — получаем юзера
                 $user = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$tokenData['user_id']] );
 
-                if ( $user ) {
-                    // --- МЕХАНИЗМ РОТАЦИИ (БЕЗОПАСНОСТЬ) ---
-                    // Удаляем старый использованный токен из БД
+                // Проверяем, не забанен ли юзер (is_active)
+                if ( $user && $user['is_active'] ) {
+
+                    // --- РОТАЦИЯ ---
                     $db->runQuery( 'DELETE FROM user_tokens WHERE id = ?', [$tokenData['id']] );
 
-                    // Генерируем НОВЫЙ токен для следующего раза
                     $newRawToken   = bin2hex( random_bytes( 32 ) );
                     $newTokenHash  = hash( 'sha256', $newRawToken );
-                    $expireSeconds = 2592000; // 30 дней
+                    $expireSeconds = 2592000;
 
-                    // Записываем новый токен в БД
-// Внутри RememberMeMiddleware, после проверки $tokenData
                     $db->runQuery(
                         'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at, last_used_at)
                          VALUES (?, ?, ?, ?, ?, NOW())',
@@ -52,30 +49,37 @@ class RememberMeMiddleware
                         ]
                     );
 
-                    // Обновляем куку в браузере на новую
-                    Flight::cookie()->set( 'remember_token', $newRawToken, $expireSeconds, '/', '', false, true );
-                    // ---------------------------------------
+                    // Получаем ID только что созданного токена (через SimplePDO/PDO)
+                    $newTokenId = $db->getConnection()->lastInsertId();
 
-                    // 4. Восстанавливаем сессию
+                    // Обновляем куку
+                    Flight::cookie()->set( 'remember_token', $newRawToken, $expireSeconds, '/', '', false, true );
+
+                    // --- СЕССИЯ ---
                     $session->regenerate( true );
-                    $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
                     $session->set( 'user_id', $user['id'] );
                     $session->set( 'user_name', $user['username'] );
                     $session->set( 'user_role', $user['role'] );
+                    $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
                     $session->set( 'last_activity', time() );
+
+                    // ВАЖНО: сохраняем ID токена для AdminAuthMiddleware->checkAccess()
+                    $session->set( 'current_token_id', $newTokenId );
 
                     $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
                 }
             } else {
-                // Если токен не найден или агент не совпал — чистим подозрительную куку
-                Flight::cookie()->set( 'remember_token', '', -3600, '/', '' );
+                // Чистим невалидную куку
+                Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
             }
         }
 
-        // 5. Данные для Smarty
+        // Данные для Smarty
         if ( $session->get( 'user_id' ) ) {
-            Flight::view()->assign( 'user_name', $session->get( 'user_name' ) );
-            Flight::view()->assign( 'user_role', $session->get( 'user_role' ) );
+            Flight::view()->assign( 'user', [
+                'name' => $session->get( 'user_name' ),
+                'role' => $session->get( 'user_role' ),
+            ] );
         }
     }
 }

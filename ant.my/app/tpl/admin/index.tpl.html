@@ -24,10 +24,10 @@
         {* Flash-сообщение (например, "Сессия истекла") *}
         {assign var="flash" value=Flight::session()->get('flash_message')}
         {if $flash}
-                <div class="alert alert-success alert-dismissible fw-lighter m-3" role="alert">
-                    {$flash}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+        <div class="alert alert-success alert-dismissible fw-lighter m-3" role="alert">
+            {$flash}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         {assign var="tmp" value=Flight::session()->delete('flash_message')}
         {/if}
         <div class="row">
@@ -37,26 +37,27 @@
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
                 {include file="admin/main.tpl.html"}
                 {block PAGES}
+                <div class="m-5 p-5 bg-body-tertiary">
+                    No Content
+                </div>
                 {/block}
                 {block ERROR_MESSAGE}
-
                 {* Проверка GET-параметра через Smarty *}
                 {if isset($smarty.get.error)}
-                    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i> {* Иконка Bootstrap Icons (если подключены) *}
-                        <div>
-                            {if $smarty.get.error == 'banned'}
-                                <strong>Доступ заблокирован!</strong> Ваш аккаунт был деактивирован администратором. Пожалуйста, свяжитесь с поддержкой.
-                            {elseif $smarty.get.error == '1'}
-                                <strong>Ошибка!</strong> Неверный логин или пароль.
-                            {else}
-                                <strong>Внимание!</strong> Произошла ошибка при авторизации.
-                            {/if}
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i> {* Иконка Bootstrap Icons (если подключены) *}
+                    <div>
+                        {if $smarty.get.error == 'banned'}
+                        <strong>Доступ заблокирован!</strong> Ваш аккаунт был деактивирован администратором. Пожалуйста, свяжитесь с поддержкой.
+                        {elseif $smarty.get.error == '1'}
+                        <strong>Ошибка!</strong> Неверный логин или пароль.
+                        {else}
+                        <strong>Внимание!</strong> Произошла ошибка при авторизации.
+                        {/if}
                     </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 {/if}
-
                 {$app|debug_print_var}
                 {/block}
             </main>

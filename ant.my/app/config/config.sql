@@ -86,3 +86,6 @@ ALTER TABLE `users` ADD COLUMN `last_login` DATETIME DEFAULT NULL;
 -- и давать пользователю возможность «выбить» подозрительные входы.
 ALTER TABLE `user_tokens`
 ADD COLUMN `last_used_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+ALTER TABLE `users`
+ADD COLUMN `is_active` TINYINT(1) DEFAULT 1 NOT NULL AFTER `password_hash`;

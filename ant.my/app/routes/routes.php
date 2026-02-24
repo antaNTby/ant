@@ -37,72 +37,67 @@ Flight::route( 'GET /login', function () {
 Flight::route( 'POST /login', function () {
     $db      = Flight::db();
     $session = Flight::session();
+    $request = Flight::request();
 
-    /* request data */
-    $username   = Flight::request()->data->username;
-    $password   = Flight::request()->data->password;
-    $rememberMe = isset( Flight::request()->data->remember_me );
+    $username   = $request->data->username;
+    $password   = $request->data->password;
+    $rememberMe = isset( $request->data->remember_me );
 
     // 1. Поиск пользователя
     $user = $db->fetchRow( 'SELECT * FROM users WHERE username = ?', [$username] );
 
+    // 2. Проверка пароля и статуса бана
     if ( $user && password_verify( $password, $user['password_hash'] ) ) {
 
-        // 2. ОБНОВЛЯЕМ ВРЕМЯ ВХОДА В БД
-        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+        if ( !$user['is_active'] ) {
+            $session->set( 'flash_message', 'Ваш аккаунт заблокирован' );
+            Flight::redirect( '/login?error=Banned' );
 
-        // 3. Устанавливаем сессию
+            return;
+        }
+
+        // 3. Базовая авторизация в сессию
         $session->regenerate( true );
-        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
         $session->set( 'user_id', $user['id'] );
         $session->set( 'user_name', $user['username'] );
         $session->set( 'user_role', $user['role'] );
+        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
         $session->set( 'last_activity', time() );
 
-        $session->set( 'flash_message', 'Успешная авторизация по паролю' );
-
-        // --- ЛОГИКА "ЗАПОМНИТЬ МЕНЯ" ---
+        // 4. Логика "Запомнить меня"
         if ( $rememberMe ) {
-            $expireSeconds = 30 * 24 * 60 * 60; // 30 дней
+            $expireSeconds = 2592000;
             $rawToken      = bin2hex( random_bytes( 32 ) );
             $tokenHash     = hash( 'sha256', $rawToken );
 
-            // 1. Запись в БД
+            // Вставляем запись
             $db->runQuery(
-                'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at)
-         VALUES (?, ?, ?, ?, ?)',
-                [
-                    $user['id'],
-                    $tokenHash,
-                    Flight::request()->user_agent,
-                    Flight::request()->ip,
-                    date( 'Y-m-d H:i:s', time() + $expireSeconds ),
-                ]
+                'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at) VALUES (?, ?, ?, ?, ?)',
+                [$user['id'], $tokenHash, $request->user_agent, $request->ip, date( 'Y-m-d H:i:s', time() + $expireSeconds )]
             );
 
-            // 2. Установка КУКИ (без NULL)
-            Flight::cookie()->set(
-                'remember_token', // $name
-                $rawToken,        // $value
-                $expireSeconds,   // $expire
-                '/',              // $path
-                '',               // $domain (заменили null на пустую строку)
-                true,             // $secure
-                true              // $httponly
-            );
-            $session->set( 'flash_message', 'Мы вас помним' );
+                                                 // ПОЛУЧАЕМ ID напрямую из $db
+            $lastInsertId = $db->lastInsertId(); // <--- Исправлено здесь
+            $session->set( 'current_token_id', $lastInsertId );
+
+            // Устанавливаем куку
+            Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
         }
 
-        // --- КОНЕЦ ЛОГИКИ ---
+        // Обновляем время входа в таблице users
+        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
 
-        if ( $session->get( 'user_role' ) === 'admin' ) {
+        $session->set( 'flash_message', 'Добро пожаловать, ' . $user['username'] );
+
+        // Редирект по роли
+        if ( $user['role'] === 'admin' ) {
             Flight::redirect( '/admin/settings' );
         } else {
             Flight::redirect( '/home/wellcome' );
         }
 
     } else {
-        $session->set( 'flash_message', 'Неверные данные' );
+        $session->set( 'flash_message', 'Неверный логин или пароль' );
         Flight::redirect( '/login?error=Access+Denied' );
     }
 } );
@@ -157,7 +152,10 @@ Flight::group( '/admin', function () {
          ORDER BY last_used_at DESC',
             [$userId]
         );
-
+        // "Причесываем" данные перед отправкой в шаблон
+        foreach ( $sessions as &$s ) {
+            $s['device_info'] = Flight::auth()->parseUserAgent( $s['user_agent'] );
+        }
         Flight::render( 'admin/pages/sessions.tpl.html', ['sessions' => $sessions] );
     } );
 
