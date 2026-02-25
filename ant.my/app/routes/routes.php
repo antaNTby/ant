@@ -75,8 +75,8 @@ Flight::route( 'POST /login', function () {
         Flight::redirect( $url );
     } else {
         $session->set( 'flash_message', $result['message'] );
-        $redirectParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
-        Flight::redirect( '/login?error=' . $redirectParam );
+        $queryParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
+        Flight::redirect( '/login?error=' . $queryParam );
     }
 } );
 

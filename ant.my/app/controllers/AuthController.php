@@ -11,10 +11,10 @@ class AuthController
         Flight::render( 'register.tpl.html',
             [
 
-                'title' => 'Регистрация',
-                'year'  => date( 'Y' ),
-                'error' => Flight::request()->query->error, // Получаем ошибку из URL
-                'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
+                'query_error' => Flight::request()->query->error, // Получаем ошибку из URL
+                'query_okey'  => Flight::request()->query->okey,  // Получаем ok из URL
+                'title'       => 'Регистрация',
+                'year'        => date( 'Y' ),
 
             ] );
     }
@@ -35,8 +35,8 @@ class AuthController
         if ( $result['success'] ) {
             // Flight::flash( 'success', $result['message'] );
             $session->set( 'flash_message', $result['message'] );
-            $redirectParam = isset( $result['okey'] ) ? $result['okey'] : 'Account+OK';
-            Flight::redirect( '/login?okey=' . $redirectParam );
+            $queryParam = isset( $result['okey'] ) ? $result['okey'] : 'Account+OK';
+            Flight::redirect( '/login?okey=' . $queryParam );
 
         } else {
             $session->set( 'flash_message', $result['message'] );
@@ -44,8 +44,8 @@ class AuthController
             Flight::render( 'register.tpl.html', [
                 'error'   => $result['error'],
                 'message' => $result['message'],
-                'values'  => ['username' => $username, 'email' => $email],
                 'old'     => $data->getData(), // Извлекаем массив из коллекции Flight
+                'values'  => ['username' => $username, 'email' => $email],
             ] );
         }
     }
