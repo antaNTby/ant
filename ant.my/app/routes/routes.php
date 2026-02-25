@@ -88,6 +88,16 @@ Flight::route( '/logout', function () {
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
+    Flight::route( '/dpt/subs/@subName', function ( $subName ) {
+        $subData = [
+            'subName' => $subName,
+
+        ];
+
+        Flight::render( 'admin/dpt/subs/' . $subName . '.tpl.html', ['subData' => $subData] );
+
+    } );
+
     Flight::route( '/sessions', function () {
         $db     = Flight::db();
         $userId = Flight::session()->get( 'user_id' );

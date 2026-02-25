@@ -33,9 +33,15 @@
         <div class="row">
             <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="admin/aside.tpl.html"}
+
             </aside>
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
-                {include file="admin/main.tpl.html"}
+
+                {* {include file="admin/main.tpl.html"} *}
+
+{block name="DPT"}
+{/block}
+
                 {block PAGES}
                 <div class="m-5 p-5 bg-body-tertiary">
                     No Content
