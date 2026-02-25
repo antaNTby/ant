@@ -2,7 +2,6 @@
 <html lang="ru" data-bs-theme="dark" id="html-root">
 
 <head>
-    {block HEAD_BLOCK}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,, viewport-fit=cover">
     <title>{$title|escape}</title>
@@ -21,9 +20,7 @@
     {* Bootstrap Icons CSS *}
     <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
     {* Дополнительные стили *}
-    <link rel="stylesheet" href="/lib/admin.css">
-    {/block}
-    {block STYLES_BLOCK}
+    <link rel="stylesheet" href="/lib/b2b.css">
     <style>
         .brandname-nix {
             font-family:
@@ -93,12 +90,10 @@
             transition: background-color 0.3s ease;
         }
         </style>
-    {/block}
 </head>
 
 <body>
     <!-- НАВИГАЦИЯ (NAVBAR) -->
-    {block HEADNAV_BLOCK}
     <nav class="sticky-top-1 user-select-none navbar navbar-expand-lg bg-body-tertiary border-bottom">
         <div class="container-fluid" style="max-width: 1900px;">
             {* <a class="navbar-brand fw-bold" href="#">MyBrand</a> *}
@@ -131,11 +126,10 @@
             </div>
         </div>
     </nav>
-    {/block}
     <div class="container-fluid mt-4" style="max-width: 1900px;">
         <div class="row">
             <!-- MAIN CONTENT -->
-            {block MAIN_BLOCK}
+
             <main class="col-lg-9">
                 <article class="card p-4 mb-4 shadow-sm">
                     <header>
@@ -162,9 +156,8 @@
                     </section>
                 </article>
             </main>
-            {/block}
+
             <!-- ASIDE (STICKY) -->
-            {block ASIDE_BLOCK}
             {assign var="user_role" value=Flight::session()->get('user_role')}
             {assign var="user_id" value=Flight::session()->get('user_id')}
             {assign var="user_name" value=Flight::session()->get('user_name')}
@@ -190,19 +183,19 @@
                     </div>
                 </div>
             </aside>
-            {/block}
+
         </div>
     </div>
     <!-- FOOTER -->
-    {block FOOTER_BLOCK}
+
     <footer class="bg-body-tertiary py-5 mt-5 border-top">
         <div class="container text-center">
             <p class="text-secondary">&copy; 2026 Профессиональный макет на Bootstrap 5.3</p>
         </div>
     </footer>
-    {/block}
+
     <!-- Scripts -->
-    {block SCRIPTS_BLOCK}
+
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/admin.js" type="module"></script>
     <!-- Скрипт переключения темы -->
@@ -226,7 +219,7 @@
             });
     });
     </script>
-    {/block}
+
 </body>
 
 </html>
