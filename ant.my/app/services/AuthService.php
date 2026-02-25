@@ -20,7 +20,7 @@ class AuthService
         );
 
         if ( $exists ) {
-            return ['success' => false, 'error' => 'incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
+            return ['success' => false, 'error' => 'Incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
         }
 
         // 2. Хешируем пароль
@@ -32,7 +32,7 @@ class AuthService
             [$username, $email, $passwordHash, 'user', 1]
         );
 
-        return ['success' => true, 'result' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];
+        return ['success' => true, 'okey' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];
     }
 
     public function checkAccess()
@@ -125,7 +125,7 @@ class AuthService
         // 5. Финализация
         $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
 
-        return ['success' => true, 'role' => $user['role'], 'username' => $user['username']];
+        return ['success' => true, 'okey' => 'last_login updated', 'role' => $user['role'], 'username' => $user['username']];
     }
 
     /**

@@ -23,6 +23,8 @@ class AuthController
     {
         $session = Flight::session();
 
+        $data = Flight::request()->data;
+
         $username = Flight::request()->data->username;
         $email    = Flight::request()->data->email;
         $password = Flight::request()->data->password;
@@ -33,13 +35,17 @@ class AuthController
         if ( $result['success'] ) {
             // Flight::flash( 'success', $result['message'] );
             $session->set( 'flash_message', $result['message'] );
-            $errorParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
-            Flight::redirect( '/login?result=' . $errorParam );
+            $redirectParam = isset( $result['okey'] ) ? $result['okey'] : 'Account+OK';
+            Flight::redirect( '/login?okey=' . $redirectParam );
+
         } else {
             $session->set( 'flash_message', $result['message'] );
+
             Flight::render( 'register.tpl.html', [
-                'error'  => $result['error'],
-                'values' => ['username' => $username, 'email' => $email],
+                'error'   => $result['error'],
+                'message' => $result['message'],
+                'values'  => ['username' => $username, 'email' => $email],
+                'old'     => $data->getData(), // Извлекаем массив из коллекции Flight
             ] );
         }
     }
