@@ -25,6 +25,12 @@ $rememberMe     = new \app\middlewares\RememberMeMiddleware();
 ################################################################
 ################################################################
 ################################################################
+Flight::route( 'GET /register', function () {
+    Flight::render( 'register.tpl.html', [
+        'year'  => date( 'Y' ),
+        'error' => Flight::request()->query->error, // Получаем ошибку из URL
+    ] );
+} );
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {

@@ -3,12 +3,9 @@
 	[
 		{
 			"path": ".",
-            "folder_exclude_patterns":["trash"]
+            "folder_exclude_patterns":["trash"],
 		},
-        {
-            "path": "./trash"
-        }
-	],
+    ],
 	    "settings":
     {
         "remember_open_files": true,
@@ -42,5 +39,5 @@
         // "font_face": "MonoLisa-Medium",
         // "font_face": "MonoLisa-Regular",
         // 100001
-    }
+    },
 }

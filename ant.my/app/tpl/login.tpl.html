@@ -10,6 +10,8 @@
     <link rel="manifest" href="/lib/ico/site.webmanifest">
     <title>Вход в систему</title>
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    {* Bootstrap Icons CSS *}
+    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=Source+Code+Pro&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <!-- Liberation Mono через CDNFonts -->
@@ -49,8 +51,7 @@
 
 <body>
     <main class="form-signin text-center shadow-lg p-3 pb-0 bg-body rounded border">
-        {* <h1 class="h3 mb-3 fw-bold">Вход</h1> *}
-
+        <h1 class="h3 mb-3 fw-bold">Вход</h1>
         {if !empty($error)}
         <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace user-select-none">
             {$error}
@@ -65,6 +66,7 @@
         </div>
         {assign var="tmp" value=Flight::session()->delete('flash_message')}
         {/if}
+        {* *}
         <div class="my-3 user-select-none">
             <span class="brandname-nix">nix</span><img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px"><span class="brandname-by">by</span>
         </div>
@@ -75,24 +77,54 @@
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Логин" required autocomplete="username">
                 <label for="floatingInput">Логин</label>
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-0">
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Пароль" required autocomplete="current-password">
-                <label for="floatingPassword">Пароль</label>
+                <label for="floatingPassword" class="toggle-password" data-target="floatingPassword">Пароль</label>
             </div>
+            <div class="toggle-password mb-3 fw-lighter font-monospace lh-1 fs-6 text-secondary-emphasis opacity-25 user-select-none" data-target="floatingPassword">показать пароль <i class="bi bi-eye"></i></div>
             <div class="mb-5 form-check user-select-none">
                 <label class="form-check-label text-danger" for="rememberMe">
-                <input type="checkbox" name="remember_me" class="form-check-input" id="rememberMe" checked="checked">
-                Запомнить меня</label>
+                    <input type="checkbox" name="remember_me" class="form-check-input" id="rememberMe" checked="checked">
+                    Запомнить меня</label>
             </div>
             <button class="w-100 btn btn-dark mb-0" type="submit">Войти</button>
         </form>
+        <div class="text-center mt-3">
+            <small>Зарегистрировать аккаунт?</small>
+            <a class="btn btn-link w-100 my-4" href="/register">Регистрация</a>
+        </div>
         <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
         {*
         <hr> *}
         {*
         <hr> *}
     </main>
+    {* *}
+    <script>
+    /**/
+    document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+
+                    console.log(targetId);
+                    const input = document.getElementById(targetId);
+                    const icon = this.querySelector('i');
+
+                    if(input.type === 'password') {
+                            input.type = 'text';
+                            icon.classList.replace('bi-eye', 'bi-eye-slash');
+                            button.classList.toggle('opacity-25');
+                    } else {
+                            input.type = 'password';
+                            icon.classList.replace('bi-eye-slash', 'bi-eye');
+                            button.classList.toggle('opacity-25');
+                    }
+            });
+    });
+    /**/
+    </script>
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    {* *}
 </body>
 
 </html>

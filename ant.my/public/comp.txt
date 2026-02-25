@@ -1,0 +1,12 @@
+Процессор CPU INTEL I5-13400.		шт	1
+Жесткий диск int. 3.5 2TB  P300 HDWD320UZSVA		шт	1
+Твердотельный накопитель Patriot P320 256GB (P320P256GM28)		шт	1
+Кулер DeepCool AG400 		шт	1
+Материнская плата B760 S1700 MATX B760M DS3H GIGABYTE		шт	1
+Корпус Zalman i4 ATX без БП Черный		шт	1
+Блок питания Chieftec BDF-600S (ATX 2.3, 600W,) шт	1
+Оперативная память  16GB (8Gbx2) K2 TEAMGROUP C46DC01.		шт	1
+Сетевой адаптер CUDY 2 5G PCI Express Adapter 2.5Gbps PCI Express Adapter, Realtek Chipset, 2.5G/1000M/100M/10M Auto AdaptiveCompatiable with Windows, Windows Server шт	1
+
+
+Программное обеспечение Windows 11 PRO OEM, (FQC-10547)		шт	1

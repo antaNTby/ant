@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lib/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/lib/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/lib/ico/favicon-16x16.png">
+    <link rel="manifest" href="/lib/ico/site.webmanifest">
+    <title>Регистрация пользователя</title>
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    {* Bootstrap Icons CSS *}
+    <link rel="stylesheet" href="/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&family=Source+Code+Pro&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <!-- Liberation Mono через CDNFonts -->
+    <link href="https://fonts.cdnfonts.com/css/liberation-mono" rel="stylesheet">
+</head>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+        font-family: 'Bahnschrift', system-ui, sans-serif;
+        background: url('../lib/orn.gif');
+    }
+
+    .form-signin {
+        width: 100%;
+        max-width: 400px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .brandname-nix {
+        font-family:
+            Consolas,
+            monospace;
+        cursor: default;
+    }
+
+    .brandname-by {
+        font-family:
+            'Ubuntu Mono',
+            monospace;
+        cursor: default;
+    }
+    </style>
+</head>
+
+<body>
+    <main class="form-signin text-center shadow-lg p-3 pb-0 bg-body rounded border">
+        <h1 class="h3 mb-3 fw-bold">Регистрация</h1>
+        {if !empty($error)}
+        <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace user-select-none">
+            {$error}
+        </div>
+        {/if}
+        {* Flash-сообщение (например, "Сессия истекла") *}
+        {assign var="flash" value=Flight::session()->get('flash_message')}
+        {if $flash}
+        <div class="alert alert-light alert-dismissible fw-lighter user-select-none" role="alert">
+            {$flash}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {assign var="tmp" value=Flight::session()->delete('flash_message')}
+        {/if}
+        {* *}
+        <div class="my-3 user-select-none">
+            <span class="brandname-nix">nix</span><img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px"><span class="brandname-by">by</span>
+        </div>
+        {*
+        <hr> *}
+        <form action="/register" method="POST" class="p-3 m-1 bg-body-tertiary rounded border">
+            <div class="mb-3">
+                <label class="form-label">Имя пользователя</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+            </div>
+            <!-- Поле Пароль -->
+            <div class="mb-3">
+                <label class="form-label">Пароль</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                    <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                <div class="form-text">
+                    Мин. 4 символа: a-zA-Z, 0-9 и спецсимвол (@#$%^&*)
+                </div>
+            </div>
+            <!-- Поле Подтвердите пароль -->
+            <div class="mb-4">
+                <label class="form-label">Подтвердите пароль</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-check2-circle"></i></span>
+                    <input type="password" name="password_confirm" id="password_confirm" class="form-control" required>
+                    <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password_confirm">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="w-100 btn btn-dark mb-0">
+                Создать аккаунт
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <small>Уже есть аккаунт?</small> <a class="btn btn-link w-100 my-4"  href="/login">Войти</a>
+        </div>
+        <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
+
+        <script>
+        /**/
+        document.querySelectorAll('.toggle-password').forEach(button => {
+                button.addEventListener('click', function() {
+                        const targetId = this.getAttribute('data-target');
+                        const input = document.getElementById(targetId);
+                        const icon = this.querySelector('i');
+
+                        if(input.type === 'password') {
+                                input.type = 'text';
+                                icon.classList.replace('bi-eye', 'bi-eye-slash');
+                        } else {
+                                input.type = 'password';
+                                icon.classList.replace('bi-eye-slash', 'bi-eye');
+                        }
+                });
+        });
+        /**/
+        </script>
+        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
