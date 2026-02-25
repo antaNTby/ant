@@ -25,18 +25,21 @@ class AuthController
 
         $data = Flight::request()->data;
 
-        $username = Flight::request()->data->username;
-        $email    = Flight::request()->data->email;
-        $password = Flight::request()->data->password;
+        // dd( $data );
+
+        $username         = Flight::request()->data->username;
+        $email            = Flight::request()->data->email;
+        $password         = Flight::request()->data->password;
+        $password_confirm = Flight::request()->data->password_confirm;
 
         $authService = Flight::auth(); // Предполагаем, что сервис зарегистрирован в Flight
-        $result      = $authService->register( $username, $email, $password );
+        $result      = $authService->register( $username, $email, $password, $password_confirm );
 
         if ( $result['success'] ) {
             // Flight::flash( 'success', $result['message'] );
             $session->set( 'flash_message', $result['message'] );
             $queryParam = isset( $result['okey'] ) ? $result['okey'] : 'Account+OK';
-            Flight::redirect( '/login?okey=' . $queryParam );
+            Flight::redirect( '/?okey=' . $queryParam );
 
         } else {
             $session->set( 'flash_message', $result['message'] );

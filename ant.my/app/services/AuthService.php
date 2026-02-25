@@ -6,10 +6,25 @@ use Flight;
 class AuthService
 {
 
+    private function createInternalSession( $user )
+    {
+        $session = Flight::session();
+
+        $session->regenerate( true );
+        $session->set( 'user_id', $user['id'] );
+        $session->set( 'user_name', $user['username'] );
+        $session->set( 'user_role', $user['role'] );
+        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+        $session->set( 'last_activity', time() );
+
+        Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+    }
+
     public function register(
         string $username,
         string $email,
-        string $password
+        string $password,
+        string $password_confirm
     ) {
         $db = Flight::db();
 
@@ -23,16 +38,40 @@ class AuthService
             return ['success' => false, 'error' => 'Incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
         }
 
+        if ( $password !== $password_confirm ) {
+            return ['success' => false, 'error' => 'Password is not confirmed', 'message' => 'Пароль не совпадает'];
+        }
+
         // 2. Хешируем пароль
         $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
 
         // 3. Сохраняем в базу
-        $db->runQuery(
+/*        $db->runQuery(
             'INSERT INTO users (username, email, password_hash, role, is_active, created_at) VALUES (?, ?, ?, ?, ?, NOW())',
             [$username, $email, $passwordHash, 'user', 1]
         );
+        return ['success' => true, 'okey' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];*/
+        try {
+            $db->runQuery(
+                'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
+             VALUES (?, ?, ?, ?, 1, NOW())',
+                [$username, $email, $passwordHash, 'user']
+            );
 
-        return ['success' => true, 'okey' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];
+            // Получаем ID только что созданного пользователя
+            $userId = $db->lastInsertId();
+
+            // Загружаем данные пользователя для сессии
+            $user = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$userId] );
+
+            // ВХОДИМ АВТОМАТИЧЕСКИ
+            $this->createInternalSession( $user );
+
+            return ['success' => true, 'message' => 'Вы вошли как "' . $username . '" / ' . $email];
+        } catch ( \Exception $e ) {
+            return ['success' => false, 'error' => 'DB error', 'message' => 'Ошибка базы данных'];
+        }
+
     }
 
     public function checkAccess()
@@ -99,12 +138,13 @@ class AuthService
         }
 
         // 3. Создание сессии
-        $session->regenerate( true );
+        $this->createInternalSession( $user );
+/*        $session->regenerate( true );
         $session->set( 'user_id', $user['id'] );
         $session->set( 'user_name', $user['username'] );
         $session->set( 'user_role', $user['role'] );
         $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-        $session->set( 'last_activity', time() );
+        $session->set( 'last_activity', time() );*/
 
         // 4. Логика Remember Me
         if ( $rememberMe ) {
@@ -123,7 +163,6 @@ class AuthService
         }
 
         // 5. Финализация
-        $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
 
         return ['success' => true, 'okey' => 'last_login updated', 'role' => $user['role'], 'username' => $user['username']];
     }
