@@ -29,8 +29,14 @@ Flight::route( 'GET /register', function () {
     Flight::render( 'register.tpl.html', [
         'year'  => date( 'Y' ),
         'error' => Flight::request()->query->error, // Получаем ошибку из URL
+        'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
     ] );
 } );
+
+// Маршруты
+$authController = new \app\controllers\AuthController();
+Flight::route( 'GET /register', [$authController, 'showRegistrationForm'] );
+Flight::route( 'POST /register', [$authController, 'processRegistration'] );
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {
@@ -46,6 +52,7 @@ Flight::route( 'GET /login', function () {
     Flight::render( 'login.tpl.html', [
         'year'  => date( 'Y' ),
         'error' => Flight::request()->query->error, // Получаем ошибку из URL
+        'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
     ] );
 } );
 

@@ -111,29 +111,9 @@ ADD COLUMN `last_used_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_
 ALTER TABLE `users`
 ADD COLUMN `is_active` TINYINT(1) DEFAULT 1 NOT NULL AFTER `password_hash`;
 
+ALTER TABLE users ADD COLUMN email VARCHAR(255) NOT NULL AFTER username;
 
-CREATE TABLE `users` (
-    `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `username` VARCHAR(50) NOT NULL UNIQUE,
-    `email` VARCHAR(150) NOT NULL UNIQUE,
-    `password_hash` VARCHAR(255) NOT NULL,
-    `role` ENUM('user', 'admin') DEFAULT 'user',
-    `is_active` TINYINT(1) DEFAULT 1,
-    `last_login` DATETIME DEFAULT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX (`username`),
-    INDEX (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- нужно заполнить почты в таблицу а затем :
+ALTER TABLE users ADD UNIQUE (email);
 
--- Таблица для токенов (уже используется в твоем AuthService)
-CREATE TABLE `user_tokens` (
-    `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `user_id` INT UNSIGNED NOT NULL,
-    `token_hash` VARCHAR(64) NOT NULL,
-    `user_agent` VARCHAR(255),
-    `created_ip` VARCHAR(45),
-    `expires_at` DATETIME NOT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`user_id`) REFERENCES users(`id`) ON DELETE CASCADE,
-    INDEX (`token_hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

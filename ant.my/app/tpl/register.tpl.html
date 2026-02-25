@@ -53,20 +53,7 @@
 <body>
     <main class="form-signin text-center shadow-lg p-3 pb-0 bg-body rounded border">
         <h1 class="h3 mb-3 fw-bold">Регистрация</h1>
-        {if !empty($error)}
-        <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-danger text-nowrap fw-bolder text-uppercase font-monospace user-select-none">
-            {$error}
-        </div>
-        {/if}
-        {* Flash-сообщение (например, "Сессия истекла") *}
-        {assign var="flash" value=Flight::session()->get('flash_message')}
-        {if $flash}
-        <div class="alert alert-light alert-dismissible fw-lighter user-select-none" role="alert">
-            {$flash}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {assign var="tmp" value=Flight::session()->delete('flash_message')}
-        {/if}
+        {include file="session_message.tpl.html"}
         {* *}
         <div class="my-3 user-select-none">
             <span class="brandname-nix">nix</span><img class="mx-1 my-0" src="/lib/ico/apple-touch-icon.png" alt="nix.by" height="24px"><span class="brandname-by">by</span>
@@ -119,10 +106,9 @@
         </form>
         <div class="text-center mt-3">
             <small>Уже есть аккаунт?</small>
-            <a class="btn btn-link w-100 my-4"  href="/login">Войти</a>
+            <a class="btn btn-link w-100 my-4" href="/login">Войти</a>
         </div>
         <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
-
         <script>
         /**/
         document.querySelectorAll('.toggle-password').forEach(button => {

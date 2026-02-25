@@ -6,6 +6,35 @@ use Flight;
 class AuthService
 {
 
+    public function register(
+        string $username,
+        string $email,
+        string $password
+    ) {
+        $db = Flight::db();
+
+        // 1. Проверяем, не занят ли логин или email
+        $exists = $db->fetchRow(
+            'SELECT id FROM users WHERE username = ? OR email = ?',
+            [$username, $email]
+        );
+
+        if ( $exists ) {
+            return ['success' => false, 'error' => 'incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
+        }
+
+        // 2. Хешируем пароль
+        $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
+
+        // 3. Сохраняем в базу
+        $db->runQuery(
+            'INSERT INTO users (username, email, password_hash, role, is_active, created_at) VALUES (?, ?, ?, ?, ?, NOW())',
+            [$username, $email, $passwordHash, 'user', 1]
+        );
+
+        return ['success' => true, 'result' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];
+    }
+
     public function checkAccess()
     {
         $session = Flight::session();
@@ -62,11 +91,11 @@ class AuthService
 
         // 2. Валидация
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
-            return ['success' => false, 'message' => 'Неверный логин или пароль'];
+            return ['success' => false, 'error' => 'Incorrect Account', 'message' => 'Неверный логин или пароль'];
         }
 
         if ( !$user['is_active'] ) {
-            return ['success' => false, 'message' => 'Ваш аккаунт заблокирован', 'error' => 'Account is Banned'];
+            return ['success' => false, 'error' => 'Account is Banned', 'message' => 'Ваш аккаунт заблокирован'];
         }
 
         // 3. Создание сессии

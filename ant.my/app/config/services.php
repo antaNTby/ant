@@ -16,7 +16,10 @@ Flight::map( 'cookie', function () {
 } );
 
 // Регистрация сервиса
-Flight::register( 'auth', 'app\services\AuthService' );
+// Flight::register( 'auth', 'app\services\AuthService' );
+
+// Регистрация сервиса
+Flight::register( 'auth', \app\services\AuthService::class );
 
 /*********************************************
  *         FlightPHP Service Setup           *

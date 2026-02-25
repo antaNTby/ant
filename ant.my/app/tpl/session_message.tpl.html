@@ -1,0 +1,19 @@
+        {if !empty($error)}
+        <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-danger text-nowrap fw-bolder font-monospace user-select-none">
+            {$error}
+        </div>
+        {/if}
+        {if !empty($okey)}
+        <div id="flash" class="py-2 mb-3 rounded rounded-2 rounded-start-4 text-bg-success text-nowrap fw-bolder font-monospace user-select-none">
+            {$okey}
+        </div>
+        {/if}
+        {* Flash-сообщение (например, "Сессия истекла") *}
+        {assign var="flash" value=Flight::session()->get('flash_message')}
+        {if $flash}
+        <div class="alert alert-light alert-dismissible fw-lighter user-select-none" role="alert">
+            {$flash}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {assign var="tmp" value=Flight::session()->delete('flash_message')}
+        {/if}
