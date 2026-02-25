@@ -84,6 +84,27 @@ ALTER TABLE `users` ADD COLUMN `last_login` DATETIME DEFAULT NULL;
 
 -- Для реализации мониторинга активных сессий добавим колонку last_used_at. Это позволит вам выводить в админке список устройств (браузер + IP)
 -- и давать пользователю возможность «выбить» подозрительные входы.
+CREATE TABLE `user_tokens` (
+    `id`          INT NOT NULL AUTO_INCREMENT, -- Убрали UNSIGNED
+    `user_id`     INT NOT NULL,                -- Убрали UNSIGNED (теперь совпадает с users.id)
+    `token_hash`  CHAR(64) NOT NULL,
+    `user_agent`  VARCHAR(255) DEFAULT NULL,
+    `created_ip`  VARCHAR(45) DEFAULT NULL,
+    `expires_at`  DATETIME NOT NULL,
+    `created_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `idx_token_hash` (`token_hash`),
+    INDEX `idx_user_id` (`user_id`),
+    INDEX `idx_expires_at` (`expires_at`),
+
+    CONSTRAINT `fk_user_tokens_user`
+        FOREIGN KEY (`user_id`)
+        REFERENCES `users` (`id`)
+        ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+
 ALTER TABLE `user_tokens`
 ADD COLUMN `last_used_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
