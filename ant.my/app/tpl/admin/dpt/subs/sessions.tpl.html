@@ -1,6 +1,6 @@
 {* sessions.tpl.html *}
-{extends file="admin/dpt/common.tpl.html"}
-{block name="sub"}
+{extends file="admin/dpt/dpt.tpl.html"}
+{block name="SUB"}
 <caption>Активность пользователей</caption>
 <table class="table table-hover">
     <thead>
@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        {foreach $sessions as $s}
+        {foreach $subData.sessions as $s}
         <tr>
             <td><small class="text-secondary">{$s.user_agent|truncate:500}</small></td>
             {* <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td> *}

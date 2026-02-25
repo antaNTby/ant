@@ -88,13 +88,40 @@ Flight::route( '/logout', function () {
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
-    Flight::route( '/dpt/subs/@subName', function ( $subName ) {
-        $subData = [
-            'subName' => $subName,
+    Flight::group( '/dpt/subs', function () {
 
-        ];
+        Flight::route( '/@subName', function ( $subName ) {
+            $db     = Flight::db();
+            $userId = Flight::session()->get( 'user_id' );
 
-        Flight::render( 'admin/dpt/subs/' . $subName . '.tpl.html', ['subData' => $subData] );
+            $subData = [
+                'userId'  => $userId,
+                'subName' => $subName,
+
+            ];
+            if ( $subName == 'sessions' ) {
+
+                $sessions = $db->fetchAll(
+                    'SELECT *
+                     FROM user_tokens
+                     WHERE user_id = ? AND expires_at > NOW()
+                     ORDER BY last_used_at DESC',
+                    [$userId]
+                );
+                // "Причесываем" данные перед отправкой в шаблон
+                foreach ( $sessions as &$s ) {
+                    $s['device_info'] = Flight::auth()->parseUserAgent( $s['user_agent'] );
+                }
+
+                $subData = [
+                    'subName'  => $subName,
+                    'sessions' => $sessions,
+
+                ];
+            }
+
+            Flight::render( 'admin/dpt/subs/' . $subName . '.tpl.html', ['subData' => $subData] );
+        } );
 
     } );
 
