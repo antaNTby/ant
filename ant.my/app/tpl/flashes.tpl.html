@@ -1,7 +1,7 @@
 {assign var="flashes" value=Flight::session()->get('flash_messages')}
 
 {if $flashes}
-<div class="flash-container position-fixed top-0 end-0 p-3" style="z-index: 1080;" id="flashContainer">
+<div class="flash-container position-fixed top-0 end-0 m-2" style="z-index: 1080; width:40ex!important;" id="flashContainer">
 
     {* Кнопка "Закрыть всё" — показываем только если сообщений больше одного *}
     {if count($flashes) > 1}
@@ -14,17 +14,17 @@
 
     {foreach $flashes as $flash}
         {* Маппинг иконок под типы Bootstrap *}
-        {if $flash.type == 'success'}{$icon = 'bi-check-circle-fill'}
-        {elseif $flash.type == 'danger'}{$icon = 'bi-exclamation-octagon-fill'}
-        {elseif $flash.type == 'warning'}{$icon = 'bi-exclamation-triangle-fill'}
-        {elseif $flash.type == 'info'}{$icon = 'bi-info-circle-fill'}
-        {elseif $flash.type == 'primary'}{$icon = 'bi-megaphone-fill'}
-        {else}{$icon = 'bi-bell-fill'}{/if}
+        {if $flash.type == 'success'}{$icon = 'bi-check-circle'}
+        {elseif $flash.type == 'danger'}{$icon = 'bi-exclamation-octagon'}
+        {elseif $flash.type == 'warning'}{$icon = 'bi-exclamation-triangle'}
+        {elseif $flash.type == 'info'}{$icon = 'bi-info-circle'}
+        {elseif $flash.type == 'primary'}{$icon = 'bi-megaphone'}
+        {else}{$icon = 'bi-bell'}{/if}
 
-        <div class="alert alert-{$flash.type} alert-dismissible fade show shadow-lg user-select-none d-flex align-items-center fw-lighter border-0 border-start border-4 mb-2 animate-alert"
-             role="alert" style="min-width: 320px; max-width: 400px; transition: transform 0.3s ease, opacity 0.3s ease;">
-            <i class="bi {$icon} me-2 fs-5 px-1"></i>
-            <div class="flex-grow-1 text-break pe-3">
+        <div class="alert alert-{$flash.type} alert-dismissible d-flex align-items-center shadow-lg user-select-none mb-2 animate-alert"
+             role="alert"  style="transition: transform 0.3s ease, opacity 0.3s ease;">{* *}
+            <i class="bi {$icon} fs-4 px-1 me-3 d-inline-block"></i>
+            <div class="flex-grow-1 fs-6 text-break fw-lighter">
                 {$flash.message}
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -67,7 +67,7 @@
                         }
                     }, 150);
                 }
-            }, 7000 + (index * 1000));
+            }, 777000 + (index * 1000));
         });
     });
 </script>
