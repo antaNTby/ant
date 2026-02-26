@@ -52,6 +52,7 @@ class AuthService
 
             // ВХОДИМ АВТОМАТИЧЕСКИ
             $this->createInternalSession( $user );
+            $this->setLastLogin( $user );
 
             Flight::flash( 'light', 'Вы вошли как "' . $username . '" / ' . $email );
 
@@ -133,6 +134,7 @@ class AuthService
 
         // 3. Создание сессии
         $this->createInternalSession( $user );
+        $this->setLastLogin( $user );
 
         // 4. Логика Remember Me
         if ( $rememberMe ) {
@@ -153,7 +155,7 @@ class AuthService
             // dd( [$user['id'], $user['user_agent'], $request->user_agent] );
 
             // удалим токен и куку если просили не хранить
-            $db->runQuery( 'DELETE FROM user_tokens WHERE user_id = ? AND user_agent = ? AND created_ip = ?', [$user['id'], $request->user_agent, $request->ip] );
+            $db->runQuery( 'DELETE FROM user_tokens WHERE user_id = ? AND user_agent = ?', [$user['id'], $request->user_agent] );
             // Удаляем куку (используем те же параметры, что при создании)
             Flight::cookie()->set(
                 'remember_token',
@@ -243,7 +245,7 @@ class AuthService
         return "$os, $browser";
     }
 
-    private function createInternalSession( $user )
+    public function createInternalSession( $user )
     {
         $session = Flight::session();
 
@@ -254,6 +256,11 @@ class AuthService
         $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
         $session->set( 'last_activity', time() );
 
+        // Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+    }
+    public function setLastLogin( $user )
+    {
+        $session = Flight::session();
         Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
     }
 

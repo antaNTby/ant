@@ -56,17 +56,20 @@ class RememberMeMiddleware
                     Flight::cookie()->set( 'remember_token', $newRawToken, $expireSeconds, '/', '', false, true );
 
                     // --- СЕССИЯ ---
-                    $session->regenerate( true );
-                    $session->set( 'user_id', $user['id'] );
-                    $session->set( 'user_name', $user['username'] );
-                    $session->set( 'user_role', $user['role'] );
-                    $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-                    $session->set( 'last_activity', time() );
+                    ## $session->regenerate( true );
+                    ## $session->set( 'user_id', $user['id'] );
+                    ## $session->set( 'user_name', $user['username'] );
+                    ## $session->set( 'user_role', $user['role'] );
+                    ## $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+                    ## $session->set( 'last_activity', time() );
+
+                    $result = Flight::auth()->createInternalSession( $user );
 
                     // ВАЖНО: сохраняем ID токена для AdminAuthMiddleware->checkAccess()
                     $session->set( 'current_token_id', $newTokenId );
 
-                    $db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+                    ##$db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
+                    $result = Flight::auth()->setLastLogin( $user );
                 }
             } else {
                 // Чистим невалидную куку

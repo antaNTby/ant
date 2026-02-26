@@ -32,8 +32,8 @@ class AuthController
         $password         = Flight::request()->data->password;
         $password_confirm = Flight::request()->data->password_confirm;
 
-        $authService = Flight::auth(); // Предполагаем, что сервис зарегистрирован в Flight
-        $result      = $authService->register( $username, $email, $password, $password_confirm );
+        // Предполагаем, что сервис зарегистрирован в Flight
+        $result = Flight::auth()->register( $username, $email, $password, $password_confirm );
 
         if ( $result['success'] ) {
 
