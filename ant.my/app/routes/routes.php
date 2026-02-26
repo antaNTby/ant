@@ -96,7 +96,7 @@ Flight::route( '/logout', function () {
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
-    Flight::group( '', function () {
+    Flight::group( '/dpt/subs', function () {
 
         Flight::route( '/@subName', function ( $subName ) {
             $db     = Flight::db();
