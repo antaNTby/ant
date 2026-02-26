@@ -54,7 +54,7 @@ Flight::route( 'POST /login', function () {
     $session = Flight::session();
 
     // Вызываем сервис
-    $result = Flight::auth()->attemptLogin(
+    $result = Flight::authService()->attemptLogin(
         $request->data->username,
         $request->data->password,
         isset( $request->data->remember_me )
@@ -77,7 +77,7 @@ Flight::route( 'POST /login', function () {
 // Выход
 Flight::route( '/logout', function () {
     // Вызываем централизованный метод выхода
-    Flight::auth()->logout();
+    Flight::authService()->logout();
 
     // Устанавливаем сообщение и уходим на логин
     // Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
@@ -118,7 +118,7 @@ Flight::group( '/admin', function () {
                 );
                 // "Причесываем" данные перед отправкой в шаблон
                 foreach ( $sessions as &$s ) {
-                    $s['device_info'] = Flight::auth()->parseUserAgent( $s['user_agent'] );
+                    $s['device_info'] = Flight::authService()->parseUserAgent( $s['user_agent'] );
                 }
 
                 $subData = [

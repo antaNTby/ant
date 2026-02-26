@@ -63,13 +63,13 @@ class RememberMeMiddleware
                     ## $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
                     ## $session->set( 'last_activity', time() );
 
-                    $result = Flight::auth()->createInternalSession( $user );
+                    $result = Flight::authService()->createInternalSession( $user );
 
                     // ВАЖНО: сохраняем ID токена для AdminAuthMiddleware->checkAccess()
                     $session->set( 'current_token_id', $newTokenId );
 
                     ##$db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
-                    $result = Flight::auth()->setLastLogin( $user );
+                    $result = Flight::authService()->setLastLogin( $user );
                 }
             } else {
                 // Чистим невалидную куку

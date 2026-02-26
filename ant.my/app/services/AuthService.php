@@ -6,65 +6,6 @@ use Flight;
 class AuthService
 {
 
-    public function register(
-        string $username,
-        string $email,
-        string $password,
-        string $password_confirm
-    ) {
-        $db = Flight::db();
-
-        // 1. Проверяем, не занят ли логин или email
-        $exists = $db->fetchRow(
-            'SELECT id FROM users WHERE username = ? OR email = ?',
-            [$username, $email]
-        );
-
-        if ( $exists ) {
-            Flight::flash( 'dark', 'Пользователь с таким логином или email уже существуе' );
-
-            return ['success' => false, 'error' => 'Incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
-        }
-
-        if ( $password !== $password_confirm ) {
-            Flight::flash( 'dark', 'Пароли не совпадают' );
-
-            return ['success' => false, 'error' => 'Password is not confirmed', 'message' => 'Пароли не совпадают'];
-        }
-
-        // 2. Хешируем пароль
-        $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
-
-        // 3. Сохраняем в базу
-
-        try {
-            $db->runQuery(
-                'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
-             VALUES (?, ?, ?, ?, 1, NOW())',
-                [$username, $email, $passwordHash, 'user']
-            );
-
-            // Получаем ID только что созданного пользователя
-            $userId = $db->lastInsertId();
-
-            // Загружаем данные пользователя для сессии
-            $user = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$userId] );
-
-            // ВХОДИМ АВТОМАТИЧЕСКИ
-            $this->createInternalSession( $user );
-            $this->setLastLogin( $user );
-
-            Flight::flash( 'light', 'Вы вошли как "' . $username . '" / ' . $email );
-
-            return ['success' => true, 'message' => 'Вы вошли как "' . $username . '" / ' . $email];
-        } catch ( \Exception $e ) {
-            Flight::flash( 'dark', 'Ошибка базы данных' );
-
-            return ['success' => false, 'error' => 'DB error', 'message' => 'Ошибка базы данных'];
-        }
-
-    }
-
     public function checkAccess()
     {
         $session = Flight::session();
