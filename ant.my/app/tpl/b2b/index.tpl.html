@@ -183,7 +183,26 @@
                         <a class="list-group-item list-group-item-action text-nowrap" href="/logout"><i class="bi bi-box-arrow-in-right"></i> Logout</a>{/if}
                         {if isset($user_id)}<li class="list-group-item">{if $user_role eq 'admin'}<i class="bi bi-person-gear"></i>{else}<i class="bi bi-person"></i>{/if} {$user_name}</li>{/if}
                     </div>
+
+
+                    <div class="card border-danger mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">Безопасность</h5>
+                            <p class="card-text text-muted">Если вы потеряли устройство или подозреваете взлом, вы можете завершить все активные сеансы.</p>
+
+                            <form action="/logout-all" method="POST" onsubmit="return confirm('Вы уверены, что хотите выйти со всех устройств?');">
+                                <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+
                 </div>
+
+
             </aside>
         </div>
     </div>

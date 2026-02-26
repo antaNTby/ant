@@ -9,12 +9,12 @@ use flight\util\Json;
 // echo password_hash( '12345', PASSWORD_DEFAULT );
 
 // Whip out the ol' router and we'll pass that to the routes file
-$router = $app->router();
+$router         = $app->router();
+$authController = new \app\controllers\AuthController();
 
 // Инициализируем сессию ПЕРЕД роутами
 $session = new \flight\Session();
 // Регистрируем middleware
-$authController = new \app\controllers\AuthController();
 $authCheckAdmin = new \app\middlewares\AdminAuthMiddleware();
 $authCheckUser  = new \app\middlewares\UserAuthMiddleware();
 $rememberMe     = new \app\middlewares\RememberMeMiddleware();
@@ -27,64 +27,19 @@ $rememberMe     = new \app\middlewares\RememberMeMiddleware();
 ################################################################
 ################################################################
 
-// Маршруты
+// Регистрация
 Flight::route( 'GET /register', [$authController, 'showRegistrationForm'] );
-Flight::route( 'POST /register', [$authController, 'processRegistration'] );
+Flight::route( 'POST /register', [$authController, 'handleRegistrationForm'] );
 
-// Страница показа формы
-Flight::route( 'GET /login', function () {
-
-    $session = Flight::session();
-    // Если уже залогинен — кидаем в админку
-    if ( $session->get( 'user_role' ) === 'admin' ) {
-        Flight::flash( 'success', 'Полный доступ' );
-    } else {
-        Flight::flash( 'warning', 'Клиентский доступ' );
-    }
-
-    Flight::render( 'login.tpl.html', [
-        'year'  => date( 'Y' ),
-        'error' => Flight::request()->query->error, // Получаем ошибку из URL
-        'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
-    ] );
-} );
-
-Flight::route( 'POST /login', function () {
-    $request = Flight::request();
-    $session = Flight::session();
-
-    // Вызываем сервис
-    $result = Flight::authService()->attemptLogin(
-        $request->data->username,
-        $request->data->password,
-        isset( $request->data->remember_me )
-    );
-
-    if ( $result['success'] ) {
-        // $session->set( 'session_message', 'Добро пожаловать, ' . $result['username'] );
-        Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
-        // Редирект по роли
-        $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/b2b/wellcome';
-        Flight::redirect( $url );
-    } else {
-        // $session->set( 'session_message', $result['message'] );
-        Flight::flash( 'danger', 'Вход не удался' );
-        $queryParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
-        Flight::redirect( '/login?error=' . $queryParam );
-    }
-} );
+// Авторизация
+Flight::route( 'GET /login', [$authController, 'showLoginForm'] );
+Flight::route( 'POST /login', [$authController, 'handleLoginForm'] );
 
 // Выход
-Flight::route( '/logout', function () {
-    // Вызываем централизованный метод выхода
-    Flight::authService()->logout();
+Flight::route( '/logout', [$authController, 'handleLogout'] );
+Flight::route( 'POST /logout-all', [$authController, 'handleLogoutEverywhere'] );
 
-    // Устанавливаем сообщение и уходим на логин
-    // Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
-    Flight::flash( 'success', 'Вы успешно вышли из системы' );
-    Flight::redirect( '/login' );
-} );
-
+Flight::route( 'GET /admin/links/deleteExpiredTokens', [$authController, 'handleDeleteExpiredTokens'] )->addMiddleware( $authCheckAdmin );
 ################################################################
 ################################################################
 ################################################################

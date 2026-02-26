@@ -64,6 +64,19 @@ $app->register( 'session', \flight\Session::class, [
 $session = Flight::session();
 Flight::set( 'session', $session );
 
+// Регистрируем маппинг csrfToken
+Flight::map( 'csrfToken', function () {
+    $session = Flight::session();
+
+    // Если токена еще нет в сессии — генерируем новый
+    if ( !$session->get( 'csrf_token' ) ) {
+        $token = bin2hex( random_bytes( 32 ) );
+        $session->set( 'csrf_token', $token );
+    }
+
+    return $session->get( 'csrf_token' );
+} );
+
 // Регистрация простого хелпера для уведомлений
 
 Flight::map( 'flash', function (
