@@ -1,0 +1,118 @@
+{assign var="flashes" value=Flight::session()->get('flash_messages')}
+
+{if $flashes}
+<div class="flash-container position-fixed top-0 end-0 p-3" style="z-index: 1080;" id="flashContainer">
+
+    {* Кнопка "Закрыть всё" — показываем только если сообщений больше одного *}
+    {if count($flashes) > 1}
+    <div class="text-end mb-2" id="closeAllBtnWrap">
+        <button type="button" class="btn btn-sm btn-light shadow-sm border fw-lighter opacity-75" onclick="window.closeAllFlashes()">
+            <i class="bi bi-x-lg text-danger"></i> Закрыть всё
+        </button>
+    </div>
+    {/if}
+
+    {foreach $flashes as $flash}
+        {* Маппинг иконок под типы Bootstrap *}
+        {if $flash.type == 'success'}{$icon = 'bi-check-circle-fill'}
+        {elseif $flash.type == 'danger'}{$icon = 'bi-exclamation-octagon-fill'}
+        {elseif $flash.type == 'warning'}{$icon = 'bi-exclamation-triangle-fill'}
+        {elseif $flash.type == 'info'}{$icon = 'bi-info-circle-fill'}
+        {elseif $flash.type == 'primary'}{$icon = 'bi-megaphone-fill'}
+        {else}{$icon = 'bi-bell-fill'}{/if}
+
+        <div class="alert alert-{$flash.type} alert-dismissible fade show shadow-lg user-select-none d-flex align-items-center fw-lighter border-0 border-start border-4 mb-2 animate-alert"
+             role="alert" style="min-width: 320px; max-width: 400px; transition: transform 0.3s ease, opacity 0.3s ease;">
+            <i class="bi {$icon} me-2 fs-5 px-1"></i>
+            <div class="flex-grow-1 text-break pe-3">
+                {$flash.message}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {/foreach}
+</div>
+
+<script>
+    /**
+     * Глобальная функция закрытия всех уведомлений вручную
+     */
+    window.closeAllFlashes = function() {
+        const container = document.getElementById('flashContainer');
+        if (!container) return;
+
+        const alerts = container.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            if (window.bootstrap && bootstrap.Alert) {
+                const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                if (bsAlert) bsAlert.close();
+            } else {
+                alert.classList.remove('show');
+                setTimeout(() => alert.remove(), 150);
+            }
+        });
+
+        // Сразу скрываем кнопку, не дожидаясь обсервера
+        const btnWrap = document.getElementById('closeAllBtnWrap');
+        if (btnWrap) btnWrap.remove();
+    };
+
+    /**
+     * Логика автоматического контроля за контейнером
+     */
+    (function() {
+        const container = document.getElementById('flashContainer');
+        const btnWrap = document.getElementById('closeAllBtnWrap');
+        if (!container) return;
+
+        // 1. Следим за удалением алертов (MutationObserver)
+        // Как только количество алертов станет 0 — удаляем кнопку
+        const observer = new MutationObserver(() => {
+            const remainingAlerts = container.querySelectorAll('.alert');
+            if (remainingAlerts.length === 0) {
+                if (btnWrap) btnWrap.remove();
+                container.remove();
+                observer.disconnect(); // Перестаем следить
+            }
+        });
+
+        // Настраиваем обсервер на дочерние элементы контейнера
+        observer.observe(container, { childList: true });
+
+        // 2. Авто-скрытие по таймеру
+        const alerts = container.querySelectorAll('.alert');
+        alerts.forEach((alert, index) => {
+            setTimeout(() => {
+                if (window.bootstrap && bootstrap.Alert) {
+                    const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                    if (bsAlert) bsAlert.close();
+                } else {
+                    alert.classList.remove('show');
+                    setTimeout(() => alert.remove(), 150);
+                }
+            }, 5000 + (index * 1000));
+        });
+    })();
+</script>
+
+
+{* Очищаем сессию, чтобы уведомления не дублировались при обновлении страницы *}
+{assign var="tmp" value=Flight::session()->delete('flash_messages')}
+{/if}
+
+<style>
+    /* Плавная анимация появления */
+    .animate-alert {
+        animation: slideInRight 0.4s ease-out;
+    }
+
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Наведение курсора останавливает "затухание" (визуальный эффект) */
+    .flash-container .alert:hover {
+        transform: scale(1.02);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+</style>

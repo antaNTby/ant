@@ -35,22 +35,22 @@ class AuthService
         );
 
         if ( $exists ) {
+            Flight::flash( 'dark', 'Пользователь с таким логином или email уже существуе' );
+
             return ['success' => false, 'error' => 'Incorrect Login', 'message' => 'Пользователь с таким логином или email уже существует'];
         }
 
         if ( $password !== $password_confirm ) {
-            return ['success' => false, 'error' => 'Password is not confirmed', 'message' => 'Пароль не совпадает'];
+            Flight::flash( 'dark', 'Пароли не совпадают' );
+
+            return ['success' => false, 'error' => 'Password is not confirmed', 'message' => 'Пароли не совпадают'];
         }
 
         // 2. Хешируем пароль
         $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
 
         // 3. Сохраняем в базу
-/*        $db->runQuery(
-            'INSERT INTO users (username, email, password_hash, role, is_active, created_at) VALUES (?, ?, ?, ?, ?, NOW())',
-            [$username, $email, $passwordHash, 'user', 1]
-        );
-        return ['success' => true, 'okey' => 'Approved', 'message' => 'Регистрация успешна! Теперь вы можете войти.'];*/
+
         try {
             $db->runQuery(
                 'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
@@ -67,8 +67,12 @@ class AuthService
             // ВХОДИМ АВТОМАТИЧЕСКИ
             $this->createInternalSession( $user );
 
+            Flight::flash( 'light', 'Вы вошли как "' . $username . '" / ' . $email );
+
             return ['success' => true, 'message' => 'Вы вошли как "' . $username . '" / ' . $email];
         } catch ( \Exception $e ) {
+            Flight::flash( 'dark', 'Ошибка базы данных' );
+
             return ['success' => false, 'error' => 'DB error', 'message' => 'Ошибка базы данных'];
         }
 
@@ -130,11 +134,15 @@ class AuthService
 
         // 2. Валидация
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
-            return ['success' => false, 'error' => 'Incorrect Account', 'message' => 'Неверный логин или пароль'];
+            Flight::flash( 'dark', 'Неверный логин или пароль' );
+
+            return ['success' => false, 'error' => 'Incorrect+Account', 'message' => 'Неверный логин или пароль'];
         }
 
         if ( !$user['is_active'] ) {
-            return ['success' => false, 'error' => 'Account is Banned', 'message' => 'Ваш аккаунт заблокирован'];
+            Flight::flash( 'dark', 'Ваш аккаунт заблокирован' );
+
+            return ['success' => false, 'error' => 'Account+is+Banned', 'message' => 'Ваш аккаунт заблокирован'];
         }
 
         // 3. Создание сессии
@@ -163,8 +171,9 @@ class AuthService
         }
 
         // 5. Финализация
+        Flight::flash( 'light', 'Удачный вход' );
 
-        return ['success' => true, 'okey' => 'last_login updated', 'role' => $user['role'], 'username' => $user['username']];
+        return ['success' => true, 'okey' => 'last_login updated', 'message' => 'ok', 'role' => $user['role'], 'username' => $user['username']];
     }
 
     /**
@@ -210,28 +219,28 @@ class AuthService
         $browser = 'Unknown Browser';
 
         // Определяем ОС
-        if ( preg_match( '/windows nt 10/i', $ua ) ) {
-            $os = 'Windows 10/11';
-        } elseif ( preg_match( '/android/i', $ua ) ) {
+        if ( preg_match( ' / windows nt10 / i', $ua ) ) {
+            $os = 'Windows10 / 11';
+        } elseif ( preg_match( ' / android / i', $ua ) ) {
             $os = 'Android';
-        } elseif ( preg_match( '/iphone|ipad/i', $ua ) ) {
+        } elseif ( preg_match( ' / iphone | ipad / i', $ua ) ) {
             $os = 'iOS';
-        } elseif ( preg_match( '/linux/i', $ua ) ) {
+        } elseif ( preg_match( ' / linux / i', $ua ) ) {
             $os = 'Linux';
-        } elseif ( preg_match( '/macintosh|mac os x/i', $ua ) ) {
+        } elseif ( preg_match( ' / macintosh | mac osx / i', $ua ) ) {
             $os = 'macOS';
         }
 
         // Определяем Браузер
-        if ( preg_match( '/chrome/i', $ua ) && !preg_match( '/edge|opr|opera/i', $ua ) ) {
+        if ( preg_match( ' / chrome / i', $ua ) && !preg_match( ' / edge | opr | opera / i', $ua ) ) {
             $browser = 'Chrome';
-        } elseif ( preg_match( '/firefox/i', $ua ) ) {
+        } elseif ( preg_match( ' / firefox / i', $ua ) ) {
             $browser = 'Firefox';
-        } elseif ( preg_match( '/safari/i', $ua ) && !preg_match( '/chrome/i', $ua ) ) {
+        } elseif ( preg_match( ' / safari / i', $ua ) && !preg_match( ' / chrome / i', $ua ) ) {
             $browser = 'Safari';
-        } elseif ( preg_match( '/edge|edg/i', $ua ) ) {
+        } elseif ( preg_match( ' / edge | edg / i', $ua ) ) {
             $browser = 'Edge';
-        } elseif ( preg_match( '/opera|opr/i', $ua ) ) {
+        } elseif ( preg_match( ' / opera | opr / i', $ua ) ) {
             $browser = 'Opera';
         }
 

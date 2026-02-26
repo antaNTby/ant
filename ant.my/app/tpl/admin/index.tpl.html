@@ -21,21 +21,15 @@
     {* *}
     {* Основной контейнер *}
     <div class="container-fluid" style="max-width: 1900px;">
-        {* Flash-сообщение (например, "Сессия истекла") *}
-        {assign var="flash" value=Flight::session()->get('flash_message')}
-        {if $flash}
-        <div class="alert alert-success alert-dismissible fw-lighter m-3" role="alert">
-            {$flash}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {assign var="tmp" value=Flight::session()->delete('flash_message')}
-        {/if}
+
+
         <div class="row">
             <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="admin/aside.tpl.html"}
 
             </aside>
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
+ {include file="../flashes.tpl.html"}
 
                 {* {include file="admin/main.tpl.html"} *}
 

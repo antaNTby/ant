@@ -44,7 +44,8 @@ Flight::route( 'GET /login', function () {
     $session = Flight::session();
     // Если уже залогинен — кидаем в админку
     if ( $session->get( 'user_role' ) === 'admin' ) {
-        $session->set( 'flash_message', 'Полный доступ' );
+        $session->set( 'session_message', 'Полный доступ' );
+        Flight::flash( 'success', 'Полный доступ' );
         Flight::redirect( '/admin/dashboard' );
         // Flight::redirect( '/admin/login' );
     }
@@ -68,13 +69,14 @@ Flight::route( 'POST /login', function () {
     );
 
     if ( $result['success'] ) {
-        $session->set( 'flash_message', 'Добро пожаловать, ' . $result['username'] );
-
+        $session->set( 'session_message', 'Добро пожаловать, ' . $result['username'] );
+        Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
         // Редирект по роли
         $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/b2b/wellcome';
         Flight::redirect( $url );
     } else {
-        $session->set( 'flash_message', $result['message'] );
+        $session->set( 'session_message', $result['message'] );
+        Flight::flash( 'danger', 'Вход не удался' );
         $queryParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
         Flight::redirect( '/login?error=' . $queryParam );
     }
@@ -86,7 +88,8 @@ Flight::route( '/logout', function () {
     Flight::auth()->logout();
 
     // Устанавливаем сообщение и уходим на логин
-    Flight::session()->set( 'flash_message', 'Вы успешно вышли из системы' );
+    Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
+    Flight::flash( 'success', 'Вы успешно вышли из системы' );
     Flight::redirect( '/login' );
 } );
 
@@ -186,7 +189,8 @@ Flight::group( '/admin', function () {
                 }
             }
 
-            $session->set( 'flash_message', 'Доступ для устройства отозван' );
+            $session->set( 'session_message', 'Доступ для устройства отозван' );
+            Flight::flash( 'danger', 'Доступ для устройства отозван' );
         }
 
         Flight::redirect( '/admin/sessions' );

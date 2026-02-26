@@ -9,12 +9,14 @@ class AdminAuthMiddleware
     {
         // Вызываем объединенный метод
         if ( !Flight::auth()->checkAccess() ) {
+            Flight::flash( 'danger', 'Доступ запрещен' );
             Flight::redirect( '/login?error=Access+Denied' );
             exit;
         }
 
         // Проверка роли (админ или нет)
         if ( Flight::session()->get( 'user_role' ) !== 'admin' ) {
+            Flight::flash( 'danger', 'Нет прав' );
             Flight::redirect( '/login?error=No+Permission' );
             exit;
         }
@@ -35,14 +37,14 @@ class AdminAuthMiddlewareOLD
         // 1. ПРОВЕРКА АВТОРИЗАЦИИ
         // Если RememberMeMiddleware отработал успешно, здесь уже БУДЕТ user_id
         if ( !$session->get( 'user_id' ) ) {
-            $session->set( 'flash_message', 'Неверные данные' );
+            $session->set( 'session_message', 'Неверные данные' );
             Flight::redirect( '/login?error=Access+Denied' );
             exit;
         }
 
         // 2. ПРОВЕРКА РОЛИ
         if ( $session->get( 'user_role' ) !== 'admin' ) {
-            $session->set( 'flash_message', 'No Permission' );
+            $session->set( 'session_message', 'No Permission' );
             Flight::redirect( '/login?error=No+Permission' );
             exit;
         }
@@ -56,11 +58,11 @@ class AdminAuthMiddlewareOLD
             // ПРОВЕРКА: Если есть кука "запомнить меня", НЕ выкидываем пользователя,
             // а просто позволяем сессии обновиться (или полагаемся на RememberMeMiddleware)
             if ( Flight::cookie()->get( 'remember_token' ) ) {
-                $session->set( 'flash_message', 'продлеваем время по токену' );
+                $session->set( 'session_message', 'продлеваем время по токену' );
                 $session->set( 'last_activity', $now ); // Продлеваем сессию "на лету"
             } else {
                 $session->clear();
-                $session->set( 'flash_message', 'Время сессии истекло' );
+                $session->set( 'session_message', 'Время сессии истекло' );
                 Flight::redirect( '/login?error=Session+Expired' );
                 exit;
             }

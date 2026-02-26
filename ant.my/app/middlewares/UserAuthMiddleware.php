@@ -9,6 +9,7 @@ class UserAuthMiddleware
     {
         // Вызываем объединенный метод
         if ( !Flight::auth()->checkAccess() ) {
+            Flight::flash( 'danger', 'Доступ запрещен' );
             Flight::redirect( '/login?error=Session+Expired' );
             exit;
         }

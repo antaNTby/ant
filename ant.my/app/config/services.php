@@ -64,6 +64,24 @@ $app->register( 'session', \flight\Session::class, [
 $session = Flight::session();
 Flight::set( 'session', $session );
 
+// Регистрация простого хелпера для уведомлений
+
+Flight::map( 'flash', function (
+    string $type,
+    string $message
+) {
+    static $trusted = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
+    $session        = Flight::session();
+    $type           = in_array( $type, $trusted ) ? $type : 'dark';
+    // Получаем текущие сообщения
+    $flashes = $session->get( 'flash_messages' ) ?? [];
+    // Добавляем новое (используем краткий синтаксис)
+    $flashes[] = compact( 'type', 'message' );
+    $session->set( 'flash_messages', $flashes );
+
+    return Flight::app(); // Позволяет делать Flight::flash(...)->render(...)
+} );
+
 // then you probably have something that tells you who the current role is of the person
 // likely you have something where you pull the current role
 // from a session variable which defines this

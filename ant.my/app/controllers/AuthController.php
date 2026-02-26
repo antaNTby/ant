@@ -36,20 +36,13 @@ class AuthController
         $result      = $authService->register( $username, $email, $password, $password_confirm );
 
         if ( $result['success'] ) {
-            // Flight::flash( 'success', $result['message'] );
-            $session->set( 'flash_message', $result['message'] );
-            $queryParam = isset( $result['okey'] ) ? $result['okey'] : 'Account+OK';
-            Flight::redirect( '/?okey=' . $queryParam );
 
+            Flight::flash( 'success', 'Добро пожаловать! Регистрация прошла успешно.' );
+            Flight::redirect( '/' );
         } else {
-            $session->set( 'flash_message', $result['message'] );
-
-            Flight::render( 'register.tpl.html', [
-                'error'   => $result['error'],
-                'message' => $result['message'],
-                'old'     => $data->getData(), // Извлекаем массив из коллекции Flight
-                'values'  => ['username' => $username, 'email' => $email],
-            ] );
+            Flight::flash( 'danger', $result['message'] );
+            Flight::render( 'register.tpl.html', ['old' => $data->getData()] );
         }
+
     }
 }
