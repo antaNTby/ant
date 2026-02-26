@@ -6,20 +6,6 @@ use Flight;
 class AuthService
 {
 
-    private function createInternalSession( $user )
-    {
-        $session = Flight::session();
-
-        $session->regenerate( true );
-        $session->set( 'user_id', $user['id'] );
-        $session->set( 'user_name', $user['username'] );
-        $session->set( 'user_role', $user['role'] );
-        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-        $session->set( 'last_activity', time() );
-
-        Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
-    }
-
     public function register(
         string $username,
         string $email,
@@ -123,7 +109,7 @@ class AuthService
     public function attemptLogin(
         $username,
         $password,
-        $rememberMe = false
+        $rememberMe = true
     ) {
         $db      = Flight::db();
         $session = Flight::session();
@@ -147,12 +133,6 @@ class AuthService
 
         // 3. Создание сессии
         $this->createInternalSession( $user );
-/*        $session->regenerate( true );
-        $session->set( 'user_id', $user['id'] );
-        $session->set( 'user_name', $user['username'] );
-        $session->set( 'user_role', $user['role'] );
-        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-        $session->set( 'last_activity', time() );*/
 
         // 4. Логика Remember Me
         if ( $rememberMe ) {
@@ -168,6 +148,22 @@ class AuthService
 
             $session->set( 'current_token_id', $db->lastInsertId() );
             Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
+        } else {
+
+            // dd( [$user['id'], $user['user_agent'], $request->user_agent] );
+
+            // удалим токен и куку если просили не хранить
+            $db->runQuery( 'DELETE FROM user_tokens WHERE user_id = ? AND user_agent = ? AND created_ip = ?', [$user['id'], $request->user_agent, $request->ip] );
+            // Удаляем куку (используем те же параметры, что при создании)
+            Flight::cookie()->set(
+                'remember_token',
+                '',
+                -3600,
+                '/',
+                '',
+                false, // поставьте true, если используете HTTPS
+                true
+            );
         }
 
         // 5. Финализация
@@ -245,6 +241,20 @@ class AuthService
         }
 
         return "$os, $browser";
+    }
+
+    private function createInternalSession( $user )
+    {
+        $session = Flight::session();
+
+        $session->regenerate( true );
+        $session->set( 'user_id', $user['id'] );
+        $session->set( 'user_name', $user['username'] );
+        $session->set( 'user_role', $user['role'] );
+        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+        $session->set( 'last_activity', time() );
+
+        Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
     }
 
 }

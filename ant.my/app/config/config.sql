@@ -117,3 +117,5 @@ ALTER TABLE users ADD COLUMN email VARCHAR(255) NOT NULL AFTER username;
 ALTER TABLE users ADD UNIQUE (email);
 
 
+ALTER TABLE `user_tokens`
+CHANGE `user_agent` `user_agent` text COLLATE 'utf8mb4_0900_ai_ci' NULL AFTER `token_hash`;

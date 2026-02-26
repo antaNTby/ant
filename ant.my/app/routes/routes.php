@@ -14,6 +14,7 @@ $router = $app->router();
 // Инициализируем сессию ПЕРЕД роутами
 $session = new \flight\Session();
 // Регистрируем middleware
+$authController = new \app\controllers\AuthController();
 $authCheckAdmin = new \app\middlewares\AdminAuthMiddleware();
 $authCheckUser  = new \app\middlewares\UserAuthMiddleware();
 $rememberMe     = new \app\middlewares\RememberMeMiddleware();
@@ -25,29 +26,20 @@ $rememberMe     = new \app\middlewares\RememberMeMiddleware();
 ################################################################
 ################################################################
 ################################################################
-Flight::route( 'GET /register', function () {
-    Flight::render( 'register.tpl.html', [
-        'year'  => date( 'Y' ),
-        'error' => Flight::request()->query->error, // Получаем ошибку из URL
-        'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
-    ] );
-} );
 
 // Маршруты
-$authController = new \app\controllers\AuthController();
 Flight::route( 'GET /register', [$authController, 'showRegistrationForm'] );
 Flight::route( 'POST /register', [$authController, 'processRegistration'] );
 
 // Страница показа формы
 Flight::route( 'GET /login', function () {
-    // dd( Flight::request() );
+
     $session = Flight::session();
     // Если уже залогинен — кидаем в админку
     if ( $session->get( 'user_role' ) === 'admin' ) {
-        $session->set( 'session_message', 'Полный доступ' );
         Flight::flash( 'success', 'Полный доступ' );
-        Flight::redirect( '/admin/dashboard' );
-        // Flight::redirect( '/admin/login' );
+    } else {
+        Flight::flash( 'warning', 'Клиентский доступ' );
     }
 
     Flight::render( 'login.tpl.html', [
@@ -69,13 +61,13 @@ Flight::route( 'POST /login', function () {
     );
 
     if ( $result['success'] ) {
-        $session->set( 'session_message', 'Добро пожаловать, ' . $result['username'] );
+        // $session->set( 'session_message', 'Добро пожаловать, ' . $result['username'] );
         Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
         // Редирект по роли
         $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/b2b/wellcome';
         Flight::redirect( $url );
     } else {
-        $session->set( 'session_message', $result['message'] );
+        // $session->set( 'session_message', $result['message'] );
         Flight::flash( 'danger', 'Вход не удался' );
         $queryParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
         Flight::redirect( '/login?error=' . $queryParam );
@@ -88,7 +80,7 @@ Flight::route( '/logout', function () {
     Flight::auth()->logout();
 
     // Устанавливаем сообщение и уходим на логин
-    Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
+    // Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
     Flight::flash( 'success', 'Вы успешно вышли из системы' );
     Flight::redirect( '/login' );
 } );
@@ -104,7 +96,7 @@ Flight::route( '/logout', function () {
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
-    Flight::group( '/dpt/subs', function () {
+    Flight::group( '', function () {
 
         Flight::route( '/@subName', function ( $subName ) {
             $db     = Flight::db();
@@ -141,24 +133,6 @@ Flight::group( '/admin', function () {
 
     } );
 
-    Flight::route( '/sessions', function () {
-        $db     = Flight::db();
-        $userId = Flight::session()->get( 'user_id' );
-
-        $sessions = $db->fetchAll(
-            'SELECT id, user_agent, created_ip, last_used_at
-         FROM user_tokens
-         WHERE user_id = ? AND expires_at > NOW()
-         ORDER BY last_used_at DESC',
-            [$userId]
-        );
-        // "Причесываем" данные перед отправкой в шаблон
-        foreach ( $sessions as &$s ) {
-            $s['device_info'] = Flight::auth()->parseUserAgent( $s['user_agent'] );
-        }
-        Flight::render( 'admin/pages/sessions.tpl.html', ['sessions' => $sessions] );
-    } );
-
     Flight::route( 'POST /sessions/revoke', function () {
         $db      = Flight::db();
         $session = Flight::session();
@@ -193,7 +167,7 @@ Flight::group( '/admin', function () {
             Flight::flash( 'danger', 'Доступ для устройства отозван' );
         }
 
-        Flight::redirect( '/admin/sessions' );
+        Flight::redirect( '/dpt/subs/sessions' );
     } );
 
     // Этот маршрут сработает для любого пути, начинающегося на /admin/...
