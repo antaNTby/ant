@@ -34,65 +34,44 @@
 
 <script>
     /**
-     * Глобальная функция закрытия всех уведомлений вручную
+     * Просто удаляем весь контейнер целиком
      */
     window.closeAllFlashes = function() {
         const container = document.getElementById('flashContainer');
-        if (!container) return;
-
-        const alerts = container.querySelectorAll('.alert');
-        alerts.forEach(alert => {
-            if (window.bootstrap && bootstrap.Alert) {
-                const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
-                if (bsAlert) bsAlert.close();
-            } else {
-                alert.classList.remove('show');
-                setTimeout(() => alert.remove(), 150);
-            }
-        });
-
-        // Сразу скрываем кнопку, не дожидаясь обсервера
-        const btnWrap = document.getElementById('closeAllBtnWrap');
-        if (btnWrap) btnWrap.remove();
+        if (container) {
+            // Добавляем класс затухания из Bootstrap для красоты
+            container.classList.add('fade');
+            // Удаляем из структуры страницы через 150мс
+            setTimeout(() => container.remove(), 150);
+        }
     };
 
     /**
-     * Логика автоматического контроля за контейнером
+     * Авто-скрытие алертов по одному (по таймеру)
      */
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('flashContainer');
-        const btnWrap = document.getElementById('closeAllBtnWrap');
         if (!container) return;
 
-        // 1. Следим за удалением алертов (MutationObserver)
-        // Как только количество алертов станет 0 — удаляем кнопку
-        const observer = new MutationObserver(() => {
-            const remainingAlerts = container.querySelectorAll('.alert');
-            if (remainingAlerts.length === 0) {
-                if (btnWrap) btnWrap.remove();
-                container.remove();
-                observer.disconnect(); // Перестаем следить
-            }
-        });
-
-        // Настраиваем обсервер на дочерние элементы контейнера
-        observer.observe(container, { childList: true });
-
-        // 2. Авто-скрытие по таймеру
         const alerts = container.querySelectorAll('.alert');
         alerts.forEach((alert, index) => {
             setTimeout(() => {
-                if (window.bootstrap && bootstrap.Alert) {
-                    const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
-                    if (bsAlert) bsAlert.close();
-                } else {
+                // Если контейнер еще существует (его не удалили кнопкой)
+                if (alert && document.contains(alert)) {
                     alert.classList.remove('show');
-                    setTimeout(() => alert.remove(), 150);
+                    setTimeout(() => {
+                        alert.remove();
+                        // Если это был последний алерт — удаляем и кнопку, и контейнер
+                        if (container.querySelectorAll('.alert').length === 0) {
+                            container.remove();
+                        }
+                    }, 150);
                 }
-            }, 5000 + (index * 1000));
+            }, 7000 + (index * 1000));
         });
-    })();
+    });
 </script>
+
 
 
 {* Очищаем сессию, чтобы уведомления не дублировались при обновлении страницы *}
