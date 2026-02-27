@@ -52,8 +52,13 @@ Flight::route( 'GET /admin/links/deleteExpiredTokens', [$authController, 'handle
 Flight::group( '/admin', function () {
 
     Flight::group( '/dpt/subs', function () {
+        $authController = new \app\controllers\AuthController();
 
-        Flight::route( '/@subName', function ( $subName ) {
+        Flight::route( 'GET /sessions', [$authController, 'showSessions'] );
+        // Нам также понадобится удаление конкретной сессии
+        Flight::route( 'POST /logout-session', [$authController, 'handleLogoutSession'] );
+
+        Flight::route( '/@subNam5555e', function ( $subName ) {
             $db     = Flight::db();
             $userId = Flight::session()->get( 'user_id' );
 

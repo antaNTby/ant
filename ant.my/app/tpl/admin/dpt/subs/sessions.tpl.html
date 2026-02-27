@@ -6,7 +6,8 @@
     <thead>
         <tr>
             <th>Устройство</th>
-            <th>IP адрес</th>
+            <th>IP адрес[user_agent]</th>
+            <th>IP адрес[device_info]</th>
             <th>Последняя активность</th>
             <th>Действие</th>
         </tr>
@@ -15,7 +16,7 @@
         {foreach $subData.sessions as $s}
         <tr>
             <td><small class="text-secondary">{$s.user_agent|truncate:500}</small></td>
-            {* <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td> *}
+            <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td>
             <td>{$s.created_ip}</td>
             <td>{$s.last_used_at}</td>
             <td>
@@ -30,4 +31,71 @@
         {/foreach}
     </tbody>
 </table>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-cpu me-2"></i> Активные сессии</h5>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        {foreach $subData.sessions as $session}
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <div class="d-flex align-items-center">
+                                <div class="device-icon me-3 text-secondary">
+
+{if $session.device_info matches '/Android|iOS|iPhone|iPad/i'}
+    <i class="bi bi-smartphone fs-2 text-primary"></i>
+{else}
+    <i class="bi bi-laptop fs-2 text-secondary"></i>
+{/if}
+
+
+
+                                </div>
+                                <div>
+                                    <div class="fw-bold">
+                                        {$session.device_info}
+                                        {if $session.is_current}
+                                            <span class="badge bg-success ms-2 fw-normal text-white px-2 py-1" style="font-size: 0.7rem;">Текущая</span>
+                                        {/if}
+                                    </div>
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-geo-alt small"></i> IP: {$session.created_ip} •
+                                        <i class="bi bi-clock small"></i> Вход: {$session.created_at|date_format:"%d.%m.%Y %H:%M"}
+                                    </small>
+                                </div>
+                            </div>
+
+                            {if !$session.is_current}
+                            <form action="/logout-session" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                                <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                                <input type="hidden" name="token_id" value="{$session.id}">
+                                <button type="submit" class="btn btn-outline-danger btn-sm px-3 rounded-pill">
+                                    <i class="bi bi-x-lg"></i> Завершить
+                                </button>
+                            </form>
+                            {else}
+                            <a href="/logout" class="btn btn-light btn-sm px-3 rounded-pill text-muted fw-lighter border">Выйти</a>
+                            {/if}
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <form action="/logout-all" method="POST" onsubmit="return confirm('Выйти со всех устройств?');">
+                    <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                    <button type="submit" class="btn btn-link text-danger text-decoration-none fw-lighter">
+                        <i class="bi bi-shield-slash"></i> Завершить все остальные сеансы
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {/block}

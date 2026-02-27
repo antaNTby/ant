@@ -6,6 +6,23 @@ use Flight;
 class AuthController
 {
 
+    public function showSessions()
+    {
+
+        // dd( 'dddd' );
+
+        $sessions = Flight::authService()->getUserSessions();
+
+        $subData = [
+            'subName'  => 'new sessions',
+            'title'    => 'Мои устройства',
+            'sessions' => $sessions,
+
+        ];
+
+        Flight::render( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
+    }
+
     public function handleDeleteExpiredTokens()
     {
 
@@ -126,7 +143,7 @@ class AuthController
         if ( $rawOkey ) {
             $okeyDecoded = rawurldecode( $rawOkey );
             $messages    = [
-                'All sessions terminated' => 'Отлично! Все другие сессии завершены.',
+                'All sessions terminated' => 'Отлично! Все сессии завершены.',
                 'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
                 'Life is Good'            => 'И слава Богу!',
             ];
