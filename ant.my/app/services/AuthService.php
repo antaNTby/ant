@@ -123,13 +123,13 @@ class AuthService
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
             Flight::flash( 'danger', 'Неверный логин/email или пароль' );
 
-            return ['success' => false, 'error' => 'Incorrect+Account', 'message' => 'Ошибка авторизации'];
+            return ['success' => false, 'error' => 'Incorrect Account', 'message' => 'Ошибка авторизации'];
         }
 
         if ( !$user['is_active'] ) {
             Flight::flash( 'danger', 'Ваш аккаунт заблокирован' );
 
-            return ['success' => false, 'error' => 'Account+is+Banned', 'message' => 'Ваш аккаунт заблокирован'];
+            return ['success' => false, 'error' => 'Account is Banned', 'message' => 'Ваш аккаунт заблокирован'];
         }
 
         // 3. Создание сессии
@@ -183,7 +183,7 @@ class AuthService
         // 5. Финализация
         Flight::flash( 'dark', 'С возвращением, ' . $user['username'] . '!' );
 
-        return ['success' => true, 'okey' => 'last_login updated', 'message' => 'ok', 'role' => $user['role'], 'username' => $user['username']];
+        return ['success' => true, 'okey' => 'last_login updated', 'message' => 'С возвращением, ' . $user['username'] . '!', 'role' => $user['role'], 'username' => $user['username']];
     }
 
     /**

@@ -1,10 +1,10 @@
 {if !empty($error)}
-<div id="error_message" class="py-2 mb-3 rounded text-bg-danger text-nowrap fw-bolder font-monospace user-select-none">
-    {$error}
+<div id="error_message" class="py-2 px-1 mb-3 rounded text-bg-danger text-nowrap font-monospace user-select-none">
+    {$error}<br><sup class="text-opacity-50">{$error_message}</sup>
 </div>
 {/if}
 {if !empty($okey)}
-<div id="okey_message" class="py-2 mb-3 rounded text-bg-success text-nowrap fw-bolder font-monospace user-select-none">
-    {$okey}
+<div id="okey_message" class="py-2 px-1 mb-3 rounded text-bg-success text-nowrap font-monospace user-select-none">
+    {$okey}<br><sup class="text-opacity-50">{$okey_message}</sup>
 </div>
 {/if}

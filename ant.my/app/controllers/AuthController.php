@@ -36,12 +36,14 @@ class AuthController
 
         if ( $success ) {
             Flight::flash( 'success', 'Вы успешно вышли со всех устройств.' );
+            $okey = 'All sessions terminated';
+            Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
         } else {
             Flight::flash( 'warning', 'Сессия не найдена или уже завершена.' );
+            $error = 'No active session found';
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }
 
-        // После логаута всегда на вход
-        Flight::redirect( '/login?okey=All+sessions+terminated' );
     }
 
     public function showRegistrationForm()
@@ -78,13 +80,13 @@ class AuthController
             Flight::flash( 'success', 'Добро пожаловать! Регистрация прошла успешно.' );
             Flight::redirect( '/' );
         } else {
-            Flight::flash( 'danger', $result['message'] );
-            Flight::render( 'register.tpl.html', ['old' => $data->getData()] );
+            $error = $result['message'] ?? 'Registration Failed';
+            Flight::redirect( '/register?error=' . rawurlencode( $error ) );
         }
 
     }
 
-    public function showLoginForm()
+    public function showLoginFormOLD()
     {
         $session = Flight::session();
         // Если уже залогинен — кидаем в админку
@@ -98,6 +100,44 @@ class AuthController
             'year'  => date( 'Y' ),
             'error' => Flight::request()->query->error, // Получаем ошибку из URL
             'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
+        ] );
+    }
+
+    public function showLoginForm()
+    {
+        // Flight автоматически делает urldecode, но для rawurldecode (RFC 3986)
+        // лучше явно обработать, если в URL пришли %20
+        $rawError = Flight::request()->query->error;
+        $rawOkey  = Flight::request()->query->okey;
+
+        $errorMsg = null;
+        $okeyMsg  = null;
+
+        if ( $rawError ) {
+            $errorDecoded = rawurldecode( $rawError );
+            $messages     = [
+                'Account is Banned' => 'Ваш аккаунт заблокирован администратором.',
+                'Incorrect Account' => 'Неверный логин или пароль.',
+                'Login Failed'      => 'Ошибка входа. Попробуйте еще раз.',
+            ];
+            $errorMsg = $messages[$errorDecoded] ?? $errorDecoded;
+        }
+
+        if ( $rawOkey ) {
+            $okeyDecoded = rawurldecode( $rawOkey );
+            $messages    = [
+                'All sessions terminated' => 'Отлично! Все другие сессии завершены.',
+                'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
+            ];
+            $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
+        }
+
+        Flight::render( 'login.tpl.html', [
+            'error'         => $errorDecoded ?? '',
+            'okey'          => $okeyDecoded ?? '',
+            'error_message' => $errorMsg,
+            'okey_message'  => $okeyMsg,
+            'year'          => date( 'Y' ),
         ] );
     }
 
@@ -122,8 +162,8 @@ class AuthController
         } else {
             // $session->set( 'session_message', $result['message'] );
             Flight::flash( 'danger', 'Вход не удался' );
-            $queryParam = isset( $result['error'] ) ? $result['error'] : 'Account+Error';
-            Flight::redirect( '/login?error=' . $queryParam );
+            $error = $result['error'] ?? 'Login Failed';
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }
     }
 
