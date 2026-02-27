@@ -128,6 +128,7 @@ class AuthController
             $messages    = [
                 'All sessions terminated' => 'Отлично! Все другие сессии завершены.',
                 'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
+                'Life is Good'            => 'И слава Богу!',
             ];
             $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
         }
@@ -163,7 +164,8 @@ class AuthController
             // $session->set( 'session_message', $result['message'] );
             Flight::flash( 'danger', 'Вход не удался' );
             $error = $result['error'] ?? 'Login Failed';
-            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
+            $okey  = $result['okey'] ?? 'Life is Good';
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
         }
     }
 

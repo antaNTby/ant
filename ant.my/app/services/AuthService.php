@@ -177,7 +177,15 @@ class AuthService
             );
 
             // 3. Обязательно затираем куку в браузере (ставим дату в прошлом)
-            Flight::cookie()->set( 'remember_token', '', -3600, '/' );
+            Flight::cookie()->set(
+                'remember_token',
+                '',
+                -3600,
+                '/',
+                '',
+                false, // поставьте true, если используете HTTPS
+                true
+            );
         }
 
         // 5. Финализация
