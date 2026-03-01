@@ -35,7 +35,7 @@ class AuthService
         return $tokens;
     }
 
-    private function registerUser(
+    public function registerUser(
         string $username,
         string $email,
         string $password,
