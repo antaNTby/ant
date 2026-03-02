@@ -101,7 +101,8 @@ class AuthService
         }
 
         // Хэшируем пароль перед сохранением
-        $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
+        // $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
+        $passwordHash = password_hash( $password, PASSWORD_BCRYPT );
 
         try {
             // Регистрируем пользователя
@@ -162,8 +163,7 @@ class AuthService
             );
 
             if ( !$tokenExists ) {
-                $this->clearToken();
-                $this->clearSession();
+                $this->attemptLogout();
 
                 return false;
             }
@@ -172,8 +172,7 @@ class AuthService
         // Проверка блокировки пользователя
         $user = $db->fetchRow( 'SELECT is_active FROM users WHERE id = ?', [$userId] );
         if ( !$user || !$user['is_active'] ) {
-            $this->clearToken();
-            $this->clearSession();
+            $this->attemptLogout();
 
             return false;
         }
@@ -361,6 +360,19 @@ class AuthService
                 false,
                 true
             );
+        }
+
+        return true;
+    }
+
+    public function attemptLogout(
+    ): bool {
+        try {
+            $this->clearSession();
+            $this->clearToken();
+
+        } catch ( Exception $e ) {
+            Flight::halt( 401, json_encode( ['error' => 'Unauthorized attemptLogout'] ) );
         }
 
         return true;

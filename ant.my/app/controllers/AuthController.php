@@ -44,8 +44,7 @@ class AuthController
      */
     public function handleLogout(): void
     {
-        Flight::authService()->clearToken();   // Очистка токена
-        Flight::authService()->clearSession(); // Очистка сессии
+        Flight::authService()->attemptLogout(); // Очистка токена
 
         Flight::flash( 'success', 'Вы успешно вышли из системы' );
         Flight::redirect( '/login' ); // Переадресация на страницу входа
@@ -147,8 +146,8 @@ class AuthController
         Flight::render( 'login.tpl.html', [
             'error'         => $errorDecoded ?? '',
             'okey'          => $okeyDecoded ?? '',
-            'error_message' => $errorMsg,
-            'okey_message'  => $okeyMsg,
+            'error_message' => $errorMsg ?? '',
+            'okey_message'  => $okeyMsg ?? '',
             'year'          => date( 'Y' ),
         ] );
     }
@@ -179,7 +178,8 @@ class AuthController
             Flight::flash( 'danger', 'Вход не удался' );
             $error = $result['error'] ?? 'Login Failed';
             $okey  = $result['okey'] ?? 'Life is Good';
-            Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
+            // Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }
     }
 }
