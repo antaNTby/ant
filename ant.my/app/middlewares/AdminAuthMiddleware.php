@@ -7,7 +7,7 @@ class AdminAuthMiddleware extends BaseAuthMiddleware
 {
     public function checkRole(): bool
     {
-        return Flight::session()->get( 'user_role' ) === 'admin';
+        return Flight::session()->get( 'user_role' ) === 'administrator';
 
     }
 }

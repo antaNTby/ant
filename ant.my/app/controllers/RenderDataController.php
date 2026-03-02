@@ -51,6 +51,7 @@ class RenderDataController
             'query_error'   => Flight::request()->query->error, // Ошибка из URL
             'query_okey'    => Flight::request()->query->okey,  // OK из URL
             'user_id'       => Flight::session()->get( 'user_id' ),
+            'user_name'     => Flight::session()->get( 'user_name' ),
             'user_role'     => Flight::session()->get( 'user_role' ),
             'is_auth'       => Flight::session()->get( 'user_id' ) !== null,
 

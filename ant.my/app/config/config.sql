@@ -50,7 +50,7 @@ CREATE TABLE `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `username` VARCHAR(50) NOT NULL UNIQUE,
   `password_hash` VARCHAR(255) NOT NULL,
-  `role` ENUM('admin', 'user', 'moderator') NOT NULL DEFAULT 'user',
+  `role` ENUM('administrator', 'user', 'guest') NOT NULL DEFAULT 'user',
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -119,3 +119,6 @@ ALTER TABLE users ADD UNIQUE (email);
 
 ALTER TABLE `user_tokens`
 CHANGE `user_agent` `user_agent` text COLLATE 'utf8mb4_0900_ai_ci' NULL AFTER `token_hash`;
+
+ALTER TABLE `users`
+CHANGE `role` `role` enum('administrator','user','guest') COLLATE 'utf8mb4_0900_ai_ci' NOT NULL DEFAULT 'user' AFTER `is_active`;
