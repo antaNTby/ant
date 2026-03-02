@@ -11,68 +11,63 @@ class RememberMeMiddleware
         $db      = Flight::db();
         $request = Flight::request();
 
-        // 1. Пытаемся восстановить сессию, только если она пуста
-        if ( !$session->get( 'user_id' ) && $rawToken = Flight::cookie()->get( 'remember_token' ) ) {
+        // 1. Проверяем наличие active session и remember_token
+        if ( !$session->get( 'user_id' ) && ( $rawToken = Flight::cookie()->get( 'remember_token' ) ) ) {
 
-            $tokenHash        = hash( 'sha256', $rawToken );
+            // Хэшируем raw-token
+            $tokenHash = hash( 'sha256', $rawToken );
+
+            // Получаем текущий User-Agent клиента
             $currentUserAgent = $request->user_agent;
 
-            // 2. Ищем токен с проверкой User-Agent
+            // Проверяем существование действующего токена в базе данных
             $tokenData = $db->fetchRow(
                 'SELECT id, user_id FROM user_tokens
-                 WHERE token_hash = ? AND user_agent = ? AND expires_at > NOW()',
-                [$tokenHash, $currentUserAgent]
+                 WHERE token_hash = :hash AND user_agent = :agent AND expires_at > NOW()',
+                ['hash' => $tokenHash, 'agent' => $currentUserAgent]
             );
 
             if ( $tokenData ) {
+
+                // Получаем профиль пользователя по его ID
                 $user = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$tokenData['user_id']] );
 
-                // Проверяем, не забанен ли юзер (is_active)
+                // Проверяем активность пользователя
                 if ( $user && $user['is_active'] ) {
 
-                    // --- РОТАЦИЯ ---
+                    // Ротация токена: удаление старого токена
                     $db->runQuery( 'DELETE FROM user_tokens WHERE id = ?', [$tokenData['id']] );
 
+                    // Генерация нового токена
                     $newRawToken   = bin2hex( random_bytes( 32 ) );
                     $newTokenHash  = hash( 'sha256', $newRawToken );
                     $expireSeconds = Flight::get( 'TOKEN_EXPIRE_TIMEOUT' );
 
-                    $db->runQuery(
-                        'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at, last_used_at)
-                         VALUES (?, ?, ?, ?, ?, NOW())',
-                        [
-                            $user['id'],
-                            $newTokenHash,
-                            $currentUserAgent,
-                            $request->ip,
-                            date( 'Y-m-d H:i:s', time() + $expireSeconds ),
-                        ]
-                    );
+                    // Добавляем новый токен в базу данных
+                    // Обновляем значение remember_token в браузере
 
-                    // Получаем ID только что созданного токена (через SimplePDO/PDO)
-                    $newTokenId = $db->getConnection()->lastInsertId();
+                    $newTokenId = $db->insert( 'user_tokens', [
+                        'user_id'    => $user['id'],
+                        'token_hash' => $newTokenHash,
+                        'user_agent' => $currentUserAgent,
+                        'created_ip' => $request->ip,
+                        'expires_at' => date( 'Y-m-d H:i:s', time() + $expireSeconds ),
+                    ] );
 
-                    // Обновляем куку
                     Flight::cookie()->set( 'remember_token', $newRawToken, $expireSeconds, '/', '', false, true );
 
-                    // --- СЕССИЯ ---
-                    ## $session->regenerate( true );
-                    ## $session->set( 'user_id', $user['id'] );
-                    ## $session->set( 'user_name', $user['username'] );
-                    ## $session->set( 'user_role', $user['role'] );
-                    ## $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
-                    ## $session->set( 'last_activity', time() );
+                    // Авторизуем пользователя и устанавливаем новую сессию
 
                     $result = Flight::authService()->createInternalSession( $user );
 
-                    // ВАЖНО: сохраняем ID токена для AdminAuthMiddleware->checkAccess()
-                    $session->set( 'current_token_id', $newTokenId );
+                    // Сохраняем ID токена в сессии
+                    $session->set( 'current_token_id', $db->getConnection()->lastInsertId() );
 
-                    ##$db->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
-                    $result = Flight::authService()->setLastLogin( $user );
+                    // Обновляем последнее время входа пользователя
+                    Flight::authService()->setLastLogin( $user );
                 }
             } else {
-                // Чистим невалидную куку
+                // Очищаем invalid token
                 Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
             }
         }

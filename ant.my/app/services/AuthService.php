@@ -105,16 +105,25 @@ class AuthService
         $passwordHash = password_hash( $password, PASSWORD_BCRYPT );
 
         try {
-            // Регистрируем пользователя
-            $db->runQuery(
-                'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
-                 VALUES (?, ?, ?, ?, 1, NOW())',
-                [$username, $email, $passwordHash, 'user']
-            );
+            // $db->runQuery(
+            // 'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
+            // VALUES (?, ?, ?, ?, 1, NOW())',
+            // [$username, $email, $passwordHash, 'user']
+            // );
+            // $userId = $db->lastInsertId();
 
+            // Регистрируем пользователя
             // Получаем ID вновь созданного пользователя
-            $userId = $db->lastInsertId();
-            $user   = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$userId] );
+
+            $userId = $db->insert( 'users', [
+                'username'      => $username,
+                'email'         => $email,
+                'password_hash' => $passwordHash,
+                'role'          => 'user',
+                'is_active'     => 1,
+            ] );
+
+            $user = $db->fetchRow( 'SELECT * FROM users WHERE id = ?', [$userId] );
 
             // Автоматически создаем сессию и обновляем последний вход
             $this->createInternalSession( $user );
