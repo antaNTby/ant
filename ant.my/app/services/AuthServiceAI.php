@@ -19,7 +19,6 @@ declare ( strict_types = 1 );
 namespace app\services;
 
 use Flight;
-use flight\util\Collection;
 
 class AuthService
 {
@@ -436,7 +435,7 @@ class AuthService
      *
      * @param array $user Данные пользователя
      */
-    public function createInternalSession( Collection $user ): void
+    public function createInternalSession( array $user ): void
     {
         $session = Flight::session();
         $session->regenerate( true );
@@ -452,7 +451,7 @@ class AuthService
      *
      * @param array $user Данные пользователя
      */
-    public function setLastLogin( Collection $user ): void
+    public function setLastLogin( array $user ): void
     {
         Flight::db()->runQuery( 'UPDATE users SET last_login = NOW() WHERE id = ?', [$user['id']] );
     }

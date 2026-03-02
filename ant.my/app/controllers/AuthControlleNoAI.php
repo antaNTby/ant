@@ -1,140 +1,147 @@
 <?php
-declare ( strict_types = 1 ); // Для строгости типов данных
-
 namespace app\controllers;
 
 use Flight;
 
 class AuthController
 {
-    /**
-     * Отображение списка активных сессий пользователя.
-     *
-     * @return void
-     */
-    public function showSessions(): void
+
+    public function showSessions()
     {
+
+        // dd( 'dddd' );
+
         $sessions = Flight::authService()->getUserSessions();
 
         $subData = [
             'subName'  => 'new sessions',
             'title'    => 'Мои устройства',
             'sessions' => $sessions,
+
         ];
 
         Flight::render( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
     }
 
-    /**
-     * Удаление просроченных токенов.
-     *
-     * @return void
-     */
-    public function handleDeleteExpiredTokens(): void
+    public function handleDeleteExpiredTokens()
     {
+
         Flight::authService()->deleteExpiredTokens();
         Flight::flash( 'light', 'Удалены все истекшие токены' );
         Flight::redirect( '/admin/dashboard' );
     }
 
-    /**
-     * Выполнение выхода текущего пользователя.
-     *
-     * @return void
-     */
-    public function handleLogout(): void
+    public function handleLogout()
     {
-        Flight::authService()->clearToken();   // Очистка токена
-        Flight::authService()->clearSession(); // Очистка сессии
+        // Вызываем централизованный метод выхода
+        Flight::authService()->clearToken();
+        Flight::authService()->clearSession();
 
+        // Устанавливаем сообщение и уходим на логин
+        // Flight::session()->set( 'session_message', 'Вы успешно вышли из системы' );
         Flight::flash( 'success', 'Вы успешно вышли из системы' );
-        Flight::redirect( '/login' ); // Переадресация на страницу входа
+        Flight::redirect( '/login' );
     }
 
     /**
-     * Выполняет выход со всех устройств.
-     *
-     * @return void
+     * Обработка выхода со всех устройств
      */
-    public function handleLogoutEverywhere(): void
+    public function handleLogoutEverywhere()
     {
+        // Вызываем метод сервиса
         $success = Flight::authService()->logoutEverywhere();
 
         if ( $success ) {
             Flight::flash( 'success', 'Вы успешно вышли со всех устройств.' );
-            $okey = 'All sessions terminated'; // Сообщение успеха
+            $okey = 'All sessions terminated';
             Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
         } else {
             Flight::flash( 'warning', 'Сессия не найдена или уже завершена.' );
-            $error = 'No active session found'; // Сообщение ошибки
+            $error = 'No active session found';
             Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }
+
     }
 
-    /**
-     * Показ формы регистрации.
-     *
-     * @return void
-     */
-    public function showRegistrationForm(): void
+    public function showRegistrationForm()
     {
-        Flight::render( 'register.tpl.html', [
-            'query_error' => Flight::request()->query->error, // Ошибка из URL
-            'query_okey'  => Flight::request()->query->okey,  // OK из URL
-            'title'       => 'Регистрация',
-            'year'        => date( 'Y' ),
-        ] );
+        Flight::render( 'register.tpl.html',
+            [
+
+                'query_error' => Flight::request()->query->error, // Получаем ошибку из URL
+                'query_okey'  => Flight::request()->query->okey,  // Получаем ok из URL
+                'title'       => 'Регистрация',
+                'year'        => date( 'Y' ),
+
+            ] );
     }
 
-    /**
-     * Обработчик отправки формы регистрации.
-     *
-     * @return void
-     */
-    public function handleRegistrationForm(): void
+    public function handleRegistrationForm()
     {
+        $session = Flight::session();
+
         $data = Flight::request()->data;
 
-        $username         = $data->username;
-        $email            = $data->email;
-        $password         = $data->password;
-        $password_confirm = $data->password_confirm;
+        // dd( $data );
 
+        $username         = Flight::request()->data->username;
+        $email            = Flight::request()->data->email;
+        $password         = Flight::request()->data->password;
+        $password_confirm = Flight::request()->data->password_confirm;
+
+        // Предполагаем, что сервис зарегистрирован в Flight
+        // $result = $this->registerUser( $username, $email, $password, $password_confirm );
         $result = Flight::authService()->registerUser( $username, $email, $password, $password_confirm );
 
         if ( $result['success'] ) {
+
             Flight::flash( 'success', 'Добро пожаловать! Регистрация прошла успешно.' );
             Flight::redirect( '/' );
         } else {
             $error = $result['message'] ?? 'Registration Failed';
             Flight::redirect( '/register?error=' . rawurlencode( $error ) );
         }
+
     }
 
-    /**
-     * Показ формы входа.
-     *
-     * @return void
-     */
-    public function showLoginForm(): void
+    public function showLoginFormOLD()
     {
+        $session = Flight::session();
+        // Если уже залогинен — кидаем в админку
+        if ( $session->get( 'user_role' ) === 'admin' ) {
+            Flight::flash( 'success', 'Полный доступ' );
+        } else {
+            Flight::flash( 'warning', 'Клиентский доступ' );
+        }
+
+        Flight::render( 'login.tpl.html', [
+            'year'  => date( 'Y' ),
+            'error' => Flight::request()->query->error, // Получаем ошибку из URL
+            'okey'  => Flight::request()->query->okey,  // Получаем ok из URL
+        ] );
+    }
+
+    public function showLoginForm()
+    {
+        // Flight автоматически делает urldecode, но для rawurldecode (RFC 3986)
+        // лучше явно обработать, если в URL пришли %20
         $rawError = Flight::request()->query->error;
         $rawOkey  = Flight::request()->query->okey;
 
         $errorMsg = null;
         $okeyMsg  = null;
 
-        if ( $rawError !== null ) {
+        if ( $rawError ) {
             $errorDecoded = rawurldecode( $rawError );
             $messages     = [
                 'Account is Banned' => 'Ваш аккаунт заблокирован администратором.',
                 'Incorrect Account' => 'Неверный логин или пароль.',
-                'Login Failed'      => 'Ошибка входа. Попробуйте ещё раз.',
+                'Login Failed'      => 'Ошибка входа. Попробуйте еще раз.',
             ];
             $errorMsg = $messages[$errorDecoded] ?? $errorDecoded;
         }
 
-        if ( $rawOkey !== null ) {
+        if ( $rawOkey ) {
             $okeyDecoded = rawurldecode( $rawOkey );
             $messages    = [
                 'All sessions terminated' => 'Отлично! Все сессии завершены.',
@@ -153,16 +160,12 @@ class AuthController
         ] );
     }
 
-    /**
-     * Обработчик формы входа.
-     *
-     * @return void
-     */
-    public function handleLoginForm(): void
+    public function handleLoginForm()
     {
         $request = Flight::request();
         $session = Flight::session();
 
+        // Вызываем сервис
         $result = Flight::authService()->attemptLogin(
             $request->data->username,
             $request->data->password,
@@ -170,16 +173,18 @@ class AuthController
         );
 
         if ( $result['success'] ) {
+            // $session->set( 'session_message', 'Добро пожаловать, ' . $result['username'] );
             Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
-            $url = ( $result['role'] === 'admin' )
-            ? '/admin/settings'
-            : '/b2b/welcome';
+            // Редирект по роли
+            $url = ( $result['role'] === 'admin' ) ? '/admin/settings' : '/b2b/wellcome';
             Flight::redirect( $url );
         } else {
+            // $session->set( 'session_message', $result['message'] );
             Flight::flash( 'danger', 'Вход не удался' );
             $error = $result['error'] ?? 'Login Failed';
             $okey  = $result['okey'] ?? 'Life is Good';
             Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
         }
     }
+
 }
