@@ -464,7 +464,7 @@ class AuthService
         $session->set( 'user_id', $user['id'] );
         $session->set( 'user_name', $user['username'] );
         $session->set( 'user_role', $user['role'] );
-        $session->set( 'is_admin', ( $user['role'] === 'admin' ) );
+        $session->set( 'is_admin', ( $user['role'] === 'administrator' ) );
         $session->set( 'last_activity', time() );
     }
 

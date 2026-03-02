@@ -135,7 +135,7 @@ class AuthController
 
         if ( $result['success'] ) {
             Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
-            $url = ( $result['role'] === 'admin' )
+            $url = ( $result['role'] === 'administrator' )
             ? '/admin/settings'
             : '/b2b/welcome';
             Flight::redirect( $url );
