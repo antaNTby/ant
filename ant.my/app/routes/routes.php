@@ -110,6 +110,7 @@ Flight::group( '/admin', function () {
 
             // Если пользователь удалил текущую сессию (токен которой в куке)
             $currentRawToken = Flight::cookie()->get( 'remember_token' );
+
             if ( $currentRawToken ) {
                 $currentTokenHash = hash( 'sha256', $currentRawToken );
                 $isCurrent        = $db->fetchRow(
