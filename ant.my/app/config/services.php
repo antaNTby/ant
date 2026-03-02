@@ -95,6 +95,22 @@ Flight::map( 'flash', function (
     return Flight::app(); // Позволяет делать Flight::flash(...)->render(...)
 } );
 
+Flight::map( 'Display', function (
+    string $template,
+    array  $data = []
+) {
+
+    $page = new app\controllers\RenderDataController( $template, $data );
+    try {
+        $page->display( $template, $data );
+    } catch ( Exception $e ) {
+        throw new DomainException( $e->getMessage(), 0, $e );
+    }
+
+    return Flight::app(); // Позволяет делать Flight::flash(...)->render(...)
+
+} );
+
 // then you probably have something that tells you who the current role is of the person
 // likely you have something where you pull the current role
 // from a session variable which defines this

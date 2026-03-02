@@ -36,7 +36,8 @@ class RememberMeMiddleware
                 if ( $user && $user['is_active'] ) {
 
                     // Ротация токена: удаление старого токена
-                    $db->runQuery( 'DELETE FROM user_tokens WHERE id = ?', [$tokenData['id']] );
+                    //Delete rows and return the number of deleted rows:
+                    $deleted = $db->delete( 'user_tokens', 'id = ?', [$tokenData['id']] );
 
                     // Генерация нового токена
                     $newRawToken   = bin2hex( random_bytes( 32 ) );

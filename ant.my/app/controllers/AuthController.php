@@ -22,7 +22,8 @@ class AuthController
             'sessions' => $sessions,
         ];
 
-        Flight::render( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
+        // Flight::render( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
+        Flight::Display( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
     }
 
     /**
@@ -77,12 +78,7 @@ class AuthController
      */
     public function showRegistrationForm(): void
     {
-        Flight::render( 'register.tpl.html', [
-            'query_error' => Flight::request()->query->error, // Ошибка из URL
-            'query_okey'  => Flight::request()->query->okey,  // OK из URL
-            'title'       => 'Регистрация',
-            'year'        => date( 'Y' ),
-        ] );
+        Flight::Display( 'register.tpl.html' );
     }
 
     /**
@@ -117,39 +113,8 @@ class AuthController
      */
     public function showLoginForm(): void
     {
-        $rawError = Flight::request()->query->error;
-        $rawOkey  = Flight::request()->query->okey;
 
-        $errorMsg = null;
-        $okeyMsg  = null;
-
-        if ( $rawError !== null ) {
-            $errorDecoded = rawurldecode( $rawError );
-            $messages     = [
-                'Account is Banned' => 'Ваш аккаунт заблокирован администратором.',
-                'Incorrect Account' => 'Неверный логин или пароль.',
-                'Login Failed'      => 'Ошибка входа. Попробуйте ещё раз.',
-            ];
-            $errorMsg = $messages[$errorDecoded] ?? $errorDecoded;
-        }
-
-        if ( $rawOkey !== null ) {
-            $okeyDecoded = rawurldecode( $rawOkey );
-            $messages    = [
-                'All sessions terminated' => 'Отлично! Все сессии завершены.',
-                'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
-                'Life is Good'            => 'И слава Богу!',
-            ];
-            $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
-        }
-
-        Flight::render( 'login.tpl.html', [
-            'error'         => $errorDecoded ?? '',
-            'okey'          => $okeyDecoded ?? '',
-            'error_message' => $errorMsg ?? '',
-            'okey_message'  => $okeyMsg ?? '',
-            'year'          => date( 'Y' ),
-        ] );
+        Flight::Display( 'login.tpl.html' );
     }
 
     /**

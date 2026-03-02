@@ -58,7 +58,7 @@ Flight::group( '/admin', function () {
         // Нам также понадобится удаление конкретной сессии
         Flight::route( 'POST /logout-session', [$authController, 'handleLogoutSession'] );
 
-        Flight::route( '/@subNam5555e', function ( $subName ) {
+        Flight::route( '/@subNam', function ( $subName ) {
             $db     = Flight::db();
             $userId = Flight::session()->get( 'user_id' );
 
@@ -88,7 +88,7 @@ Flight::group( '/admin', function () {
                 ];
             }
 
-            Flight::render( 'admin/dpt/subs/' . $subName . '.tpl.html', ['subData' => $subData] );
+            Flight::Display( 'admin/dpt/subs/' . $subName . '.tpl.html', ['subData' => $subData] );
         } );
 
     } );
@@ -139,7 +139,7 @@ Flight::group( '/admin', function () {
             // другие данные...
         ];
 
-        Flight::render( 'admin/index.tpl.html', $renderData );
+        Flight::Display( 'admin/index.tpl.html', $renderData );
     } );
 }, [$rememberMe, $authCheckAdmin] );
 
@@ -162,7 +162,7 @@ Flight::group( '/b2b', function () {
             // другие данные...
         ];
 
-        Flight::render( 'b2b/index.tpl.html', $renderData );
+        Flight::Display( 'b2b/index.tpl.html', $renderData );
     } );
 }, [$rememberMe, $authCheckUser] );
 
@@ -180,7 +180,7 @@ Flight::route( '/', function () {
         'app'   => Flight::app(),
         'title' => 'Главная страница',
     ];
-    Flight::render( 'b2b/index.tpl.html', $renderData );
+    Flight::Display( 'b2b/index.tpl.html', $renderData );
 } );
 
 // 3. Глобальный "запасной" маршрут (только в самом КОНЦЕ)
@@ -190,5 +190,5 @@ Flight::route( '*', function () {
         'app'   => Flight::app(),
         'title' => '404 Страница не найдена или Home',
     ];
-    Flight::render( 'b2b/index.tpl.html', $renderData );
+    Flight::Display( 'b2b/index.tpl.html', $renderData );
 } );
