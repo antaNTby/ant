@@ -55,6 +55,7 @@ class RenderDataController
             'user_name'     => Flight::session()->get( 'user_name' ),
             'user_role'     => Flight::session()->get( 'user_role' ),
             'is_auth'       => Flight::session()->get( 'user_id' ) !== null,
+            'app'           => Flight::app(),
 
             // Сюда можно добавить меню, ссылки на ассеты и т.д.
         ];
@@ -87,7 +88,11 @@ class RenderDataController
                 $data['companies'] = [/* тут запрос к БД для компаний */];
                 break;
             case 'sessions':
-                $data['sessions'] = [/* данные сессий */];
+
+                $sessions = Flight::authService()->getUserSessions();
+                // $data['sessions'] = [/* данные сессий */];
+
+                $data['sessions'] = $sessions;
                 break;
             case 'tests':
                 $data['test_status'] = 'Active';

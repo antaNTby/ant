@@ -28,30 +28,37 @@ class AuthService
      *
      * @return array Массив объектов сессий с дополнительной информацией
      */
+
+    // public function getUserSessions(): Collection
     public function getUserSessions(): array
     {
         $db     = Flight::db();
         $userId = Flight::session()->get( 'user_id' );
 
+        // Если нет ID, возвращаем ПУСТУЮ коллекцию (а не пустой массив [])
         if ( !$userId ) {
-            return [];
+            return new Collection();
         }
 
-        // Получаем все действующие токены текущего пользователя
+        // Получаем токены (это вернет массив)
         $tokens = $db->fetchAll(
             'SELECT id, user_agent, created_ip, created_at, expires_at
-             FROM user_tokens
-             WHERE user_id = ? AND expires_at > NOW()
-             ORDER BY created_at DESC',
+         FROM user_tokens
+         WHERE user_id = ? AND expires_at > NOW()
+         ORDER BY created_at DESC',
             [$userId]
         );
 
-        // Для каждого токена определяем информацию о устройстве и проверяем, является ли эта текущая сессия
         $currentTokenId = Flight::session()->get( 'current_token_id' );
+
         foreach ( $tokens as &$token ) {
             $token['device_info'] = $this->parseUserAgent( $token['user_agent'] );
             $token['is_current']  = ( $token['id'] === $currentTokenId );
         }
+
+        // ВАЖНО: оборачиваем массив в объект Collection перед возвратом
+
+        // return new Collection( $tokens );
 
         return $tokens;
     }

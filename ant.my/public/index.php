@@ -73,5 +73,20 @@ function jlog(
     return true;
 }
 
+if ( !function_exists( 'dumps' ) ) {
+    /**
+     * Твой личный мост к Symfony VarDumper
+     */
+    function dumps( ...$vars )
+    {
+        foreach ( $vars as $v ) {
+            \Symfony\Component\VarDumper\VarDumper::dump( $v );
+        }
+
+        // Возвращаем результат (удобно для вложенных вызовов)
+
+        return count( $vars ) === 1 ? $vars[0] : $vars;
+    }
+}
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'admin.php';
-// die( 'index.php' );

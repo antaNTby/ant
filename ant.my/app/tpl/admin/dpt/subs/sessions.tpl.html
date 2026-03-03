@@ -5,9 +5,10 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Устройство</th>
-            <th>IP адрес[user_agent]</th>
-            <th>IP адрес[device_info]</th>
+            <th>id</th>
+            <th>user_agent</th>
+            <th>device_info</th>
+            <th>IP адрес</th>
             <th>Последняя активность</th>
             <th>Действие</th>
         </tr>
@@ -15,10 +16,11 @@
     <tbody>
         {foreach $subData.sessions as $s}
         <tr>
+            <td>{$s.id}</td>
             <td><small class="text-secondary">{$s.user_agent|truncate:500}</small></td>
             <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td>
             <td>{$s.created_ip}</td>
-            <td>{$s.last_used_at}</td>
+            <td>{$s.created_at}</td>
             <td>
                 <form action="/admin/sessions/revoke" method="POST" onsubmit="return confirm('Вы уверены, что хотите закрыть доступ этому устройству?');">
                     <input type="hidden" name="token_id" value="{$s.id}">
@@ -31,8 +33,7 @@
         {/foreach}
     </tbody>
 </table>
-
-
+<hr>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -46,21 +47,26 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center py-3">
                             <div class="d-flex align-items-center">
                                 <div class="device-icon me-3 text-secondary">
-
-{if $session.device_info matches '/Android|iOS|iPhone|iPad/i'}
-    <i class="bi bi-smartphone fs-2 text-primary"></i>
-{else}
-    <i class="bi bi-laptop fs-2 text-secondary"></i>
-{/if}
-
-
-
+                                    {if $session.device_info matches '/Android|iOS|iPhone|iPad/i'}
+                                    <i class="bi bi-smartphone fs-2 text-primary"></i>
+                                    {else}
+                                    <i class="bi bi-laptop fs-2 text-secondary"></i>
+                                    {/if}
+                                     <sub><span class="badge text-bg-secondary">{$session->id}</span></sub>
                                 </div>
                                 <div>
+                                    {* {$session->device_info} *}
+                                    <div class="btn-group dropend" style="max-width: 200px;">
+                                        <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {$session->device_info}
+                                        </button>
+                                        <ul class="dropdown-menu p-2" style="--bs-dropdown-min-width: 20rem; --bs-dropdown-font-size: 0.8rem;">
+                                            <li class="fw-lighter">{$session->user_agent|truncate:500}</li>
+                                        </ul>
+                                    </div>
                                     <div class="fw-bold">
-                                        {$session.device_info}
                                         {if $session.is_current}
-                                            <span class="badge bg-success ms-2 fw-normal text-white px-2 py-1" style="font-size: 0.7rem;">Текущая</span>
+                                        <span class="badge bg-success ms-2 fw-normal text-white px-2 py-1" style="font-size: 0.7rem;">Текущая</span>
                                         {/if}
                                     </div>
                                     <small class="text-muted d-block">
@@ -69,17 +75,16 @@
                                     </small>
                                 </div>
                             </div>
-
                             {if !$session.is_current}
-                            <form action="/logout-session" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                            <form action="/admin/sessions/revoke"{*  action="/logout-session"  *} method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
                                 <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
                                 <input type="hidden" name="token_id" value="{$session.id}">
-                                <button type="submit" class="btn btn-outline-danger btn-sm px-3 rounded-pill">
-                                    <i class="bi bi-x-lg"></i> Завершить
+                                <button type="submit" class="btn btn-outline-danger btn-sm px-2 flex-nowrap">
+                                    <i class="bi bi-x-lg"></i>  Отозвать доступ
                                 </button>
                             </form>
                             {else}
-                            <a href="/logout" class="btn btn-light btn-sm px-3 rounded-pill text-muted fw-lighter border">Выйти</a>
+                            <a href="/logout" class="btn btn-light btn-sm px-3 text-muted fw-lighter border">Выйти</a>
                             {/if}
                         </li>
                         {/foreach}
@@ -87,14 +92,21 @@
                 </div>
             </div>
 
-            <div class="mt-4 text-center">
-                <form action="/logout-all" method="POST" onsubmit="return confirm('Выйти со всех устройств?');">
-                    <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
-                    <button type="submit" class="btn btn-link text-danger text-decoration-none fw-lighter">
-                        <i class="bi bi-shield-slash"></i> Завершить все остальные сеансы
-                    </button>
-                </form>
+            <div class="card border-danger mt-4">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">Безопасность</h5>
+                    <p class="card-text text-muted">Если вы потеряли устройство или подозреваете взлом, вы можете завершить все активные сеансы.</p>
+
+                    <form action="/logout-all" method="POST" onsubmit="return confirm('Вы уверены, что хотите выйти со всех устройств?');">
+                        <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
+                        </button>
+                    </form>
+                </div>
             </div>
+
+
         </div>
     </div>
 </div>

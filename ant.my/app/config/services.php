@@ -7,10 +7,38 @@ use flight\Engine;
 use flight\Session;
 use Overclokk\Cookie\Cookie;
 use Pdo\Mysql;
+use Symfony\Component\VarDumper\VarDumper;
 use Tracy\Debugger;
 
-// Регистрируем метод cookie()
+// if ( !function_exists( 'dumps' ) ) {
+//     /**
+//      * Твой личный мост к Symfony VarDumper
+//      */
+//     function dumps( ...$vars )
+//     {
+//         foreach ( $vars as $v ) {
+//             VarDumper::dump( $v );
+//         }
 
+//         // Возвращаем результат (удобно для вложенных вызовов)
+
+//         return count( $vars ) === 1 ? $vars[0] : $vars;
+//     }
+// }
+
+// Регистрируем (мапим) метод dumps в ядре Flight
+Flight::map( 'dumps', function ( ...$vars ) {
+    foreach ( $vars as $v ) {
+        VarDumper::dump( $v );
+    }
+
+    // Возвращаем результат (удобно для вложенных вызовов)
+
+    return count( $vars ) === 1 ? $vars[0] : $vars;
+}
+);
+
+// Регистрируем метод cookie()
 Flight::map( 'cookie', function () {
     return new \Overclokk\Cookie\Cookie(); // Без аргументов в конструкторе
 } );
@@ -115,7 +143,7 @@ Flight::map( 'Display', function (
 // likely you have something where you pull the current role
 // from a session variable which defines this
 // after someone logs in, otherwise they will have a 'guest' or 'public' role.
-$current_role = 'admin';
+$current_role = 'administrator';
 
 // setup permissions
 $permission = new \flight\Permission( $current_role );
@@ -163,7 +191,7 @@ Debugger::enable( Debugger::Development ); // Explicitly set environment
 Debugger::$logDirectory = __LOGS__; // Log directory
 Debugger::$strictMode   = true;     // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
 Debugger::$maxLen       = 1000;     // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 5;        // Max depth of dumped structures (default: 3)
+Debugger::$maxDepth     = 8;        // Max depth of dumped structures (default: 3)
 // Debugger::$dumpTheme    = 'dark';
 
 #### Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line'; // sublime не воспринимает urlecode, поэтому работать не будет
