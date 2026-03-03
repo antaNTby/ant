@@ -36,7 +36,8 @@ class AuthController
     {
         Flight::authService()->deleteExpiredTokens();
         Flight::flash( 'light', 'Удалены все истекшие токены' );
-        Flight::redirect( '/admin/dashboard' );
+        $okey = 'Удалены все истекшие токены'; // Сообщение ошибки
+        Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
     }
 
     /**

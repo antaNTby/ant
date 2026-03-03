@@ -38,6 +38,8 @@ Flight::route( 'POST /login', [$authController, 'handleLoginForm'] );
 // Выход
 Flight::route( '/logout', [$authController, 'handleLogout'] );
 Flight::route( 'POST /logout-all', [$authController, 'handleLogoutEverywhere'] );
+// Нам также понадобится удаление конкретной сессии
+Flight::route( 'POST /logout-session', [$authController, 'handleLogoutSession'] );
 
 Flight::route( 'GET /admin/links/deleteExpiredTokens', [$authController, 'handleDeleteExpiredTokens'] )->addMiddleware( $authCheckAdmin );
 ################################################################
@@ -50,6 +52,46 @@ Flight::route( 'GET /admin/links/deleteExpiredTokens', [$authController, 'handle
 
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
+
+    Flight::route( 'POST /sessions/deleteExpiredTokens', [\app\controllers\AuthController::class, 'handleDeleteExpiredTokens'] );
+
+    Flight::route( 'POST /sessions/revoke', function () {
+        $db      = Flight::db();
+        $session = Flight::session();
+
+        // Получаем ID токена из скрытого поля формы
+        $tokenId = Flight::request()->data->token_id;
+        $userId  = $session->get( 'user_id' );
+
+        if ( $tokenId && $userId ) {
+            // Удаляем токен, проверяя, что он принадлежит именно этому пользователю (безопасность!)
+            $db->runQuery(
+                'DELETE FROM user_tokens WHERE id = ? AND user_id = ?',
+                [$tokenId, $userId]
+            );
+
+            // Если пользователь удалил текущую сессию (токен которой в куке)
+            $currentRawToken = Flight::cookie()->get( 'remember_token' );
+
+            if ( $currentRawToken ) {
+                $currentTokenHash = hash( 'sha256', $currentRawToken );
+                $isCurrent        = $db->fetchRow(
+                    'SELECT id FROM user_tokens WHERE id = ? AND token_hash = ?',
+                    [$tokenId, $currentTokenHash]
+                );
+
+                // Если удаляемый ID совпадает с текущим токеном в куке — чистим куку
+                if ( $isCurrent ) {
+                    Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
+                }
+            }
+
+            $session->set( 'session_message', 'Доступ для устройства отозван' );
+            Flight::flash( 'danger', 'Доступ для устройства отозван' );
+        }
+
+        Flight::redirect( '/admin/dpt/subs/sessions' );
+    } );
 
     Flight::group( '/dpt/subs', function () {
 

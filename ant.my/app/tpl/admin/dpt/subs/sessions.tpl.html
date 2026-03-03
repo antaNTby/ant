@@ -52,7 +52,7 @@
                                     {else}
                                     <i class="bi bi-laptop fs-2 text-secondary"></i>
                                     {/if}
-                                     <sub><span class="badge text-bg-secondary">{$session->id}</span></sub>
+                                    <sub><span class="badge text-bg-secondary">{$session->id}</span></sub>
                                 </div>
                                 <div>
                                     {* {$session->device_info} *}
@@ -76,11 +76,11 @@
                                 </div>
                             </div>
                             {if !$session.is_current}
-                            <form action="/admin/sessions/revoke"{*  action="/logout-session"  *} method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                            <form action="/admin/sessions/revoke" {* action="/logout-session" *} method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
                                 <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
                                 <input type="hidden" name="token_id" value="{$session.id}">
                                 <button type="submit" class="btn btn-outline-danger btn-sm px-2 flex-nowrap">
-                                    <i class="bi bi-x-lg"></i>  Отозвать доступ
+                                    <i class="bi bi-x-lg"></i> Отозвать доступ
                                 </button>
                             </form>
                             {else}
@@ -91,22 +91,29 @@
                     </ul>
                 </div>
             </div>
-
+            <hr>
             <div class="card border-danger mt-4">
                 <div class="card-body">
                     <h5 class="card-title text-danger">Безопасность</h5>
                     <p class="card-text text-muted">Если вы потеряли устройство или подозреваете взлом, вы можете завершить все активные сеансы.</p>
-
-                    <form action="/logout-all" method="POST" onsubmit="return confirm('Вы уверены, что хотите выйти со всех устройств?');">
-                        <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
-                        <button type="submit" class="btn btn-outline-danger">
-                            <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
-                        </button>
-                    </form>
+                    <!-- Контейнер для кнопок в одну линию -->
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <!-- Форма 1: Выйти на всех устройствах -->
+                        <form action="/logout-all" method="POST" onsubmit="return confirm('Вы уверены, что хотите выйти со всех устройств?');">
+                            <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
+                            </button>
+                        </form>
+                        <!-- Форма 2: Удалить истекшие токены -->
+                        <form action="/admin/sessions/deleteExpiredTokens" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="bi bi-trash"></i> Удалить все истекшие токены
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
