@@ -1,0 +1,264 @@
+
+|   .env
+|   composer.json
+|   composer.lock
+|   last.cmd
+|   restore.cmd
+|   restore_db.cmd
+|   tree.txt
+|   tridex.json
+|   _ant.my_.sublime-project
+|   _ant.my_.sublime-workspace
+|
++---.osp
+|   |   env.ini
+|   |   menu.ini
+|   |   project.ini
+|   |   tasks.ini
+|   |   
+|   +---apache
+|   |       .gitignore
+|   |       
+|   +---bin
+|   |       hello.bat
+|   |       
+|   \---nginx
+|           .gitignore
+|           
++---app
+|   +---config
+|   |       .gitkeep
+|   |       config.php
+|   |       config.sql
+|   |       config_flight.php
+|   |       config_loggers.php
+|   |       config_smarty.php
+|   |       services.php
+|   |       sublimetext Protocol.reg
+|   |       sublimeTracy Protocol.reg
+|   |       
+|   +---controllers
+|   |       .gitkeep
+|   |       AuthController.php
+|   |       RenderDataController.php
+|   |       
+|   +---logs
+|   |       monolog.log
+|   |       
+|   +---middlewares
+|   |       AdminAuthMiddleware.php
+|   |       BaseAuthMiddleware.php
+|   |       RememberMeMiddleware.php
+|   |       UserAuthMiddleware.php
+|   |       
+|   +---routes
+|   |       routes.php
+|   |       
+|   +---services
+|   |       AuthService.php
+|   |       
+|   +---sessions
+|   |       admin_265bfc6b49e37404a11b1240d2054880
+|   |       admin_73b2687879ab287c3dd976af2a012b77
+|   |       admin_9cde3ea41da3ab5834addcfce2325b9f
+|   |       admin_aadb3fa5c06f3709ea4453ca41cddfd6
+|   |       admin_ef245a7e6eb01817eaee47722bf0fde0
+|   |       
+|   +---smarty
+|   |   +---compile_dir
+|   |   |       .gitkeep
+|   |   |       02fd2c636b545eafaacbf19840d7e3ebba4e34f4_0.file_head.tpl.html.cache.php
+|   |   |       0cc7a98313d98eca66d3c465cb5fd09e0fa6f9b6_0.file_login.tpl.html.cache.php
+|   |   |       11dfefd72cafee4a019f85012a310c61a2439e9e_0.file_dpt.tpl.html.cache.php
+|   |   |       
+|   |   +---smarty_cache
+|   |   |       .gitkeep
+|   |   |       0cc7a98313d98eca66d3c465cb5fd09e0fa6f9b6_login.tpl.html.php
+|   |   |       admin_^d612a3919d96a898dd5ed0174457836624994581_companies.tpl.html.php
+|   |   |       e68cf042876b056a6ff2290f228f238627cf4280_index.tpl.html.php
+|   |   |       
+|   |   \---smarty_config
+|   |           .gitkeep
+|   |           
+|   \---tpl
+|       |   flashes.tpl.html
+|       |   login.tpl.html
+|       |   q_messages.tpl.html
+|       |   register.tpl.html
+|       |   session_message.tpl.html
+|       |   
+|       +---admin
+|       |   |   aside.tpl.html
+|       |   |   footer.tpl.html
+|       |   |   head.tpl.html
+|       |   |   header.tpl.html
+|       |   |   index.tpl.html
+|       |   |   main.tpl.html
+|       |   |   offcanvas.tpl.html
+|       |   |   pages.tpl.html
+|       |   |   
+|       |   +---atoms
+|       |   |       goto-panels.tpl.html
+|       |   |       navbar-brand.tpl.html
+|       |   |       searchpanel.tpl.html
+|       |   |       verticalmenu.tpl.html
+|       |   |       
+|       |   \---dpt
+|       |       |   dpt.tpl.html
+|       |       |   
+|       |       \---subs
+|       |               companies.tpl.html
+|       |               sessions.tpl.html
+|       |               tests.tpl.html
+|       |               
+|       \---b2b
+|           |   head.tpl.html
+|           |   index.tpl.html
+|           |   
+|           \---atoms
+|                   goto-panels.tpl.html
+|                   navbar-brand.tpl.html
+|                   searchpanel.tpl.html
+|                   verticalmenu.tpl.html
+|                   
++---public
+|   |   .gitkeep
+|   |   .htaccess
+|   |   comp.txt
+|   |   favicon.ico
+|   |   index.php
+|   |   
+|   +---dev
+|   |       adminer.css
+|   |       adminer.php
+|   |       editor.php
+|   |       PHP8.5.html
+|   |       
+|   +---js
+|   |       debouce_and_throttle.js
+|   |       formatters.js
+|   |       functions.js
+|   |       uiElements.js
+|   |       uiEvents.js
+|   |       uiFunctions.js
+|   |       userInterface.js
+|   |       
+|   +---lib
+|   |   |   admin.js
+|   |   |   favicon.ico
+|   |   |   orn.gif
+|   |   |   style.css
+|   |   |   
+|   |   +---bootstrap
+|   |   |   +---css
+|   |   |   |       bootstrap.css
+|   |   |   |       
+|   |   |   +---dist
+|   |   |   |   +---css
+|   |   |   |   |       bootstrap.css
+|   |   |   |   |       
+|   |   |   |   \---js
+|   |   |   |           bootstrap.js
+|   |   |   |           
+|   |   |   \---js
+|   |   |           bootstrap.js
+|   |   +---bootstrap-icons
+|   |   |   +---font
+|   |   |   |   |   bootstrap-icons.css
+|   |   |   |   |   bootstrap-icons.json
+|   |   |   |   |   bootstrap-icons.min.css
+|   |   |   |   |   bootstrap-icons.scss
+|   |   |   |   |   
+|   |   |   |   +---font
+|   |   |   |   |   |   bootstrap-icons.css
+|   |   |   |   |   |   bootstrap-icons.json
+|   |   |   |   |   |   bootstrap-icons.min.css
+|   |   |   |   |   |   bootstrap-icons.scss
+|   |   |   |   |   |   
+|   |   |   |   |   \---fonts
+|   |   |   |   |           bootstrap-icons.woff
+|   |   |   |   |           bootstrap-icons.woff2
+|   |   |   |   |           
+|   |   |   |   \---fonts
+|   |   |   |           bootstrap-icons.woff
+|   |   |   |           bootstrap-icons.woff2
+|   |   |   |           
+|   |   |   \---icons
+|   |   |       |   0-circle-fill.svg
+|   |   |               zoom-out.svg
+|   |   |               
+|   |   +---fonts
+|   |   |   +---Chivo_Mono
+|   |   |   |   |   ChivoMono-Italic-VariableFont_wght.ttf
+|   |   |   |   |   ChivoMono-VariableFont_wght.ttf
+|   |   |   |   |   OFL.txt
+|   |   |   |   |   README.txt
+|   |   |   |   |   
+|   |   |   |   \---static
+|   |   |   |           ChivoMono-Black.ttf
+|   |   |   |           
+|   |   |   \---Ubuntu_Mono
+|   |   |           UbuntuMono-Bold.ttf
+|   |   |           UbuntuMono-BoldItalic.ttf
+|   |   |           UbuntuMono-Italic.ttf
+|   |   |           UbuntuMono-Regular.ttf
+|   |   |           UFL.txt
+|   |   |           
+|   |   \---ico
+|   |           android-chrome-192x192.png
+|   |           android-chrome-512x512.png
+|   |           apple-touch-icon.png
+|   |           favicon-16x16.png
+|   |           favicon-32x32.png
+|   |           favicon.ico
+|   |           site.webmanifest
+|   |           
+|   \---media
+|           android-chrome-512x512.png
+|           logo.png
+|           
+|               
+\---vendor
+    |   autoload.php
+    |   
+    +---bin
+    |       var-dump-server
+    |       var-dump-server.bat
+    |       
+    +---composer
+    |       autoload_classmap.php
+    |       autoload_files.php
+    |       autoload_namespaces.php
+    |       autoload_psr4.php
+    |       autoload_real.php
+    |       autoload_static.php
+    |       ClassLoader.php
+    |       installed.json
+    |       installed.php
+    |       InstalledVersions.php
+    |       LICENSE
+    |       platform_check.php
+    |       
+    +---firebase
+    +---flightphp
+    +---graham-campbell
+    |   \---result-type
+    |       |   composer.json
+    |       |   LICENSE
+    |       |   
+    |       \---src
+    |               Error.php
+    |               Result.php
+    |               Success.php
+    |               
+    +---monolog
+    |   \---monolog
+    |       |   CHANGELOG.md
+    |       |   composer.json
+    |       |   LICENSE
+    |       |   README.md
+    |       |   
+    |       \---src
+    |           \---Monolog
+    +---overclokk
+    \---vlucas

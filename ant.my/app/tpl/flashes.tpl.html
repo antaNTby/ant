@@ -75,7 +75,10 @@
 
 
 {* Очищаем сессию, чтобы уведомления не дублировались при обновлении страницы *}
-{assign var="tmp" value=Flight::session()->delete('flash_messages')}
+{* {assign var="tmp" value=Flight::session()->delete('flash_messages')} *}
+{* Вызываем наш плагин. Он удалит данные из сессии сразу после показа *}
+    {clear_session key="flash_messages"}
+
 {/if}
 
 <style>

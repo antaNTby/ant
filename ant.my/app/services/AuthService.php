@@ -215,17 +215,6 @@ class AuthService
             [$username, $username]
         );
 
-        // Проверка блокировки аккаунта
-        if ( !$user['is_active'] ) {
-            Flight::flash( 'danger', 'Ваш аккаунт заблокирован' );
-
-            return [
-                'success' => false,
-                'error'   => 'Account is Blocked',
-                'message' => 'Ваш аккаунт заблокирован',
-            ];
-        }
-
         // Проверка правильности ввода
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
             Flight::flash( 'danger', 'Неверный логин или пароль' );
@@ -234,6 +223,17 @@ class AuthService
                 'success' => false,
                 'error'   => 'Authentication Failed',
                 'message' => 'Неверный логин или пароль',
+            ];
+        }
+
+        // Проверка блокировки аккаунта
+        if ( !$user['is_active'] ) {
+            Flight::flash( 'danger', 'Ваш аккаунт заблокирован' );
+
+            return [
+                'success' => false,
+                'error'   => 'Account is Blocked',
+                'message' => 'Ваш аккаунт заблокирован',
             ];
         }
 

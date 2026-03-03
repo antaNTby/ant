@@ -7,6 +7,7 @@ use Flight;
 
 class AuthController
 {
+
     /**
      * Отображение списка активных сессий пользователя.
      *

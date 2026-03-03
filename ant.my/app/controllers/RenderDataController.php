@@ -7,6 +7,7 @@ use Flight;
 
 class RenderDataController
 {
+
     /**
      * Подготовка базовых данных
      */
@@ -39,7 +40,7 @@ class RenderDataController
             $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
         }
 
-        $Data = [
+        $data = [
             'title'         => $title ?: '-nix.by-',
             'current_date'  => date( 'Y-m-d' ),
             'current_time'  => date( 'H:i:s' ),
@@ -58,8 +59,54 @@ class RenderDataController
             // Сюда можно добавить меню, ссылки на ассеты и т.д.
         ];
 
+        $Data['baseData'] = $data;
+
         return $Data;
 
+    }
+
+    public function showSubPage( $sub_page )
+    {
+        // 1. Формируем путь к шаблону
+        $templatePath = "admin/dpt/subs/{$sub_page}.tpl.html";
+
+        // 2. Базовые данные, которые нужны всегда
+        $data = [
+            'title'        => ucfirst( $sub_page ) . ' - Панель управления',
+            'current_page' => $sub_page,
+            'time'         => date( 'H:i:s' ),
+
+            'subName'      => $sub_page,
+
+        ];
+
+        // 3. Специфические данные для разных страниц (через switch или match)
+        switch ( $sub_page ) {
+            case 'companies':
+                $data['list']      = [/* тут запрос к БД для компаний */];
+                $data['companies'] = [/* тут запрос к БД для компаний */];
+                break;
+            case 'sessions':
+                $data['sessions'] = [/* данные сессий */];
+                break;
+            case 'tests':
+                $data['test_status'] = 'Active';
+                break;
+            default:
+                // Если страницы нет, кидаем 404 или редирект
+                Flight::notFound();
+
+                return;
+        }
+
+        $Data['subData'] = $data;
+
+        // 4. Рендерим страницу
+        // В твоем случае Flight::Display (с большой буквы, как в роутах)
+        // Flight::Display($templatePath, $data);
+
+        // dd( $Data );
+        self::display( $templatePath, $Data );
     }
 
     /**
@@ -84,4 +131,5 @@ class RenderDataController
         // Рендерим шаблон
         $smarty->display( $template );
     }
+
 }

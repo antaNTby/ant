@@ -78,6 +78,21 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->registerPlugin( 'modifier', 'formatUnp', 'smarty_modifier_formatUnp' );
     $smarty->registerPlugin( 'modifier', 'zeroPad', 'smarty_modifier_zeroPad' );
 
+// ... твои модификаторы выше ...
+
+// Функция для удаления данных из сессии прямо из шаблона
+    function smarty_function_clear_session(
+        $params,
+        $smarty
+    ) {
+        $key = $params['key'] ?? 'flash_messages'; // по умолчанию чистим флеш-сообщения
+        Flight::session()->delete( $key );
+
+        return ''; // ничего не выводим в HTML
+    }
+
+    $smarty->registerPlugin( 'function', 'clear_session', 'smarty_function_clear_session' );
+
     // $smarty->testInstall();
 
 } );
