@@ -87,23 +87,33 @@ class AuthService
         );
 
         if ( $exists ) {
-            Flight::flash( 'dark', 'Такой пользователь уже существует' );
+            // Flight::flash( 'dark', 'Такой пользователь уже существует' );
 
             return [
                 'success' => false,
                 'error'   => 'Duplicate Entry',
                 'message' => 'Имя пользователя или адрес электронной почты заняты',
+                'old'     => [
+                    'username' => $username,
+                    'email'    => $email,
+
+                ],
             ];
         }
 
         // Проверка совпадения паролей
         if ( $password !== $passwordConfirm ) {
-            Flight::flash( 'dark', 'Пароли не совпадают' );
+            // Flight::flash( 'dark', 'Пароли не совпадают' );
 
             return [
                 'success' => false,
                 'error'   => 'Password Mismatch',
                 'message' => 'Пароли не совпадают',
+                'old'     => [
+                    'username' => $username,
+                    'email'    => $email,
+
+                ],
             ];
         }
 
@@ -112,13 +122,6 @@ class AuthService
         $passwordHash = password_hash( $password, PASSWORD_BCRYPT );
 
         try {
-            // $db->runQuery(
-            // 'INSERT INTO users (username, email, password_hash, role, is_active, created_at)
-            // VALUES (?, ?, ?, ?, 1, NOW())',
-            // [$username, $email, $passwordHash, 'user']
-            // );
-            // $userId = $db->lastInsertId();
-
             // Регистрируем пользователя
             // Получаем ID вновь созданного пользователя
 
@@ -136,11 +139,14 @@ class AuthService
             $this->createInternalSession( $user );
             $this->setLastLogin( $user );
 
-            Flight::flash( 'light', 'Вы успешно зарегистрировались и вошли как ' . $username );
+            // Flight::flash( 'light', 'Вы успешно зарегистрировались и вошли как ' . $username );
 
             return [
-                'success' => true,
-                'message' => 'Вы успешно зарегистрировались и вошли как ' . $username,
+                'success'  => true,
+                'message'  => 'Вы успешно зарегистрировались и вошли как ' . $username,
+                'username' => $username,
+                'email'    => $email,
+                'role'     => 'user',
             ];
         } catch ( \Exception $e ) {
             Flight::flash( 'dark', 'Ошибка базы данных' );
@@ -149,6 +155,11 @@ class AuthService
                 'success' => false,
                 'error'   => 'Database Error',
                 'message' => 'При регистрации произошла ошибка',
+                'old'     => [
+                    'username' => $username,
+                    'email'    => $email,
+
+                ],
             ];
         }
     }
@@ -224,7 +235,7 @@ class AuthService
 
         // Проверка правильности ввода
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
-            Flight::flash( 'danger', 'Кто вы такие? Идите лесом, я вас не знаю' );
+            // Flight::flash( 'dark', 'Кто вы такие? Идите лесом, я вас не знаю' );
 
             return [
                 'success' => false,
@@ -235,7 +246,7 @@ class AuthService
 
         // Проверка блокировки аккаунта
         if ( !$user['is_active'] ) {
-            Flight::flash( 'danger', 'Ваш аккаунт заблокирован' );
+            // Flight::flash( 'dark', 'Ваш аккаунт заблокирован' );
 
             return [
                 'success' => false,
@@ -296,12 +307,11 @@ class AuthService
             );
         }
 
-        // Flight::flash( 'dark', 'Добро пожаловать, ' . $user['username'] . '!' );
-
         return [
             'success'  => true,
             'role'     => $user['role'],
             'username' => $user['username'],
+            'message'  => 'Добро пожаловать, ' . $user['username'] . '!',
         ];
     }
 
