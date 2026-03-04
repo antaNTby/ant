@@ -11,7 +11,7 @@ abstract class BaseAuthMiddleware
     {
         // Проверка общего доступа
         if ( !Flight::authService()->checkAccess() ) {
-            Flight::flash( 'danger', 'Доступ запрещен' );
+            Flight::flash( 'dark', 'Доступ запрещен' );
             $error = 'Access Denied'; // Сообщение ошибки
             Flight::redirect( '/login?error=' . rawurlencode( $error ) );
             exit;
@@ -19,7 +19,7 @@ abstract class BaseAuthMiddleware
 
         // Специфичная проверка роли
         if ( !$this->checkRole() ) {
-            Flight::flash( 'danger', 'Недостаточно прав' );
+            Flight::flash( 'dark', 'Недостаточно прав' );
             $error = 'No Permission'; // Сообщение ошибки
             Flight::redirect( '/login?error=' . rawurlencode( $error ) );
             exit;
