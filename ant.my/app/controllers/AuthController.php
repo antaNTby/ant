@@ -96,7 +96,7 @@ class AuthController
      */
     public function showLoginForm(): void
     {
-
+        $result = Flight::authService()->attemptLogout();
         Flight::Display( 'login.tpl.html' );
     }
 

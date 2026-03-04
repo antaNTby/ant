@@ -16,23 +16,23 @@ class RenderDataController
         $session = Flight::session();
 
         $data = [
+            // Собираем данные юзера
+            'user_id'   => $session->get( 'user_id' ),
+            'user_name' => $session->get( 'user_name' ),
+            'user_role' => $session->get( 'user_role' ),
+            'is_auth'   => $session->get( 'user_id' ) !== null,
+        ];
+
+        // Сливаем массивы сразу в ключе baseData
+
+        return [
             'title'        => $title ?: '-nix.by-',
             'current_date' => date( 'Y-m-d' ),
             'current_time' => date( 'H:i:s' ),
             'year'         => date( 'Y' ),
             'server_name'  => SERVER_NAME,
             'copyright'    => COPYRIGHT,
-            // Собираем данные юзера
-            'user_id'      => $session->get( 'user_id' ),
-            'user_name'    => $session->get( 'user_name' ),
-            'user_role'    => $session->get( 'user_role' ),
-            'is_auth'      => $session->get( 'user_id' ) !== null,
-        ];
-
-        // Сливаем массивы сразу в ключе baseData
-
-        return [
-            'baseData' => array_merge( $data, self::getQueryMessages() ),
+            'baseData'     => array_merge( $data, self::getQueryMessages() ),
         ];
     }
 
