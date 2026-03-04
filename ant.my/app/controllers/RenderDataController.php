@@ -13,70 +13,69 @@ class RenderDataController
      */
     private static function getBaseData( ?string $title ): array
     {
-
-        $rawError = Flight::request()->query->error;
-        $rawOkey  = Flight::request()->query->okey;
-
-        $errorMsg = null;
-        $okeyMsg  = null;
-
-        if ( $rawError !== null ) {
-            $errorDecoded = rawurldecode( $rawError );
-            $messages     = [
-                'Access Denied'           => 'Доступ запрещен.',
-                'Account is Banned'       => 'Ваш аккаунт заблокирован администратором.',
-                'Account is Blocked'      => 'Ваш аккаунт заблокирован.',
-                'Authentication Failed'   => 'Неверный логин\почта или пароль',
-                'Database Error'          => 'При регистрации произошла ошибка',
-                'Duplicate Entry'         => 'Имя пользователя или адрес электронной почты заняты',
-                'Incorrect Account'       => 'Неверный логин или пароль.',
-                'Login Failed'            => 'Ошибка входа. Попробуйте ещё раз.',
-                'No active session found' => 'Сессия не найдена или уже завершена.',
-                'No Permission'           => 'Недостаточно прав.',
-                'Password Mismatch'       => 'Пароли не совпадают',
-                'Registration Failed'     => 'При регистрации произошла ошибка',
-            ];
-            $errorMsg = $messages[$errorDecoded] ?? $errorDecoded;
-        }
-
-        if ( $rawOkey !== null ) {
-            $okeyDecoded = rawurldecode( $rawOkey );
-            $messages    = [
-                'All sessions terminated' => 'Отлично! Все сессии завершены.',
-                'Life is Good'            => 'И слава Богу!',
-                'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
-                'Stale tokens cleared'    => 'Удалены все истекшие токены',
-            ];
-            $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
-        }
+        $session = Flight::session();
 
         $data = [
-            'title'         => $title ?: '-nix.by-',
-            'current_date'  => date( 'Y-m-d' ),
-            'current_time'  => date( 'H:i:s' ),
-            'year'          => date( 'Y' ),
-            'server_name'   => SERVER_NAME,
-            'copyright'     => COPYRIGHT,
-            'error_message' => $errorMsg ?? '',
-            'okey_message'  => $okeyMsg ?? '',
-            'query_error'   => Flight::request()->query->error, // Ошибка из URL
-            'query_okey'    => Flight::request()->query->okey,  // OK из URL
-            'user_id'       => Flight::session()->get( 'user_id' ),
-            'user_name'     => Flight::session()->get( 'user_name' ),
-            'user_role'     => Flight::session()->get( 'user_role' ),
-            'is_auth'       => Flight::session()->get( 'user_id' ) !== null,
-            'app'           => Flight::app(),
-
-            // Сюда можно добавить меню, ссылки на ассеты и т.д.
+            'title'        => $title ?: '-nix.by-',
+            'current_date' => date( 'Y-m-d' ),
+            'current_time' => date( 'H:i:s' ),
+            'year'         => date( 'Y' ),
+            'server_name'  => SERVER_NAME,
+            'copyright'    => COPYRIGHT,
+            // Собираем данные юзера
+            'user_id'      => $session->get( 'user_id' ),
+            'user_name'    => $session->get( 'user_name' ),
+            'user_role'    => $session->get( 'user_role' ),
+            'is_auth'      => $session->get( 'user_id' ) !== null,
         ];
 
-        $Data['baseData'] = $data;
+        // Сливаем массивы сразу в ключе baseData
 
-        return $Data;
-
+        return [
+            'baseData' => array_merge( $data, self::getQueryMessages() ),
+        ];
     }
 
-    public function showSubPage( $sub_page )
+    private static function getQueryMessages(): array
+    {
+        $query = Flight::request()->query;
+        if ( !$query->error && !$query->okey ) {
+            return [];
+        }
+
+        static $errors = [
+            'Access Denied'           => 'Доступ запрещен.',
+            'Account is Banned'       => 'Ваш аккаунт заблокирован администратором.',
+            'Account is Blocked'      => 'Ваш аккаунт заблокирован.',
+            'Authentication Failed'   => 'Неверный логин\почта или пароль',
+            'Database Error'          => 'При регистрации произошла ошибка',
+            'Duplicate Entry'         => 'Имя пользователя или адрес электронной почты заняты',
+            'Incorrect Account'       => 'Неверный логин или пароль.',
+            'Login Failed'            => 'Ошибка входа. Попробуйте ещё раз.',
+            'No active session found' => 'Сессия не найдена или уже завершена.',
+            'No Permission'           => 'Недостаточно прав.',
+            'Password Mismatch'       => 'Пароли не совпадают',
+            'Registration Failed'     => 'При регистрации произошла ошибка',
+        ];
+
+        static $successes = [
+            'All sessions terminated' => 'Отлично! Все сессии завершены.',
+            'Life is Good'            => 'И слава Богу!',
+            'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
+            'Stale tokens cleared'    => 'Удалены все истекшие токены',
+        ];
+
+        $translate = fn( $val, $dict ) => $val ? ( $dict[rawurldecode( $val )] ?? rawurldecode( $val ) ) : '';
+
+        return [
+            'query_error'   => $query->error,
+            'query_okey'    => $query->okey,
+            'error_message' => $translate( $query->error, $errors ),
+            'okey_message'  => $translate( $query->okey, $successes ),
+        ];
+    }
+
+    public function showSubPage( $sub_page ): void
     {
         // 1. Формируем путь к шаблону
         $templatePath = "admin/dpt/subs/{$sub_page}.tpl.html";
@@ -115,10 +114,6 @@ class RenderDataController
         }
 
         $Data['subData'] = $data;
-
-        // 4. Рендерим страницу
-        // В твоем случае Flight::Display (с большой буквы, как в роутах)
-        // Flight::Display($templatePath, $data);
 
         // dd( $Data );
         self::display( $templatePath, $Data );
