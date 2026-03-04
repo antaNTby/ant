@@ -22,7 +22,7 @@
             <td>{$s.created_ip}</td>
             <td>{$s.created_at}</td>
             <td>
-                <form action="/admin/sessions/revoke" method="POST" onsubmit="return confirm('Вы уверены, что хотите закрыть доступ этому устройству?');">
+                <form action="/admin/API/sessions/revoke" method="POST" onsubmit="return confirm('Вы уверены, что хотите закрыть доступ этому устройству?');">
                     <input type="hidden" name="token_id" value="{$s.id}">
                     <button type="submit" class="btn btn-sm btn-outline-danger">
                         <i class="bi bi-x-circle"></i> Отозвать доступ
@@ -76,9 +76,10 @@
                                 </div>
                             </div>
                             {if !$session.is_current}
-                            <form action="/admin/sessions/revoke" {* action="/logout-session" *} method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                            <form action="/admin/API/sessions/revoke" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
                                 <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
                                 <input type="hidden" name="token_id" value="{$session.id}">
+                                <input type="hidden" name="device_info" value="{$session.device_info}">
                                 <button type="submit" class="btn btn-outline-danger btn-sm px-2 flex-nowrap">
                                     <i class="bi bi-x-lg"></i> Отозвать доступ
                                 </button>
@@ -106,7 +107,7 @@
                             </button>
                         </form>
                         <!-- Форма 2: Удалить истекшие токены -->
-                        <form action="/admin/sessions/deleteExpiredTokens" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                        <form action="/admin/API/sessions/deleteExpiredTokens" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
                             <button type="submit" class="btn btn-outline-danger">
                                 <i class="bi bi-trash"></i> Удалить все истекшие токены
                             </button>

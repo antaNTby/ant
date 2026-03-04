@@ -21,6 +21,46 @@ class AuthController
         Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
     }
 
+    public function handleSessionsRevoke(): void
+    {
+        $db      = Flight::db();
+        $session = Flight::session();
+
+        // Получаем ID токена из скрытого поля формы
+        $tokenId = Flight::request()->data->token_id;
+        $userId  = $session->get( 'user_id' );
+
+        if ( $tokenId && $userId ) {
+            // Удаляем токен, проверяя, что он принадлежит именно этому пользователю (безопасность!)
+            // $db->runQuery(
+            //     'DELETE FROM user_tokens WHERE id = ? AND user_id = ?',
+            //     [$tokenId, $userId]
+            // );
+
+            $deleted = Flight::db()->delete( 'user_tokens', 'id = ? AND user_id = ?', [$tokenId, $userId] );
+            // Если пользователь удалил текущую сессию (токен которой в куке)
+            $currentRawToken = Flight::cookie()->get( 'remember_token' );
+
+            if ( $currentRawToken ) {
+                $currentTokenHash = hash( 'sha256', $currentRawToken );
+                $isCurrent        = $db->fetchRow(
+                    'SELECT id FROM user_tokens WHERE id = ? AND token_hash = ?',
+                    [$tokenId, $currentTokenHash]
+                );
+
+                // Если удаляемый ID совпадает с текущим токеном в куке — чистим куку
+                if ( $isCurrent ) {
+                    Flight::cookie()->set( 'remember_token', '', -3600, '/', '', false, true );
+                }
+            }
+
+            Flight::flash( 'warning', $deleted . ' токен(ов) удалены для пользователя :: ' . $session->get( 'user_name' ) );
+            Flight::flash( 'danger', 'Доступ для браузера "' . Flight::request()->data->device_info . '" отозван' );
+        }
+
+        Flight::redirect( '/admin/dpt/subs/sessions' );
+    }
+
     /**
      * Выполнение выхода текущего пользователя.
      *

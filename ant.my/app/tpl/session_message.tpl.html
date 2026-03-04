@@ -1,9 +1,0 @@
-{* Flash-сообщение (например, "Сессия истекла") *}
-{assign var="session_message" value=Flight::session()->get('session_message')}
-{if $session_message}
-<div class="alert alert-light alert-dismissible fw-lighter user-select-none" role="alert">
-    {$session_message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{assign var="tmp" value=Flight::session()->delete('session_message')}
-{/if}
