@@ -23,8 +23,11 @@ class RememberMeMiddleware
             // Проверяем существование действующего токена в базе данных
             $tokenData = $db->fetchRow(
                 'SELECT id, user_id FROM user_tokens
-                 WHERE token_hash = :hash AND user_agent = :agent AND expires_at > NOW()',
-                ['hash' => $tokenHash, 'agent' => $currentUserAgent]
+                 WHERE token_hash = ? AND user_agent =? AND expires_at > NOW()',
+                [
+                    $tokenHash,
+                    $currentUserAgent,
+                ]
             );
 
             if ( $tokenData ) {
@@ -34,6 +37,8 @@ class RememberMeMiddleware
 
                 // Проверяем активность пользователя
                 if ( $user && $user['is_active'] ) {
+
+                    Flight::flash( 'light', $user['user_name'] . ' has token.' );
 
                     // Ротация токена: удаление старого токена
                     //Delete rows and return the number of deleted rows:
