@@ -116,7 +116,7 @@ class AuthController
             isset( $request->data->remember_me )
         );
 
-        bdump( $result );
+        // bdump( $result );
 
         if ( $result['success'] ) {
             Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
