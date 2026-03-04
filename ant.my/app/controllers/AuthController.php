@@ -9,25 +9,6 @@ class AuthController
 {
 
     /**
-     * Отображение списка активных сессий пользователя.
-     *
-     * @return void
-     */
-    public function showSessions(): void
-    {
-        $sessions = Flight::authService()->getUserSessions();
-
-        $subData = [
-            'subName'  => 'new sessions',
-            'title'    => 'Мои устройства',
-            'sessions' => $sessions,
-        ];
-
-        // Flight::render( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
-        Flight::Display( 'admin/dpt/subs/sessions.tpl.html', ['subData' => $subData] );
-    }
-
-    /**
      * Удаление просроченных токенов.
      *
      * @return void
@@ -36,7 +17,7 @@ class AuthController
     {
         Flight::authService()->deleteExpiredTokens();
         Flight::flash( 'light', 'Удалены все истекшие токены' );
-        $okey = 'Удалены все истекшие токены'; // Сообщение ошибки
+        $okey = 'Stale tokens cleared'; // Сообщение ошибки
         Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
     }
 
@@ -103,7 +84,7 @@ class AuthController
             Flight::flash( 'success', 'Добро пожаловать! Регистрация прошла успешно.' );
             Flight::redirect( '/' );
         } else {
-            $error = $result['message'] ?? 'Registration Failed';
+            $error = $result['error'] ?? 'Registration Failed';
             Flight::redirect( '/register?error=' . rawurlencode( $error ) );
         }
     }
@@ -135,16 +116,18 @@ class AuthController
             isset( $request->data->remember_me )
         );
 
+        bdump( $result );
+
         if ( $result['success'] ) {
             Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
             $url = ( $result['role'] === 'administrator' )
-            ? '/admin/settings'
+            ? '/admin/dashboard'
             : '/b2b/welcome';
             Flight::redirect( $url );
         } else {
             Flight::flash( 'danger', 'Вход не удался' );
             $error = $result['error'] ?? 'Login Failed';
-            $okey  = $result['okey'] ?? 'Life is Good';
+            // $okey  = $result['okey'] ?? 'Life is Good';
             // Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
             Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }

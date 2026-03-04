@@ -224,7 +224,7 @@ class AuthService
 
         // Проверка правильности ввода
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
-            Flight::flash( 'danger', 'Неверный логин или пароль' );
+            Flight::flash( 'danger', 'Кто вы такие? Идите лесом, я вас не знаю' );
 
             return [
                 'success' => false,
@@ -296,12 +296,10 @@ class AuthService
             );
         }
 
-        Flight::flash( 'dark', 'С возвращением, ' . $user['username'] . '!' );
+        // Flight::flash( 'dark', 'Добро пожаловать, ' . $user['username'] . '!' );
 
         return [
             'success'  => true,
-            'okey'     => 'last_login updated',
-            'message'  => 'С возвращением, ' . $user['username'] . '!',
             'role'     => $user['role'],
             'username' => $user['username'],
         ];

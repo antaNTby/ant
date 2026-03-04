@@ -23,9 +23,18 @@ class RenderDataController
         if ( $rawError !== null ) {
             $errorDecoded = rawurldecode( $rawError );
             $messages     = [
-                'Account is Banned' => 'Ваш аккаунт заблокирован администратором.',
-                'Incorrect Account' => 'Неверный логин или пароль.',
-                'Login Failed'      => 'Ошибка входа. Попробуйте ещё раз.',
+                'Access Denied'           => 'Доступ запрещен.',
+                'Account is Banned'       => 'Ваш аккаунт заблокирован администратором.',
+                'Account is Blocked'      => 'Ваш аккаунт заблокирован.',
+                'Authentication Failed'   => 'Неверный логин\почта или пароль',
+                'Database Error'          => 'При регистрации произошла ошибка',
+                'Duplicate Entry'         => 'Имя пользователя или адрес электронной почты заняты',
+                'Incorrect Account'       => 'Неверный логин или пароль.',
+                'Login Failed'            => 'Ошибка входа. Попробуйте ещё раз.',
+                'No active session found' => 'Сессия не найдена или уже завершена.',
+                'No Permission'           => 'Недостаточно прав.',
+                'Password Mismatch'       => 'Пароли не совпадают',
+                'Registration Failed'     => 'При регистрации произошла ошибка',
             ];
             $errorMsg = $messages[$errorDecoded] ?? $errorDecoded;
         }
@@ -34,8 +43,9 @@ class RenderDataController
             $okeyDecoded = rawurldecode( $rawOkey );
             $messages    = [
                 'All sessions terminated' => 'Отлично! Все сессии завершены.',
-                'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
                 'Life is Good'            => 'И слава Богу!',
+                'Registration Success'    => 'Регистрация прошла успешно! Войдите.',
+                'Stale tokens cleared'    => 'Удалены все истекшие токены',
             ];
             $okeyMsg = $messages[$okeyDecoded] ?? $okeyDecoded;
         }

@@ -1,10 +1,10 @@
-{if !empty($error)}
+{if !empty($baseData.query_error)}
 <div id="error_message" class="alert alert-danger text-nowrap font-monospace user-select-none">
-    {$error}<br><sup class="text-opacity-50">{$error_message}</sup>
+    {$baseData.query_error}<br><sup class="text-opacity-50">{$baseData.error_message}</sup>
 </div>
 {/if}
-{if !empty($okey)}
+{if !empty($baseData.query_okey)}
 <div id="okey_message" class="alert alert-primary text-nowrap font-monospace user-select-none">
-    {$okey}<br><sup class="text-opacity-50">{$okey_message}</sup>
+    {$baseData.query_okey}<br><sup class="text-opacity-50">{$baseData.okey_message}</sup>
 </div>
 {/if}

@@ -12,14 +12,16 @@ abstract class BaseAuthMiddleware
         // Проверка общего доступа
         if ( !Flight::authService()->checkAccess() ) {
             Flight::flash( 'danger', 'Доступ запрещен' );
-            Flight::redirect( '/login?error=Access%20Denied' );
+            $error = 'Access Denied'; // Сообщение ошибки
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
             exit;
         }
 
         // Специфичная проверка роли
         if ( !$this->checkRole() ) {
             Flight::flash( 'danger', 'Недостаточно прав' );
-            Flight::redirect( '/login?error=No%20Permission' );
+            $error = 'No Permission'; // Сообщение ошибки
+            Flight::redirect( '/login?error=' . rawurlencode( $error ) );
             exit;
         }
     }
