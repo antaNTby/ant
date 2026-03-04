@@ -1,7 +1,7 @@
 {assign var="flashes" value=Flight::session()->get('flash_messages')}
 
 {if $flashes}
-<div class="flash-container position-fixed top-0 end-0 m-2" style="z-index: 1080; width:40ex!important;" id="flashContainer">
+<div class="flash-container position-fixed bottom-0 start-50 translate-middle m-2" style="z-index: 1080; width:40ex!important;" id="flashContainer">
 
     {* Кнопка "Закрыть всё" — показываем только если сообщений больше одного *}
     {if count($flashes) > 1}
