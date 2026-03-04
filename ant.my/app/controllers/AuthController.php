@@ -16,7 +16,7 @@ class AuthController
     public function handleDeleteExpiredTokens(): void
     {
         Flight::authService()->deleteExpiredTokens();
-        Flight::flash( 'light', 'Удалены все истекшие токены' );
+        Flight::flash( 'success', 'Удалены все истекшие токены' );
         $okey = 'Stale tokens cleared'; // Сообщение ошибки
         Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
     }
@@ -61,7 +61,9 @@ class AuthController
      */
     public function showRegistrationForm(): void
     {
-        Flight::Display( 'register.tpl.html' );
+        $session = Flight::session();
+
+        Flight::Display( 'register.tpl.html', ['old' => $session->get( 'old' )] );
     }
 
     /**
@@ -71,22 +73,34 @@ class AuthController
      */
     public function handleRegistrationForm(): void
     {
-        $data = Flight::request()->data;
+        $data    = Flight::request()->data;
+        $session = Flight::session();
 
         $username         = $data->username;
         $email            = $data->email;
         $password         = $data->password;
         $password_confirm = $data->password_confirm;
 
+        $session->set( 'old',
+            [
+                'username' => $username,
+                'email'    => $email,
+            ] );
+
         $result = Flight::authService()->registerUser( $username, $email, $password, $password_confirm );
 
         if ( $result['success'] ) {
-            Flight::flash( 'success', 'Добро пожаловать! Регистрация прошла успешно.' );
-            Flight::redirect( '/' );
+            $url = ( $result['role'] === 'administrator' )
+            ? '/admin/dashboard'
+            : '/b2b/welcome';
+            Flight::flash( 'success', $result['message'] );
+            Flight::redirect( $url );
         } else {
             $error = $result['error'] ?? 'Registration Failed';
+            Flight::flash( 'danger', $result['message'] ?? 'Registration Failed' );
             Flight::redirect( '/register?error=' . rawurlencode( $error ) );
         }
+
     }
 
     /**
@@ -96,7 +110,7 @@ class AuthController
      */
     public function showLoginForm(): void
     {
-        $result = Flight::authService()->attemptLogout();
+        // $result = Flight::authService()->attemptLogout();
         Flight::Display( 'login.tpl.html' );
     }
 
@@ -108,7 +122,6 @@ class AuthController
     public function handleLoginForm(): void
     {
         $request = Flight::request();
-        $session = Flight::session();
 
         $result = Flight::authService()->attemptLogin(
             $request->data->username,
@@ -116,19 +129,16 @@ class AuthController
             isset( $request->data->remember_me )
         );
 
-        // bdump( $result );
-
         if ( $result['success'] ) {
-            Flight::flash( 'success', 'Добро пожаловать! ' . $result['username'] );
             $url = ( $result['role'] === 'administrator' )
             ? '/admin/dashboard'
             : '/b2b/welcome';
+            Flight::flash( 'success', $result['message'] );
             Flight::redirect( $url );
         } else {
-            Flight::flash( 'danger', 'Вход не удался' );
             $error = $result['error'] ?? 'Login Failed';
-            // $okey  = $result['okey'] ?? 'Life is Good';
-            // Flight::redirect( '/login?error=' . rawurlencode( $error ) . '&okey=' . rawurlencode( $okey ) );
+            // dumpe( $result );
+            Flight::flash( 'danger', $result['message'] ?? 'Login Failed' );
             Flight::redirect( '/login?error=' . rawurlencode( $error ) );
         }
     }
