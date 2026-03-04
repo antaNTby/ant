@@ -60,14 +60,13 @@ class RememberMeMiddleware
                         'expires_at' => date( 'Y-m-d H:i:s', time() + $expireSeconds ),
                     ] );
 
+                    // Сохраняем ID токена в сессии
+                    $session->set( 'current_token_id', $newTokenId );
+
                     Flight::cookie()->set( 'remember_token', $newRawToken, $expireSeconds, '/', '', false, true );
 
                     // Авторизуем пользователя и устанавливаем новую сессию
-
                     $result = Flight::authService()->createInternalSession( $user );
-
-                    // Сохраняем ID токена в сессии
-                    $session->set( 'current_token_id', $db->getConnection()->lastInsertId() );
 
                     // Обновляем последнее время входа пользователя
                     Flight::authService()->setLastLogin( $user );

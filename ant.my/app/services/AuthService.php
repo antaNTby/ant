@@ -265,19 +265,27 @@ class AuthService
             $rawToken      = bin2hex( random_bytes( 32 ) );
             $tokenHash     = hash( 'sha256', $rawToken );
 
-            $db->runQuery(
-                'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at)
-                 VALUES (?, ?, ?, ?, ?)',
-                [
-                    $user['id'],
-                    $tokenHash,
-                    $request->user_agent,
-                    $request->ip,
-                    date( 'Y-m-d H:i:s', time() + $expireSeconds ),
-                ]
-            );
+            // $db->runQuery(
+            //     'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at)
+            //      VALUES (?, ?, ?, ?, ?)',
+            //     [
+            //         $user['id'],
+            //         $tokenHash,
+            //         $request->user_agent,
+            //         $request->ip,
+            //         date( 'Y-m-d H:i:s', time() + $expireSeconds ),
+            //     ]
+            // );
 
-            $session->set( 'current_token_id', $db->lastInsertId() );
+            $newTokenId = $db->insert( 'user_tokens', [
+                'user_id'    => $user['id'],
+                'token_hash' => $newTokenHash,
+                'user_agent' => $request->user_agent,
+                'created_ip' => $request->ip,
+                'expires_at' => date( 'Y-m-d H:i:s', time() + $expireSeconds ),
+            ] );
+
+            $session->set( 'current_token_id', $newTokenId );
             Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
         } else {
             // Очистка старого токена "Запомнить меня"
