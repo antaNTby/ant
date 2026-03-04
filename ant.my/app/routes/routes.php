@@ -65,11 +65,12 @@ Flight::group( '/admin', function () {
 
         if ( $tokenId && $userId ) {
             // Удаляем токен, проверяя, что он принадлежит именно этому пользователю (безопасность!)
-            $db->runQuery(
-                'DELETE FROM user_tokens WHERE id = ? AND user_id = ?',
-                [$tokenId, $userId]
-            );
+            // $db->runQuery(
+            //     'DELETE FROM user_tokens WHERE id = ? AND user_id = ?',
+            //     [$tokenId, $userId]
+            // );
 
+            $deleted = Flight::db()->delete( 'user_tokens', 'id = ? AND user_id = ?', [$tokenId, $userId] );
             // Если пользователь удалил текущую сессию (токен которой в куке)
             $currentRawToken = Flight::cookie()->get( 'remember_token' );
 
@@ -86,7 +87,7 @@ Flight::group( '/admin', function () {
                 }
             }
 
-            $session->set( 'session_message', 'Доступ для устройства отозван' );
+            Flight::flash( 'warning', $deleted . ' токен(ов) удалены для пользователя :: ' . $session->get( 'user_name' ) );
             Flight::flash( 'danger', 'Доступ для устройства отозван' );
         }
 

@@ -277,15 +277,15 @@ class AuthService
             //     ]
             // );
 
-            $newTokenId = $db->insert( 'user_tokens', [
+            $tokenId = $db->insert( 'user_tokens', [
                 'user_id'    => $user['id'],
-                'token_hash' => $newTokenHash,
+                'token_hash' => $tokenHash,
                 'user_agent' => $request->user_agent,
                 'created_ip' => $request->ip,
                 'expires_at' => date( 'Y-m-d H:i:s', time() + $expireSeconds ),
             ] );
 
-            $session->set( 'current_token_id', $newTokenId );
+            $session->set( 'current_token_id', $tokenId );
             Flight::cookie()->set( 'remember_token', $rawToken, $expireSeconds, '/', '', false, true );
         } else {
             // Очистка старого токена "Запомнить меня"
@@ -419,10 +419,15 @@ class AuthService
     {
         try {
             $db = Flight::db();
-            $db->runQuery( 'DELETE FROM user_tokens WHERE expires_at < NOW()' );
+            // $db->runQuery( 'DELETE FROM user_tokens WHERE expires_at < NOW()' );
+
+            $currentTime = date( 'Y-m-d H:i:s' );
+            $deleted     = $db->delete( 'user_tokens', 'expires_at < ?', [$currentTime] );
+            Flight::flash( 'light', 'Удалено ' . $deleted . ' протухших токенов' );
 
             return true;
         } catch ( \Exception $e ) {
+            Flight::flash( 'dark', 'Ошибка удаления старых токенов: ' . $e->getMessage() );
             Flight::get( 'logger' )?->error( 'Ошибка удаления старых токенов: ' . $e->getMessage() );
 
             return false;
