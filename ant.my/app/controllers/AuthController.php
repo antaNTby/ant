@@ -15,10 +15,10 @@ class AuthController
      */
     public function handleDeleteExpiredTokens(): void
     {
-        Flight::authService()->deleteExpiredTokens();
         Flight::flash( 'success', 'Удалены все истекшие токены' );
+        Flight::authService()->deleteExpiredTokens();
         $okey = 'Stale tokens cleared'; // Сообщение ошибки
-        Flight::redirect( '/login?okey=' . rawurlencode( $okey ) );
+        Flight::redirect( '/admin/dpt/subs/sessions' );
     }
 
     public function handleSessionsRevoke(): void

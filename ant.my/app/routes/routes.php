@@ -54,9 +54,11 @@ Flight::route( 'GET /admin/links/deleteExpiredTokens', [$authController, 'handle
 // 1. Группа для админки (обрабатывается ПЕРВОЙ)
 Flight::group( '/admin', function () {
 
-    Flight::route( 'POST /API/sessions/deleteExpiredTokens', [\app\controllers\AuthController::class, 'handleDeleteExpiredTokens'] );
+    Flight::group( '/API', function () {
+        Flight::route( 'POST /sessions/revoke', [\app\controllers\AuthController::class, 'handleSessionsRevoke'] );
+        Flight::route( 'POST /sessions/deleteExpiredTokens', [\app\controllers\AuthController::class, 'handleDeleteExpiredTokens'] );
 
-    Flight::route( 'POST /API/sessions/revoke', [\app\controllers\AuthController::class, 'handleSessionsRevoke'] );
+    } );
 
     Flight::group( '/dpt/subs', function () {
         Flight::route( 'GET /@sub_page', [\app\controllers\RenderDataController::class, 'showSubPage'] );
