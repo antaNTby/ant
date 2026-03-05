@@ -152,11 +152,12 @@ class AuthService
             ];
         } catch ( \Exception $e ) {
             Flight::flash( 'dark', 'Ошибка базы данных' );
+            Flight::get( 'logger' )?->error( 'При регистрации произошла ошибка: ' . $e->getMessage() );
 
             return [
                 'success' => false,
                 'error'   => 'Database Error',
-                'message' => 'При регистрации произошла ошибка',
+                'message' => 'При регистрации произошла ошибка ' . $e->getMessage(),
                 'old'     => [
                     'username' => $username,
                     'email'    => $email,
