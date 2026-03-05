@@ -1,6 +1,6 @@
 {* Tests.tpl.html *}
 {extends file="admin/dpt/dpt.tpl.html"}
-{block name="SUB"}
+{block SUB}
 <pre>
 	Tests.tpl.htmTests.tpl.htmTests.tpl.htmTests.tpl.htm
 	Tests.tpl.htmTests.tpl.htmTests.tpl.htmTests.tpl.htm
@@ -25,4 +25,24 @@
 	Tests.tpl.htmTests.tpl.htmTests.tpl.htmTests.tpl.htm
 	Tests.tpl.htmTests.tpl.htmTests.tpl.htmTests.tpl.htm
 </pre>
+{/block}
+{block ASIDE}
+{* <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none"> *}
+    {* <div class="text-bg-danger p-3 m-1">empty aside</div> *}
+    {* </aside> *}
+{/block}
+{block CONTAINER}
+<div class="container-fluid" style="max-width: 1900px;">
+    <div class="row">
+        {block MAIN}
+        <main class="px-lg-4 bg-white">
+            {block DPT}
+            <div class="m-5 p-5 bg-body-secondary">
+                { block DPT } No Content
+            </div>
+            {/block}
+        </main>
+        {/block}
+    </div>
+</div>
 {/block}

@@ -14,55 +14,45 @@
     <input type="hidden" id="primary_key">
     <!-- /header -->
     {* Навигация *}
-    {include file="admin/offcanvas.tpl.html"}
+    {block OFFCANVAS}
+        {include file="admin/offcanvas.tpl.html"}
+    {/block}
+    {block HEADER}
     <header class="border-bottom" data-bs-theme="dark">
         {include file="admin/header.tpl.html"}
     </header><!-- /header -->
+    {/block}
     {* *}
+    {block ERRORS_MESSAGES}
+    {include file="../flashes.tpl.html"}
+    {/block}
     {* Основной контейнер *}
+    {block CONTAINER}
     <div class="container-fluid" style="max-width: 1900px;">
-
-
         <div class="row">
+            {block ASIDE}
             <aside class="col-xl-3 col-xxl-2 d-none d-xl-block p-0 bg-body-tertiary border-right user-select-none">
                 {include file="admin/aside.tpl.html"}
-
             </aside>
+            {/block}
+            {block MAIN}
             <main class="col-xl-9 ms-sm-auto col-xxl-10 px-lg-4 bg-white">
- {include file="../flashes.tpl.html"}
-
                 {* {include file="admin/main.tpl.html"} *}
-
-{block name="DPT"}
-{/block}
-
+                {block DPT}
+                <div class="m-5 p-5 bg-body-secondary">
+                    { block DPT } No Content
+                </div>
+                {/block}
                 {block PAGES}
                 <div class="m-5 p-5 bg-body-tertiary">
-                    No Content
+                    { block PAGES } No Content
                 </div>
-                {/block}
-                {block ERROR_MESSAGE}
-                {* Проверка GET-параметра через Smarty *}
-                {if isset($smarty.get.error)}
-                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i> {* Иконка Bootstrap Icons (если подключены) *}
-                    <div>
-                        {if $smarty.get.error == 'banned'}
-                        <strong>Доступ заблокирован!</strong> Ваш аккаунт был деактивирован администратором. Пожалуйста, свяжитесь с поддержкой.
-                        {elseif $smarty.get.error == '1'}
-                        <strong>Ошибка!</strong> Неверный логин или пароль.
-                        {else}
-                        <strong>Внимание!</strong> Произошла ошибка при авторизации.
-                        {/if}
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {/if}
-                {$app|debug_print_var}
                 {/block}
             </main>
+            {/block}
         </div>
     </div>
+    {/block}
     {* *}
     {* Footer *}
     <footer class="fixed-bottom text-center py-3 mt-4 border-top bg-body-secondary">
@@ -72,7 +62,7 @@
     {* Bootstrap JS *}
     <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     {* Дополнительные скрипты *}
-    {block name="scripts"}
+    {block scripts}
     {* Подключаем основной файл как модуль (если он нужен для побочных эффектов) *}
     <script type="module" src="/lib/admin.js"></script>
     {/block}

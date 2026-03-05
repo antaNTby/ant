@@ -1,39 +1,6 @@
 {* sessions.tpl.html *}
 {extends file="admin/dpt/dpt.tpl.html"}
-{block name="SUB"}
-<caption>Активность пользователей</caption>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>user_agent</th>
-            <th>device_info</th>
-            <th>IP адрес</th>
-            <th>Последняя активность</th>
-            <th>Действие</th>
-        </tr>
-    </thead>
-    <tbody>
-        {foreach $subData.sessions as $s}
-        <tr>
-            <td>{$s.id}</td>
-            <td><small class="text-secondary">{$s.user_agent|truncate:500}</small></td>
-            <td><small class="text-secondary">{$s.device_info|truncate:500}</small></td>
-            <td>{$s.created_ip}</td>
-            <td>{$s.created_at}</td>
-            <td>
-                <form action="/admin/API/sessions/revoke" method="POST" onsubmit="return confirm('Вы уверены, что хотите закрыть доступ этому устройству?');">
-                    <input type="hidden" name="token_id" value="{$s.id}">
-                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                        <i class="bi bi-x-circle"></i> Отозвать доступ
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {/foreach}
-    </tbody>
-</table>
-<hr>
+{block SUB}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -92,7 +59,15 @@
                     </ul>
                 </div>
             </div>
-            <hr>
+        </div>
+    </div>
+</div>
+{/block}
+{block SUBMENU}
+<hr>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card border-danger mt-4">
                 <div class="card-body">
                     <h5 class="card-title text-danger">Безопасность</h5>
