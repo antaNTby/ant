@@ -3,14 +3,6 @@
 {if $flashes}
 <div class="flash-container position-fixed bottom-0 start-50 translate-middle m-2" style="z-index: 1080; width:40ex!important;" id="flashContainer">
 
-    {* Кнопка "Закрыть всё" — показываем только если сообщений больше одного *}
-    {if count($flashes) > 1}
-    <div class="text-end mb-2" id="closeAllBtnWrap">
-        <button type="button" class="btn btn-sm btn-light shadow-sm border fw-lighter opacity-75" onclick="window.closeAllFlashes()">
-            <i class="bi bi-x-lg text-danger"></i> Закрыть всё
-        </button>
-    </div>
-    {/if}
 
     {foreach $flashes as $flash}
         {* Маппинг иконок под типы Bootstrap *}
@@ -30,6 +22,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {/foreach}
+
+    {* Кнопка "Закрыть всё" — показываем только если сообщений больше одного *}
+    {if count($flashes) > 1}
+    <div class="text-end mb-2" id="closeAllBtnWrap">
+        <button type="button" class="btn btn-sm btn-light shadow-sm border fw-lighter opacity-75" onclick="window.closeAllFlashes()">
+            <i class="bi bi-x-lg text-danger"></i> Закрыть всё
+        </button>
+    </div>
+    {/if}
+
+
 </div>
 
 <script>

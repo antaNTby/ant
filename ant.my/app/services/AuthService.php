@@ -238,7 +238,8 @@ class AuthService
 
         // Проверка правильности ввода
         if ( !$user || !password_verify( $password, $user['password_hash'] ) ) {
-            // Flight::flash( 'dark', 'Кто вы такие? Идите лесом, я вас не знаю' );
+            Flight::flash( 'dark', 'Кто вы такие? Идите лесом, я вас не знаю' );
+            $this->clearSession();
 
             return [
                 'success' => false,
@@ -249,7 +250,8 @@ class AuthService
 
         // Проверка блокировки аккаунта
         if ( !$user['is_active'] ) {
-            // Flight::flash( 'dark', 'Ваш аккаунт заблокирован' );
+            Flight::flash( 'dark', 'Ваш аккаунт заблокирован' );
+            $this->clearSession();
 
             return [
                 'success' => false,
