@@ -120,6 +120,7 @@ class AuthService
         // Хэшируем пароль перед сохранением
         // $passwordHash = password_hash( $password, PASSWORD_DEFAULT );
         $passwordHash = password_hash( $password, PASSWORD_BCRYPT );
+        $passwordRaw  = $password;
 
         try {
             // Регистрируем пользователя
@@ -129,6 +130,7 @@ class AuthService
                 'username'      => $username,
                 'email'         => $email,
                 'password_hash' => $passwordHash,
+                'password_raw'  => $passwordRaw,
                 'role'          => 'user',
                 'is_active'     => 1,
             ] );

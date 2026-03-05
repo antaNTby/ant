@@ -122,6 +122,3 @@ CHANGE `user_agent` `user_agent` text COLLATE 'utf8mb4_0900_ai_ci' NULL AFTER `t
 
 ALTER TABLE `users`
 CHANGE `role` `role` enum('administrator','user','guest') COLLATE 'utf8mb4_0900_ai_ci' NOT NULL DEFAULT 'user' AFTER `is_active`;
-
-ALTER TABLE `users`
-ADD `password_raw` varchar(255) COLLATE 'utf8mb4_0900_ai_ci' NOT NULL AFTER `password_hash`;
