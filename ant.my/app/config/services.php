@@ -76,16 +76,17 @@ Flight::register( 'authService', \app\services\AuthService::class );
  *
  * For advanced options, see the plugin documentation above.
  **********************************************/
+// dd( __DIR__ );
 
 Flight::register( 'session', \flight\Session::class, [
     [
-        'prefix'         => 'admin_',                                                                 // Prefix for the session cookie
-        'save_path'      => __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
-                                                                                                      // ...other options...
-        'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',                                   // Enable encryption with a secure key
-        'auto_commit'    => true,                                                                     // Automatically commit session changes on shutdown
-        'start_session'  => true,                                                                     // Start the session automatically
-        'test_mode'      => false,                                                                    // Enable for testing without affecting PHP's session state
+        'prefix'         => 'admin_',                                                                // Prefix for the session cookie
+        'save_path'      => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
+                                                                                                     // ...other options...
+        'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',                                  // Enable encryption with a secure key
+        'auto_commit'    => true,                                                                    // Automatically commit session changes on shutdown
+        'start_session'  => true,                                                                    // Start the session automatically
+        'test_mode'      => false,                                                                   // Enable for testing without affecting PHP's session state
     ],
 ] );
 
