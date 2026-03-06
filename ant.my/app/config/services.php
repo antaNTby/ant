@@ -185,10 +185,10 @@ Flight::map( 'Display', function (
 Debugger::enable( Debugger::Development ); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
 // Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-Debugger::$logDirectory = __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'logs'; // Log directory
-Debugger::$strictMode   = true;                                                                 // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen       = 1000;                                                                 // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 8;                                                                    // Max depth of dumped structures (default: 3)
+Debugger::$logDirectory = __DIR__ . DIRECTORY_SEPARATOR . 'logs'; // Log directory
+Debugger::$strictMode   = true;                                   // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen       = 1000;                                   // Max length of dumped variables (default: 150)
+Debugger::$maxDepth     = 8;                                      // Max depth of dumped structures (default: 3)
 // Debugger::$dumpTheme    = 'dark';
 
 #### Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line'; // sublime не воспринимает urlecode, поэтому работать не будет

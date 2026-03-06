@@ -33,6 +33,7 @@ $myConfig = [
     'runway'           => [
         'app_root'    => 'app/',
         'public_root' => 'public/',
+        'index_root'  => '/',
     ],
 
     /**************************************
