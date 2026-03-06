@@ -75,6 +75,22 @@ class RenderDataController
         ];
     }
 
+    public function showSubPageShowAll(
+        $sub_page,
+        $sortField,
+        $sortDirection,
+    ): void {
+
+        $templatePath = "admin/dpt/subs/{$sub_page}.tpl.html";
+        bdump(
+            [
+                $sortField,
+                $sortDirection,
+            ]
+        );
+
+    }
+
     public function showSubPage(
         $sub_page,
         $page,
