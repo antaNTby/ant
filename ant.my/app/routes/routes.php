@@ -61,7 +61,7 @@ Flight::group( '/admin', function () {
     } );
 
     Flight::group( '/dpt/subs', function () {
-        Flight::route( 'GET /@sub_page', [\app\controllers\RenderDataController::class, 'showSubPage'] );
+        Flight::route( 'GET /@sub_page(/@limit)', [\app\controllers\RenderDataController::class, 'showSubPage'] );
 
     } );
 
