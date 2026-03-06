@@ -270,18 +270,6 @@ class AuthService
             $rawToken      = bin2hex( random_bytes( 32 ) );
             $tokenHash     = hash( 'sha256', $rawToken );
 
-            // $db->runQuery(
-            //     'INSERT INTO user_tokens (user_id, token_hash, user_agent, created_ip, expires_at)
-            //      VALUES (?, ?, ?, ?, ?)',
-            //     [
-            //         $user['id'],
-            //         $tokenHash,
-            //         $request->user_agent,
-            //         $request->ip,
-            //         date( 'Y-m-d H:i:s', time() + $expireSeconds ),
-            //     ]
-            // );
-
             $tokenId = $db->insert( 'user_tokens', [
                 'user_id'    => $user['id'],
                 'token_hash' => $tokenHash,

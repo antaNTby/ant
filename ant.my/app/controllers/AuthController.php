@@ -55,7 +55,7 @@ class AuthController
             }
 
             Flight::flash( 'warning', $deleted . ' токен(ов) удалены для пользователя :: ' . $session->get( 'user_name' ) );
-            Flight::flash( 'danger', 'Доступ для браузера "' . Flight::request()->data->device_info . '" отозван' );
+            Flight::flash( 'warning', 'Доступ для браузера "' . Flight::request()->data->device_info . '" отозван' );
         }
 
         Flight::redirect( '/admin/dpt/subs/sessions' );

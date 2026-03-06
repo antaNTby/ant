@@ -10,12 +10,13 @@
 {* *}
 
 <body>
+    {include file="svg.tpl.html"}
     <input type="hidden" id="current_sub">
     <input type="hidden" id="primary_key">
     <!-- /header -->
     {* Навигация *}
     {block OFFCANVAS}
-        {include file="admin/offcanvas.tpl.html"}
+    {include file="admin/offcanvas.tpl.html"}
     {/block}
     {block HEADER}
     <header class="border-bottom" data-bs-theme="dark">
