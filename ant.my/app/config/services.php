@@ -77,15 +77,15 @@ Flight::register( 'authService', \app\services\AuthService::class );
  * For advanced options, see the plugin documentation above.
  **********************************************/
 
-$app->register( 'session', \flight\Session::class, [
+Flight::register( 'session', \flight\Session::class, [
     [
-        'prefix'         => 'admin_',                                   // Prefix for the session cookie
-        'save_path'      => __APP__ . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
-                                                                        // ...other options...
-        'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',     // Enable encryption with a secure key
-        'auto_commit'    => true,                                       // Automatically commit session changes on shutdown
-        'start_session'  => true,                                       // Start the session automatically
-        'test_mode'      => false,                                      // Enable for testing without affecting PHP's session state
+        'prefix'         => 'admin_',                                                                 // Prefix for the session cookie
+        'save_path'      => __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
+                                                                                                      // ...other options...
+        'encryption_key' => 'a-secure-32-byte-key-for-aes-256-cbc',                                   // Enable encryption with a secure key
+        'auto_commit'    => true,                                                                     // Automatically commit session changes on shutdown
+        'start_session'  => true,                                                                     // Start the session automatically
+        'test_mode'      => false,                                                                    // Enable for testing without affecting PHP's session state
     ],
 ] );
 
@@ -184,10 +184,10 @@ Flight::map( 'Display', function (
 Debugger::enable( Debugger::Development ); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
 // Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
-Debugger::$logDirectory = __LOGS__; // Log directory
-Debugger::$strictMode   = true;     // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
-Debugger::$maxLen       = 1000;     // Max length of dumped variables (default: 150)
-Debugger::$maxDepth     = 8;        // Max depth of dumped structures (default: 3)
+Debugger::$logDirectory = __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'logs'; // Log directory
+Debugger::$strictMode   = true;                                                                 // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
+Debugger::$maxLen       = 1000;                                                                 // Max length of dumped variables (default: 150)
+Debugger::$maxDepth     = 8;                                                                    // Max depth of dumped structures (default: 3)
 // Debugger::$dumpTheme    = 'dark';
 
 #### Debugger::$editor = 'sublimeTracy://open?url=file://%file:%line'; // sublime не воспринимает urlecode, поэтому работать не будет

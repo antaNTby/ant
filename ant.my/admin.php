@@ -49,23 +49,17 @@ define( 'DEFAULT_TPL_HTML', 'b2b/index.tpl.html' );
 // define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 
 $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
-// It is better practice to not use static methods for everything. It makes your
-// app much more difficult to unit test easily.
-// This is important as it connects any static calls to the same $app object
 
-$app = Flight::app();
-/*  */
-$smarty = Flight::view();
-$smarty->assign( 'myConfig', $config );
-//🔹 Получаем логгер
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
+
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_loggers.php';
 $logger = $app->logger();
-//🔹 Получаем логгер
-// $jlog = $app->jlog();
-
-// 🔹 Проверяем и логируем
 if ( !$logger ) {
     throw new Exception( 'Ошибка: логгер не зарегистрирован!' );
 }
+
+require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
+$smarty->assign( 'myConfig', $config );
 
 // Инициализация сессии Flight до любых роутов и вывода
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
@@ -101,11 +95,19 @@ Flight::after( 'start', function () {
 
 } );
 
+Flight::set( 'LOG_REQUEST_TIME', true );
+// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
+Flight::set( 'SESSION_EXPIRE_TIMEOUT', 1 * 60 * 60 );    // seconds to expire session  -1 час
+Flight::set( 'TOKEN_EXPIRE_TIMEOUT', 2 * 24 * 60 * 60 ); // seconds to expire session  -2 суток
+// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 20 );          // seconds to expire session  - 2 часа
+
+Flight::set( 'jwt_key', $_ENV['JWT_SECRET'] );
+// var_dump( $_ENV['JWT_SECRET'] );
+
 /*
  .----..---.  .--.  .----.  .---.     .---. .-. .-.  .--.  .---.    .----. .-. .-..----. .----..-.  .-.
 { {__ {_   _}/ {} \ | {}  }{_   _}   {_   _}| {_} | / {} \{_   _}   | {}  }| { } || {}  }| {}  }\ \/ /
 .-._} } | | /  /\  \| .-. \  | |       | |  | { } |/  /\  \ | |     | .--' | {_} || .--' | .--'  }  {
 `----'  `-' `-'  `-'`-' `-'  `-'       `-'  `-' `-'`-'  `-' `-'     `-'    `-----'`-'    `-'     `--'
 */
-
 Flight::start();

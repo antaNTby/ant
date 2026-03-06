@@ -2,7 +2,7 @@
 /**********************************************
  *         Application Environment            *
  **********************************************/
-
+// dd( __DIR__ );
 // Set your timezone (e.g., 'America/New_York', 'UTC')
 // date_default_timezone_set( 'UTC' );
 date_default_timezone_set( 'Europe/Minsk' );
@@ -20,12 +20,6 @@ if ( function_exists( 'setlocale' ) === true ) {
     setlocale( LC_ALL, 'en_US.UTF-8' );
 }
 
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_flight.php';
-
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_loggers.php';
-
-require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
-
 // Generate a CSP nonce for each request and store in $app
 $nonce = bin2hex( random_bytes( 16 ) );
 Flight::set( 'csp_nonce', $nonce );
@@ -34,31 +28,28 @@ Flight::set( 'csp_nonce', $nonce );
  *           User Configuration               *
  **********************************************/
 
-Flight::set( 'LOG_REQUEST_TIME', true );
-// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
-Flight::set( 'SESSION_EXPIRE_TIMEOUT', 1 * 60 * 60 );    // seconds to expire session  -1 час
-Flight::set( 'TOKEN_EXPIRE_TIMEOUT', 2 * 24 * 60 * 60 ); // seconds to expire session  -2 суток
-// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 20 );          // seconds to expire session  - 2 часа
-
-Flight::set( 'jwt_key', $_ENV['JWT_SECRET'] );
-// var_dump( $_ENV['JWT_SECRET'] );
-
 $myConfig = [
+
+    'runway'           => [
+        'app_root'    => 'app/',
+        'public_root' => 'public/',
+    ],
+
     /**************************************
      *         Database Settings          *
      **************************************/
-    'database'  => [
-                                           // MySQL Example:
-        'host'             => 'MySql-8.4', // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'           => 'newDB',     // Database name (e.g., 'flightphp')
-                                           // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'             => 'antaNT64',  // Database user (e.g., 'root')
-        'password'         => 'root',      // Database password (never commit real passwords)
+    'sqlite_file_path' => __DIR__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
+    'database'         => [
+                                   // MySQL Example:
+        'host'     => 'MySql-8.4', // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => 'newDB',     // Database name (e.g., 'flightphp')
+                                   // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => 'antaNT64',  // Database user (e.g., 'root')
+        'password' => 'root',      // Database password (never commit real passwords)
 
-                                                                                 // SQLite Example:
-        'sqlite_file_path' => __APP__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
+        // SQLite Example:
     ],
-    'database2' => [
+    'database2'        => [
                                     // MySQL Example:
         'host'     => 'MySql-8.4',  // Database host (e.g., 'localhost', 'db.example.com')
         'dbname'   => 'nixby_UTF8', // Database name (e.g., 'flightphp')
@@ -66,18 +57,13 @@ $myConfig = [
         'user'     => 'antaNT64',   // Database user (e.g., 'root')
         'password' => 'root',       // Database password (never commit real passwords)
     ],
-    'database3' => [
+    'database3'        => [
                                              // MySQL Example:
         'host'     => '93.125.99.69',        // Database host (e.g., 'localhost', 'db.example.com')
         'dbname'   => 'nixby_UTF8',          // Database name (e.g., 'flightphp')
                                              // 'user'             => 'root',      // Database user (e.g., 'root')
         'user'     => 'nixby_dbadmin',       // Database user (e.g., 'root')
         'password' => 'nixby_dbadmin658!!!', // Database password (never commit real passwords)
-    ],
-
-    'runway'    => [
-        'app_root'    => 'app/',
-        'public_root' => 'public/',
     ],
 
     // Google OAuth Credentials
