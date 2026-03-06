@@ -75,6 +75,11 @@ $myConfig = [
         'password' => 'nixby_dbadmin658!!!', // Database password (never commit real passwords)
     ],
 
+    'runway'    => [
+        'app_root'    => 'app/',
+        'public_root' => 'public/',
+    ],
+
     // Google OAuth Credentials
     // 'google_oauth' => [
     //     'client_id'     => 'your_client_id',     // Google API client ID
