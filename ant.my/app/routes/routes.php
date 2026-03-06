@@ -61,8 +61,7 @@ Flight::group( '/admin', function () {
     } );
 
     Flight::group( '/dpt/subs', function () {
-        Flight::route( 'GET /@sub_page(/@limit)', [\app\controllers\RenderDataController::class, 'showSubPage'] );
-
+        Flight::route( 'GET /@sub_page(/page/@page(/limit/@lim))(/sort/@sortField(/@sortDirection))', [\app\controllers\RenderDataController::class, 'showSubPage'] );
     } );
 
     // Этот маршрут сработает для любого пути, начинающегося на /admin/...

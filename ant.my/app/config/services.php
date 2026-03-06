@@ -129,11 +129,7 @@ Flight::map( 'Display', function (
 ) {
 
     $page = new app\controllers\RenderDataController( $template, $data );
-    try {
-        $page->display( $template, $data );
-    } catch ( Exception $e ) {
-        throw new DomainException( $e->getMessage(), 0, $e );
-    }
+    $page->display( $template, $data );
 
     return Flight::app(); // Позволяет делать Flight::flash(...)->render(...)
 
@@ -143,16 +139,16 @@ Flight::map( 'Display', function (
 // likely you have something where you pull the current role
 // from a session variable which defines this
 // after someone logs in, otherwise they will have a 'guest' or 'public' role.
-$current_role = 'administrator';
+#$current_role = 'administrator';
 
 // setup permissions
-$permission = new \flight\Permission( $current_role );
-$permission->defineRule( 'loggedIn', function ( $current_role ) {
-    return $current_role !== 'guest';
-} );
+#$permission = new \flight\Permission( $current_role );
+#$permission->defineRule( 'loggedIn', function ( $current_role ) {
+#    return $current_role !== 'guest';
+#} );
 
 // You'll probably want to persist this object in Flight somewhere
-Flight::set( 'permission', $permission );
+#Flight::set( 'permission', $permission );
 
 // $session->set( 'credit_card6', '4111-2222-1111-1111' );
 // $session->set( 'credit_card', '4111-1111-1111-1111' );

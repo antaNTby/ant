@@ -77,11 +77,22 @@ class RenderDataController
 
     public function showSubPage(
         $sub_page,
-        $limit
+        $page,
+        $limit,
+        $sortField,
+        $sortDirection,
     ): void {
         // 1. Формируем путь к шаблону
         $templatePath = "admin/dpt/subs/{$sub_page}.tpl.html";
-        bdump( $limit );
+        bdump(
+            [
+                $page,
+                $limit,
+                $sortField,
+                $sortDirection,
+
+            ]
+        );
         // 2. Базовые данные, которые нужны всегда
         $data = [
             'title'        => ucfirst( $sub_page ) . ' - Панель управления',
