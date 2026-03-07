@@ -10,22 +10,6 @@ use Pdo\Mysql;
 use Symfony\Component\VarDumper\VarDumper;
 use Tracy\Debugger;
 
-// if ( !function_exists( 'dumps' ) ) {
-//     /**
-//      * Твой личный мост к Symfony VarDumper
-//      */
-//     function dumps( ...$vars )
-//     {
-//         foreach ( $vars as $v ) {
-//             VarDumper::dump( $v );
-//         }
-
-//         // Возвращаем результат (удобно для вложенных вызовов)
-
-//         return count( $vars ) === 1 ? $vars[0] : $vars;
-//     }
-// }
-
 // Регистрируем (мапим) метод dumps в ядре Flight
 Flight::map( 'dumps', function ( ...$vars ) {
     foreach ( $vars as $v ) {
@@ -44,38 +28,8 @@ Flight::map( 'cookie', function () {
 } );
 
 // Регистрация сервиса
-// Flight::register( 'auth', 'app\services\AuthService' );
-
-// Регистрация сервиса
 Flight::register( 'authService', \app\services\AuthService::class );
 
-/*********************************************
- *         FlightPHP Service Setup           *
- *********************************************
- * This file registers services and integrations
- * for your FlightPHP application. Edit as needed.
- *
- * @var array  $config  From config.php
- * @var Engine $app     FlightPHP app instance
- **********************************************/
-
-/*********************************************
- *           Session Service Setup           *
- *********************************************
- * To enable sessions in FlightPHP, register the session service.
- * Docs: https://docs.flightphp.com/awesome-plugins/session
- *
- * Example:
- *   $app->register('session', \flight\Session::class, [
- *       [
- *           'prefix' 		=> 'flight_session_', 	  // Prefix for the session cookie
- *           'save_path'    => 'path/to/my/sessions', // Path to save session files
- *           // ...other options...
- *       ]
- *   ]);
- *
- * For advanced options, see the plugin documentation above.
- **********************************************/
 // dd( __DIR__ );
 
 Flight::register( 'session', \flight\Session::class, [
@@ -136,51 +90,6 @@ Flight::map( 'Display', function (
 
 } );
 
-// then you probably have something that tells you who the current role is of the person
-// likely you have something where you pull the current role
-// from a session variable which defines this
-// after someone logs in, otherwise they will have a 'guest' or 'public' role.
-#$current_role = 'administrator';
-
-// setup permissions
-#$permission = new \flight\Permission( $current_role );
-#$permission->defineRule( 'loggedIn', function ( $current_role ) {
-#    return $current_role !== 'guest';
-#} );
-
-// You'll probably want to persist this object in Flight somewhere
-#Flight::set( 'permission', $permission );
-
-// $session->set( 'credit_card6', '4111-2222-1111-1111' );
-// $session->set( 'credit_card', '4111-1111-1111-1111' );
-// dump( Flight::session() );
-// dumpe( $session );
-
-/*********************************************
- *           Tracy Debugger Setup            *
- *********************************************
- * Tracy is a powerful error handler and debugger for PHP.
- * Docs: https://tracy.nette.org/
- *
- * Key Tracy configuration options:
- *   - Debugger::enable([mode], [ip]);
- *       - mode: Debugger::Development or Debugger::Production
- *       - ip: restrict debug bar to specific IP(s)
- *   - Debugger::$logDirectory: where error logs are stored
- *   - Debugger::$strictMode: show all errors (true/E_ALL), or filter out deprecated notices
- *   - Debugger::$showBar: show/hide debug bar (auto-detected, can be forced)
- *   - Debugger::$maxLen: max length of dumped variables
- *   - Debugger::$maxDepth: max depth of dumped structures
- *   - Debugger::$editor: configure clickable file links (see docs)
- *   - Debugger::$email: send error notifications to email
- *
- * Example Tracy setups:
- *   Debugger::enable(); // Auto-detects environment
- *   Debugger::enable(Debugger::Development); // Explicitly set environment
- *   Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
- *
- * For more options, see https://tracy.nette.org/en/configuration
- **********************************************/
 // Debugger::enable(); // Auto-detects environment
 Debugger::enable( Debugger::Development ); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
