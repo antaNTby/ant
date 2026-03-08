@@ -2,7 +2,7 @@
 /**********************************************
  *         Application Environment            *
  **********************************************/
-// dd( __DIR__ );
+dd( __DIR__ );
 // Set your timezone (e.g., 'America/New_York', 'UTC')
 // date_default_timezone_set( 'UTC' );
 date_default_timezone_set( 'Europe/Minsk' );
@@ -28,13 +28,22 @@ Flight::set( 'csp_nonce', $nonce );
  *           User Configuration               *
  **********************************************/
 
+Flight::set( 'LOG_REQUEST_TIME', true );
+// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
+Flight::set( 'SESSION_EXPIRE_TIMEOUT', 1 * 60 * 60 );    // seconds to expire session  -1 час
+Flight::set( 'TOKEN_EXPIRE_TIMEOUT', 2 * 24 * 60 * 60 ); // seconds to expire session  -2 суток
+// Flight::set( 'SESSION_EXPIRE_TIMEOUT', 20 );          // seconds to expire session  - 2 часа
+
+Flight::set( 'jwt_key', $_ENV['JWT_SECRET'] );
+// var_dump( $_ENV['JWT_SECRET'] );
+
 $myConfig = [
 
     'runway'           => [
         'app_root'    => 'app/',
-        'public_root' => 'public/',
         'index_root'  => 'public/',
-    ]
+        'public_root' => 'public/',
+    ],
 
     /**************************************
      *         Database Settings          *
@@ -58,15 +67,6 @@ $myConfig = [
         'user'     => 'antaNT64',   // Database user (e.g., 'root')
         'password' => 'root',       // Database password (never commit real passwords)
     ],
-    'database3'        => [
-                                       // MySQL Example:
-        'host'     => '93.125.99.69',  // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'   => 'nixby_UTF8',    // Database name (e.g., 'flightphp')
-                                       // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'     => 'nixby_dbadmin', // Database user (e.g., 'root')
-        'password' => ' ',             // Database password (never commit real passwords)
-    ],
-
     // Google OAuth Credentials
     // 'google_oauth' => [
     //     'client_id'     => 'your_client_id',     // Google API client ID

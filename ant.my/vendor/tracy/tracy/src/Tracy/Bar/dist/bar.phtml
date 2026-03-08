@@ -1,10 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var string $type
- * @var stdClass[] $panels
- */ ?>
+<?php declare(strict_types=1); ?>
+<?php /** @var string $type */ ?><?php /** @var stdClass[] $panels */ ?>
 <ul class="tracy-row" data-tracy-group="<?= Tracy\Helpers::escapeHtml($type) ?>
 ">
 <?php if ($type === 'main'): ?>		<li id="tracy-debug-logo" title="Tracy Debugger <?= Tracy\Helpers::escapeHtml(Tracy\Debugger::Version) ?>

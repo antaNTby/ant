@@ -1,11 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var string $file
- * @var int $line
- * @var ?int $expanded
- */ ?><?php use Tracy\BlueScreen ?><?php use Tracy\Debugger ?><?php use Tracy\Helpers ?>
+<?php declare(strict_types=1); ?>
+<?php use Tracy\BlueScreen ?><?php use Tracy\Debugger ?><?php use Tracy\Helpers ?><?php /** @var string $file */ ?><?php /** @var int $line */ ?><?php /** @var ?int $expanded */ ?>
 <?php $sourceOriginal = $file && @is_file($file) ? [$file, $line] : null ?><?php $sourceMapped = $sourceOriginal ? Debugger::mapSource($file, $line) : null ?><?php $collapsed = $expanded !== null ?>
 <section class="tracy-section">
 	<h2 class="tracy-section-label">

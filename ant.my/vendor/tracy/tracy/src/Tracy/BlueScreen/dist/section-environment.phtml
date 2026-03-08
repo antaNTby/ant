@@ -1,12 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var callable $dump
- * @var bool $showEnvironment
- * @var mixed[][] $obStatus
- * @var Tracy\BlueScreen $blueScreen
- */ ?><?php use Tracy\Dumper ?>
+<?php declare(strict_types=1); ?>
+<?php use Tracy\Dumper ?><?php /** @var callable $dump */ ?><?php /** @var bool $showEnvironment */ ?><?php /** @var mixed[][] $obStatus */ ?><?php /** @var Tracy\BlueScreen $blueScreen */ ?>
 <?php if (!$showEnvironment) { return; } ?><?php $constants = get_defined_constants(true)['user'] ?? [] ?>
 <section class="tracy-section">
 	<h2 class="tracy-section-label">

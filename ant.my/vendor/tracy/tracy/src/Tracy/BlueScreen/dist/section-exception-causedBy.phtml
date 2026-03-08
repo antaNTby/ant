@@ -1,12 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var Throwable $ex
- * @var Throwable[] $exceptions
- * @var array{link: string, label: string, external?: bool}[] $actions
- * @var callable $dump
- */ ?><?php $ex = $ex->getPrevious() ?><?php if (!$ex || in_array($ex, $exceptions, true)) { return; } ?><?php $exceptions[] = $ex ?><?php $collapsed = count($exceptions) > 1 ?>
+<?php declare(strict_types=1); ?>
+<?php /** @var Throwable $ex */ ?><?php /** @var Throwable[] $exceptions */ ?><?php /** @var array{link: string, label: string, external?: bool}[] $actions */ ?><?php /** @var callable $dump */ ?><?php $ex = $ex->getPrevious() ?><?php if (!$ex || in_array($ex, $exceptions, true)) { return; } ?><?php $exceptions[] = $ex ?><?php $collapsed = count($exceptions) > 1 ?>
 <section class="tracy-section" id="tracyCaused<?= Tracy\Helpers::escapeHtml(count($exceptions)) ?>
 ">
 	<h2 class="tracy-section-label">

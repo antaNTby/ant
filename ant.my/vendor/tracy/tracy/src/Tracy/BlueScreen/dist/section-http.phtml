@@ -1,14 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var string $source
- * @var array<string, string> $httpHeaders
- * @var callable $dump
- * @var bool $headersSent
- * @var ?string $headersFile
- * @var ?int $headersLine
- */ ?><?php use Tracy\BlueScreen ?><?php use Tracy\Helpers ?>
+<?php declare(strict_types=1); ?>
+<?php use Tracy\BlueScreen ?><?php use Tracy\Helpers ?><?php /** @var string $source */ ?><?php /** @var array<string, string> $httpHeaders */ ?><?php /** @var callable $dump */ ?><?php /** @var bool $headersSent */ ?><?php /** @var ?string $headersFile */ ?><?php /** @var ?int $headersLine */ ?>
 <?php if (Helpers::isCli()) { return; } ?>
 <section class="tracy-section">
 	<h2 class="tracy-section-label">

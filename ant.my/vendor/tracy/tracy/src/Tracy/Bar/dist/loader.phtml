@@ -1,10 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var bool $async
- * @var string $requestId
- */ ?>
+<?php declare(strict_types=1); ?>
+<?php /** @var bool $async */ ?><?php /** @var string $requestId */ ?>
 <?php $nonce = Tracy\Helpers::getNonce() ?><?php $baseUrl = $_SERVER['REQUEST_URI'] ?? '' ?><?php $baseUrl .= strpos($baseUrl, '?') === false ? '?' : '&' ?>
 <?php if (empty($content)): ?><script src="<?= Tracy\Helpers::escapeHtml($baseUrl) ?>
 _tracy_bar=<?= Tracy\Helpers::escapeHtml(urlencode('content.' . $requestId)) ?>

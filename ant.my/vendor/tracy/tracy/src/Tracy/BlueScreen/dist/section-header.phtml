@@ -1,12 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
-<?php /**
- * @var Throwable $ex
- * @var Throwable[] $exceptions
- * @var array{link: string, label: string, external?: bool}[] $actions
- * @var Tracy\BlueScreen $blueScreen
- */ ?><?php use Tracy\Helpers ?>
+<?php declare(strict_types=1); ?>
+<?php use Tracy\Helpers ?><?php /** @var Throwable $ex */ ?><?php /** @var Throwable[] $exceptions */ ?><?php /** @var array{link: string, label: string, external?: bool}[] $actions */ ?><?php /** @var Tracy\BlueScreen $blueScreen */ ?>
 <?php $title = $ex instanceof ErrorException ? Helpers::errorTypeToString($ex->getSeverity()) : get_debug_type($ex) ?><?php $code = $ex->getCode() ? ' #' . $ex->getCode() : '' ?>
 <section class="tracy-section tracy-section--error">
 <?php if ($ex->getMessage()): ?>
