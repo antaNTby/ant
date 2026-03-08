@@ -33,8 +33,8 @@ $myConfig = [
     'runway'           => [
         'app_root'    => 'app/',
         'public_root' => 'public/',
-        'index_root'  => '/',
-    ],
+        'index_root'  => 'public/',
+    ]
 
     /**************************************
      *         Database Settings          *
@@ -59,12 +59,12 @@ $myConfig = [
         'password' => 'root',       // Database password (never commit real passwords)
     ],
     'database3'        => [
-                                             // MySQL Example:
-        'host'     => '93.125.99.69',        // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'   => 'nixby_UTF8',          // Database name (e.g., 'flightphp')
-                                             // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'     => 'nixby_dbadmin',       // Database user (e.g., 'root')
-        'password' => 'nixby_dbadmin658!!!', // Database password (never commit real passwords)
+                                       // MySQL Example:
+        'host'     => '93.125.99.69',  // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => 'nixby_UTF8',    // Database name (e.g., 'flightphp')
+                                       // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => 'nixby_dbadmin', // Database user (e.g., 'root')
+        'password' => ' ',             // Database password (never commit real passwords)
     ],
 
     // Google OAuth Credentials
