@@ -6,7 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'flight\\' => array($vendorDir . '/flightphp/session/src', $vendorDir . '/flightphp/runway/src', $vendorDir . '/flightphp/permissions/src'),
+    'flight\\' => array($vendorDir . '/flightphp/session/src', $vendorDir . '/flightphp/permissions/src'),
     'Tracy\\' => array($vendorDir . '/tracy/tracy/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
@@ -16,11 +16,9 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'Overclokk\\Cookie\\' => array($vendorDir . '/overclokk/cookie/src'),
-    'Nette\\' => array($vendorDir . '/nette/php-generator/src', $vendorDir . '/nette/utils/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'App\\' => array($baseDir . '/app'),
-    'Ahc\\Cli\\' => array($vendorDir . '/adhocore/cli/src'),
 );
