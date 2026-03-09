@@ -24,8 +24,8 @@ define( '__PUBLIC__', __ROOT__ . DIRECTORY_SEPARATOR . 'public' );
 define( '__APP__', __ROOT__ . DIRECTORY_SEPARATOR . 'app' );
 define( '__VENDOR__', __ROOT__ . DIRECTORY_SEPARATOR . 'vendor' );
 
-define( '__LOGS__', __APP__ . DIRECTORY_SEPARATOR . 'logs' );
 define( '__CONFIG__', __APP__ . DIRECTORY_SEPARATOR . 'config' );
+define( '__LOGS__', __APP__ . DIRECTORY_SEPARATOR . 'logs' );
 define( '__CONTROLLERS__', __APP__ . DIRECTORY_SEPARATOR . 'controllers' );
 define( '__ROUTES__', __APP__ . DIRECTORY_SEPARATOR . 'routes' );
 define( '__TPL__', __APP__ . DIRECTORY_SEPARATOR . 'tpl' );
