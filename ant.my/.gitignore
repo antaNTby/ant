@@ -1,4 +1,5 @@
 # Specify filepatterns you want git to ignore.
+!.gitignore
 .env
 exception.log
 _ant.my_.sublime-workspace
@@ -13,6 +14,7 @@ C:/git/ant/ant.my/config/.env
 app/config/.env
 app/config/logs/
 app/logs/
+app/config/logs/
 app/sessions/
 app/smarty/
 config/.env
