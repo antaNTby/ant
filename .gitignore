@@ -8,11 +8,10 @@ _skeleton.my_.sublime-workspace
 
 app/config/.env
 app/config/logs/
-app/logs/
-app/config/logs/
+
 app/sessions/
 app/smarty/
-config/.env
+
 
 # .gitignore
 app/smarty/compile_dir/*
