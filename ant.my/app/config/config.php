@@ -28,6 +28,11 @@ Flight::set( 'csp_nonce', $nonce );
  *           User Configuration               *
  **********************************************/
 
+// Инициализируем Dotenv
+// __DIR__ указывает, что файл .env лежит в той же папке, что и index.php
+$dotenv = Dotenv\Dotenv::createImmutable( __DIR__ );
+$dotenv->load();
+
 Flight::set( 'LOG_REQUEST_TIME', true );
 // Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
 Flight::set( 'SESSION_EXPIRE_TIMEOUT', 1 * 60 * 60 );    // seconds to expire session  -1 час
@@ -51,22 +56,22 @@ $myConfig = [
      **************************************/
     'sqlite_file_path' => __DIR__ . DIRECTORY_SEPARATOR . 'database.sqlite', // Path to SQLite file
     'database'         => [
-                                   // MySQL Example:
-        'host'     => 'MySql-8.4', // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'   => 'newDB',     // Database name (e.g., 'flightphp')
-                                   // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'     => 'antaNT64',  // Database user (e.g., 'root')
-        'password' => 'root',      // Database password (never commit real passwords)
+                                        // MySQL Example:
+        'host'     => $_ENV['DB_HOST'], // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => $_ENV['DB_NAME'], // Database name (e.g., 'flightphp')
+                                        // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => $_ENV['DB_USER'], // Database user (e.g., 'root')
+        'password' => $_ENV['DB_PASS'], // Database password (never commit real passwords)
 
         // SQLite Example:
     ],
     'database2'        => [
-                                    // MySQL Example:
-        'host'     => 'MySql-8.4',  // Database host (e.g., 'localhost', 'db.example.com')
-        'dbname'   => 'nixby_UTF8', // Database name (e.g., 'flightphp')
-                                    // 'user'             => 'root',      // Database user (e.g., 'root')
-        'user'     => 'antaNT64',   // Database user (e.g., 'root')
-        'password' => 'root',       // Database password (never commit real passwords)
+                                        // MySQL Example:
+        'host'     => $_ENV['DB_HOST'], // Database host (e.g., 'localhost', 'db.example.com')
+        'dbname'   => 'nixby_UTF8',     // Database name (e.g., 'flightphp')
+                                        // 'user'             => 'root',      // Database user (e.g., 'root')
+        'user'     => $_ENV['DB_USER'], // Database user (e.g., 'root')
+        'password' => $_ENV['DB_PASS'], // Database password (never commit real passwords)
     ],
     // Google OAuth Credentials
     // 'google_oauth' => [
