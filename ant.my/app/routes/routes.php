@@ -2,9 +2,10 @@
 /*use app\controllers\ApiExampleController;*/
 /*use app\middlewares\SecurityHeadersMiddleware;*/
 use app\controllers\AuthController;
-use app\middlewares\AdminAuthMiddleware;
-use app\middlewares\RememberMeMiddleware;
 // use app\middlewares\SecurityHeadersMiddleware;
+use app\middlewares\AdminAuthMiddleware;
+use app\middlewares\CsrfMiddleware;
+use app\middlewares\RememberMeMiddleware;
 use app\middlewares\UserAuthMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -32,6 +33,7 @@ $authController = new AuthController();
 $authCheckAdmin = new AdminAuthMiddleware();
 $authCheckUser  = new UserAuthMiddleware();
 $rememberMe     = new RememberMeMiddleware();
+$CsrfMiddleware = new CsrfMiddleware();
 // Регистрация
 Flight::route( 'GET /register', [$authController, 'showRegistrationForm'] );
 Flight::route( 'POST /register', [$authController, 'handleRegistrationForm'] );
@@ -81,7 +83,7 @@ Flight::group( '/admin', function () {
 
         Flight::Display( 'admin/index.tpl.html', $renderData );
     } );
-}, [$rememberMe, $authCheckAdmin] );
+}, [$rememberMe, $authCheckAdmin, $CsrfMiddleware] );
 
 ################################################################
 ################################################################
@@ -132,3 +134,10 @@ Flight::route( '*', function () {
     ];
     Flight::Display( 'b2b/index.tpl.html', $renderData );
 } );
+
+// // index.php или где у вас есть маршруты
+
+// Flight::group( '', function ( Router $router ) {
+//     $router->get( '/users', ['UserController', 'getUsers'] );
+//     // больше маршрутов
+// }, [CsrfMiddleware::class] );
