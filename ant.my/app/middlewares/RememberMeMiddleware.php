@@ -38,7 +38,7 @@ class RememberMeMiddleware
                 // Проверяем активность пользователя
                 if ( $user && $user['is_active'] ) {
 
-                    Flight::flash( 'light', $user['user_name'] . ' has token.' );
+                    Flight::flash( 'light', $user['username'] . ' / ' . $user['email'] . ' has token.' . ' hash: ' . $tokenHash );
 
                     // Ротация токена: удаление старого токена
                     //Delete rows and return the number of deleted rows:
