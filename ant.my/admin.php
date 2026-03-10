@@ -1,5 +1,5 @@
 <?php
-
+// header( 'X-Global-Test: Working' );
 // date_default_timezone_set( 'Europe/Minsk' );
 ################################################################################
 ################################################################################
@@ -55,40 +55,77 @@ if ( !$logger ) {
 
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'config_smarty.php';
 $smarty->assign( 'myConfig', $config );
+$smarty->assign( 'nonce', Flight::get( 'csp_nonce' ) );
 
 // Инициализация сессии Flight до любых роутов и вывода
 require __CONFIG__ . DIRECTORY_SEPARATOR . 'services.php';
 $session = Flight::session();
 
+// 2. Чистая и правильная строка CSP без тестовых меток
+// Прописав header() напрямую в index.php (до всех Middleware и роутов),
+// мы гарантировали, что этот заголовок уйдет первым.
+// Теперь ваш сайт доверяет внешним шрифтам, а скрипты работают через безопасный nonce.
+$csp_string = "default-src 'self'; " .
+    "script-src 'nonce-{$nonce}' 'strict-dynamic'; " .
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com; " .
+    "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; " .
+    "img-src 'self' data:;";
+
+header( "Content-Security-Policy: $csp_string" );
+
 require __ROUTES__ . DIRECTORY_SEPARATOR . 'routes.php';
 
-Flight::before( 'start', function () {
-    Flight::set( 'start_time', microtime( true ) );
-} );
+// Flight::before( 'start', function () use ( $nonce ) {
 
-Flight::after( 'start', function () {
-    if ( Flight::get( 'LOG_REQUEST_TIME' ) ) {
+//     header( 'Content-Security-Policy: ' .
+//         // Скрипты: доверяем nonce и разрешаем динамическую загрузку
+//         "script-src 'nonce-$nonce' 'strict-dynamic'; " .
+//         // Стили: разрешаем себя, инлайны и оба сервиса шрифтов
+//         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com; " .
+//         // Шрифты: разрешаем загрузку самих файлов шрифтов (важно для Google/CDN)
+//         "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; " .
+//         // Остальное по умолчанию (картинки и т.д.)
+//         "default-src 'self'; " .
+//         "img-src 'self' data:;" );
+// } );
 
-        $end   = microtime( true );
-        $start = Flight::get( 'start_time' );
+// Flight::before( 'start', function () use ( $nonce ) {
+//     header( 'Content-Security-Policy: ' .
+//         // Убираем 'self' отсюда, чтобы не было предупреждения
+//         "script-src 'nonce-$nonce' 'strict-dynamic'; " .
+//         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com; " .
+//         "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; " .
+//         "default-src 'self';" );
+// } );
 
-        Flight::logger()->notice( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
+// Flight::before( 'start', function () {
 
-/*
-Вы также можете добавить свои заголовки запроса или ответа
-чтобы зафиксировать их (будьте осторожны, так как это будет
-много данных, если у вас много запросов)
-*/
-        if ( Flight::has( 'request' ) ) {
-            Flight::logger()->notice( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
-        }
+//     Flight::set( 'start_time', microtime( true ) );
+// } );
 
-        if ( Flight::has( 'response' ) ) {
-            Flight::logger()->notice( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
-        }
-    }
+// Flight::after( 'start', function () {
+//     if ( Flight::get( 'LOG_REQUEST_TIME' ) ) {
 
-} );
+//         $end   = microtime( true );
+//         $start = Flight::get( 'start_time' );
+
+//         Flight::logger()->notice( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
+
+//         /*
+//             Вы также можете добавить свои заголовки запроса или ответа
+//             чтобы зафиксировать их (будьте осторожны, так как это будет
+//             много данных, если у вас много запросов)
+//             */
+//         if ( Flight::has( 'request' ) ) {
+//             Flight::logger()->notice( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
+//         }
+
+//         if ( Flight::has( 'response' ) ) {
+//             Flight::logger()->notice( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
+//         }
+//     }
+
+// } );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 // Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session

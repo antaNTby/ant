@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             {if !$session.is_current}
-                            <form action="/admin/API/sessions/revoke" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                            <form class="js-confirm-submit" data-message="Завершить этот сеанс?" action="/admin/API/sessions/revoke" method="POST">
                                 <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
                                 <input type="hidden" name="token_id" value="{$session.id}">
                                 <input type="hidden" name="device_info" value="{$session.device_info}">
@@ -75,14 +75,14 @@
                     <!-- Контейнер для кнопок в одну линию -->
                     <div class="d-flex flex-wrap gap-2 mt-4">
                         <!-- Форма 1: Выйти на всех устройствах -->
-                        <form action="/logout-all" method="POST" onsubmit="return confirm('Вы уверены, что хотите выйти со всех устройств?');">
+                        <form class="js-confirm-submit" data-message="Вы уверены, что хотите выйти со всех устройств?" action="/logout-all" method="POST">
                             <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
                             <button type="submit" class="btn btn-outline-danger">
                                 <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
                             </button>
                         </form>
                         <!-- Форма 2: Удалить истекшие токены -->
-                        <form action="/admin/API/sessions/deleteExpiredTokens" method="POST" onsubmit="return confirm('Завершить этот сеанс?');">
+                        <form class="js-confirm-submit" data-message="Завершить этот сеанс?" action="/admin/API/sessions/deleteExpiredTokens" method="POST">
                             <button type="submit" class="btn btn-outline-danger">
                                 <i class="bi bi-trash"></i> Удалить все истекшие токены
                             </button>

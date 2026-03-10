@@ -85,15 +85,18 @@ Flight::map( 'Display', function (
 
     $page = new app\controllers\RenderDataController( $template, $data );
     $page->display( $template, $data );
+    // dd( $data );
 
     return Flight::app(); // Позволяет делать Flight::flash(...)->render(...)
 
 } );
 
 // Debugger::enable(); // Auto-detects environment
-Debugger::enable( Debugger::Development ); // Explicitly set environment
+// Debugger::enable( Debugger::Development ); // Explicitly set environment
 // Debugger::enable('23.75.345.200'); // Restrict debug bar to specific IPs
 // Debugger::$logDirectory = __DIR__ . $ds . '..' . $ds . 'log'; // Log directory
+
+Debugger::enable( Debugger::Development );                          // Explicitly set environment
 Debugger::$logDirectory = __DIR__ . DIRECTORY_SEPARATOR . 'logs'; // Log directory
 Debugger::$strictMode   = true;                                   // Show all errors (set to E_ALL & ~E_DEPRECATED for less noise)
 Debugger::$maxLen       = 1000;                                   // Max length of dumped variables (default: 150)

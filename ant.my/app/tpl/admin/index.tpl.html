@@ -11,6 +11,7 @@
 
 <body>
     {include file="svg.tpl.html"}
+
     <input type="hidden" id="current_sub">
     <input type="hidden" id="primary_key">
     <!-- /header -->
@@ -46,7 +47,7 @@
                 {/block}
                 {block PAGES}
                 <div class="m-5 p-5 bg-body-tertiary">
-                    { block PAGES } No Content
+                    { block PAGES } No Content {$nonce}
                 </div>
                 {/block}
             </main>
@@ -61,10 +62,10 @@
     </footer>
     {* *}
     {* Bootstrap JS *}
-    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js" nonce="{$nonce}"></script>
     {* Дополнительные скрипты *}
     {block scripts}
     {* Подключаем основной файл как модуль (если он нужен для побочных эффектов) *}
-    <script type="module" src="/lib/admin.js"></script>
+    <script type="module" src="/lib/admin.js" nonce="{$nonce}"></script>
     {/block}
 </body>

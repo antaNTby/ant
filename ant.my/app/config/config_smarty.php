@@ -101,6 +101,7 @@ Flight::map( 'render', function (
     string $template,
     array  $data = []
 ): void {
+
     Flight::view()->assign( $data );
     Flight::view()->display( $template );
 } );

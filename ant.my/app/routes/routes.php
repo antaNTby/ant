@@ -1,6 +1,11 @@
 <?php
 /*use app\controllers\ApiExampleController;*/
 /*use app\middlewares\SecurityHeadersMiddleware;*/
+use app\controllers\AuthController;
+use app\middlewares\AdminAuthMiddleware;
+use app\middlewares\RememberMeMiddleware;
+// use app\middlewares\SecurityHeadersMiddleware;
+use app\middlewares\UserAuthMiddleware;
 use flight\Engine;
 use flight\net\Router;
 use flight\Session;
@@ -9,15 +14,11 @@ use flight\util\Json;
 // echo password_hash( '12345', PASSWORD_DEFAULT );
 
 // Whip out the ol' router and we'll pass that to the routes file
-$router         = $app->router();
-$authController = new \app\controllers\AuthController();
+$router = $app->router();
 
 // Инициализируем сессию ПЕРЕД роутами
 $session = new \flight\Session();
 // Регистрируем middleware
-$authCheckAdmin = new \app\middlewares\AdminAuthMiddleware();
-$authCheckUser  = new \app\middlewares\UserAuthMiddleware();
-$rememberMe     = new \app\middlewares\RememberMeMiddleware();
 
 ################################################################
 ################################################################
@@ -27,6 +28,10 @@ $rememberMe     = new \app\middlewares\RememberMeMiddleware();
 ################################################################
 ################################################################
 
+$authController = new AuthController();
+$authCheckAdmin = new AdminAuthMiddleware();
+$authCheckUser  = new UserAuthMiddleware();
+$rememberMe     = new RememberMeMiddleware();
 // Регистрация
 Flight::route( 'GET /register', [$authController, 'showRegistrationForm'] );
 Flight::route( 'POST /register', [$authController, 'handleRegistrationForm'] );
