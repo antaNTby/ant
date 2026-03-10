@@ -487,6 +487,9 @@ class AuthService
         $session->set( 'user_role', $user['role'] );
         $session->set( 'is_admin', ( $user['role'] === 'administrator' ) );
         $session->set( 'last_activity', time() );
+        /**/
+        $csrf_token = bin2hex( random_bytes( 32 ) );
+        $session->set( 'csrf_token', $csrf_token );
     }
 
     /**

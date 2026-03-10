@@ -10,11 +10,12 @@ class CsrfMiddleware
     {
         $request = Flight::request();
         $session = Flight::session();
-        Flight::flash( 'dark', 'Check CSRFtoken' );
 
         if ( $request->method == 'POST' ) {
-            $token = $request->data->csrf_token;
-            if ( $token !== $session->get( 'csrf_token' ) ) {
+            $token        = $request->data->csrf_token;
+            $sessionToken = $session->get( 'csrf_token' );
+            Flight::flash( 'dark', 'Check CSRFtoken' );
+            if ( !$token || !hash_equals( $sessionToken, $token ) ) {
                 Flight::halt( 403, 'Invalid CSRFtoken' );
             }
         }
