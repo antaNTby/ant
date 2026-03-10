@@ -109,7 +109,7 @@
             <a class="btn btn-link w-100 my-4" href="/login">Войти</a>
         </div>
         <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
-        <script>
+        <script nonce="{$nonce}">
         /**/
         document.querySelectorAll('.toggle-password').forEach(button => {
                 button.addEventListener('click', function() {
@@ -128,7 +128,7 @@
         });
         /**/
         </script>
-        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/lib/bootstrap/js/bootstrap.bundle.min.js" nonce="{$nonce}"></script>
 </body>
 
 </html>

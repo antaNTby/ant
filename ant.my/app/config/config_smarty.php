@@ -83,7 +83,7 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
 // Функция для удаления данных из сессии прямо из шаблона
     function smarty_function_clear_session(
         $params,
-        $smarty
+        // $smarty
     ) {
         $key = $params['key'] ?? 'flash_messages'; // по умолчанию чистим флеш-сообщения
         Flight::session()->delete( $key );
@@ -94,6 +94,16 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
     $smarty->registerPlugin( 'function', 'clear_session', 'smarty_function_clear_session' );
 
     // $smarty->testInstall();
+
+    // PLUGIN_FUNCTION
+    // Установка пользовательской функции для вывода токена CSRF
+    function smarty_tag_generateCsrf()
+    {
+        $csrfToken = Flight::session()->get( 'csrf_token' );
+
+        return '<input class="smarty-csrf" type="hidden" name="csrf_token" value="' . $csrfToken . '">';
+    }
+    $smarty->registerPlugin( 'function', 'CSRF', 'smarty_tag_generateCsrf' );
 
 } );
 

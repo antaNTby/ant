@@ -44,7 +44,8 @@
                             </div>
                             {if !$session.is_current}
                             <form class="js-confirm-submit" data-message="Завершить этот сеанс?" action="/admin/API/sessions/revoke" method="POST">
-                                <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                                {* <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}"> *}
+                                {CSRF}
                                 <input type="hidden" name="token_id" value="{$session.id}">
                                 <input type="hidden" name="device_info" value="{$session.device_info}">
                                 <button type="submit" class="btn btn-outline-danger btn-sm px-2 flex-nowrap">
@@ -76,7 +77,8 @@
                     <div class="d-flex flex-wrap gap-2 mt-4">
                         <!-- Форма 1: Выйти на всех устройствах -->
                         <form class="js-confirm-submit" data-message="Вы уверены, что хотите выйти со всех устройств?" action="/logout-all" method="POST">
-                            <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}">
+                            {* <input type="hidden" name="csrf_token" value="{Flight::csrfToken()}"> *}
+                            {CSRF}
                             <button type="submit" class="btn btn-outline-danger">
                                 <i class="bi bi-shield-slash"></i> Выйти на всех устройствах
                             </button>
@@ -84,6 +86,7 @@
                         <!-- Форма 2: Удалить истекшие токены -->
                         <form class="js-confirm-submit" data-message="Завершить этот сеанс?" action="/admin/API/sessions/deleteExpiredTokens" method="POST">
                             <button type="submit" class="btn btn-outline-danger">
+                                {CSRF}
                                 <i class="bi bi-trash"></i> Удалить все истекшие токены
                             </button>
                         </form>
