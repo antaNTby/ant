@@ -15,7 +15,6 @@ Flight::map( 'dumps', function ( ...$vars ) {
     foreach ( $vars as $v ) {
         VarDumper::dump( $v );
     }
-
     // Возвращаем результат (удобно для вложенных вызовов)
 
     return count( $vars ) === 1 ? $vars[0] : $vars;
@@ -34,7 +33,7 @@ Flight::register( 'authService', \app\services\AuthService::class );
 
 Flight::register( 'session', \flight\Session::class, [
     [
-        'prefix'         => 'admin_',                                                                // Prefix for the session cookie
+        'prefix'         => 'ant_',                                                                  // Prefix for the session cookie
         'save_path'      => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'sessions', // Path to save session files
                                                                                                      // ...other options...
         'encryption_key' => $_ENV['JWT_SECRET'],                                                     // Enable encryption with a secure key
