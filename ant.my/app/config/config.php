@@ -26,6 +26,7 @@ if ( function_exists( 'setlocale' ) === true ) {
 // Generate a CSP nonce for each request and store in $app
 $nonce = bin2hex( random_bytes( 16 ) );
 Flight::set( 'csp_nonce', $nonce );
+/**/
 // Инициализируем Dotenv
 // __DIR__ указывает, что файл .env лежит в той же папке, что и index.php
 $dotenv = Dotenv\Dotenv::createImmutable( __DIR__ );

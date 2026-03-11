@@ -81,7 +81,7 @@
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                     <input type="password" name="password" id="password" class="form-control" required>
-                    <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password"  minlength="2">
+                    <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password" minlength="2">
                         <i class="bi bi-eye"></i>
                     </button>
                 </div>
@@ -109,6 +109,7 @@
             <a class="btn btn-link w-100 my-4" href="/login">Войти</a>
         </div>
         <p class="user-select-none text-secondary small">antaNT64 &copy; {$year}</p>
+        {* *}
         <script nonce="{$nonce}">
         /**/
         document.querySelectorAll('.toggle-password').forEach(button => {

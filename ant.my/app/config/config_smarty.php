@@ -90,20 +90,28 @@ Flight::register( 'view', Smarty::class, [], function ( Smarty $smarty ) {
 
         return ''; // ничего не выводим в HTML
     }
-
     $smarty->registerPlugin( 'function', 'clear_session', 'smarty_function_clear_session' );
 
     // $smarty->testInstall();
 
     // PLUGIN_FUNCTION
     // Установка пользовательской функции для вывода токена CSRF
-    function smarty_tag_generateCsrf()
+    function smarty_tagCsrf()
     {
         $csrfToken = Flight::session()->get( 'csrf_token' );
 
         return '<input class="smarty-csrf" type="hidden" name="csrf_token" value="' . $csrfToken . '">';
     }
-    $smarty->registerPlugin( 'function', 'CSRF', 'smarty_tag_generateCsrf' );
+    $smarty->registerPlugin( 'function', 'csrf_token', 'smarty_tagCsrf' );
+
+    function smarty_tagNonce()
+    {
+        $nonce = Flight::get( 'csp_nonce' );
+
+        return 'nonce="' . $nonce . '"';
+
+    }
+    $smarty->registerPlugin( 'function', 'csp_nonce', 'smarty_tagNonce' );
 
 } );
 

@@ -30,18 +30,32 @@
             "App\\": "app/"
         }
     },
-"scripts": {
-  "post-install-cmd": [
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
-  ],
-  "post-update-cmd": [
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
-    "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
-  ]
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "scripts":
+    {
+        "post-install-cmd": [
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
+        ],
+        "post-update-cmd": [
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap\\dist public\\lib\\bootstrap\"",
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\font public\\lib\\bootstrap-icons\\font\"",
+            "powershell -Command \"Copy-Item -Recurse -Force vendor\\twbs\\bootstrap-icons\\icons public\\lib\\bootstrap-icons\\icons\""
+        ]
+    }
 
 
 
