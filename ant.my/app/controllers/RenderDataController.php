@@ -3,10 +3,22 @@ declare ( strict_types = 1 ); // Для строгости типов данны
 
 namespace app\controllers;
 
+use BaseSubController;
 use Flight;
+use flight\database\SimplePdo;
+use flight\Engine;
 
 class RenderDataController
 {
+
+    protected Engine $app;
+    protected SimplePdo $db;
+
+    public function __construct( Engine $app )
+    {
+        $this->app = $app;
+        $this->db  = $app->db();
+    }
 
     /**
      * Подготовка базовых данных
@@ -134,6 +146,10 @@ class RenderDataController
                 break;
             case 'tests':
                 $data['test_status'] = 'Active';
+                $controller          = new \app\controllers\BaseSubController( $this->app ); // Наследник BaseSubController
+
+                dd( $controller );
+
                 break;
             default:
                 // Если страницы нет, кидаем 404 или редирект
