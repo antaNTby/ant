@@ -9,9 +9,39 @@
 }
 */
 
+/* Для обычного текста */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* Убедитесь, что имя файла совпадает с вашим */
+  src: url('/lib/fonts/Nunito/static/Nunito-Regular.ttf') format('truetype');
+}
+
+/* Для жирного текста */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/lib/fonts/Nunito/static/Nunito-Bold.ttf') format('truetype');
+}
+/* Для курсивного текста */
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/lib/fonts/Nunito/static/Nunito-Itaic.ttf') format('truetype');
+}
+
+
 body {
-    font-family: 'Bahnschrift', system-ui, sans-serif;
-    background: url('../lib/orn.gif');
+    font-family:
+    'Nunito',
+     'Bahnschrift',
+      system-ui, sans-serif; background: url('../lib/orn.gif');
 }
 
 input.form-control-xs {

@@ -3,7 +3,7 @@
         'name' => 'antantby/ant.my',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '957a8a6096b5c0823dfcca8f708c5fd218fe6e8f',
+        'reference' => '08b9119948666ed6e4866929279bafe9c1770da2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'antantby/ant.my' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '957a8a6096b5c0823dfcca8f708c5fd218fe6e8f',
+            'reference' => '08b9119948666ed6e4866929279bafe9c1770da2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
