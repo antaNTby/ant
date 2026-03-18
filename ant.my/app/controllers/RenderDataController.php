@@ -14,8 +14,9 @@ class RenderDataController
     protected Engine $app;
     protected SimplePdo $db;
 
-    public function __construct( Engine $app )
-    {
+    public function __construct(
+        Engine $app,
+    ) {
         $this->app = $app;
         $this->db  = $app->db();
     }

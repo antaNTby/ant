@@ -82,7 +82,7 @@ Flight::map( 'Display', function (
     array  $data = []
 ) {
 
-    $page = new app\controllers\RenderDataController( Flight::app(), $template, $data );
+    $page = new app\controllers\RenderDataController( Flight::app() );
     $page->display( $template, $data );
     // dd( $data );
 
