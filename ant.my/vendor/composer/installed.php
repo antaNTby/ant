@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'antantby/ant.my',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '08b9119948666ed6e4866929279bafe9c1770da2',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'antantby/ant.my' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '08b9119948666ed6e4866929279bafe9c1770da2',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

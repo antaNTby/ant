@@ -19,15 +19,15 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixLengthsPsr4 = array (
-        'f' =>
+        'f' => 
         array (
             'flight\\' => 7,
         ),
-        'T' =>
+        'T' => 
         array (
             'Tracy\\' => 6,
         ),
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -35,36 +35,36 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Symfony\\Component\\VarDumper\\' => 28,
             'Smarty\\' => 7,
         ),
-        'P' =>
+        'P' => 
         array (
             'Psr\\Log\\' => 8,
             'PhpOption\\' => 10,
         ),
-        'O' =>
+        'O' => 
         array (
             'Overclokk\\Cookie\\' => 17,
         ),
-        'N' =>
+        'N' => 
         array (
             'Nette\\' => 6,
         ),
-        'M' =>
+        'M' => 
         array (
             'Monolog\\' => 8,
         ),
-        'G' =>
+        'G' => 
         array (
             'GrahamCampbell\\ResultType\\' => 26,
         ),
-        'F' =>
+        'F' => 
         array (
             'Firebase\\JWT\\' => 13,
         ),
-        'D' =>
+        'D' => 
         array (
             'Dotenv\\' => 7,
         ),
-        'A' =>
+        'A' => 
         array (
             'App\\' => 4,
             'Ahc\\Cli\\' => 8,
@@ -72,74 +72,74 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixDirsPsr4 = array (
-        'flight\\' =>
+        'flight\\' => 
         array (
             0 => __DIR__ . '/..' . '/flightphp/session/src',
             1 => __DIR__ . '/..' . '/flightphp/runway/src',
             2 => __DIR__ . '/..' . '/flightphp/permissions/src',
         ),
-        'Tracy\\' =>
+        'Tracy\\' => 
         array (
             0 => __DIR__ . '/..' . '/tracy/tracy/src',
         ),
-        'Symfony\\Polyfill\\Php80\\' =>
+        'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' =>
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Ctype\\' =>
+        'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Component\\VarDumper\\' =>
+        'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Smarty\\' =>
+        'Smarty\\' => 
         array (
             0 => __DIR__ . '/..' . '/smarty/smarty/src',
         ),
-        'Psr\\Log\\' =>
+        'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'PhpOption\\' =>
+        'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'Overclokk\\Cookie\\' =>
+        'Overclokk\\Cookie\\' => 
         array (
             0 => __DIR__ . '/..' . '/overclokk/cookie/src',
         ),
-        'Nette\\' =>
+        'Nette\\' => 
         array (
             0 => __DIR__ . '/..' . '/nette/php-generator/src',
             1 => __DIR__ . '/..' . '/nette/utils/src',
         ),
-        'Monolog\\' =>
+        'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'GrahamCampbell\\ResultType\\' =>
+        'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
         ),
-        'Firebase\\JWT\\' =>
+        'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
-        'Dotenv\\' =>
+        'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'App\\' =>
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
-        'Ahc\\Cli\\' =>
+        'Ahc\\Cli\\' => 
         array (
             0 => __DIR__ . '/..' . '/adhocore/cli/src',
         ),
