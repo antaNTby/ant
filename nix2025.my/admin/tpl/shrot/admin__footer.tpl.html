@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-between align-items-center px-xl-0">
+    {* <p class="col-md-6 mb-0 text-body-secondary"><span class="nix-brand">nix.by</span></p> *}
+{*     <ul class="nav justify-content-start ms-2 me-1" title="Ширина контейнера страницы">
+        <li class="nav-item dropup-center dropup">
+            <a class="dropdown-toggle btn btn-outline-secondary my-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {$container_width}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                    <h6 class="dropdown-header">
+                        sm: 540px<br>
+                        md: 720px<br>
+                        lg: 960px<br>
+                        xl: 1140px<br>
+                        xxl: 1320px
+                    </h6>
+                </li>
+                {foreach $allowedContainerWidths as $width}
+                {if $container_width eq $width}
+                <li><a class="dropdown-item disabled" aria-disabled="true">{$width}</a></li>
+                {else}
+                <li><a class="dropdown-item" href="{$smarty.const.ADMIN_FILE}?change_template_width={$width}">{$width}</a></li>
+                {/if}
+                {/foreach}
+            </ul>
+        </li>
+    </ul> *}
+{*     <ul class="nav justify-content-start me-1" title="Позиция вывода Сообщений Сервера">
+        <li class="nav-item dropup-center dropup">
+            <a class="dropdown-toggle btn btn-outline-secondary my-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {$allowedToastPlacementNames[$placementID]}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" id="allowedToastPlacementsList" data-placement={$placementID}>
+                {section name=tpi loop=$allowedToastPlacements|@count}
+                {$indexTP=$smarty.section.tpi.index}
+                {if $indexTP eq $placementID }
+                <a class="dropdown-item active" href="{$smarty.const.ADMIN_FILE}?change_toast_placement={$indexTP}" data-key="{$indexTP}" data-value="top-0 start-0" aria-current="true">{$indexTP} - {$allowedToastPlacementNames[$indexTP]}</a>
+                {else}
+                <a class="dropdown-item" href="{$smarty.const.ADMIN_FILE}?change_toast_placement={$indexTP}" data-key="{$indexTP}" data-value="top-0 start-0">{$indexTP} - {$allowedToastPlacementNames[$indexTP]}</a>
+                {/if}
+                {/section}
+                <li class="dropdown-item" title="Показывать только сообщения с ошибками">
+                    <div class="form-check form-switch d-flex justify-content-start" title="Показывать только сообщения с ошибками">
+                        <input class="form-check-input" type="checkbox" role="switch" name="switcherOnlyErrorsToastShow" id="switcherOnlyErrorsToastShow">
+                        <label class="form-check-label px-1" for="switcherOnlyErrorsToastShow">&nbsp; Только ошибки</label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul> *}
+    <span class="navbar-text" data-id="template-now"> {$smarty.now|date_format:"%Y-%m-%d %H:%M"}</span>
+    <span class="navbar-text">php {$pver}</span>
+    <span class="navbar-text">db {$mver}</span>
+    <a class="navbar-brand" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu"><img alt="nix.by logo" src="/media/logo64.png" height="32" /> {$smarty.const.SITE_URL} menu</a>
+    <ul class="nav justify-content-end">
+        <li class="nav-item"><a href="/" class="nav-link disabled px-2 text-reset">Home</a></li>
+        {* <li class="nav-item"><a href="#" class="nav-link disabled px-2 text-body-secondary">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link disabled px-2 text-body-secondary">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link disabled px-2 text-body-secondary">FAQs</a></li> *}
+        <li class="nav-item dropup-center dropup">
+            <button class="dropdown-toggle btn btn-outline-secondary my-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-command"></i></button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="etfm.php"><i class="bi bi-house-exclamation-fill"></i> TinyFileManager</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                {if $c}<li><button class="dropdown-item text-bg-danger" name="btn_TerminateCompany" title="УДАЛИТЬ ЭТУ КОМПАНИЮ БЕЗО ВСЯКИХ НЕЖНОСТЕЙ" data-kill_id="{$c.companyID}" data-app="AdminCompany" data-operation="TerminateCompany"><i class="bi bi-sign-dead-end"></i> Удалить компанию</button></li>{/if}
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><button type="button" class="dropdown-item" id="btnSuccess">Показать Success</button></li>
+                <li><button type="button" class="dropdown-item" id="btnDanger">Show Error</button></li>
+                <li><button type="button" class="dropdown-item" id="btnShowToast">Show btnShowToast</button></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link disabled px-2  text-reset">About</a></li>
+    </ul>
+</div>

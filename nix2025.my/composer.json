@@ -1,0 +1,24 @@
+{
+   
+
+    "name": "ant/nix2025",
+    "description": "A ant Flight PHP framework skeleton app to get your new projects up and running ASAP",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "twbs/bootstrap": "^5.3",
+        "flightphp/core": "^3.15",
+        "monolog/monolog": "^3.9",
+        "smarty/smarty": "^5.4",
+        "emagombe/datatable": "^3.2",
+        "flightphp/active-record": "^0.6.0",
+        "level-2/dice": "^4.0",
+        "flightphp/runway": "^1.1",
+        "nette/utils": "^4.0",
+        "avadim/fast-excel-writer": "^6.6",
+        "twbs/bootstrap-icons": "^1.13"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^7.2"
+    }
+}

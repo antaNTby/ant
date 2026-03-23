@@ -1,0 +1,26 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+<div class="hstack gap-1">
+    {if $btnClone}
+    <button type="button" name="button__Clone{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="Clone" class="smarty-control btn btn-light btn-sm text-nowrap mx-1"><i class="bi bi-copy"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> Clone</span></button>
+    {/if}
+    {if $btnClear}
+    <button type="button" name="button__Clear{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="Clear" class="smarty-control btn btn-light btn-sm text-nowrap mx-1"><i class="bi bi-eraser"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> Clear</span></button>
+    {/if}
+    {if $btnAddNew}
+    <button type="button" name="button__AddNew{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="AddNew" class="smarty-control btn btn-light btn-sm text-nowrap mx-1"><i class="bi bi-plus-lg"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> AddNew</span></button>
+    {/if}
+    {if  $btnFixSort && $index|isset && $index>0}
+    <button type="button" name="button__FixSort{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="FixSort" class="smarty-control btn btn-light btn-sm text-nowrap mx-1"><i class="bi bi-sort-numeric-down"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> FixSort</span></button>
+    {/if}
+    {if $btnSaveRow}
+    {* <div class="vr"></div> *}
+    <button type="button" name="button__SaveRow{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="SaveRow" class="smarty-control btn btn-outline-secondary btn-sm text-nowrap mx-1" disabled><i class="bi bi-save"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> SaveRow</span></button>
+    {* <div class="vr"></div> *}
+    {/if}
+    {if $btnDelete}
+    <div class="vr ms-auto"></div>
+    <button type="button" name="button__Delete{if $index|isset}[{$index}]{/if}" data-index="{$index}" data-action="Delete" class="smarty-control btn btn-outline-danger btn-sm text-nowrap ms-auto"><i class="bi bi-trash3"></i> <span class="d-sm-inline-block d-md-none d-lg-inline-block"> Delete</span></button>
+    {/if}
+</div>

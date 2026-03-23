@@ -1,0 +1,134 @@
+<h2>Типы валют</h2>
+{include file="subs/navigator.tpl.html" links=$nav_links}
+<div class="table-responsive-xxl">
+    {$smarty.capture.MAIN_TABLE}
+</div>
+<hr class="my-3">
+<div class="table-responsive-xxl">
+    {$smarty.capture.SECOND_TABLE}
+</div>
+<hr class="my-3">
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="TABLE_THEAD"}
+<thead class="table-light">
+    <tr class="align-self-center align-middle text-center">
+        <th style="{$th_styles.N}" class='text-end align-middle font-monospace border-end'>{$th_titles.N}</th>
+        <th style="{$th_styles.CID}">{$th_titles.CID}</th>
+        <th style="{$th_styles.Name}">{$th_titles.Name}</th>
+        <th style="{$th_styles.code}">{$th_titles.code}</th>
+        <th style="{$th_styles.currency_value}" class="table-active">{$th_titles.currency_value}</th>
+        <th style="{$th_styles.nds20}">{$th_titles.nds20}</th>
+        <th style="{$th_styles.where2show}">{$th_titles.where2show}</th>
+        <th style="{$th_styles.sort_order}">{$th_titles.sort_order}</th>
+        <th style="{$th_styles.currency_iso_3}">{$th_titles.currency_iso_3}</th>
+        <th style="{$th_styles.roundval}">{$th_titles.roundval}</th>
+        <th style="{$th_styles.actions}" class="table-secondary fw-bolder text-center align-middle font-monospace border-start"><i class="bi bi-terminal-fill"></i>&nbsp;{$th_titles.actions}</th>
+    </tr>
+</thead>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="THEAD_FIELDNAMES"}
+<tr class="align-middle text-center text-secondary text-xs table-dark">
+    <td></td>
+    <td title="CID">CID</td>
+    <td title="Name">Name</td>
+    <td title="code">code</td>
+    <td title="currency_value">currency_value</td>
+    <td title="nds20">nds20</td>
+    <td title="where2show">where2show</td>
+    <td title="sort_order">sort_order</td>
+    <td title="currency_iso_3">currency_iso_3</td>
+    <td title="roundval">roundval</td>
+    <td></td>
+</tr>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="MAIN_TABLE"}
+<table id="mainTable" class="table table-fixed-layout table-borderless table-hover table-sm caption-top text-end border border-2" style="max-width:80%">
+    <caption>Типы валют</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        {$smarty.capture.THEAD_FIELDNAMES}
+        {section name=cc loop = $data}
+        <tr class="align-self-center align-middle text-center" data-index="{$data[cc].CID}">
+            <td style="{$td_styles.N}" class="table-secondary text-sm text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration|@zeroPad:2}</td>
+            <td style="{$td_styles.CID}" name="CID" data-dt-name="CID">{$controls[cc][0]->getHtml()}</td>
+            <td style="{$td_styles.Name}" name="Name" data-dt-name="Name">{$controls[cc][1]->getHtml()}</td>
+            <td style="{$td_styles.code}" name="code" data-dt-name="code">{$controls[cc][2]->getHtml()}</td>
+            <td style="{$td_styles.currency_value}" class="table-active" name="currency_value" data-dt-name="currency_value">{$controls[cc][3]->getHtml()}</td>
+            <td style="{$td_styles.nds20}" data-index="{$data[cc].CID}" data-old-currency-value="{$data[cc].currency_value|formatUsd}">
+                <div class="d-grid gap-1 text-end lh-1 fw-lighter font-monospace text-body-secondary" data-helper="currency_value" data-index="{$data[cc].CID}">
+                    <sup class="m-0 p-0 d-block">{(1.2*$data[cc].currency_value)|formatUsd}</sup>
+                    <sub class="m-0 p-0 d-block">{(1/1.2*$data[cc].currency_value)|formatUsd}</sub>
+                </div>
+            </td>
+            <td style="{$td_styles.where2show}" name="where2show" data-dt-name="where2show">{$controls[cc][4]->getHtml()}</td>
+            <td style="{$td_styles.sort_order}" name="sort_order" data-dt-name="sort_order">{$controls[cc][5]->getHtml()}</td>
+            <td style="{$td_styles.currency_iso_3}" name="currency_iso_3" data-dt-name="currency_iso_3">{$controls[cc][6]->getHtml()}</td>
+            <td style="{$td_styles.roundval}" name="roundval" data-dt-name="roundval">{$controls[cc][7]->getHtml()}</td>
+            <th style="{$td_styles.actions}" class="table-white text-start align-middle font-monospace border-start">{$controls[cc].actions->getHtml()}</th>
+        </tr>
+        {/section}
+        {$smarty.capture.THEAD_FIELDNAMES}
+    </tbody>
+</table>
+<div class="d-flex pt-2">
+    <div class="p-2 bg-body">{$controls.mainToolbar.actions->getHtml()}</div>
+</div>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{capture name="SECOND_TABLE"}
+<table id="secondTable" class="table table-fixed-layout table-borderless table-sm caption-top text-end border border-2" style="max-width:80%">
+    <caption>Добавить новую валюту</caption>
+    {$smarty.capture.TABLE_THEAD}
+    <tbody class="table-group-divider">
+        <tr class="align-self-center align-middle text-center" data-index="-1">
+            <td style="{$td_styles.N}" class="table-secondary text-sm text-end align-middle font-monospace border-end">{$smarty.section.cc.iteration|@zeroPad:2}</td>
+            <td style="{$td_styles.CID}" name="add_CID" data-dt-name="CID">{$controls.addNew.CID->getHtml()}</td>
+            <td style="{$td_styles.Name}" name="add_Name" data-dt-name="Name">{$controls.addNew.Name->getHtml()}</td>
+            <td style="{$td_styles.code}" name="add_code" data-dt-name="code">{$controls.addNew.code->getHtml()}</td>
+            <td style="{$td_styles.currency_value}" class="table-active" name="add_currency_value" data-dt-name="currency_value">{$controls.addNew.currency_value->getHtml()}</td>
+            <td style="{$td_styles.nds20}" data-index="-1" data-old-currency-value="{$controls.addNew.currency_value->getCurrentValue()|formatUsd}">
+                <div class="d-grid gap-1 text-end lh-1 fw-lighter font-monospace text-body-secondary" data-helper="currency_value" data-index="-1">
+                    <sup class="m-0 p-0 d-block">{( 1.2*$controls.addNew.currency_value->getCurrentValue())|formatUsd}</sup>
+                    <sub class="m-0 p-0 d-block">{(1/1.2*$controls.addNew.currency_value->getCurrentValue())|formatUsd}</sub>
+                </div>
+            </td>
+            <td style="{$td_styles.where2show}" name="add_where2show" data-dt-name="where2show">{$controls.addNew.where2show->getHtml()}</td>
+            <td style="{$td_styles.sort_order}" name="add_sort_order" data-dt-name="sort_order">{$controls.addNew.sort_order->getHtml()}</td>
+            <td style="{$td_styles.currency_iso_3}" name="add_currency_iso_3" data-dt-name="currency_iso_3">{$controls.addNew.currency_iso_3->getHtml()}</td>
+            <td style="{$td_styles.roundval}" name="add_roundval" data-dt-name="roundval">{$controls.addNew.roundval->getHtml()}</td>
+            <th style="{$td_styles.actions}" class="table-white text-start align-middle font-monospace border-start">{$controls.addNew.actions->getHtml()}</th>
+        </tr>
+        {$smarty.capture.THEAD_FIELDNAMES}
+    </tbody>
+</table>
+{/capture}
+{* CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES CAPTURES *}
+{*
+<hr>
+{assign var=p value=[]}
+{$p.current_value=1}
+{$p.disabled=0}
+{$p.fieldname="test"}
+{$p.indeterminate=1}
+{$p.index=1}
+{$p.inline=1}
+{$p.label=' test checkbox'}
+{$p.readonly=0}
+{$p.reverse=1}
+<div class="form-check{if $p.inline|isset} form-check-inline{/if}{if $p.reverse|isset && $p.reverse} form-check-reverse{/if}">
+    <input class="smarty-control form-check-input{if isset($p.indeterminate) && $p.indeterminate} indeterminate-checkbox{/if}" type="checkbox" id="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}" name="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}" {if $p.indeterminate|isset && $p.indeterminate} indeterminate="indeterminate" value="-1" {else} {if $p.current_value|isset && $p.current_value neq 0}checked="checked" value="1" {else}value="0" {/if} {/if} {if $p.readonly|isset && $p.readonly}readonly{/if} {if $p.disabled|isset && $p.disabled}disabled{/if}> {if $p.label|isset}<label class="form-check-label" for="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}">{$p.label}</label>{/if}
+</div>
+{$p.label=' test checkbox II '}
+{$p.index=2}
+{$p.indeterminate=0}
+{$p.reverse=0}
+<div class="form-check{if $p.inline|isset} form-check-inline{/if}{if $p.reverse|isset && $p.reverse} form-check-reverse{/if}">
+    <input class="smarty-control form-check-input{if isset($p.indeterminate) && $p.indeterminate} indeterminate-checkbox{/if}" type="checkbox" id="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}" name="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}" {if $p.indeterminate|isset && $p.indeterminate} indeterminate="indeterminate" value="-1" {else} {if $p.current_value|isset && $p.current_value neq 0}checked="checked" value="1" {else}value="0" {/if} {/if} {if $p.readonly|isset && $p.readonly}readonly{/if} {if $p.disabled|isset && $p.disabled}disabled{/if}> {if $p.label|isset}<label class="form-check-label" for="{$p.fieldname}{if $p.index|isset}[{$p.index}]{/if}">{$p.label}</label>{/if}
+</div>
+<hr>
+*}

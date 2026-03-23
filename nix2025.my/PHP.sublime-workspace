@@ -1,0 +1,1682 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sha",
+				"show_all"
+			],
+			[
+				"re",
+				"records"
+			],
+			[
+				"text-bg-s",
+				"text-bg-success"
+			],
+			[
+				"for",
+				"form-control"
+			],
+			[
+				"__A",
+				"__ADMIN__"
+			],
+			[
+				"as",
+				"asideMenuPosition"
+			],
+			[
+				"menu",
+				"setMenuPosition"
+			],
+			[
+				"requ",
+				"requestBody"
+			],
+			[
+				"print",
+				"print_r()"
+			],
+			[
+				"_SE",
+				"$_SESSION\tSESSION['…']"
+			],
+			[
+				"co",
+				"div.co"
+			],
+			[
+				"h1",
+				"h1"
+			],
+			[
+				"op",
+				"operation"
+			],
+			[
+				"C",
+				"ColumnFields"
+			],
+			[
+				"Co",
+				"ColumnFields"
+			],
+			[
+				"col",
+				"columns"
+			],
+			[
+				"Field",
+				"fieldsList"
+			],
+			[
+				"clean",
+				"cleanArrayKeys"
+			],
+			[
+				"req",
+				"requestBody"
+			],
+			[
+				"act",
+				"action"
+			],
+			[
+				"al",
+				"align-self-center"
+			],
+			[
+				"que",
+				"querySelectorAll"
+			],
+			[
+				"ui",
+				"uiEvent"
+			],
+			[
+				"dat",
+				"dataset"
+			],
+			[
+				"pr",
+				"primaryKey"
+			],
+			[
+				"sma",
+				"smarty\tsmarty variable"
+			],
+			[
+				"current_sub",
+				"input#current_sub"
+			],
+			[
+				"curre",
+				"curren_sub"
+			],
+			[
+				"d-flex",
+				"div.d-flex"
+			],
+			[
+				"tex",
+				"text_align"
+			],
+			[
+				"S",
+				"SmartyControl"
+			],
+			[
+				"field",
+				"fieldsDescription"
+			],
+			[
+				"input",
+				"inputn\tinput - number"
+			],
+			[
+				"table-responsive",
+				"div.table-responsive"
+			],
+			[
+				"bg",
+				"bg-light-subtle"
+			],
+			[
+				"p-3",
+				"div.p-3"
+			],
+			[
+				"container",
+				"div.container"
+			],
+			[
+				"bg-dark",
+				"div.bg-dark"
+			],
+			[
+				"var",
+				"var_dump()"
+			],
+			[
+				"html",
+				"html5\tSimple HTML5 Boilerplate"
+			],
+			[
+				"ba",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "trash/eeee.php",
+			"settings":
+			{
+				"buffer_size": 14940,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"paste",
+					null,
+					"AQAAAIICAAAAAAAAvQQAAAAAAADJAQAALy8gU2V0dGluZ3MgaW4gaGVyZSBvdmVycmlkZSB0aG9zZSBpbiAiRGVmYXVsdC9QcmVmZXJlbmNlcy5zdWJsaW1lLXNldHRpbmdzIiwKLy8gYW5kIGFyZSBvdmVycmlkZGVuIGluIHR1cm4gYnkgc3ludGF4LXNwZWNpZmljIHNldHRpbmdzLgp7CiAgICAndXBkYXRlX2NoZWNrJzpmYWxzZSwKICAgICd0aGVtZSc6J0RlZmF1bHQgRGFyay5zdWJsaW1lLXRoZW1lJywKICAgICdjb2xvcl9zY2hlbWUnOidNYXJpYW5hLnN1YmxpbWUtY29sb3Itc2NoZW1lJywKICAgICdpZ25vcmVkX3BhY2thZ2VzJzoKICAgIFsKICAgICAgICAnVmludGFnZScsCiAgICBdLAogICAgJ2luZGV4X2ZpbGVzJzp0cnVlLAogICAgJ2ZvbnRfc2l6ZSc6MTAsCiAgICAvLyBTaG93ICJwcm9qZWN0IC0gZmlsZSIgb3IgImZpbGUgLSBwcm9qZWN0IiBpbiB0aGUgdGl0bGUgYmFyLgogICAgJ3Nob3dfcHJvamVjdF9maXJzdCc6dHJ1ZSwKfQ",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAEsEAAAAAAAAggIAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					4,
+					1,
+					"php_fmt",
+					null,
+					"PgAAAAcAAAAAAAAABwAAAAAAAAACAAAACgp+AgAAAAAAAH4CAAAAAAAAAgAAAAoKDQMAAAAAAAANAwAAAAAAAAEAAAAiDQMAAAAAAAAOAwAAAAAAAAAAAAAaAwAAAAAAABoDAAAAAAAAAQAAACIaAwAAAAAAABsDAAAAAAAAAAAAACcDAAAAAAAAJwMAAAAAAAABAAAAIicDAAAAAAAAKAMAAAAAAAAAAAAALQMAAAAAAAAtAwAAAAAAAAMAAAAiOiItAwAAAAAAADADAAAAAAAAAAAAAEoDAAAAAAAASgMAAAAAAAABAAAAIkoDAAAAAAAASwMAAAAAAAAAAAAAUQMAAAAAAABRAwAAAAAAAAEAAAAiUQMAAAAAAABSAwAAAAAAAAAAAABeAwAAAAAAAF4DAAAAAAAAAwAAACI6Il4DAAAAAAAAYQMAAAAAAAAAAAAAfQMAAAAAAAB9AwAAAAAAAAEAAAAifQMAAAAAAAB+AwAAAAAAAAAAAACEAwAAAAAAAIQDAAAAAAAAAQAAACKEAwAAAAAAAIUDAAAAAAAAAAAAAJUDAAAAAAAAlQMAAAAAAAABAAAAIpUDAAAAAAAAlgMAAAAAAAAAAAAApgMAAAAAAACmAwAAAAAAAAEAAAAipgMAAAAAAACnAwAAAAAAAAAAAACuAwAAAAAAAK4DAAAAAAAAAQAAACKuAwAAAAAAAK8DAAAAAAAAAAAAALwDAAAAAAAAvAMAAAAAAAABAAAAIrwDAAAAAAAAvQMAAAAAAAAAAAAAyAMAAAAAAADIAwAAAAAAAAEAAAAiyAMAAAAAAADJAwAAAAAAAAAAAAAXBAAAAAAAABcEAAAAAAAAAQAAACIXBAAAAAAAABgEAAAAAAAAAAAAACoEAAAAAAAAKgQAAAAAAAABAAAAIioEAAAAAAAAKwQAAAAAAAAAAAAANgQAAAAAAAA2BAAAAAAAAAEAAAAiNgQAAAAAAAA3BAAAAAAAAAAAAABHBAAAAAAAAEcEAAAAAAAABAAAACI6ICJHBAAAAAAAAEoEAAAAAAAAAAAAAE8EAAAAAAAATwQAAAAAAAABAAAAIk8EAAAAAAAAUAQAAAAAAAAAAAAAVgQAAAAAAABWBAAAAAAAAAEAAAAiVgQAAAAAAABXBAAAAAAAAAAAAABoBAAAAAAAAGgEAAAAAAAABAAAACI6ICJoBAAAAAAAAGsEAAAAAAAAAAAAAHAEAAAAAAAAcAQAAAAAAAABAAAAInAEAAAAAAAAcQQAAAAAAAAAAAAAdwQAAAAAAAB3BAAAAAAAAAEAAAAidwQAAAAAAAB4BAAAAAAAAAAAAACABAAAAAAAAIAEAAAAAAAAAwAAACI6IIAEAAAAAAAAggQAAAAAAAAAAAAAiQQAAAAAAACJBAAAAAAAAAEAAAAiiQQAAAAAAACKBAAAAAAAAAAAAACTBAAAAAAAAJMEAAAAAAAAAQAAACKTBAAAAAAAAJQEAAAAAAAAAAAAAJwEAAAAAAAAnAQAAAAAAAABAAAAIpwEAAAAAAAAnQQAAAAAAAAAAAAApgQAAAAAAACmBAAAAAAAAAQAAAAiOiAipgQAAAAAAACpBAAAAAAAAAAAAACxBAAAAAAAALEEAAAAAAAAAQAAACKxBAAAAAAAALIEAAAAAAAAAAAAALUEAAAAAAAAtQQAAAAAAAABAAAACj0KAAAAAAAAPQoAAAAAAAADAAAACgoK",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAL0EAAAAAAAAvQQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					16,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJQNAAAAAAAAlA0AAAAAAAABAAAAOw",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJUNAAAAAAAAlQ0AAAAAAAAAAAAAAADwvw"
+				],
+				[
+					17,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAJQNAAAAAAAAlQ0AAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJQNAAAAAAAAlA0AAAAAAAAAAAAAAADwvw"
+				],
+				[
+					22,
+					1,
+					"left_delete",
+					null,
+					"AQAAAO8KAAAAAAAA7woAAAAAAAABAAAAOw",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAPAKAAAAAAAA8AoAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					23,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAO8KAAAAAAAA8AoAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAO8KAAAAAAAA7woAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		},
+		{
+			"contents": "Searching 3 files for \"nixby_utf8\"\n\n0 matches",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "public/index.php",
+			"settings":
+			{
+				"buffer_size": 4187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "admin/admin.php",
+			"settings":
+			{
+				"buffer_size": 13749,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					5,
+					1,
+					"",
+					null,
+					"AQAAAGgnAAAAAAAAcycAAAAAAAAKAAAAY29uZmlnLnBocA",
+					"BwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAABQAAAAAAAAAFAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					12,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AgAAAPIIAAAAAAAA9QgAAAAAAAAAAAAADgkAAAAAAAARCQAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAgAAAP4IAAAAAAAA/ggAAAAAAAAAAAAAAADwvxMJAAAAAAAAEwkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					18,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAAA4JAAAAAAAADgkAAAAAAAADAAAALy8g",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAACcJAAAAAAAAJwkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					20,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAAA4JAAAAAAAAEQkAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAACQJAAAAAAAAJAkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					23,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAAPIIAAAAAAAA8ggAAAAAAAADAAAALy8g",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAIJAAAAAAAAAgkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					29,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAAMAIAAAAAAAAwwgAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAANUIAAAAAAAA1QgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					37,
+					1,
+					"",
+					null,
+					"AQAAAAsJAAAAAAAAIQkAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAANsIAAAAAAAA8QgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					38,
+					1,
+					"php_fmt",
+					null,
+					"AgAAAAsJAAAAAAAACwkAAAAAAAABAAAAICAJAAAAAAAAIQkAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAsJAAAAAAAAIQkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					48,
+					1,
+					"insert",
+					{
+						"characters": "\t\t\t"
+					},
+					"AwAAAG0gAAAAAAAAbyAAAAAAAAAAAAAAbyAAAAAAAABzIAAAAAAAAAAAAABzIAAAAAAAAHcgAAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAG0gAAAAAAAAbSAAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					51,
+					1,
+					"insert",
+					{
+						"characters": "\t\t\t\t"
+					},
+					"BAAAAPshAAAAAAAA/iEAAAAAAAAAAAAA/iEAAAAAAAACIgAAAAAAAAAAAAACIgAAAAAAAAYiAAAAAAAAAAAAAAYiAAAAAAAACiIAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAPshAAAAAAAA+yEAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					52,
+					1,
+					"php_fmt",
+					null,
+					"AgAAAHEgAAAAAAAAcSAAAAAAAAAKAAAAICAgICAgICAgIOohAAAAAAAA6iEAAAAAAAAPAAAAICAgICAgICAgICAgICAg",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAoiAAAAAAAACiIAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					6,
+					1,
+					"",
+					null,
+					"AQAAAEAJAAAAAAAAVgkAAAAAAAAAAAAA",
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAALCQAAAAAAACEJAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					9,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAAPUIAAAAAAAA+AgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAkJAAAAAAAACQkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					12,
+					1,
+					"toggle_comment",
+					{
+						"block": false
+					},
+					"AQAAACcJAAAAAAAAJwkAAAAAAAADAAAALy8g",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAADcJAAAAAAAANwkAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					5,
+					1,
+					"php_fmt",
+					null,
+					"AgAAAEAJAAAAAAAAQQkAAAAAAAAAAAAAVgkAAAAAAABWCQAAAAAAAAEAAAAg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGkJAAAAAAAAaQkAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		},
+		{
+			"file": ".osp/project.ini",
+			"settings":
+			{
+				"buffer_size": 90,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/PHP/PHP.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"fmt",
+				"phpfmt: format now"
+			],
+			[
+				"pakl",
+				"Package Control: List Packages"
+			],
+			[
+				"ip",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"INPA",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"enpac",
+				"Package Control: Enable Package"
+			],
+			[
+				"dispa",
+				"Package Control: Disable Package"
+			],
+			[
+				"inpak",
+				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"phpfmt: toggle PSR2"
+			],
+			[
+				"phpcs",
+				"PHP Coding Standards Fixer: Fix this file (PHP Code Beautifier)"
+			],
+			[
+				"rempa",
+				"Package Control: Remove Package"
+			],
+			[
+				"inpa",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"INSpa",
+				"Package Control: Install Package"
+			],
+			[
+				"insp",
+				"Package Control: Install Package"
+			],
+			[
+				"instpa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 335.0,
+		"history":
+		[
+			"clear",
+			"cls",
+			"help",
+			"clear",
+			"cls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/OSPanel/home/new_php8/NIX2025.sublime-project",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/connect.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/dump-nixby_UTF8-202509191314.sql",
+		"/C/OSPanel/home/ant2025.os/.osp/db_test.sql",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/User/.jsbeautifyrc",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/User/Preferences.sublime-settings",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/index.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/settings.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/routes/api_routes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/monolog.backup",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/eeee.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/trash/eeee.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/temp.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/routes/ui_routes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/routes/sub_routes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/currency_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/CurrencyTypes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/StandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/statuses_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/routes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/companies_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/admin.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/OrderStatuses.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/Companies.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/SmartyControl.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/SubActionController.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/Companies.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/OrderStatuses.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/CurrencyTypes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/functions.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/errorSmartyControlTemplate.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/ai.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/companies_sub.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/settings_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/classes/Contact.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/index.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/__render.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/checkbox.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/currency_sub.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/SimplePaginator.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/docs/api/rendering.md",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/avadim/fast-excel-writer/demo/demo-12-data-validation.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/avadim/fast-excel-writer/src/FastExcelWriter/Area.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/nette/utils/src/Utils/Html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/navigator.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/admin.css",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/pdo/PdoStatementAdapter.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/statuses_sub.tpl.html",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/User/SQL Beautifier.sublime-settings",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/SqlBeautifier/SQL Beautifier.sublime-settings",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^ccebe5d121f569b826a64dc87fba66bbbef75b02_0.file_navigator.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/AjaxPaginator.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/Navigator.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/Paginator.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_unp.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/row_buttons.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/formatters.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiFunctions.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/log.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Smarty.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_text.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/Formatter/LineFormatter.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/LogRecord.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/Logger.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/Процессор CPU INTEL U7-265KF1шт",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/Processor/ClosureContextProcessor.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/Handler/StreamHandler.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/Handler/AbstractProcessingHandler.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/psr/log/src/LoggerAwareTrait.php",
+		"/C/OSPanel/home/new_php8/ai.new/.osp/project.ini",
+		"/C/OSPanel/home/new_php8/nix2025.new/.osp/project.ini",
+		"/C/OSPanel/home/new_php8/.gitignore",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/aside_navigator.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/monolog.log",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/error500.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/monolog/monolog/src/Monolog/ErrorHandler.php",
+		"/C/Users/a/AppData/Local/Temp/Rar$DIa11452.37108.rartemp/README.md",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/Engine.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/header_navbar.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/net/Response.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/Cookie.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/settings_sub.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/CookieInterface.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/net/Request.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/composer.json",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/sort_order.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/overclokk/cookie/cookie.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/config.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/level-2/dice/Dice.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/functions.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/admin.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/util/Collection.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Debug.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/SortManager.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/emagombe/datatable/test/semantic/datatables.min.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/DatabaseStatementInterface.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/PHP.sublime-workspace",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^35043726fc647a8bd73a630feab06f144a885fa9_0.file_input_number.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/nette/utils/src/Utils/Type.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Extension/DefaultExtension.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/temp.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/ActiveRecord.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/symfony/var-dumper/Exception/ThrowingCasterException.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/admin.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^39d21993df90b9ef32a8c05ad8960bfced076103_0.file_error500.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/antStandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_number.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Template/GeneratedPhpFile.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/NotAI_StandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/ActiveRecordTest.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/DatabaseInterface.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/pdo/PdoAdapter.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/adhocore/cli/src/Output/Table.php",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/phpfmt/message",
+		"/C/OSPanel/logs/general.log",
+		"/C/OSPanel/logs/PHP-8.3.log",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/index.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/userInterface.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiEvents.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/Flight.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiElements.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/trash.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/admin.js",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc.defaults.json",
+		"/C/OSPanel/home/new_php8/JsPrettier.sublime-settings",
+		"/C/OSPanel/home/new_php8/.jsbeautifyrc",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/cleave_number.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/smartyControls.js"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 193.0,
+		"where_history":
+		[
+			"*.php",
+			"*.php, *.js, *.tpl.html",
+			"",
+			"*.php, *.js, *.tpl.html",
+			" *.tpl.html",
+			"*.php, *.js, *.tpl.html",
+			"*.php, *.tpl.html",
+			"*.php, *.js, *.tpl.html",
+			"*.php, *.js",
+			"*.php, *.tpl.html",
+			"*.php",
+			"",
+			"<open files>",
+			"",
+			"<open files>",
+			"",
+			"*.html",
+			"*.php",
+			"*.html,<open files>",
+			"*.html",
+			"*.php",
+			"*.php, *.tpl.html",
+			"*.php",
+			"",
+			"verifyPassword",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"nixby_utf8",
+			"'",
+			"config.php",
+			"field",
+			"logOperation",
+			"insertRecord",
+			"jlog",
+			"logOnTransaction",
+			"insertRecord",
+			"updateRecord",
+			"logger",
+			"\\Flight::logger()->error",
+			"fieldsList",
+			"jlog",
+			"transactionResult",
+			"$lim",
+			"require_once",
+			"CurrencyTypesSub",
+			"SubCurrencyTypes",
+			"CurrencyTypes",
+			"update_time",
+			"defaultRules",
+			"btnSaveAll",
+			"$key",
+			" $tplName",
+			"DEFAULT_TYPE",
+			"DEFAULT_TEMPLATE",
+			"element_type",
+			"controlType",
+			"controlName",
+			"controlType",
+			"controlName",
+			"element_type",
+			"_getControlParameters",
+			"$element_type = 'input_number';",
+			"$element_type",
+			"$config = [\n    'subName'          => Flight::get( 'current_sub' ),\n    'total_item_count' => $totalItemCount,\n    'current_page'     => Flight::get( 'current_page' ),\n    'items_per_page'   => Flight::get( 'items_per_page' ),\n];\n$navigator = new SimplePaginator( $smarty, $config );",
+			"tdNames",
+			"$tdNames",
+			"tdNames",
+			"$tdNames",
+			"$",
+			"primary_key",
+			"__",
+			"rus",
+			"say",
+			"include_once",
+			"require",
+			"######## ЗАРЕГИСТРИРУЙ",
+			"Flight::register",
+			"navigator.tpl.html",
+			"501",
+			"Свернуть",
+			"next.disabled",
+			"total_items",
+			"'totalItemCount'",
+			"totalRecords",
+			"totalItemCount",
+			"$nav_links.previous.disabled",
+			"$count",
+			"jlog",
+			"jlog\n",
+			"();\n",
+			"jlog",
+			"'itemsPerPage'",
+			"current_lim",
+			"tableDataAll",
+			"current_sub",
+			"current_lim",
+			"current_sub",
+			";\n",
+			"href",
+			"template_exist",
+			"cls",
+			"company_unp",
+			"unp",
+			"number",
+			"Usd",
+			"formatUsd",
+			"floatFormatUSD",
+			"formatUsd",
+			"floatUnp",
+			"floatFormatUSD",
+			"FormatUSD",
+			"h:2c",
+			"2ch",
+			"sort_order",
+			"companyID",
+			"**",
+			"request",
+			"ОШИБКА map",
+			"dump",
+			"@",
+			"'",
+			"floatingTextarea2",
+			"$context",
+			"$logger",
+			"set",
+			".DIRECTORY_SEPARATOR. 'page'. Flight::get( 'current_page' )",
+			"Current month",
+			"$trace",
+			"100vh",
+			"405",
+			"Стартовая страница",
+			"cls",
+			"'db'",
+			"newID",
+			"cleanData",
+			"$codes",
+			"base_url",
+			"halt",
+			"=",
+			" =>",
+			"  =>",
+			"on> <op",
+			"setMenuPosition",
+			"containerWidthValue",
+			"newWidth",
+			"body_width",
+			"debug",
+			"$cookie->get( 'COOKIE_WIDTH_VALUE' )",
+			"$cookie->get( 'COOKIE_WIDTH_INDEX' )",
+			"isset",
+			"200ch",
+			"cookie",
+			"WIDTH_COOKIE_INDEX",
+			"setWidth",
+			"WIDTH_COOKIE_VALUE"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"connect.php",
+			"CurrencyTypes",
+			"CurrencyTypesSub",
+			"SubCurrencyTypes",
+			"controlType",
+			"type",
+			"$navigatorConfig = [\n    'subName'          => Flight::get( 'current_sub' ),\n    'total_item_count' => $totalItemCount,\n    'current_page'     => Flight::get( 'current_page' ),\n    'items_per_page'   => Flight::get( 'items_per_page' ),\n];\n$navigator = new SimplePaginator( $smarty, $navigatorConfig );",
+			"td_names",
+			"'items_per_page'",
+			"itemsPerPage",
+			"formatUsd",
+			"removePrefixForColumnFieds",
+			"widthIndex",
+			"COOKIE_WIDTH_VALUE",
+			"COOKIE_WIDTH_INDEX",
+			"rowData",
+			"\"Запись id:$id не найдена.\"",
+			"fieldsList",
+			"duplicateRecord",
+			"decimalSeparator",
+			"uiFunctions",
+			"__rulesSmartyControl",
+			"",
+			"getControlParameters",
+			"_genSubFiledsControlParameters",
+			"sqlite_database_path",
+			" DIRECTORY_SEPARATOR ",
+			"verifyPassword",
+			""
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "trash/eeee.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14940,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4384,
+								4384
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/OSPanel/home/new_php8/nix2025.new/trash/eeee.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1807.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								}
+							],
+							"default_dir": "C:\\git\\new_php8\\nix2025.new\\trash",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"lsp_uri": "buffer:262",
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1743,
+								1743
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/OSPanel/home/new_php8/nix2025.new/public/index.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "admin/admin.php",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/OSPanel/home/new_php8/nix2025.new/admin/admin.php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": ".osp/project.ini",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 90,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "file:///C:/OSPanel/home/new_php8/nix2025.new/.osp/project.ini",
+							"syntax": "Packages/INI/INI.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 68.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.443890474249,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"output.exec":
+	{
+		"height": 88.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "Packages/PHP/PHP.sublime-build",
+	"project": "/C/OSPanel/home/new_php8/NIX2025.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"conne",
+				"nix2025.new\\admin\\app\\connect.php"
+			],
+			[
+				"eee",
+				"nix2025.new\\trash\\eeee.php"
+			],
+			[
+				"apiphp",
+				"nix2025.new\\admin\\app\\routes\\api_routes.php"
+			],
+			[
+				"currephp",
+				"nix2025.new\\admin\\app\\subs\\CurrencyTypes.php"
+			],
+			[
+				"adm",
+				"nix2025.new\\admin\\admin.php"
+			],
+			[
+				"fun",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"statuses",
+				"nix2025.new\\admin\\app\\classes\\OrderStatuses.php"
+			],
+			[
+				"errorSmartyControlTemplate",
+				"nix2025.new\\admin\\tpl\\smartyControls\\errorSmartyControlTemplate.tpl.html"
+			],
+			[
+				"currsubphp",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"smarty",
+				"nix2025.new\\admin\\app\\classes\\SmartyControl.php"
+			],
+			[
+				"contphp",
+				"nix2025.new\\vendor\\flightphp\\active-record\\tests\\classes\\Contact.php"
+			],
+			[
+				"sub.php",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"render",
+				"nix2025.new\\admin\\app\\subs\\__render.php"
+			],
+			[
+				"indetpl",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"ai",
+				"nix2025.new\\admin\\ai.php"
+			],
+			[
+				"curtpl",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"checktpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\checkbox.tpl.html"
+			],
+			[
+				"pagi",
+				"nix2025.new\\admin\\app\\classes\\SimplePaginator.php"
+			],
+			[
+				"cut",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"stan",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"currphp",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"tpl.html",
+				"nix2025.new\\admin\\tpl\\subs\\navigator.tpl.html"
+			],
+			[
+				"stattp",
+				"nix2025.new\\admin\\tpl\\subs\\statuses_sub.tpl.html"
+			],
+			[
+				"admincss",
+				"nix2025.new\\public\\lib\\admin.css"
+			],
+			[
+				"route",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"compsphp",
+				"nix2025.new\\admin\\app\\subs\\companies_sub.php"
+			],
+			[
+				"navtp",
+				"nix2025.new\\admin\\tpl\\subs\\navigator.tpl.html"
+			],
+			[
+				"stansu",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"admphp",
+				"nix2025.new\\admin\\admin.php"
+			],
+			[
+				"ro",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"simplp",
+				"nix2025.new\\admin\\app\\classes\\SimplePaginator.php"
+			],
+			[
+				"nav",
+				"nix2025.new\\admin\\tpl\\subs\\navigator.tpl.html"
+			],
+			[
+				"stand",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"buttp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\row_buttons.tpl.html"
+			],
+			[
+				"admph",
+				"nix2025.new\\admin\\admin.php"
+			],
+			[
+				"inptetp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_text.tpl.html"
+			],
+			[
+				"rend",
+				"nix2025.new\\admin\\app\\subs\\__render.php"
+			],
+			[
+				"routphp",
+				"nix2025.new\\admin\\app\\routes\\api_routes.php"
+			],
+			[
+				"rout",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"compsuphp",
+				"nix2025.new\\admin\\app\\subs\\companies_sub.php"
+			],
+			[
+				"routes",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"pr",
+				"nix2025.new\\.osp\\project.ini"
+			],
+			[
+				"logtpl",
+				"nix2025.new\\admin\\tpl\\subs\\log.tpl.html"
+			],
+			[
+				"comtpl",
+				"nix2025.new\\admin\\tpl\\subs\\companies_sub.tpl.html"
+			],
+			[
+				"erro",
+				"nix2025.new\\admin\\tpl\\error500.tpl.html"
+			],
+			[
+				"settphp",
+				"nix2025.new\\admin\\app\\settings.php"
+			],
+			[
+				"mon",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"admin",
+				"nix2025.new\\admin\\admin.php"
+			],
+			[
+				"index",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"sett",
+				"nix2025.new\\admin\\app\\settings.php"
+			],
+			[
+				"setttp",
+				"nix2025.new\\admin\\tpl\\subs\\settings_sub.tpl.html"
+			],
+			[
+				"Coo",
+				"nix2025.new\\admin\\app\\classes\\Cookie.php"
+			],
+			[
+				"cooki",
+				"nix2025.new\\admin\\app\\classes\\Cookie_Interface.php"
+			],
+			[
+				"Cookie.php",
+				"nix2025.new\\vendor\\overclokk\\cookie\\src\\Cookie.php"
+			],
+			[
+				"sta",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"mono",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"sorttpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\sort_order.tpl.html"
+			],
+			[
+				"statushp",
+				"nix2025.new\\admin\\app\\classes\\OrderStatuses.php"
+			],
+			[
+				"stsu",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"ind",
+				"nix2025.new\\public\\index.php"
+			],
+			[
+				"cur",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"curphp",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"setphp",
+				"nix2025.new\\admin\\app\\settings.php"
+			],
+			[
+				"inde",
+				"nix2025.new\\public\\index.php"
+			],
+			[
+				"__render",
+				"nix2025.new\\admin\\app\\subs\\__render.php"
+			],
+			[
+				"currsuph",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"currtpl",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"mo",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"error500",
+				"nix2025.new\\admin\\tpl\\error500.tpl.html"
+			],
+			[
+				"stsubp",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"adminphp",
+				"nix2025.new\\admin\\app\\admin.php"
+			],
+			[
+				"currsub",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"formatt",
+				"nix2025.new\\public\\js\\formatters.js"
+			],
+			[
+				"temp",
+				"nix2025.new\\admin\\app\\temp.php"
+			],
+			[
+				"aiphp",
+				"nix2025.new\\admin\\ai.php"
+			],
+			[
+				"statsub",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"monolog",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"buttpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\row_buttons.tpl.html"
+			],
+			[
+				"curr",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"currsubph",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"curretp",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"curtype",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"monolo",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"GeneratedPhpFile.php",
+				"nix2025.new\\vendor\\smarty\\smarty\\src\\Template\\GeneratedPhpFile.php"
+			],
+			[
+				"projini",
+				"nix2025.new\\.osp\\project.ini"
+			],
+			[
+				"numbtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"funcphp",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"conf",
+				"nix2025.new\\admin\\app\\config.php"
+			],
+			[
+				"numb",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"curtyp",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"rouphp",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"uifu",
+				"nix2025.new\\public\\js\\uiFunctions.js"
+			],
+			[
+				"trash",
+				"nix2025.new\\public\\js\\trash.js"
+			],
+			[
+				"statsphp",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"numtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\cleave_number.tpl.html"
+			],
+			[
+				"cursuph",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"rowbtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\row_buttons.tpl.html"
+			],
+			[
+				"statuse",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"staphp",
+				"nix2025.new\\vendor\\nette\\utils\\src\\StaticClass.php"
+			],
+			[
+				"subphp",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"adnjs",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"intrfa",
+				"nix2025.new\\vendor\\nette\\php-generator\\src\\PhpGenerator\\InterfaceType.php"
+			],
+			[
+				"indtpl",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"innutp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"admjs",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"funphp",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"indtp",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"cursub",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				".js",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"indephp",
+				"nix2025.new\\public\\index.php"
+			],
+			[
+				"foot",
+				"nix2025.new\\admin\\tpl\\footer.tpl.html"
+			],
+			[
+				"sidetp",
+				"nix2025.new\\admin\\tpl\\aside_navigator.tpl.html"
+			],
+			[
+				"dashboard.css",
+				"nix2025.new\\public\\examples\\dashboard\\dashboard.css"
+			],
+			[
+				"aside",
+				"nix2025.new\\admin\\tpl\\_aside.tpl.html"
+			],
+			[
+				"indextp",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"subcutp",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"adcss",
+				"nix2025.new\\public\\lib\\admin.css"
+			],
+			[
+				"toggle",
+				"nix2025.new\\public\\lib\\bootstrap-icons\\toggles.svg"
+			],
+			[
+				"currsubtp",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"curre",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"runway.j",
+				"nix2025.new\\vendor\\flightphp\\runway\\composer.json"
+			],
+			[
+				"cursu",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"giti",
+				"nix2025.new\\vendor\\twbs\\bootstrap\\.gitignore"
+			],
+			[
+				"gitig",
+				"nix2025.new\\vendor\\lawrence72\\flightbag\\.gitignore"
+			],
+			[
+				"tplht",
+				"app\\tpl\\index.tpl.html"
+			],
+			[
+				"tpl.ht",
+				"app\\tpl\\hello.tpl.html"
+			],
+			[
+				"sql",
+				"fr_loc.sql"
+			],
+			[
+				"start.tpl.html",
+				"ant2025.os\\admin\\tpl\\start.tpl.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 323.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 330.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,11 @@
+{foreach $params as $key => $value}
+{assign var=$key value=$value}
+{/foreach}
+{* <input type="text" class="smarty-control form-control form-control-sm {$text_align}" id="{$controlName}{if $index|isset}[{$index}]{/if}" lang="ru-RU" name="{$controlName}{if $index|isset}[{$index}]{/if}" value="{$current_value|escape}" {if $readonly|isset && $readonly}readonly{/if} {if $disabled|isset && $disabled}disabled{/if}> *}
+
+<div class="form-floating">
+    <textarea class="form-control smarty-control" placeholder="Leave a comment here" id="{$controlName}{if $index|isset}[{$index}]{/if}" lang="ru-RU" name="{$controlName}{if $index|isset}[{$index}]{/if}">
+{$current_value} 
+  </textarea>
+    <label for="{$controlName}{if $index|isset}[{$index}]{/if}">{$controlName}</label>
+</div>

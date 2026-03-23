@@ -1,0 +1,41 @@
+page_not_found.tpl.tpl
+404
+
+    <!-- Example single danger button -->
+    <!-- Example single danger button -->
+    {if $dataT|isset}
+    <!-- Example single danger button -->
+    <!-- Example single danger button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Danger
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            Left-aligned but right aligned when large screen
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+    </div>
+    {html_table loop=$dataT cols="first,second,third,fourth" tr_attr=$tr}
+    <hr>
+    {$blablabla}
+    <hr>
+    <!-- Example single danger button -->
+    <!-- Example single danger button -->
+    {/if}
+    <!-- Example single danger button -->
+    <!-- Example single danger button -->

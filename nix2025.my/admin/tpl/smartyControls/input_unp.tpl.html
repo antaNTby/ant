@@ -1,0 +1,15 @@
+{foreach $params as $key => $value}
+    {assign var=$key value=$value}
+{/foreach}
+
+<input 
+type="text" data-type="unp"
+class="smarty-control form-control form-control-sm text-center text-bg-light"
+id="{$controlName}{if $index|isset}[{$index}]{/if}" lang="ru-RU"
+name="{$controlName}{if $index|isset}[{$index}]{/if}"
+value="{$current_value|formatUnp}"
+mask="^\d{3}\s\d{3}\s\d{3}$"
+{if $readonly|isset && $readonly}readonly{/if}
+{if $disabled|isset && $disabled}disabled{/if}
+
+> 
