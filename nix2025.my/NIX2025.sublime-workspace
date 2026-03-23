@@ -136,35 +136,14 @@
 	"buffers":
 	[
 		{
-			"file": "NIX2025.sublime-project",
+			"file": "/C/git/ant/.gitignore",
 			"settings":
 			{
-				"buffer_size": 2720,
-				"encoding": "UTF-8",
+				"buffer_size": 455,
 				"line_ending": "Windows"
 			},
 			"undo_stack":
 			[
-				[
-					3,
-					1,
-					"toggle_comment",
-					{
-						"block": false
-					},
-					"AQAAAKEHAAAAAAAApAcAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA0AcAAAAAAADQBwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					6,
-					1,
-					"toggle_comment",
-					{
-						"block": false
-					},
-					"AQAAAGMIAAAAAAAAYwgAAAAAAAADAAAALy8g",
-					"AQAAAAAAAAABAAAAlQgAAAAAAACVCAAAAAAAAAAAAAAAAPC/"
-				]
 			]
 		}
 	],
@@ -277,10 +256,17 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/new_php8/nix2025.new"
+		"/C/git/ant/nix2025.my",
+		"/C/git/ant/nix2025.my/smarty",
+		"/C/git/ant/nix2025.my/smarty/smarty_cache",
+		"/C/git/ant/nix2025.my/smarty/smarty_config"
 	],
 	"file_history":
 	[
+		"/C/git/ant/nix2025.my/NIX2025.sublime-project",
+		"/C/git/ant/nix2025.my/admin/app/classes/StandartSub.php",
+		"/C/git/ant/nix2025.my/NIX2025.sublime-workspace",
+		"/C/git/ant/.gitignore",
 		"/C/git/new_php8/nix2025.new/public/js/uiElements.js",
 		"/C/git/new_php8/nix2025.new/public/js/uiFunctions.js",
 		"/C/git/new_php8/nix2025.new/public/js/uiEvents.js",
@@ -404,15 +390,11 @@
 		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/TemplateBase.php",
 		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/currency_sub_edit.tpl.html",
 		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/template/View.php",
-		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/twbs/bootstrap/dist/js/bootstrap.bundle.js",
-		"/C/OSPanel/home/new_php8/nix2025.new/vendor/emagombe/datatable/src/DataTable.php",
-		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/test.tpl.html",
-		"/C/OSPanel/home/shopCMS.os/.osp/project.ini",
-		"/F/SOURCES/BOOT.WIM"
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/twbs/bootstrap/dist/js/bootstrap.bundle.js"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -610,28 +592,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "NIX2025.sublime-project",
+					"file": "/C/git/ant/.gitignore",
 					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2720,
+						"buffer_size": 455,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2194,
-								2194
+								455,
+								455
 							]
 						],
 						"settings":
 						{
-							"lsp_uri": "file:///C:/git/new_php8/nix2025.new/NIX2025.sublime-project",
-							"syntax": "Packages/JSON/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"lsp_uri": "file:///C:/git/ant/.gitignore",
+							"syntax": "Packages/Git Formats/Git Ignore.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -646,7 +626,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -700,7 +680,7 @@
 	"project": "NIX2025.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1097,6 +1077,7 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"lsp_show_inlay_hints": false
 	},
 	"show_minimap": false,
 	"show_open_files": true,
