@@ -1,0 +1,72 @@
+{section name=upR loop=5}
+<tr class="ant-text-no-rotated align-items-center">
+    <td>{$smarty.section.upR.index}</td>
+    {section name=tdP loop=$countTD}
+    <td>
+        <p class="placeholder-wave">
+            <span class="placeholder col-12  placeholder-lg"></span>
+        </p>
+    </td>
+    {/section}
+</tr>
+{/section}
+{if $smarty.get.operation|isset}
+<tr class="align-items-center">
+    <td colspan={$countTD}>
+        <div class="progress" role="progressbar" aria-label="Animated striped" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="height: 40px">
+            <div data-progress="{$progressPercent}" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: {$progressPercent}%">Пожалуйста, подождите ...</div>
+        </div>
+    </td>
+</tr>
+{/if}
+
+{section name=lowR start=6 loop=9}
+<tr class="ant-text-no-rotated align-items-center">
+    <td>{$smarty.section.lowR.index}</td>
+    {section name=tdP loop=$countTD}
+    <td>
+        <p class="placeholder-glow">
+            <span class="placeholder col-12  placeholder-lg"></span>
+        </p>
+    </td>
+    {/section}
+</tr>
+{/section}
+
+
+
+{if $smarty.get.operation|isset}
+<input id="toastTimer" name="toastTimer" type="hidden" value={$timerSec}>
+
+{literal}
+<script>
+
+const iterationCount = 10;
+
+let divProgress = document.querySelector("div[data-progress]");
+let timerEl = document.querySelector('input[name="toastTimer"]');
+
+let time = 10; // 30 sec
+if (timerEl && timerEl.value > 0) {
+    time = timerEl.value; // 30 sec
+}
+let step = 100 / iterationCount; //0.3 sec
+let increment = 0; // счетчик
+
+function doProgress() {
+
+    if (increment <= iterationCount) {
+        let percentCss = (step * increment); //  10s*0 //+10s*1 //10*2 // 10*3
+        divProgress.style.width = percentCss + "%";
+        // console.log(percentCss,increment,divProgress.style.width);
+        increment = increment + 1;
+    }
+
+    return false;
+}
+
+setInterval(doProgress, Math.ceil(time * 1000 / (iterationCount)));
+doProgress();
+</script>
+{/literal}
+{/if}

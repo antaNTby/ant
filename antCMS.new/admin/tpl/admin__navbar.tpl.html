@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">{*  fixed-top *}
+    <div class="{$container_width}">
+        <a class="navbar-brand" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu"><img alt="nix.by logo" src="/media/logo64.png" height="32" /> {$smarty.const.SITE_URL}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <span class="navbar-text d-none d-sm-inline-block">login </span>
+            <span class="navbar-text badge text-bg-secondary mx-1 mx-lg-3" id="adminName" data-adminname="{$adminlogname}">{$adminlogname}</span>
+            <span class="navbar-text d-none d-sm-inline-block">online_users </span>
+            <span class="navbar-text badge bg-dark mx-1 mx-lg-3">{$online_users}</span>
+            <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex d-lg-none">
+                <hr>
+                <a class="nav-link active" aria-current="page" href="{$smarty.const.ADMIN_FILE}">{$smarty.const.LANG_ADMINISTRATE_LINK} <i class="bi bi-house-gear"></i></a>
+                <a class="nav-link" href="index.php">{$smarty.const.LANG_ADMIN_BACK_TO_SHOP} <i class="bi bi-house"></i></a>
+                <a class="nav-link" href="{$smarty.const.ADMIN_LOGOUT_LINK}">{$smarty.const.LANG_ADMIN_LOGOUT_LINK} <i class="bi bi-door-open"></i></a>
+            </div>
+        </div>
+        <div class="navbar-nav d-none d-lg-flex me-0 mb-2 mb-lg-0">
+            <a class="nav-link fs-5 active" aria-current="page" href="{$smarty.const.ADMIN_FILE}"><i class="bi bi-house-gear"></i> Admin </a>
+            <a class="nav-link fs-5" href="index.php"><i class="bi bi-house"></i> {$smarty.const.LANG_ADMIN_BACK_TO_SHOP} </a>
+            <a class="nav-link fs-5" href="{$smarty.const.ADMIN_LOGOUT_LINK}"><i class="bi bi-door-open"></i> {$smarty.const.LANG_ADMIN_LOGOUT_LINK} </a>
+        </div>
+    </div>
+</nav>

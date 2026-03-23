@@ -1,0 +1,55 @@
+{
+    "folders": [
+    {
+        "path": ".",
+        "file_exclude_patterns": [
+            
+            "*.zip",
+        ],
+        "folder_exclude_patterns": [],
+        "index_exclude_patterns": [],
+    }],
+
+    "settings":
+    {
+        "default_encoding": "UTF-8",
+        "fallback_encoding": "UTF-8",
+        "tab_size": 4,
+
+
+        "color_scheme": "Bass Bowtruckle.sublime-color-scheme", //Color scheme Bass
+        // "color_scheme": "Bass Lagoon.sublime-color-scheme",
+        // "color_scheme": "Breakers.sublime-color-scheme",
+        // "color_scheme": "Cool & Clear.sublime-color-scheme",
+        // "color_scheme": "Dark Knight.sublime-color-scheme",
+        // "color_scheme": "Mariana.sublime-color-scheme",
+        // "color_scheme": "Monokai.sublime-color-scheme",
+        // "color_scheme": "Packages/Color Scheme - Creamy/Creamy.tmTheme",
+        // "color_scheme": "Sixteen.sublime-color-scheme",
+
+        // "font_face": "Consolas",
+        // "font_face": "Fira Code",
+        // "font_face": "Intel One Mono",
+        // "font_face": "Iosevka",
+        // "font_face": "JetBrains Mono",
+        // "font_face": "MonaspaceArgon",
+        // "font_face": "MonoLisa-Medium",
+        // "font_face": "MonoLisa-Regular",
+        // "font_options": [
+        //     "ss01",
+        //     "ss02",
+        //     "ss03",
+        //     "ss11",
+        //     "ss12",
+        //     "locl",
+        //     "mark",
+        //     "numr",
+        //     "dnom",
+        //     "sups",
+        //     "subs",
+        //     "sinf",
+        //     "aalt"
+        // ],
+    },
+
+}

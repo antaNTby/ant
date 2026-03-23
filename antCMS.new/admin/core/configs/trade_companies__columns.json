@@ -1,0 +1,167 @@
+[
+    {
+        "data": "companyID",
+        "ind": 0,
+        "db": "companyID",
+        "dt": "companyID",
+        "title": "title companyID",
+        "footer": "footer 0",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "company_title",
+        "ind": 1,
+        "db": "company_title",
+        "dt": "company_title",
+        "title": "title company_title",
+        "footer": "footer 1",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "company_name",
+        "ind": 2,
+        "db": "company_name",
+        "dt": "company_name",
+        "title": "title company_name",
+        "footer": "footer 2",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "company_unp",
+        "ind": 3,
+        "db": "company_unp",
+        "dt": "company_unp",
+        "title": "title company_unp",
+        "footer": "footer 3",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "company_okpo",
+        "ind": 4,
+        "db": "company_okpo",
+        "dt": "company_okpo",
+        "title": "title company_okpo",
+        "footer": "footer 4",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_adress",
+        "ind": 5,
+        "db": "company_adress",
+        "dt": "company_adress",
+        "title": "title company_adress",
+        "footer": "footer 5",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_bank",
+        "ind": 6,
+        "db": "company_bank",
+        "dt": "company_bank",
+        "title": "title company_bank",
+        "footer": "footer 6",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_contacts",
+        "ind": 7,
+        "db": "company_contacts",
+        "dt": "company_contacts",
+        "title": "title company_contacts",
+        "footer": "footer 7",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_email",
+        "ind": 8,
+        "db": "company_email",
+        "dt": "company_email",
+        "title": "title company_email",
+        "footer": "footer 8",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_director",
+        "ind": 9,
+        "db": "company_director",
+        "dt": "company_director",
+        "title": "title company_director",
+        "footer": "footer 9",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_data",
+        "ind": 10,
+        "db": "company_data",
+        "dt": "company_data",
+        "title": "title company_data",
+        "footer": "footer 10",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "company_admin",
+        "ind": 11,
+        "db": "company_admin",
+        "dt": "company_admin",
+        "title": "title company_admin",
+        "footer": "footer 11",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "read_only",
+        "ind": 12,
+        "db": "read_only",
+        "dt": "read_only",
+        "title": "title read_only",
+        "footer": "footer 12",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "creation_time",
+        "ind": 13,
+        "db": "creation_time",
+        "dt": "creation_time",
+        "title": "title creation_time",
+        "footer": "footer 13",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "update_time",
+        "ind": 14,
+        "db": "update_time",
+        "dt": "update_time",
+        "title": "title update_time",
+        "footer": "footer 14",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    }
+]

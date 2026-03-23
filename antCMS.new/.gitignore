@@ -1,0 +1,10 @@
+*.sublime-workspace
+# Specify filepatterns you want git to ignore.
+/.vscode
+/.idea
+# .gitignore
+# /admin/core/cache/php/ant*.php
+# /admin/core/cache/ant*.php
+/admin/core/cache
+# /lib/
+*DEBUG.JSON

@@ -1,0 +1,85 @@
+<hr>
+<div class="d-flex align-items-center gap-4">
+<div class="form-check form-switch align-items-center" title="Снять запрет">
+    <input class="form-check-input" type="checkbox" role="switch" name="switcherFieldsetToggle" id="switcherFieldsetToggle" aria-labelledby="selectTableFieldset">
+    <label class="form-check-label" for="switcherFieldsetToggle"><i class="bi bi-lock-fill text-danger"></i></label>
+</div>
+<fieldset class="w-100 d-flex flex-column flex-md-row align-items-center gap-2" id="selectTableFieldset" disabled>
+    <label for="tableSelector" class="form-check-label text-nowrap">Выбрать таблицу {$tableSelectedIndex}</label>
+    <select name="tableSelector" id="tableSelector" class="form-select">
+        {section name=tt loop=$allTablesNames}
+        {if $smarty.section.tt.index == $tableSelectedIndex}
+        {assign var=isSelected value="selected=selected"}{else}{assign var=isSelected value=""}
+        {/if}
+        <option {$isSelected} value="{$smarty.section.tt.index}">{$smarty.section.tt.index} - {$allTablesNames[$smarty.section.tt.index]}</option>
+        {/section}
+    </select>
+    <button type="button" class="btn btn-dark w-100 text-nowrap">Имортировать из БД<i class="bi bi-db"></i></button>
+    <button type="button" class="btn btn-primary w-100 text-nowrap">Импортировать из `*__columns.json`<i class="bi bi-edit"></i></button>
+    <button type="button" class="btn btn-danger w-100 text-nowrap">Переписать `*__columns.json` <i class="bi bi-edit"></i></button>
+</fieldset>
+</div>
+<hr>
+<div class="table-responsive-xl mb-4">
+<table id="columnsConfiguratorTable" class="table table-striped table-bordered table-sm">
+    <thead class="table-secondary">
+        <tr class="ant-text-rotated align-self-center align-middle text-center">
+            <td class="ant-text-no-rotated">#</td>
+            <th>data</th>
+            <td>db</td>
+            <td>dt</td>
+            <th class="ant-text-no-rotated">title</th>
+            <td>visible</td>
+            <td>searchable</td>
+            <td>orderable</td>
+            <td>editable</td>
+            <td>sort order</td>
+            <th>enable</th>
+            <td class="ant-text-no-rotated">actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        {section name=ii loop=$dbTableFields|@count}
+        <tr class="ant-text-no-rotated align-items-center">
+            {* <td>{include file="cs/single_radio.tpl" p=$db_check_p2 toggle="1" label="HI"}</td> *}
+            <th>{$smarty.section.ii.index}</th>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2 dataset=$attributes datalist=$attributes}</td>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2 dataset=$attributes}</td>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2 dataset=$attributes}</td>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2}</td>
+            <td>{include file="cs/single_checkbox.tpl" p=$db_check_p dataset=$attributes}</td>
+            <td>{include file="cs/single_checkbox.tpl" p=$db_check_p dataset=$attributes}</td>
+            <td>{include file="cs/single_checkbox.tpl" p=$db_check_p dataset=$attributes}</td>
+            <td>{include file="cs/single_checkbox.tpl" p=$db_check_p dataset=$attributes}</td>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2 dataset=$attributes}</td>
+            <td>{include file="cs/single_checkbox.tpl" p=$db_check_p dataset=$attributes}</td>
+            <td>{include file="cs/single_inputtext.tpl" p=$db_check_p2 dataset=$attributes}</td>
+        </tr>
+        {sectionelse}
+        <tr class="ant-text-no-rotated align-items-center">
+            <th>#</th>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        {/section}
+    </tbody>
+    <tfoot class="table-dark">
+    </tfoot>
+</table>
+</div>
+<div class="shadow p-3 mb-5 mt-3 bg-body-tertiary rounded border border-1">
+    <form class="p-3" action="save_defaultForm1">
+        <input type="text" id="jsonFN" value="{$columnsJsonFileName}">
+        <button class="btn btn-success btn-lg" id="btnSubmit" name="btnSubmit">save</button>
+    </form>
+</div>
+<script src="/admin/js/ui/sub/conf_columns.js" type="module"></script>

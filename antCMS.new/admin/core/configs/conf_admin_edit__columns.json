@@ -1,0 +1,189 @@
+[
+    {
+        "data": "customerID",
+        "ind": 0,
+        "db": "customerID",
+        "dt": "customerID",
+        "title": "title customerID",
+        "footer": "footer 0",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "Login",
+        "ind": 1,
+        "db": "Login",
+        "dt": "Login",
+        "title": "title Login",
+        "footer": "footer 1",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "cust_password",
+        "ind": 2,
+        "db": "cust_password",
+        "dt": "cust_password",
+        "title": "title cust_password",
+        "footer": "footer 2",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "Email",
+        "ind": 3,
+        "db": "Email",
+        "dt": "Email",
+        "title": "title Email",
+        "footer": "footer 3",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "first_name",
+        "ind": 4,
+        "db": "first_name",
+        "dt": "first_name",
+        "title": "title first_name",
+        "footer": "footer 4",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "last_name",
+        "ind": 5,
+        "db": "last_name",
+        "dt": "last_name",
+        "title": "title last_name",
+        "footer": "footer 5",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "subscribed4news",
+        "ind": 6,
+        "db": "subscribed4news",
+        "dt": "subscribed4news",
+        "title": "title subscribed4news",
+        "footer": "footer 6",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "custgroupID",
+        "ind": 7,
+        "db": "custgroupID",
+        "dt": "custgroupID",
+        "title": "title custgroupID",
+        "footer": "footer 7",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "addressID",
+        "ind": 8,
+        "db": "addressID",
+        "dt": "addressID",
+        "title": "title addressID",
+        "footer": "footer 8",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "reg_datetime",
+        "ind": 9,
+        "db": "reg_datetime",
+        "dt": "reg_datetime",
+        "title": "title reg_datetime",
+        "footer": "footer 9",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "ActivationCode",
+        "ind": 10,
+        "db": "ActivationCode",
+        "dt": "ActivationCode",
+        "title": "title ActivationCode",
+        "footer": "footer 10",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "CID",
+        "ind": 11,
+        "db": "CID",
+        "dt": "CID",
+        "title": "title CID",
+        "footer": "footer 11",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "affiliateID",
+        "ind": 12,
+        "db": "affiliateID",
+        "dt": "affiliateID",
+        "title": "title affiliateID",
+        "footer": "footer 12",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "affiliateEmailOrders",
+        "ind": 13,
+        "db": "affiliateEmailOrders",
+        "dt": "affiliateEmailOrders",
+        "title": "title affiliateEmailOrders",
+        "footer": "footer 13",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "affiliateEmailPayments",
+        "ind": 14,
+        "db": "affiliateEmailPayments",
+        "dt": "affiliateEmailPayments",
+        "title": "title affiliateEmailPayments",
+        "footer": "footer 14",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "actions",
+        "ind": 15,
+        "db": "actions",
+        "dt": "actions",
+        "title": "title actions",
+        "footer": "footer 15",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "customer_aka",
+        "ind": 16,
+        "db": "customer_aka",
+        "dt": "customer_aka",
+        "title": "title customer_aka",
+        "footer": "footer 16",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    }
+]

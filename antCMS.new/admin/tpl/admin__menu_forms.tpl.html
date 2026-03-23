@@ -1,0 +1,49 @@
+<div class="mt-2 mb-0 d-grid gap-1 col-12 mx-auto">
+    <a class="btn btn-secondary btn-sm" aria-current="page" href="{$smarty.const.ADMIN_FILE}"><i class="bi bi-house-gear"></i> Admin </a>
+    {if $admin_sub_dpt eq "custord_custlist.tpl.html"}
+    <div class="p-3 mb-4 rounded border border-secondary bg-body bg-opacity-50">
+        <form name="custlistLeftForm" method="GET" id="custlistLeftForm" action="" role="form">
+            <input type="hidden" name="dpt" value="custord">
+            <input type="hidden" name="sub" value="custlist">
+            <input type="hidden" name="search" value="1">
+            <h5>Фильтр {$smarty.const.ADMIN_CUSTOMERS}</h5>
+            <div class="mb-4">
+                <label class="form-label" for="customer_aka">Customer ID|aka</label>
+                <input type="text" name="customer_aka" value='{$customer_aka}' class="form-control">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="login">{$smarty.const.ADMIN_CUSTOMER_LOGIN}</label>
+                <input type="text" name="login" value='{$login}' class="form-control">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="first_name">{$smarty.const.ADMIN_CUSTOMER_FIRST_NAME}</label>
+                <input type="text" name="first_name" value='{$first_name}' class="form-control input-sm" size="25">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="last_name">{$smarty.const.ADMIN_CUSTOMER_LAST_NAME}</label>
+                <input type="text" name="last_name" value='{$last_name}' class="form-control input-sm" size="25">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="email">{$smarty.const.ADMIN_CUSTOMER_EMAIL}</label>
+                <input type="text" name="email" value='{$email}' class="form-control input-sm" size="25" placeholder="Email">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="groupID">{$smarty.const.ADMIN_CUSTOMER_GROUP_NAME}</label>
+                <select name="groupID" class="form-select">
+                    <option value='0'>
+                        {$smarty.const.STRING_ANY}
+                    </option>
+                    {section name=i loop=$customer_groups}
+                    <option value='{$customer_groups[i].custgroupID}' {if $groupID==$customer_groups[i].custgroupID} selected {/if}> {$customer_groups[i].custgroup_name} </option> {/section} </select> </div> <div class="mb-3">
+                        <label class="form-label" for="fActState">{$smarty.const.STRING_MODULE_STATUS}</label>
+                        <select name="fActState" class="form-select">
+                            <option value='-1' {if $ActState eq -1} selected="selected" {/if}> {$smarty.const.STRING_ANY_M} </option> <option value='1' {if $ActState eq 1} selected="selected" {/if}> {$smarty.const.STR_ACTIVATED} </option> <option value='0' {if $ActState eq 0 && $ActState ne '' } selected="selected" {/if}> {$smarty.const.STR_NOTACTIVATED} </option> </select> </div> <div class="mt-3 mb-1 d-grid gap-2 d-md-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-lg" onclick="document.getElementById('custlistLeftForm').submit();return false;">Поиск</button>
+            </div>
+        </form>
+    </div>
+    {/if}
+    {if $admin_sub_dpt eq "custord_orders.tpl.html"}
+    {include file="admin/custord_orders_filter_form.tpl.html"}
+    {/if}
+</div>

@@ -1,0 +1,101 @@
+{include file="atoms/aBreadcrump.tpl.html"}
+{include file="atoms/aPageH1.tpl.html"}
+<div class="d-flex align-items-center gap-4">
+    <div class="w-50 d-flex flex-column flex-md-row align-items-center gap-2">
+        <label for="configSelector" class="form-check-label text-nowrap">Выбрать конфигурацию</label>
+        <select name="configSelector" id="configSelector" class="form-select">
+            {section name=tt loop=$allTablesNames}
+            {if $smarty.section.tt.index == $configSelectedIndex}
+            {assign var=isSelected value="selected=selected"}{else}{assign var=isSelected value=""}
+            {/if}
+            <option {$isSelected} value="{$smarty.section.tt.index}" data-value="{$allTablesNames[$smarty.section.tt.index]}">{$smarty.section.tt.index} - {$allTablesNames[$smarty.section.tt.index]}</option>
+            {/section}
+        </select>
+        <div class="form-check form-switch align-items-center" title="Снять запрет">
+            <input class="form-check-input" type="checkbox" role="switch" name="switcherFieldsetToggle" id="switcherFieldsetToggle" aria-labelledby="selectConfigFieldset">
+            <label class="form-check-label" for="switcherFieldsetToggle"><i class="bi bi-lock-fill text-danger"></i></label>
+        </div>
+    </div>
+    <fieldset class="w-50 d-flex flex-column flex-md-row align-items-center gap-2" id="selectConfigFieldset" disabled>
+        <button type="button" class="btn btn-danger w-100 text-nowrap" data-operation="addNewConfig">Создать(обнулить) конфиг <i class="bi bi-database-add"></i></button>
+        <button type="button" class="btn btn-primary w-100 text-nowrap" data-operation="ssss">Импортировать из `*__columns.json`<i class="bi bi-edit"></i></button>
+        <button type="button" class="btn btn-danger w-100 text-nowrap" data-operation="ssss">Переписать `*__columns.json` <i class="bi bi-edit"></i></button>
+    </fieldset>
+</div>
+<hr>
+<div class="table-responsive-xl mb-4">
+    {assign var ="countTD" value=12}
+    <table id="columnsConfiguratorTable" class="table table-hover">
+        <thead class="table-secondary">
+            <tr class="align-self-center align-middle text-center">
+                <th>\</th>
+                {section name=cnt loop=$countTD}
+                <th>{$smarty.section.cnt.index}</th>
+                {/section}
+            </tr>
+            <tr class="ant-text-rotated align-self-center align-middle text-center">
+                <td class="ant-text-no-rotated">#</td>
+                <th>id</th>
+                <th>data</th>
+                <td>ind</td>
+                <td>db</td>
+                <td>dt</td>
+                <th class="ant-text-no-rotated">title</th>
+                <td>visible</td>
+                <td>searchable</td>
+                <td>orderable</td>
+                {* <td>editable</td> *}
+                <td>sort order</td>
+                <th>enable</th>
+                {* <td class="ant-text-no-rotated">actions</td> *}
+                {* <td class="ant-text-no-rotated">sql_type</td> *}
+                <td class="ant-text-no-rotated">input_type</td>
+            </tr>
+        </thead>
+        <tbody>
+            {assign var ="FieldsCount" value=$dbTableFields|@count}
+            {if $Configurations}
+            {section name=row loop=$FieldsCount}
+            {assign var ="rowData" value=$Configurations[$smarty.section.row.index]}
+
+            {assign var ="values" value=$rowData.fieldValues}
+            {assign var ="params" value=$rowData.fieldParams}
+            {assign var ="options" value=$rowData.fieldOptions}
+
+            {* {assign var ="attributes" value=$rowData.fieldAttributes} *}
+            <tr class="align-items-center">
+                <td class="align-middle">{$smarty.section.row.index}</td>
+                <td class="align-middle"  data-old-value="{$values.id}">{include file="cs/single_badge.tpl" content=$values.id}</td>
+                <td class="align-middle" data-old-value="{$values.data}">{include file="cs/single_plaintext.tpl" p=$params.data}</td>
+                <td class="align-middle" data-old-value="{$values.ind}">{include file="cs/single_plaintext.tpl" p=$params.ind}</td>
+                <td class="align-middle" data-old-value="{$values.db}">{include file="cs/single_inputtext.tpl" p=$params.db datalist=$options.db}</td>
+                <td class="align-middle" data-old-value="{$values.dt}">{include file="cs/single_inputtext.tpl" p=$params.dt datalist=$options.dt}</td>
+                <td class="align-middle" data-old-value="{$values.title}">{include file="cs/single_inputtext.tpl" p=$params.title}</td>
+                <td class="align-middle" data-old-value="{$values.visible}">{include file="cs/single_checkbox.tpl" p=$params.visible}</td>
+                <td class="align-middle" data-old-value="{$values.searchable}">{include file="cs/single_checkbox.tpl" p=$params.searchable}</td>
+                <td class="align-middle" data-old-value="{$values.orderable}">{include file="cs/single_checkbox.tpl" p=$params.orderable}</td>
+                {* <td class="align-middle" data-old-value="{$values.editable}">{include file="cs/single_checkbox.tpl" p=$params.editable}</td> *}
+                <td class="align-middle" data-old-value="{$values.sort_order}">{include file="cs/single_inputnumber.tpl" p=$params.sort_order}</td>
+                <td class="align-middle" data-old-value="{$values.enable}">{include file="cs/single_checkbox.tpl" p=$params.enable label="" toggle=true}</td>
+                {* <td class="align-middle" data-old-value="{$values.actions}">{include file="cs/single_checkbox.tpl" p=$params.actions}</td> *}
+                {* <td class="align-middle" data-old-value="{$values.sql_type}">{include file="cs/single_checkbox.tpl" p=$params.sql_type}</td> *}
+                <td class="align-middle" data-old-value="{$values.input_type}">{include file="cs/single_inputtext.tpl" p=$params.input_type}</td>
+            </tr>
+            {/section}
+            {else}
+            {include file="atoms/aEmptyTableBodyWithPlaceholders.tpl.html" progressPercent="50" countTD=$countTD|default:11}
+            {/if}
+        </tbody>
+        <tfoot class="table-dark">
+        </tfoot>
+    </table>
+</div>
+<div class="shadow p-3 mb-5 mt-3 bg-body-tertiary rounded border border-1">
+    <form class="p-3" action="save_defaultForm1">
+        <input type="text" id="jsonFN" value="{$columnsJsonFileName}">
+        <button class="btn btn-success btn-lg" id="btnSubmit" name="btnSubmit">save</button>
+    </form>
+</div>
+<script src="/admin/js/ui/sub/conf_columns.js" type="module"></script>
+{* {$options.db|debug_print_var|unescape:"entity"}<br> *}
+{* {$params.dataset|debug_print_var|unescape:"entity"}<br> *}

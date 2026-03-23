@@ -1,0 +1,90 @@
+[
+    {
+        "data": "CID",
+        "ind": 0,
+        "db": "CID",
+        "dt": "CID",
+        "title": "title CID",
+        "footer": "footer 0",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "Name",
+        "ind": 1,
+        "db": "Name",
+        "dt": "Name",
+        "title": "title Name",
+        "footer": "footer 1",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "code",
+        "ind": 2,
+        "db": "code",
+        "dt": "code",
+        "title": "title code",
+        "footer": "footer 2",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "currency_value",
+        "ind": 3,
+        "db": "currency_value",
+        "dt": "currency_value",
+        "title": "title currency_value",
+        "footer": "footer 3",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "where2show",
+        "ind": 4,
+        "db": "where2show",
+        "dt": "where2show",
+        "title": "title where2show",
+        "footer": "footer 4",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "sort_order",
+        "ind": 5,
+        "db": "sort_order",
+        "dt": "sort_order",
+        "title": "title sort_order",
+        "footer": "footer 5",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "currency_iso_3",
+        "ind": 6,
+        "db": "currency_iso_3",
+        "dt": "currency_iso_3",
+        "title": "title currency_iso_3",
+        "footer": "footer 6",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "roundval",
+        "ind": 7,
+        "db": "roundval",
+        "dt": "roundval",
+        "title": "title roundval",
+        "footer": "footer 7",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    }
+]

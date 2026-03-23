@@ -1,0 +1,13 @@
+{
+    "require": {
+        "twbs/bootstrap": "^5.3",
+        "smarty/smarty": "^5.1",
+        "twbs/bootstrap-icons": "^1.11",
+        "vakata/jstree": "^3.3",
+        "izniburak/pdox": "^1.6",
+        "tracy/tracy": "^2.10"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
+}

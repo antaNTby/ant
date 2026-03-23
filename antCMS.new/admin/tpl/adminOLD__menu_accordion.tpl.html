@@ -1,0 +1,30 @@
+<div class="accordion accordion-flush" id="flatDepartmentsAccordion" data-bs-theme="light">
+    {section name=dpt_index loop=$flatDepartments|@count}
+    {assign var="myMenu" value=$flatDepartments[dpt_index]}
+    <div class="accordion-item my-2">
+        <h2 class="h6 accordion-header" id="heading_{$myMenu.dpt_id}">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$myMenu.dpt_id}" aria-expanded="{if $current_dpt eq $myMenu.dpt_id}true{else}false{/if}" aria-controls="collapse_{$myMenu.dpt_id}">
+                {$myMenu.dpt_name} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$myMenu.dpt_id}</sub>
+            </button>
+        </h2>
+        <div id="collapse_{$myMenu.dpt_id}" class="accordion-collapse collapse{if $current_dpt eq $myMenu.dpt_id} show{/if}" aria-labelledby="heading_{$myMenu.dpt_id}" data-bs-parent="#flatDepartmentsAccordion">
+            <div class="accordion-body">
+                <div class="d-grid gap-1 col mx-auto">
+                    {assign var="mySubMenu" value=$myMenu}
+                    {section name=sub_index loop=$mySubMenu.sub_count}
+                    {if $mySubMenu.sub_ids[sub_index] eq "custlist"}
+                    {assign var="myHrefMod" value="&groupID=0&fActState=-1&search=1"}
+                    {else}
+                    {assign var="myHrefMod" value=""}
+                    {/if}
+                    {if $current_sub eq $mySubMenu.sub_ids[sub_index]}
+                    <a class="btn btn-danger text-wrap text-start text-xl-center" href="{$mySubMenu.sub_hrefs[sub_index]}{$myHrefMod}" role="button">{$mySubMenu.sub_names[sub_index]} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$mySubMenu.sub_ids[sub_index]}</sub></a>
+                    {else}
+                    <a class="btn btn-light text-wrap text-start text-xl-center" href="{$mySubMenu.sub_hrefs[sub_index]}{$myHrefMod}" role="button">{$mySubMenu.sub_names[sub_index]} <sub class="ps-2 fw-lighter text-dark text-opacity-25">{$mySubMenu.sub_ids[sub_index]}</sub></a>
+                    {/if}
+                    {/section}</div>
+            </div>
+        </div>
+    </div>
+    {/section}
+</div>

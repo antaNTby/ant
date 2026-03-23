@@ -1,0 +1,55 @@
+/*uiAdmin.css*/
+.bg-tnas {
+    background-color: #03844F;
+}
+.text-tnas {
+    background-color: #03844F;
+}
+
+.btn-xs {
+    --bs-btn-padding-y: .05rem;
+    --bs-btn-padding-x: .25rem;
+    --bs-btn-font-size: .5rem;
+    border-radius: .1rem;
+}
+
+:root {
+    --dt-row-selected: 191, 191, 209;
+}
+
+tr.ant-text-rotated th,
+tr.ant-text-rotated td,
+th.ant-text-rotated,
+td.ant-text-rotated {
+    writing-mode: sideways-lr;
+}
+
+th.ant-text-no-rotated,
+td.ant-text-no-rotated {
+    writing-mode: horizontal-tb !important;
+}
+
+.layout {
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: -webkit-min-content 1fr;
+    grid-template-columns: min-content 1fr;
+}
+
+.layout-sidebar {
+    grid-area: sidebar;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 60px;
+    height: 100vh;
+    width: 20rem;
+    overflow: auto;
+}
+
+.layout-main {
+    grid-area: main;
+    position: relative;
+    min-width: 0;
+    padding-top: 60px;
+}

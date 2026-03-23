@@ -1,0 +1,189 @@
+[
+    {
+        "data": "categoryID",
+        "ind": 0,
+        "db": "categoryID",
+        "dt": "categoryID",
+        "title": "title categoryID",
+        "footer": "footer 0",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "name",
+        "ind": 1,
+        "db": "name",
+        "dt": "name",
+        "title": "title name",
+        "footer": "footer 1",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "parent",
+        "ind": 2,
+        "db": "parent",
+        "dt": "parent",
+        "title": "title parent",
+        "footer": "footer 2",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "products_count",
+        "ind": 3,
+        "db": "products_count",
+        "dt": "products_count",
+        "title": "title products_count",
+        "footer": "footer 3",
+        "orderable": true,
+        "visible": true,
+        "searchable": true
+    },
+    {
+        "data": "description",
+        "ind": 4,
+        "db": "description",
+        "dt": "description",
+        "title": "title description",
+        "footer": "footer 4",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "picture",
+        "ind": 5,
+        "db": "picture",
+        "dt": "picture",
+        "title": "title picture",
+        "footer": "footer 5",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "products_count_admin",
+        "ind": 6,
+        "db": "products_count_admin",
+        "dt": "products_count_admin",
+        "title": "title products_count_admin",
+        "footer": "footer 6",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "sort_order",
+        "ind": 7,
+        "db": "sort_order",
+        "dt": "sort_order",
+        "title": "title sort_order",
+        "footer": "footer 7",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "viewed_times",
+        "ind": 8,
+        "db": "viewed_times",
+        "dt": "viewed_times",
+        "title": "title viewed_times",
+        "footer": "footer 8",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "allow_products_comparison",
+        "ind": 9,
+        "db": "allow_products_comparison",
+        "dt": "allow_products_comparison",
+        "title": "title allow_products_comparison",
+        "footer": "footer 9",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "allow_products_search",
+        "ind": 10,
+        "db": "allow_products_search",
+        "dt": "allow_products_search",
+        "title": "title allow_products_search",
+        "footer": "footer 10",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "show_subcategories_products",
+        "ind": 11,
+        "db": "show_subcategories_products",
+        "dt": "show_subcategories_products",
+        "title": "title show_subcategories_products",
+        "footer": "footer 11",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "meta_description",
+        "ind": 12,
+        "db": "meta_description",
+        "dt": "meta_description",
+        "title": "title meta_description",
+        "footer": "footer 12",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "meta_keywords",
+        "ind": 13,
+        "db": "meta_keywords",
+        "dt": "meta_keywords",
+        "title": "title meta_keywords",
+        "footer": "footer 13",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "title",
+        "ind": 14,
+        "db": "title",
+        "dt": "title",
+        "title": "title title",
+        "footer": "footer 14",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "subcount",
+        "ind": 15,
+        "db": "subcount",
+        "dt": "subcount",
+        "title": "title subcount",
+        "footer": "footer 15",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    },
+    {
+        "data": "enabled",
+        "ind": 16,
+        "db": "enabled",
+        "dt": "enabled",
+        "title": "title enabled",
+        "footer": "footer 16",
+        "orderable": true,
+        "visible": false,
+        "searchable": true
+    }
+]

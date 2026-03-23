@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="h-100" lang="ru-BY">{* text-bg-secondary bg-opacity-50 *}
+{assign var=use_offcanvas_menu value=1}
+
+<head>
+    {literal}
+    <style type="text/css">
+    div.offcanvas {
+        background-color: #8888aa88;
+    }
+
+    div.offcanvas-header {
+        background-color: #222222;
+    }
+
+    div#uiControl {
+        background-color: #8888aa02;
+    }
+    </style>
+    {/literal}
+    <base href= />
+    <link rel="icon" sizes=16x16 href="/media/favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="title" content="admin antCMS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>admin :: {$smarty.const.SITE_URL} :: antCMS v00 alpha</title>
+    {* css links *}
+    {*
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css"> *}
+    <link rel="stylesheet" type="text/css" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="/lib/datatables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/uiAdmin.css">
+</head>
+
+
+<body class="h-100" > {* h-100 shadow-lg px-0 *}
+    {if $smarty_error}
+    <h6 class="text-bg-danger p-2">
+        {$smarty_error_message}
+    </h6>
+    {/if}
+
+    <div aria-live="polite" aria-atomic="true" class="position-relative" id="toast-area">
+        <!-- Position it: -->
+        <!-- - `.toast-container` for spacing between toasts -->
+        <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
+        <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+        {include file="../apps/Toasts/appToasts.tpl.html" position=0}
+    </div>
+
+
+<div id="wrapper" class="d-flex flex-column h-100">
+
+    <header>
+        {include file="admin__navbar.tpl.html"}
+    </header>
+
+
+
+    {include file="admin__menu_offcanvas.tpl.html"}
+    <main id="uiMain" class="flex-shrink-0" data-tpl="admin.tpl.html" style="padding-top:60px;">
+        <div class="{$container_width}">
+            {include file="$admin_main_content_template"}
+        </div>
+    </main>
+
+
+    <footer id="uiFooter" class="text-bg-dark d-block mt-auto">
+        {* <div class="{$container_width}"> *}
+            {include file="admin__footer.tpl.html"}
+        {* </div> *}
+    </footer>
+
+</div>
+
+
+
+    {*main scripts.js*}
+    {* <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script> *}
+    <script src="/vendor/components/jquery/jquery.min.js"></script>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/datatables/datatables.js"></script>
+    {* <script src="/lib/datatables/dataTables.cellEdit.js"></script> *}
+    {* my scripts *}
+    <script src="/admin/js/admin.js"></script>
+    <script src="/admin/js/index.js" type="module"></script>
+    <script src="/admin/js/dt/dataTables.cellEdit.js"></script>
+    {* {literal}
+    <style type="text/css">
+    </style>
+    {/literal} *}
+</body>
+
+</html>

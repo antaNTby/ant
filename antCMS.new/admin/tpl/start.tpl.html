@@ -1,0 +1,23 @@
+<h1 class="display-5 text-xl-center">Welcome, <span class="badge text-bg-secondary"> {$adminlogname} </span> !</h1>
+<div class="m-4 row row-cols-1 row-cols-md-3 g-3">
+    {section name=dpt_index loop=$Departments|@count}
+    {assign var="myMenu" value=$Departments[dpt_index]}
+    <div class="col">
+        <div class="card h-100 border-dark">
+            <div class="h5 card-header text-bg-dark">
+                {$myMenu.name}<sub class="ps-2 fw-lighter text-dark text-opacity-25">{$myMenu.id}</sub>
+            </div>
+            <ul class="list-group list-group-flush">
+                {assign var="mySubMenu" value=$myMenu.sub_departments}
+                {section name=sub_index loop=$myMenu.sub_count}
+                {if $current_sub_id eq $mySubMenu[sub_index].id}
+                <li class="list-group-item bg-danger" aria-current="true"><a class="card-link text-white text-start text-xl-center text-decoration-none" href="{$mySubMenu[sub_index].sub_href}" role="button">{$mySubMenu[sub_index].name} <sub class="ps-2 fw-lighter text-dark text-opacity-25 text-decoration-none">{$mySubMenu[sub_index].id}</sub></a></li>
+                {else}
+                <li class="list-group-item"><a class="card-link text-dark text-start text-xl-center text-decoration-none" href="{$mySubMenu[sub_index].sub_href}" role="button">{$mySubMenu[sub_index].name} <sub class="ps-2 fw-lighter text-dark text-opacity-25 text-decoration-none">{$mySubMenu[sub_index].id}</sub></a></li>
+                {/if}
+                {/section}
+            </ul>
+        </div>
+    </div>
+    {/section}
+</div>

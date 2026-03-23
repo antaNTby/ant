@@ -1,0 +1,25 @@
+
+<div class="table-responsive-md mb-4">
+<table id="defaultDataTable_{$current_sub_id}" class="table table-striped table-bordered table-sm" style="width:100%">
+    <thead class="table-danger">
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot class="p-0">
+        <th></th>
+    </tfoot>
+</table>
+</div>
+<div class="shadow p-3 mb-5 mt-3 bg-body-tertiary rounded border border-1">
+    <form class="p-3" action="save_defaultForm1">
+        <input type="text" id="jsonFN" value="{$columnsJsonFileName}">
+        <button class="btn btn-success btn-lg" id="btnSubmit" name="btnSubmit">save</button>
+    </form>
+</div>
+{* <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select> *}
+<script src="/admin/js/dt/standartDataTable.js" type="module"></script>

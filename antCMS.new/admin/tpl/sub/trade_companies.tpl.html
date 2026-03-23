@@ -1,0 +1,17 @@
+{if $table_mode}
+<table id="example" class="display table table-striped table-bordered table-sm" style="width:100%">
+    <thead class="table-danger">
+        <tr>
+{*             {section name=idx loop=$dtColumnFieldNames|@count}
+            {assign var="current_field" value=$dtColumnFieldNames[idx]}
+            <th>{$current_field}</th>
+            {/section} *}
+        </tr>
+    </thead>
+</table>
+{else}
+
+edit
+
+{/if}
+
