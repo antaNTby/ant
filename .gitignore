@@ -24,3 +24,5 @@ nix2025.my/smarty/compile_dir
 nix2025.my/admin/monolog.log
 nix2025.my/admin/monolog.backup
 nix2025.my/NIX2025.sublime-workspace
+smarty/compile_dir
+
