@@ -149,7 +149,7 @@ class RenderDataController
                 $data['test_status'] = 'Active';
                 $controller          = new \app\controllers\BaseSubController( $this->app ); // Наследник BaseSubController
 
-                dd( $controller );
+                // dd( $controller );
 
                 break;
             default:
