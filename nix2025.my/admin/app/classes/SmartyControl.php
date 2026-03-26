@@ -52,9 +52,9 @@ class SmartyControl
     ];
 
     public function __construct(
-        array  $config = [],
-        Smarty $smarty = null,
-        string $type = null,
+        array   $config = [],
+        ?Smarty $smarty = null,
+        ?string $type = null,
     ) {
         $config = array_merge( $this->standartRules, $config );
 

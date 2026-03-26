@@ -844,3 +844,43 @@
 #13 C:\git\ant\nix2025.my\admin\admin.php(406): Flight::__callStatic('start', Array)
 #14 C:\git\ant\nix2025.my\public\index.php(145): require('C:\\git\\ant\\nix2025.my\\admin\\admin.php')
 #15 {main}
+[13:02:10.887969 CRITICAL] C:\git\ant\nix2025.my\admin\app\classes\StandartSub.php:101
+***Поле сортировки `sort_order` не найдено в таблице.***  StandartSub.php:101
+{"type":"Exception"} 
+#0 C:\git\ant\nix2025.my\admin\app\classes\StandartSub.php(143): classes\StandartSub->sortBy(1, NULL, false, 'sort_order')
+#1 C:\git\ant\nix2025.my\admin\app\subs\companies_sub.php(51): classes\StandartSub->showAll()
+#2 C:\git\ant\nix2025.my\admin\app\routes\sub_routes.php(50): include_once('C:\\git\\ant\\nix2025.my\\admin\\app\\subs\\companies_sub.php')
+#3 [internal function]: {closure:{closure:C:\git\ant\nix2025.my\admin\app\routes\sub_routes.php:3}:30}('companies', NULL, NULL, NULL, NULL)
+#4 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(366): call_user_func_array(Object(Closure), Array)
+#5 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(299): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#6 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Engine.php(615): flight\core\Dispatcher->execute(Object(Closure), Array)
+#7 [internal function]: flight\Engine->_start()
+#8 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(388): call_user_func_array(Array, Array)
+#9 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(299): flight\core\Dispatcher->invokeCallable(Array, Array)
+#10 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(143): flight\core\Dispatcher->execute(Array, Array)
+#11 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(106): flight\core\Dispatcher->runEvent('start', Array)
+#12 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Engine.php(154): flight\core\Dispatcher->run('start', Array)
+#13 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Flight.php(125): flight\Engine->__call('start', Array)
+#14 C:\git\ant\nix2025.my\admin\admin.php(406): Flight::__callStatic('start', Array)
+#15 C:\git\ant\nix2025.my\public\index.php(145): require('C:\\git\\ant\\nix2025.my\\admin\\admin.php')
+#16 {main}
+[13:11:38.467720 CRITICAL] C:\git\ant\nix2025.my\admin\app\classes\StandartSub.php:101
+***Поле сортировки `sort_order` не найдено в таблице.***  StandartSub.php:101
+{"type":"Exception"} 
+#0 C:\git\ant\nix2025.my\admin\app\classes\StandartSub.php(143): classes\StandartSub->sortBy(1, NULL, false, 'sort_order')
+#1 C:\git\ant\nix2025.my\admin\app\subs\companies_sub.php(51): classes\StandartSub->showAll()
+#2 C:\git\ant\nix2025.my\admin\app\routes\sub_routes.php(50): include_once('C:\\git\\ant\\nix2025.my\\admin\\app\\subs\\companies_sub.php')
+#3 [internal function]: {closure:{closure:C:\git\ant\nix2025.my\admin\app\routes\sub_routes.php:3}:30}('companies', NULL, NULL, NULL, NULL)
+#4 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(366): call_user_func_array(Object(Closure), Array)
+#5 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(299): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#6 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Engine.php(615): flight\core\Dispatcher->execute(Object(Closure), Array)
+#7 [internal function]: flight\Engine->_start()
+#8 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(388): call_user_func_array(Array, Array)
+#9 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(299): flight\core\Dispatcher->invokeCallable(Array, Array)
+#10 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(143): flight\core\Dispatcher->execute(Array, Array)
+#11 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\core\Dispatcher.php(106): flight\core\Dispatcher->runEvent('start', Array)
+#12 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Engine.php(154): flight\core\Dispatcher->run('start', Array)
+#13 C:\git\ant\nix2025.my\vendor\flightphp\core\flight\Flight.php(125): flight\Engine->__call('start', Array)
+#14 C:\git\ant\nix2025.my\admin\admin.php(406): Flight::__callStatic('start', Array)
+#15 C:\git\ant\nix2025.my\public\index.php(145): require('C:\\git\\ant\\nix2025.my\\admin\\admin.php')
+#16 {main}
