@@ -1,20 +1,19 @@
 # Specify filepatterns you want git to ignore.
 !.gitignore
+!.gitkeep
+
 .env
-exception.log
-_ant.my_.sublime-workspace
-_skeleton.my_.sublime-workspace
 
+**/.sublime-workspace
 
-app/config/.env
-app/config/logs/
-app/logs/
-app/sessions/
-app/smarty/
-config/.env
+**/smarty/compile_dir/
+**/smarty/cache_dir/
+**/app/config/logs/
+# ant.my
+**/app/logs/
+**/app/sessions/
+monolog.log
+monolog.backup
 
-# .gitignore
-app/smarty/compile_dir/*
-app/smarty/cache_dir/*
-!app/smarty/compile_dir/.gitkeep
-!app/smarty/cache_dir/.gitkeep
+# antCms.my
+**/admin/core/cache/php/
