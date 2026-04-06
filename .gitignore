@@ -25,3 +25,7 @@ exception.log
 # antCms.my
 **/admin/core/cache/php/
 
+##cmd##  git rm -r --cached .
+##cmd##  git add .
+##cmd##  git config --global user.email "antaNT.pro@gmail.com"
+##cmd##  git commit -m "Apply universal ignore rules for smarty directories"
