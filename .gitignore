@@ -29,9 +29,12 @@ exception.log
 **/admin/core/cache/php/
 
 
-##cmd##  git config --global core.autocrlf true
-##cmd##  git rm -r --cached .
-##cmd##  git add .
-##cmd##  git config --global user.email "antaNT.pro@gmail.com"
-##cmd##  git commit -m "Apply universal ignore rules for smarty directories"
-##cmd##  git commit -m "Fix: apply gitignore to vendor and workspaces"
+# git config --global user.email "antaNT.pro@gmail.com"
+#
+# git config --global core.autocrlf true
+# git rm -r --cached .
+# git add .
+# git commit -m "Fix: apply gitignore to vendor and workspaces"
+#
+#
+# git commit -m "Apply universal ignore rules for smarty directories"
