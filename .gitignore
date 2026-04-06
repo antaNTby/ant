@@ -3,10 +3,7 @@
 .env
 exception.log
 
-
-_ant.my_.sublime-workspace
-_skeleton.my_.sublime-workspace
-
+*.sublime-workspace
 
 app/config/.env
 app/config/logs/
@@ -25,6 +22,16 @@ smarty/compile_dir/*
 smarty/compile_dir
 admin/monolog.log
 admin/monolog.backup
-*.sublime-workspace
 
+
+#### git rm -r --cached *.sublime-workspace
+#### git rm -r --cached ant.my/app/smarty/compile_dir/
+#### git rm -r --cached ant.my/app/smarty/smarty_cache/
+####
+#### git rm -r --cached antCMS.my/admin/core/cache/php/
+#### git rm -r --cached antCMS.my/admin/core/cache/php/
+####
+####
+#### git rm -r --cached nix2025.my/smarty/compile_dir/
+#### git rm -r --cached nix2025.my/smarty/smarty_cache/
 
