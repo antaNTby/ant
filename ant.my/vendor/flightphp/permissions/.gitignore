@@ -1,9 +1,0 @@
-vendor/
-build/
-composer.lock
-test.db
-.vscode/
-coverage/
-clover.xml
-.phpunit.result.cache
-.runway-config.json
