@@ -21,10 +21,10 @@ app/smarty/cache_dir/*
 !app/smarty/compile_dir/.gitkeep
 !app/smarty/cache_dir/.gitkeep
 
-nix2025.my/smarty/compile_dir/*
-nix2025.my/smarty/compile_dir
-nix2025.my/admin/monolog.log
-nix2025.my/admin/monolog.backup
+smarty/compile_dir/*
+smarty/compile_dir
+admin/monolog.log
+admin/monolog.backup
 *.sublime-workspace
 
 
