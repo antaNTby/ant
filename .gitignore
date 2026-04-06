@@ -1,42 +1,27 @@
 # Specify filepatterns you want git to ignore.
 !.gitignore
+!.gitkeep
+
 .env
+
+**/.sublime-workspace
+
+monolog.log
+monolog.backup
 exception.log
 
-*.sublime-workspace
-
-ant.my/app/config/.env
-ant.my/app/config/logs/
-
-ant.my/app/sessions/
-ant.my/app/smarty/
 
 
-# .gitignore
-ant.my/app/smarty/compile_dir/*
-ant.my/app/smarty/cache_dir/*
-!ant.my/app/smarty/compile_dir/.gitkeep
-!ant.my/app/smarty/cache_dir/.gitkeep
+**/smarty/compile_dir/
+**/smarty/cache_dir/
+**/smarty/smarty_cache/
 
-smarty/compile_dir/*
-smarty/compile_cache/*
-admin/monolog.log
-admin/monolog.backup
-
-antCMS.my/admin/core/cache/php/
+# ant.my
+**/app/config/logs/
+**/app/logs/
+**/app/sessions/
 
 
-nix2025.my/smarty/compile_dir/
-nix2025.my/smarty/smarty_cache/
-
-#### git rm -r --cached *.sublime-workspace
-#### git rm -r --cached ant.my/app/smarty/compile_dir/
-#### git rm -r --cached ant.my/app/smarty/smarty_cache/
-####
-#### git rm -r --cached antCMS.my/admin/core/cache/php/
-#### git rm -r --cached antCMS.my/admin/core/cache/php/
-####
-####
-#### git rm -r --cached nix2025.my/smarty/compile_dir/
-#### git rm -r --cached nix2025.my/smarty/smarty_cache/
+# antCms.my
+**/admin/core/cache/php/
 

@@ -1,0 +1,1059 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"co",
+				"console"
+			],
+			[
+				"quer",
+				"querySelectorAll"
+			],
+			[
+				"to",
+				"toString"
+			],
+			[
+				"C",
+				"ColumnFields"
+			],
+			[
+				"Co",
+				"ColumnFields"
+			],
+			[
+				"col",
+				"columns"
+			],
+			[
+				"Field",
+				"fieldsList"
+			],
+			[
+				"clean",
+				"cleanArrayKeys"
+			],
+			[
+				"req",
+				"requestBody"
+			],
+			[
+				"act",
+				"action"
+			],
+			[
+				"al",
+				"align-self-center"
+			],
+			[
+				"que",
+				"querySelectorAll"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"ui",
+				"uiEvent"
+			],
+			[
+				"dat",
+				"dataset"
+			],
+			[
+				"pr",
+				"primaryKey"
+			],
+			[
+				"sma",
+				"smarty\tsmarty variable"
+			],
+			[
+				"current_sub",
+				"input#current_sub"
+			],
+			[
+				"curre",
+				"curren_sub"
+			],
+			[
+				"d-flex",
+				"div.d-flex"
+			],
+			[
+				"tex",
+				"text_align"
+			],
+			[
+				"S",
+				"SmartyControl"
+			],
+			[
+				"field",
+				"fieldsDescription"
+			],
+			[
+				"input",
+				"inputn\tinput - number"
+			],
+			[
+				"table-responsive",
+				"div.table-responsive"
+			],
+			[
+				"bg",
+				"bg-light-subtle"
+			],
+			[
+				"p-3",
+				"div.p-3"
+			],
+			[
+				"container",
+				"div.container"
+			],
+			[
+				"bg-dark",
+				"div.bg-dark"
+			],
+			[
+				"var",
+				"var_dump()"
+			],
+			[
+				"html",
+				"html5\tSimple HTML5 Boilerplate"
+			],
+			[
+				"ba",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"fmt",
+				"phpfmt: format now"
+			],
+			[
+				"pakl",
+				"Package Control: List Packages"
+			],
+			[
+				"ip",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"INPA",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"enpac",
+				"Package Control: Enable Package"
+			],
+			[
+				"dispa",
+				"Package Control: Disable Package"
+			],
+			[
+				"inpak",
+				"Package Control: Install Package"
+			],
+			[
+				"php",
+				"phpfmt: toggle PSR2"
+			],
+			[
+				"phpcs",
+				"PHP Coding Standards Fixer: Fix this file (PHP Code Beautifier)"
+			],
+			[
+				"rempa",
+				"Package Control: Remove Package"
+			],
+			[
+				"inpa",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"INSpa",
+				"Package Control: Install Package"
+			],
+			[
+				"insp",
+				"Package Control: Install Package"
+			],
+			[
+				"instpa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 335.0,
+		"history":
+		[
+			"clear",
+			"cls",
+			"help",
+			"clear",
+			"cls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/git/ant/nix2025.my",
+		"/C/git/ant/nix2025.my/smarty",
+		"/C/git/ant/nix2025.my/smarty/compile_dir",
+		"/C/git/ant/nix2025.my/smarty/smarty_cache",
+		"/C/git/ant/nix2025.my/smarty/smarty_config"
+	],
+	"file_history":
+	[
+		"/C/git/ant/nix2025.my/vendor/avadim/fast-excel-writer/.gitignore",
+		"/C/git/ant/.gitignore",
+		"/C/git/ant/.git/config",
+		"/C/git/php5/.gitignore",
+		"/C/git/php5/nixminsk.os/.osp/project.ini",
+		"/C/git/ant/nix2025.my/composer.json",
+		"/C/git/ant/nix2025.my/admin/app/classes/SmartyControl.php",
+		"/C/git/ant/nix2025.my/admin/app/classes/StandartSub.php",
+		"/C/git/ant/nix2025.my/admin/app/connect.php",
+		"/C/git/ant/nix2025.my/NIX2025.sublime-project",
+		"/C/git/ant/nix2025.my/NIX2025.sublime-workspace",
+		"/C/git/new_php8/nix2025.new/public/js/uiElements.js",
+		"/C/git/new_php8/nix2025.new/public/js/uiFunctions.js",
+		"/C/git/new_php8/nix2025.new/public/js/uiEvents.js",
+		"/C/git/new_php8/nix2025.new/public/js/userInterface.js",
+		"/C/git/new_php8/nix2025.new/admin/tpl/smartyControls/textarea.tpl.html",
+		"/C/git/new_php8/nix2025.new/admin/tpl/smartyControls/input_unp.tpl.html",
+		"/C/git/new_php8/nix2025.new/public/js/formatters.js",
+		"/C/git/new_php8/nix2025.new/public/js/functions.js",
+		"/C/git/new_php8/nix2025.new/public/lib/admin.js",
+		"/C/git/new_php8/nix2025.new/public/js/trash.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/button_toolbar.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/monolog.log",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/trash.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/currency_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/currency_sub.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiEvents.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/userInterface.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/debouce_and_throttle.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiElements.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/StandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/pdo/PdoStatementAdapter.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/row_buttons.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/routes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/functions.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/index.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/admin.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/CurrencyTypes.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/net/Response.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/level-2/dice/Dice.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/net/Request.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/antStandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/index.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/error500.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/eeee.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/config.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/ActiveRecord.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/DatabaseStatementInterface.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_number.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Template/GeneratedPhpFile.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/NotAI_StandartSub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/ActiveRecordTest.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/DatabaseInterface.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/src/database/pdo/PdoAdapter.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/adhocore/cli/src/Output/Table.php",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/phpfmt/message",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/functions.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/statuses_sub.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/subs/__render.php",
+		"/C/OSPanel/logs/general.log",
+		"/C/OSPanel/logs/PHP-8.3.log",
+		"/C/OSPanel/home/new_php8/nix2025.new/.osp/project.ini",
+		"/C/OSPanel/home/new_php8/NIX2025.sublime-project",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/settings.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/OrderStatuses.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/app/classes/SmartyControl.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/index.html",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/User/SQL Beautifier.sublime-settings",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/SqlBeautifier/SQL Beautifier.sublime-settings",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/formatters.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/uiFunctions.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/Engine.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/core/flight/Flight.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/statuses_sub.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/admin.js",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc.defaults.json",
+		"/C/OSPanel/home/new_php8/JsPrettier.sublime-settings",
+		"/C/OSPanel/home/new_php8/.jsbeautifyrc",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/cleave_number.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/smartyControls.js",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/nette/utils/src/StaticClass.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/lawrence72/flightbag/README.md",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/nette/php-generator/src/PhpGenerator/InterfaceType.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/js/allControls.js",
+		"/C/OSPanel/home/new_php8/antContract.builder/.osp/project.ini",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/checkbox.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/switch.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/radio.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_plaintext.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/smartyControls/input_text.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/aside.tpl.html",
+		"/C/OSPanel/home/new_php8/nixminsk74.new/errors/FILEDEBUG.JSON",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/home.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/header_navbar.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/admin.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/monolog.log",
+		"/C/tmp/monolog.log",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/bs5.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/footer.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/classes/User.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/ActiveRecordMysqliTest.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/ActiveRecordPdoIntegrationTest.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/active-record/tests/classes/Contact.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/aside_navigator.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/_aside.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/_header.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/_main.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/examples/dashboard/index.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/examples/dashboard/dashboard.css",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/admin.css",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Smarty.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/bootstrap-icons/toggles.svg",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/smartyControl_input_text^2cba25bf7242b518adf7745b4fa30a8098c48336_0.file_input_text.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/page_not_found.tpl.tpl",
+		"/C/OSPanel/home/new_php8/nix2025.new/public/lib/bootstrap-icons/router.svg",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/smartyControl_^6a549564b80ec56f66b1620df14c14f9cde42e17_0.file_input_text.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/subs/shrot.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^bd18e44d0c135d79b692c088076a09601b0d8a5f_0.file_currency_sub.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Runtime/CaptureRuntime.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^098f4461beb03c3aa6fa203380f26bac8419e4f2_0.file_index.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/smarty/compile_dir/admin_^4c5e31c395c9851212b12623d4e8f3af7d39afb1_0.file__aside.tpl.html.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/examlpe.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/examlpe2.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/smarty/smarty/src/Template.php",
+		"/C/OSPanel/home/new_php8/nix2025.new/vendor/flightphp/runway/composer.json",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/admin__navbar.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/eeee.tpl.html",
+		"/C/OSPanel/home/new_php8/nix2025.new/admin/tpl/notFound.tpl.html"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 134.0,
+		"where_history":
+		[
+			"<open files>",
+			"*.js,<open files>",
+			"*.js",
+			"",
+			"<open files>",
+			"",
+			"<open files>",
+			"",
+			"*.html",
+			"*.php",
+			"*.html,<open files>",
+			"*.html",
+			"*.php",
+			"*.php, *.tpl.html",
+			"*.php",
+			"",
+			"verifyPassword",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"app/",
+			"cached ",
+			"ant.my/app",
+			"\\",
+			"antCMSantCMS",
+			"..my/app/smarty/compile_dir/",
+			"ant.my",
+			"nix2025.my/",
+			" ",
+			"ButtonsSaveAll",
+			"SaveAll",
+			"InputsDateTime",
+			"console",
+			"aveAll",
+			"btnSaveAll",
+			"event.target.dataset.action?.toLowerCase()",
+			"log",
+			"console",
+			"getDataAll",
+			"fetchData",
+			"fetchDataRow",
+			"fetchData",
+			"getData",
+			"forEach",
+			"EnableSaveRow",
+			"1000",
+			"InputsText",
+			"function",
+			"InputsAll",
+			"EnableSaveRow",
+			"uiEvent.ActionButtonClick(event)));",
+			"TADA",
+			"btn-default",
+			"ButtonsAddNew",
+			"AddNew",
+			", ",
+			"Flight::get( 'log' )",
+			"log",
+			"logger",
+			"throw",
+			"request",
+			"b",
+			"h4",
+			"{$smarty.const",
+			"error_log",
+			"cleanArrayKeys",
+			"columns",
+			"public",
+			"fieldsList",
+			"columnsA",
+			"AllTablesColumnNames",
+			"defaultValues",
+			"ColumnNames",
+			"columns",
+			"DB_NAME",
+			" new PDO",
+			"fieldsList",
+			"cleanedArray",
+			"getTableColumns",
+			"columnList",
+			"$columnList",
+			"getColumns",
+			"COLUMNS",
+			"execute",
+			"database_connection",
+			"tableName",
+			"cleanArrayKeys",
+			",",
+			"=>",
+			"                        // code...",
+			"cloneRow",
+			":2",
+			"2ch",
+			"'N'              => '",
+			",",
+			"= [",
+			"$currencySub",
+			"records",
+			"app.INFO:",
+			"[2025-05-24T22:05:02.333035+03:00] app.INFO:  ",
+			"user",
+			"только числа",
+			"positve_only",
+			"4ch",
+			"4",
+			"\"d-grid gap-1",
+			"-0 d-block text-end",
+			"nds20",
+			"m-0 p-0",
+			"d-grid gap-1 lh-1",
+			" p-0 my-2",
+			"<sup class=\"m-0 p-0 my-2\"",
+			"-0 align-self-center",
+			"d-grid gap-0",
+			"lh-1",
+			"p-0 text-end",
+			"m-0 p-0",
+			"elSub",
+			"elSup",
+			"elDiv",
+			"divEl",
+			"sub",
+			"sup",
+			"div",
+			"font-monospace text-muted text-opacity-50\"",
+			"decSep",
+			"$dec",
+			"rowIndex",
+			"    \n",
+			"d-grid gap-0 lh-1 fw-lighter font-monospace text-muted text-opacity-50",
+			"getTableRawData",
+			"\"input, select",
+			"); ",
+			"${fieldname}",
+			".dataRow.",
+			"RowControls",
+			"name=\"add_",
+			"_{$data[cc].statusID}",
+			"name=\"add",
+			"_{$data[cc].CID}",
+			"data-index",
+			"\"",
+			" ",
+			");",
+			"conston",
+			"1",
+			"est checkbox",
+			"grabDataButton"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"fetchData",
+			"fetchDataRow",
+			"getDataRow",
+			"fieldsList",
+			"duplicateRecord",
+			"decimalSeparator",
+			"uiFunctions",
+			"__rulesSmartyControl",
+			"",
+			"getControlParameters",
+			"_genSubFiledsControlParameters",
+			"sqlite_database_path",
+			" DIRECTORY_SEPARATOR ",
+			"verifyPassword",
+			""
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 55.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/PHP/PHP.sublime-build",
+	"project": "NIX2025.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gitig",
+				"nix2025.my\\vendor\\avadim\\fast-excel-writer\\.gitignore"
+			],
+			[
+				"conn",
+				"nix2025.my\\admin\\app\\connect.php"
+			],
+			[
+				"stansub",
+				"nix2025.my\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"compo",
+				"nix2025.my\\composer.json"
+			],
+			[
+				"textartp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\textarea.tpl.html"
+			],
+			[
+				"uiE",
+				"nix2025.new\\public\\js\\uiElements.js"
+			],
+			[
+				"formjs",
+				"nix2025.new\\public\\js\\formatters.js"
+			],
+			[
+				"inunp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_unp.tpl.html"
+			],
+			[
+				"elemjs",
+				"nix2025.new\\public\\js\\uiElements.js"
+			],
+			[
+				"mono",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"cursutp",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"buttpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\button_toolbar.tpl.html"
+			],
+			[
+				"uiel",
+				"nix2025.new\\public\\js\\uiElements.js"
+			],
+			[
+				"iu.js",
+				"nix2025.new\\public\\js\\uiEvents.js"
+			],
+			[
+				"monolog",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"curr",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"currsubph",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"curretp",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"curtype",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"monolo",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"adm",
+				"nix2025.new\\admin\\app\\admin.php"
+			],
+			[
+				"eee",
+				"nix2025.new\\admin\\app\\eeee.php"
+			],
+			[
+				"GeneratedPhpFile.php",
+				"nix2025.new\\vendor\\smarty\\smarty\\src\\Template\\GeneratedPhpFile.php"
+			],
+			[
+				"mon",
+				"nix2025.new\\admin\\monolog.log"
+			],
+			[
+				"projini",
+				"nix2025.new\\.osp\\project.ini"
+			],
+			[
+				"numbtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"funcphp",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"conf",
+				"nix2025.new\\admin\\app\\config.php"
+			],
+			[
+				"stansu",
+				"nix2025.new\\admin\\app\\classes\\StandartSub.php"
+			],
+			[
+				"numb",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"currsub",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"curtyp",
+				"nix2025.new\\admin\\app\\classes\\CurrencyTypes.php"
+			],
+			[
+				"rouphp",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"uifu",
+				"nix2025.new\\public\\js\\uiFunctions.js"
+			],
+			[
+				"trash",
+				"nix2025.new\\public\\js\\trash.js"
+			],
+			[
+				"statsphp",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"numtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\cleave_number.tpl.html"
+			],
+			[
+				"cursuph",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"rowbtpl",
+				"nix2025.new\\admin\\tpl\\smartyControls\\row_buttons.tpl.html"
+			],
+			[
+				"statuse",
+				"nix2025.new\\admin\\app\\subs\\statuses_sub.php"
+			],
+			[
+				"staphp",
+				"nix2025.new\\vendor\\nette\\utils\\src\\StaticClass.php"
+			],
+			[
+				"subphp",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"adnjs",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"intrfa",
+				"nix2025.new\\vendor\\nette\\php-generator\\src\\PhpGenerator\\InterfaceType.php"
+			],
+			[
+				"buttp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\row_buttons.tpl.html"
+			],
+			[
+				"indtpl",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"innutp",
+				"nix2025.new\\admin\\tpl\\smartyControls\\input_number.tpl.html"
+			],
+			[
+				"admjs",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"funphp",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"admphp",
+				"nix2025.new\\admin\\app\\admin.php"
+			],
+			[
+				"indtp",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"cursub",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"routes",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				".js",
+				"nix2025.new\\public\\lib\\admin.js"
+			],
+			[
+				"indephp",
+				"nix2025.new\\public\\index.php"
+			],
+			[
+				"indetpl",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"foot",
+				"nix2025.new\\admin\\tpl\\footer.tpl.html"
+			],
+			[
+				"sidetp",
+				"nix2025.new\\admin\\tpl\\aside_navigator.tpl.html"
+			],
+			[
+				"dashboard.css",
+				"nix2025.new\\public\\examples\\dashboard\\dashboard.css"
+			],
+			[
+				"aside",
+				"nix2025.new\\admin\\tpl\\_aside.tpl.html"
+			],
+			[
+				"indextp",
+				"nix2025.new\\admin\\tpl\\index.tpl.html"
+			],
+			[
+				"subcutp",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"inde",
+				"nix2025.new\\public\\index.html"
+			],
+			[
+				"adcss",
+				"nix2025.new\\public\\lib\\admin.css"
+			],
+			[
+				"toggle",
+				"nix2025.new\\public\\lib\\bootstrap-icons\\toggles.svg"
+			],
+			[
+				"rout",
+				"nix2025.new\\admin\\app\\routes.php"
+			],
+			[
+				"currsubtp",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"adminphp",
+				"nix2025.new\\admin\\app\\admin.php"
+			],
+			[
+				"curre",
+				"nix2025.new\\admin\\tpl\\subs\\currency_sub.tpl.html"
+			],
+			[
+				"runway.j",
+				"nix2025.new\\vendor\\flightphp\\runway\\composer.json"
+			],
+			[
+				"fun",
+				"nix2025.new\\admin\\app\\functions.php"
+			],
+			[
+				"cursu",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"ind",
+				"nix2025.new\\public\\index.php"
+			],
+			[
+				"curphp",
+				"nix2025.new\\admin\\app\\subs\\currency_sub.php"
+			],
+			[
+				"giti",
+				"nix2025.new\\vendor\\twbs\\bootstrap\\.gitignore"
+			],
+			[
+				"tplht",
+				"app\\tpl\\index.tpl.html"
+			],
+			[
+				"tpl.ht",
+				"app\\tpl\\hello.tpl.html"
+			],
+			[
+				"sql",
+				"fr_loc.sql"
+			],
+			[
+				"start.tpl.html",
+				"ant2025.os\\admin\\tpl\\start.tpl.html"
+			],
+			[
+				"admin.tpl.html",
+				"ant2025.os\\admin\\tpl\\admin.tpl.html"
+			],
+			[
+				"admin/index.php",
+				"ant2025.os\\admin\\index.php"
+			],
+			[
+				"auth",
+				"ant2025.os\\admin\\core\\authentication.php"
+			],
+			[
+				"admin.php",
+				"ant2025.os\\admin\\admin.php"
+			],
+			[
+				"admin_functions",
+				"ant2025.os\\admin\\core\\functions\\admin_functions.php"
+			],
+			[
+				"errtpl",
+				"ant2025.os\\admin\\tpl\\error_forbidden_login.tpl.html"
+			],
+			[
+				"cons",
+				"ant2025.os\\admin\\core\\const.php"
+			],
+			[
+				"db.md",
+				"ant2025.os\\vendor\\thingengineer\\mysqli-database-class\\dbObject.md"
+			],
+			[
+				"ses",
+				"ant2025.os\\admin\\functions\\session_functions.php"
+			],
+			[
+				"const",
+				"ant2025.os\\admin\\core\\const.php"
+			],
+			[
+				"aut",
+				"ant2025.os\\admin\\core\\authentication.php"
+			],
+			[
+				"conne",
+				"ant2025.os\\admin\\core\\database_connect.php"
+			],
+			[
+				"MysqliDb",
+				"ant2025.os\\vendor\\thingengineer\\mysqli-database-class\\MysqliDb.php"
+			],
+			[
+				"Conne",
+				"ant2025.os\\admin\\core\\database_connect.php"
+			],
+			[
+				"bootstrap",
+				"admin\\core\\bootstrap.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 323.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 367.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,557 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Package Control Messages\n========================\n\n\nColorHelper\n-----------\n\n  # ColorHelper\n  \n  Welcome to ColorHelper!  To learn how to get started, check out\n  the documentation at https://facelessuser.github.io/ColorHelper/.\n  \n  A restart of Sublime Text may be required.\n",
+			"settings":
+			{
+				"buffer_size": 278,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			},
+			"undo_stack":
+			[
+				[
+					1,
+					1,
+					"package_control_message",
+					{
+						"message": "\n\nColorHelper\n-----------\n\n  # ColorHelper\n  \n  Welcome to ColorHelper!  To learn how to get started, check out\n  the documentation at https://facelessuser.github.io/ColorHelper/.\n  \n  A restart of Sublime Text may be required.\n"
+					},
+					"AQAAAAAAAAAAAAAAFgEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": ".osp/project.ini",
+			"settings":
+			{
+				"buffer_size": 600,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					2,
+					"left_delete",
+					null,
+					"AgAAAFkCAAAAAAAAWQIAAAAAAAAHAAAAcHVibGljClgCAAAAAAAAWAIAAAAAAAABAAAAXA",
+					"AQAAAAAAAAABAAAAWQIAAAAAAABgAgAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "dist/index.html",
+			"settings":
+			{
+				"buffer_size": 6193,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "dist/assets/css/style.css",
+			"settings":
+			{
+				"buffer_size": 2074126,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "dist/assets/css/landing.css",
+			"settings":
+			{
+				"buffer_size": 75419,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ip",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: en",
+				"Package Control: Enable Package"
+			],
+			[
+				"inpa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/git/ant/template.my",
+		"/C/git/ant/template.my/.osp",
+		"/C/git/ant/template.my/dist",
+		"/C/git/ant/template.my/dist/other",
+		"/C/git/ant/template.my/src",
+		"/C/git/ant/template.my/src/html",
+		"/C/git/ant/template.my/src/html/admins",
+		"/C/git/ant/template.my/src/html/application",
+		"/C/git/ant/template.my/src/html/dashboard",
+		"/C/git/ant/template.my/src/html/elements",
+		"/C/git/ant/template.my/src/html/forms",
+		"/C/git/ant/template.my/src/html/layouts"
+	],
+	"file_history":
+	[
+		"/C/git/ant/ant.my/app/tpl/index.tpl.html",
+		"/C/git/ant/ant.my/public/lib/ico/site.webmanifest",
+		"/C/git/ant/ant.my/app/tpl/layout.tpl.html",
+		"/C/git/ant/ant.my/app/routes/ui_routes.php",
+		"/C/git/ant/ant.my/app/config/routes.php",
+		"/C/git/ant/ant.my/admin.php",
+		"/C/git/ant/ant.my/app/config/config.php",
+		"/C/git/ant/ant.my/app/config/config.sql",
+		"/C/git/ant/ant.my/app/config/config_smarty.php",
+		"/C/git/ant/ant.my/app/tpl/tplError.tpl.html",
+		"/C/Program Files/JetBrains/jetbra/scripts/uninstall-all-users.vbs",
+		"/C/Program Files/JetBrains/IntelliJ IDEA 2025.3/bin/jetbrains_client64.exe.vmoptions",
+		"/C/git/ant/ant.my/vendor/smarty/smarty/src/Smarty.php",
+		"/C/git/ant/ant.my/app/templates/index.tpl.html",
+		"/C/git/ant/ant.my/_ant.my_.sublime-project",
+		"/C/git/ant/ant.my/app/routes TEMP/api_routes.php",
+		"/C/git/ant/ant.my/vendor/flightphp/core/flight/Flight.php",
+		"/C/git/ant/ant.my/public/js/uiFunctions.js",
+		"/C/git/ant/ant.my/public/index.php",
+		"/C/git/ant/ant.my/public/js/uiElements.js",
+		"/C/git/ant/ant.my/app/tpl/styles.tpl.html",
+		"/C/git/ant/ant.my/public/js/uiEvents.js",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/C/Users/a/AppData/Roaming/Sublime Text/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc.defaults.json",
+		"/C/git/ant/ant.my/app/config/run.php",
+		"/C/git/ant/ant.my/backup_db.cmd",
+		"/C/git/ant/ant.my/restore_db.cmd",
+		"/C/git/ant/ant.my/.osp/project.ini"
+	],
+	"find":
+	{
+		"height": 37.3333333333
+	},
+	"find_in_files":
+	{
+		"height": 262.0,
+		"where_history":
+		[
+			"",
+			"DEFAULT_TPL_HTML",
+			"<project filters>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"href",
+			"ANTANT64",
+			"INDEX_TPL_HTML",
+			"UNNAMED",
+			"index.tpl.html",
+			"INDEX_TPL_HTML",
+			"INDEX_TP",
+			"INDEX_TPL_HTML",
+			"INDEX_TP",
+			"INDEX_TP_LHTML"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"COPYRIGHT",
+			"DEFAULT_TPL_HTML",
+			""
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								278,
+								278
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_indent": false,
+							"color_helper.refresh": true,
+							"color_helper.scan":
+							{
+								"allow_scanning": false,
+								"color_class":
+								[
+									{
+										"class": "css-level-4",
+										"scopes": ""
+									}
+								],
+								"color_trigger": "(?xi)\n(?:\n    \\b(?<![-#&$])(?:\n        color\\((?!\\s*-)|(?:hsla?|(?:ok)?(?:lch|lab)|hwb|rgba?)\\(\n) |\n\\b(?<![-#&$])[\\w]{3,}(?![(-])\\b|(?<![&])\\#)\n",
+								"current_ext": null,
+								"current_syntax": "Text/Plain text",
+								"enabled": true,
+								"last_updated": 1767992268.76,
+								"scanning": "-comment"
+							},
+							"default_dir": "C:\\git\\ant\\template.my\\dist\\assets\\css",
+							"gutter": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": ".osp/project.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								600,
+								600
+							]
+						],
+						"settings":
+						{
+							"color_helper.refresh": true,
+							"syntax": "Packages/INI/INI.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dist/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1779,
+								1788
+							]
+						],
+						"settings":
+						{
+							"color_helper.refresh": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dist/assets/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2074126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1606,
+								1606
+							]
+						],
+						"settings":
+						{
+							"color_helper.refresh": true,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dist/assets/css/landing.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 75419,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1367,
+								1367
+							]
+						],
+						"settings":
+						{
+							"color_helper.refresh": true,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 484.666666667,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.3333333333
+	},
+	"input":
+	{
+		"height": 90.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 142.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 142.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "TEMPLATE.sublime-project",
+	"replace":
+	{
+		"height": 70.6666666667
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"style.css",
+				"dist\\assets\\css\\style.css"
+			],
+			[
+				"admin",
+				"admin.php"
+			],
+			[
+				"lay",
+				"app\\tpl\\layout.tpl.html"
+			],
+			[
+				"indextpl",
+				"app\\tpl\\index.tpl.html"
+			],
+			[
+				"index.tpl.html",
+				"app\\templates\\index.tpl.html"
+			],
+			[
+				"ru",
+				"app\\config\\run.php"
+			],
+			[
+				"adminphp",
+				"admin.php"
+			],
+			[
+				"index.php",
+				"public\\index.php"
+			],
+			[
+				"con",
+				"app\\config\\config.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 323.0,
+		"last_filter": "SET",
+		"selected_items":
+		[
+			[
+				"SET",
+				"setToEnable"
+			],
+			[
+				"FLI",
+				"Flight"
+			]
+		],
+		"width": 784.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 447.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
