@@ -40,8 +40,6 @@ if ( file_exists( __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php' ) === false ) 
 define( 'SERVER_NAME', $_SERVER['SERVER_NAME'] );
 define( 'COPYRIGHT', 'Copyright ' . date( 'Y' ) . ' © ' . 'antaNT64.' );
 define( 'DEFAULT_TPL_HTML', 'b2b/index.tpl.html' );
-// define( 'DEFAULT_TPL_HTML', 'index.tpl.html' );
-// define( 'DEFAULT_TPL_HTML', 'admin.tpl.html' );
 
 $config = require __CONFIG__ . DIRECTORY_SEPARATOR . 'config.php';
 
@@ -74,58 +72,6 @@ $csp_string = "default-src 'self'; " .
 header( "Content-Security-Policy: $csp_string" );
 
 require __ROUTES__ . DIRECTORY_SEPARATOR . 'routes.php';
-
-// Flight::before( 'start', function () use ( $nonce ) {
-
-//     header( 'Content-Security-Policy: ' .
-//         // Скрипты: доверяем nonce и разрешаем динамическую загрузку
-//         "script-src 'nonce-$nonce' 'strict-dynamic'; " .
-//         // Стили: разрешаем себя, инлайны и оба сервиса шрифтов
-//         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com; " .
-//         // Шрифты: разрешаем загрузку самих файлов шрифтов (важно для Google/CDN)
-//         "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; " .
-//         // Остальное по умолчанию (картинки и т.д.)
-//         "default-src 'self'; " .
-//         "img-src 'self' data:;" );
-// } );
-
-// Flight::before( 'start', function () use ( $nonce ) {
-//     header( 'Content-Security-Policy: ' .
-//         // Убираем 'self' отсюда, чтобы не было предупреждения
-//         "script-src 'nonce-$nonce' 'strict-dynamic'; " .
-//         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.cdnfonts.com; " .
-//         "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; " .
-//         "default-src 'self';" );
-// } );
-
-// Flight::before( 'start', function () {
-
-//     Flight::set( 'start_time', microtime( true ) );
-// } );
-
-// Flight::after( 'start', function () {
-//     if ( Flight::get( 'LOG_REQUEST_TIME' ) ) {
-
-//         $end   = microtime( true );
-//         $start = Flight::get( 'start_time' );
-
-//         Flight::logger()->notice( 'Запрос ' . Flight::request()->url . ' занял ' . round( ( $end - $start ) * 1000, 2 ) . ' ms' );
-
-//         /*
-//             Вы также можете добавить свои заголовки запроса или ответа
-//             чтобы зафиксировать их (будьте осторожны, так как это будет
-//             много данных, если у вас много запросов)
-//             */
-//         if ( Flight::has( 'request' ) ) {
-//             Flight::logger()->notice( 'Заголовки запроса: ' . json_encode( Flight::request()->headers ) );
-//         }
-
-//         if ( Flight::has( 'response' ) ) {
-//             Flight::logger()->notice( 'Заголовки ответа: ' . json_encode( Flight::response()->headers ) );
-//         }
-//     }
-
-// } );
 
 Flight::set( 'LOG_REQUEST_TIME', true );
 // Flight::set( 'SESSION_EXPIRE_TIMEOUT', 24 * 60 * 60 ); // seconds to expire session
