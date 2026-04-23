@@ -19,15 +19,15 @@
         // "color_scheme": "Bass Lagoon.sublime-color-scheme",
         // "color_scheme": "Breakers.sublime-color-scheme",
         // "color_scheme": "Cool & Clear.sublime-color-scheme",
-        "color_scheme": "Dark Knight.sublime-color-scheme", // active project
-        // "color_scheme": "Mariana.sublime-color-scheme",
+        // "color_scheme": "Dark Knight.sublime-color-scheme", // active project
+        "color_scheme": "Mariana.sublime-color-scheme",
         // "color_scheme": "Monokai.sublime-color-scheme",
         // "color_scheme": "Packages/Color Scheme - Creamy/Creamy.tmTheme",
         // "color_scheme": "Sixteen.sublime-color-scheme",
 
 // 00000
         // "font_face": "Iosevka Fixed Extended",
-        "font_face": "Iosevka Term",
+        // "font_face": "Iosevka Term",
         // "font_face": "JetBrains Mono",
         // "font_face": "Consolas",
         // "font_face": "Fira Sans",
